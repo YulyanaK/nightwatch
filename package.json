@@ -1,0 +1,23 @@
+{
+  "name": "v2-integration-testing",
+  "description": "integration testing",
+  "version": "1.0.0",
+  "author": "LaunchPad Central",
+  "scripts": {
+    "test-signup": "nightwatch --group signup"
+  },
+  "dependencies": {
+    "chromedriver": "^2.40.0",
+    "jwt-simple": "^0.4.1",
+    "moment": "^2.22.2",
+    "selenium": "^2.20.0",
+    "selenium-standalone": "^6.15.0",
+    "standalone": "0.0.1",
+    "webdriver": "0.0.4"
+  },
+  "devDependencies": {
+    "mongodb": "^2.1.4",
+    "nightwatch": "^0.9.21",
+    "selenium-server": "^3.8.1"
+  }
+}
