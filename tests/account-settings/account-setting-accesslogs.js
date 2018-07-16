@@ -37,7 +37,7 @@ module.exports = {
   'login to notifications for profile navigation': function(browser) {
       browser
         //.url(model.url + '')
-        .url('https://app.staging.glidr.io')
+        .url('https://app.glidr.io')
         .resizeWindow(1024, 968).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
@@ -47,27 +47,27 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
-        .setValue('input[type=password]', 'Sandpaper@347!')
+        .setValue('input[type=password]', 'Testtest1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
+        .pause(model.pause + 5000)
   },
 
   'Verify the organizations for profile notifications' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
-        .verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
-        .click('div.org-dashboard-card-container div:nth-of-type(3)')
+        
+        .useXpath()
+        .click("//div[@class='org-dashboard-card-title' and text()='Ghana']")
         .pause(model.pause + 2000)
-        .verify.elementPresent('img.profile-image.small-profile', 'profile image container is present').pause(model.pause + 500)
-        .click('img.profile-image.small-profile')
-        .verify.elementPresent('div.profile-settings-text.profile-account', 'Profile').pause(model.pause + 500)
-        .click('div.profile-settings-text.profile-account')
-        .verify.elementPresent('div[data-test="/org-management/access-logs"]').pause(model.pause + 500)
-        .click('div[data-test="/org-management/access-logs"]')
-        .verify.elementPresent('div.font-12.text-navy').pause(model.pause + 500)
-        .verify.elementPresent('div.text-aqua-green').pause(model.pause + 500)
-        .verify.elementPresent('div.text-black.font-14').pause(model.pause + 500)
+        .click("//div[@class='profile-text text-nav ']")
+        .pause(model.pause + 2000)
+        .click("//div[@class='profile-settings-text profile-drawer-upper' and text()='Profile & Account Settings']")
+        .pause(model.pause + 500)
+        .click("//div[@id='/my-account/access-logs']")
+        .pause(model.pause + 500)
+        .verify.elementPresent("//span[@class='text-aqua-green font-14']")
+        .pause(model.pause + 500)
         .end();
      },
   }      
