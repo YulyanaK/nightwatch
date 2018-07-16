@@ -34,7 +34,7 @@ module.exports = {
         .click("(//div[@class='org-dashboard-card-container'])[5]")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 2000)
+        .waitForElementPresent('div.hamburger-holder', 4000)
         .click('div.hamburger-holder')
         .verify.elementPresent('div.side-nav-organization-name-holder', 'opens left nav').pause(model.pause + 500)
         .click('div.side-nav-organization-name-holder')
@@ -43,34 +43,24 @@ module.exports = {
   },
   
 
-  'Select organization to enter to team mgmt': function(browser) {
+  'Select organization to enter to  disabled': function(browser) {
       browser
         .verify.elementPresent('div[data-test="/org-management/team-management"]', 'verifies for name holder for organizations').pause(model.pause + 500)
         .click('div[data-test="/org-management/team-management"]')
-        .verify.elementPresent('input.team-management-search-input', 'input text area').pause(model.pause + 1500)
-        .click('input.team-management-search-input')
-        .setValue('input.team-management-search-input', 'cacomixtle').pause(model.pause + 1500)
-        .clearValue('input.team-management-search-input')
-        .setValue('input.team-management-search-input', 'D').pause(model.pause + 1500)
-        .clearValue('input.team-management-search-input')
-        .setValue('input.team-management-search-input', 'cacomixtle').pause(model.pause + 1500)
-        .clearValue('input.team-management-search-input').pause(model.pause + 500)
-        .click('input.team-management-search-input')
-        .setValue('input.team-management-search-input', 'a')
-        .clearValue('input.team-management-search-input')
-        .pause(model.pause + 1000) 
-        .verify.elementPresent('div.reusable-dropdown-container.show.mgmt-dropdown', 'team-mgmt drop down').pause(model.pause + 1500)
-        .click('div.reusable-dropdown-container.show.mgmt-dropdown') 
-        .verify.elementPresent('div.admin', 'admin').pause(model.pause + 1500)
-        .click('div.admin')
-        .verify.elementPresent('div.reusable-dropdown-container.show.mgmt-dropdown', 'container opens again').pause(model.pause + 1500)
-        .click('div.reusable-dropdown-container.show.mgmt-dropdown') 
-        .verify.elementPresent('div.owner', 'owner').pause(model.pause + 1500)
-        .click('div.owner')
-        .verify.elementPresent('div.reusable-dropdown-container.show.mgmt-dropdown', 'drop down opens again').pause(model.pause + 1500)
-        .click('div.reusable-dropdown-container.show.mgmt-dropdown') 
-        .verify.elementPresent('div.member', 'member').pause(model.pause + 1500)
-        .click('div.member')
+  },
+
+  'everyone tab assests and functionality for dsiabled': function(browser) {
+    browser
+        .verify.elementPresent('li.teamMgmtTab.disabled', 'drop down credentials').pause(model.pause + 1500)
+        .click('li.teamMgmtTab.disabled')
+        .verify.elementPresent('div.reusable-dropdown-display', 'admin').pause(model.pause + 1500)
+        .click('div.reusable-dropdown-display')
+        .verify.elementPresent('div.reusable-dropdown-option', 'drop down').pause(model.pause + 1500)
+        .click('div.reusable-dropdown-option')
+        .verify.elementPresent('div.reusable-dropdown-caret', 'drop down credentials').pause(model.pause + 1500)
+        .click('div.reusable-dropdown-caret')
+        .verify.elementPresent('div.reusable-dropdown-option.clearfix.position-relative.disable', 'disabled').pause(model.pause + 500)
+        .click('div.reusable-dropdown-option.clearfix.position-relative.disable')   
         .end();
       },
 

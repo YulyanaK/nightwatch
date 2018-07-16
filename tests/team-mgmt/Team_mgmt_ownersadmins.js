@@ -10,7 +10,7 @@ module.exports = {
   'login to Project dashboard': function(browser) {
       browser
         //.url(model.url + '')
-        .url('https://app.glidr.io')
+        .url('https://passive.glidr.io')
         //.resizeWindow(1024, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'seraches for active container for email').pause(model.pause + 500)

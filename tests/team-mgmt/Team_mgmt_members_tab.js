@@ -8,7 +8,7 @@ module.exports = {
 
   'Log in to Team mgmt': function(browser ) {
       browser 
-        .url('https://app.glidr.io')
+        .url('https://passive.glidr.io')
         //.resizeWindow(1024, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'seraches for active container for email').pause(model.pause + 500)
@@ -28,8 +28,8 @@ module.exports = {
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[12]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[12]")
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 4000).pause(model.pause + 500)
+        .click("(//div[@class='org-dashboard-card-container'])[5]")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 2000)
