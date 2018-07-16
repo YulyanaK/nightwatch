@@ -24,7 +24,7 @@ module.exports = {
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
-        .waitForElementPresent('div.org-container', 4000).pause(model.pause + 500)
+        .waitForElementPresent('div.org-container', 8000).pause(model.pause + 2000)
   },
 
   'Verify the organizations for Project dashboard' : function(browser) {
