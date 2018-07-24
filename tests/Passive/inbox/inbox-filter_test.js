@@ -29,8 +29,9 @@ module.exports = {
         .click("(//div[@class='org-dashboard-card-container'])[5]")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 2000)
+        .waitForElementPresent('div.hamburger-holder', 5000)
         .click('div.hamburger-holder')
+        .pause(model.pause + 1500)
   },
 
   '(Step 2) Select inbox from side nav menu': function(browser) {

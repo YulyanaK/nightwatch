@@ -39,8 +39,10 @@ module.exports = {
         .waitForElementPresent('.side-nav-subSection-title', 4000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
-        .verify.elementPresent('div[data-test="activity-nav"]', 'enter to activity feed').pause(model.pause + 500)
-        .click('div[data-test="activity-nav"]')
+        .useXpath()
+        .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[2]/div[1]", 'enter to activity feed').pause(model.pause + 500)
+        .click("//div[@class='nav-center-container   ']//div//a[2]/div[1]")
+        .useCss()
         .click('.activity-new-post-form-holder')
         .pause(model.pause + 1500) 
 

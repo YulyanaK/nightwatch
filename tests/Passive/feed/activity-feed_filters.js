@@ -40,8 +40,10 @@ module.exports = {
         .waitForElementPresent('.sub-section-container', 4000)
         .verify.elementPresent('div.sub-section-container', 'selecting a project').pause(model.pause + 1500)
         .click('.sub-section-container')
-        .verify.elementPresent('div[data-test="activity-nav"]', 'enter to activity feed').pause(model.pause + 500)
-        .click('div[data-test="activity-nav"]')
+        .useXpath()
+        .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[2]/div[1]", 'enter to activity feed').pause(model.pause + 500)
+        .click("//div[@class='nav-center-container   ']//div//a[2]/div[1]")
+        .useCss()
 
         //.verify.elementPresent('div.checklist-x-icon').pause(model.pause + 500)
         //.click('div.checklist-x-icon')
