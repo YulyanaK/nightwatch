@@ -43,8 +43,8 @@ module.exports = {
         .verify.elementPresent('div[data-test="activity-nav"]', 'enter to activity feed').pause(model.pause + 500)
         .click('div[data-test="activity-nav"]')
 
-        .verify.elementPresent('div.checklist-x-icon').pause(model.pause + 500)
-        .click('div.checklist-x-icon')
+        //.verify.elementPresent('div.checklist-x-icon').pause(model.pause + 500)
+        //.click('div.checklist-x-icon')
 
       browser
         .getText('div.filter-type-content', function(result) { 
