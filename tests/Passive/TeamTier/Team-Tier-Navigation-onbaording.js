@@ -50,7 +50,7 @@ module.exports = {
         
 
 
-
+        
         console.log('window.resetOnboarding()',[browser.Keys.ENTER]); 
             
       browser

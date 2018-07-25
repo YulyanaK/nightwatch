@@ -63,7 +63,6 @@ module.exports = {
         .click("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']")
         .verify.elementPresent("//div[text()='Profile & Account Settings']", 'Profile').pause(model.pause + 500)
         .click("//div[text()='Profile & Account Settings']")
-        .url('https://passive.glidr.io/my-account/settings')
         .pause(model.pause + 3000)
 
   },
