@@ -80,7 +80,7 @@ module.exports = {
         .useXpath()
         .click("//div[text()='Senegal']")
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 2000)
+        .waitForElementPresent('div.hamburger-holder', 5000)
         .click('div.hamburger-holder')
         .useXpath()
         .waitForElementPresent("//div[text()='ACTIVE PROJECTS']", 5000)
