@@ -46,11 +46,19 @@
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
+        .pause(model.pause + 5000)
     },
 
   'Verify the project name for hypothesis' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
+        .useXpath()
+        .waitForElementPresent("//div[text()='Senegal']", 4000)
+        
+        .click("//div[text()='Senegal']")
+        .pause(model.pause + 4000)
+        .click("//div[@class='hamburger-holder close ']").pause(model.pause + 500)
+        
+        /*.waitForElementPresent('div.org-dashboard-card-container', 4000)
         .verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
         .click('div.org-dashboard-card-container div:nth-of-type(3)')
         .waitForElementPresent('div.hamburger-holder', 2000)
@@ -81,6 +89,6 @@
         .verify.elementPresent('a[data-test="keyResources"]', 'key partners').pause(model.pause + 800)
         .click('a[data-test="keyResources"]')
 
-    .end();
+    .end();*/
   }
 }

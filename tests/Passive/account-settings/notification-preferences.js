@@ -78,7 +78,7 @@ module.exports = {
       browser
         .waitForElementPresent('div.org-dashboard-card-container', 6000)
         .useXpath()
-        .click("//div[text()='Senegal']")
+        .click("//div[text()='Nunavut']")
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 5000)
         .click('div.hamburger-holder')
