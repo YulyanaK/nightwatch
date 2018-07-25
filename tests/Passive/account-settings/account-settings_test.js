@@ -50,20 +50,24 @@ module.exports = {
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
+        .pause(model.pause + 5000)
   },
 
   'Verify the organizations for profile notifications' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
-        .verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
-        .click('div.org-dashboard-card-container div:nth-of-type(3)')
-        .pause(model.pause + 2000)
         .useXpath()
-        .verify.elementPresent("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']", 'profile image container is present').pause(model.pause + 500)
-        .click("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']")
+        .waitForElementPresent("//div[text()='Senegal']", 4000)
+        //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
+        .click("//div[text()='Senegal']")
+        .pause(model.pause + 4000)
+        
+        .verify.elementPresent("//div[@class='profile-image-container profile-image right-nav-profile']//img", 'profile image container is present').pause(model.pause + 500)
+        .click("//div[@class='profile-image-container profile-image right-nav-profile']//img")
         .verify.elementPresent("//div[text()='Profile & Account Settings']", 'Profile').pause(model.pause + 500)
         .click("//div[text()='Profile & Account Settings']")
         .pause(model.pause + 3000)
+        .click("//div[@class='page-navigation-title ' and text()='Account Settings']").pause(model.pause + 500)
+
 
   },
 
