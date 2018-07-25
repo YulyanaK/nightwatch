@@ -84,6 +84,7 @@ module.exports = {
         .click("//input[@placeholder='Re-enter email']")
         .setValue("//input[@placeholder='Re-enter email']", 'dortiz@launchpadcentral.com').pause(model.pause + 500)
         .click("//div[@class='cancel-title']")
+        .pause(model.pause + 2000)
         .verify.elementPresent("//div[@class='user-email-password-title email']", 'verify email').pause(model.pause + 1000)
         .verify.elementPresent("//div[@class='user-email-password-title password']", 'verify password')
         .click("(//div[text()='CHANGE'])[2]")
