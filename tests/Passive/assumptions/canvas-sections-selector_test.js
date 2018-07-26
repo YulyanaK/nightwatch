@@ -33,7 +33,7 @@
  'login to hypothesis': function(browser) {
       browser
         .url('https://passive.glidr.io')
-        .resizeWindow(1124, 868).pause(model.pause + 500)
+        
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -57,7 +57,20 @@
         .click("//div[text()='Senegal']")
         .pause(model.pause + 4000)
         .click("//div[@class='hamburger-holder close ']").pause(model.pause + 500)
+        .click("(//div[@class='side-nav-subSection-title'])[1]").pause(model.pause + 500)//entering project
         
+        //.click("//div[@class='float-right clickable']//div").pause(model.pause + 500)//clicking plus sign
+        //.setValue("(//div[@class='priority-quick-add-card-container'])[1]", 'automation test card').pause(model.pause + 1500)
+        .click("//div[@class='clearfix ']/div[text()='1']")
+        .pause(model.pause + 3000)
+        .clearValue("//textarea[@class='content-field-textarea']").pause(model.pause + 500)
+        .setValue("//textarea[@class='content-field-textarea']", 'Automation Card').pause(model.pause + 1000)
+        .click("(//div[@class='reusable-dropdown-caret'])[2]").pause(model.pause + 500)
+        .click("(//div[@class='reusable-dropdown-selection-title  open'])[2]/div[text()='New One']").pause(model.pause + 500)
+
+
+//.click("//div[text()='CANVAS']").pause(model.pause + 2000)
+
         /*.waitForElementPresent('div.org-dashboard-card-container', 4000)
         .verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
         .click('div.org-dashboard-card-container div:nth-of-type(3)')

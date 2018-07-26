@@ -92,7 +92,9 @@ var ObjectId = require('mongodb')
   'collection settings are working and make sure collection gets deleted' : function(browser) {
       browser
         .refresh()
-        .pause(model.pause + 4000)
+        .pause(model.pause + 2000)
+        .refresh()
+        .pause(model.pause + 2000)
         .verify.elementPresent("(//div[text()='Settings'])", 'opens settings').pause(model.pause + 1000)
         .click("(//div[text()='Settings'])")
         .clearValue("(//textarea[@class='content-field-textarea'])")
