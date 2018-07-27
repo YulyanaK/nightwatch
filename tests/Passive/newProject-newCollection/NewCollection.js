@@ -93,10 +93,12 @@ var ObjectId = require('mongodb')
       browser
         .refresh()
         .pause(model.pause + 2000)
-        .refresh()
-        .pause(model.pause + 2000)
-        .verify.elementPresent("(//div[text()='Settings'])", 'opens settings').pause(model.pause + 1000)
+        .moveToElement("(//div[text()='Settings'])", 10, 10)
+        .waitForElementVisible("(//div[text()='Settings'])", 2000)
         .click("(//div[text()='Settings'])")
+        .pause(model.pause + 2000)
+        //.verify.elementPresent("(//div[text()='Settings'])", 'opens settings').pause(model.pause + 1000)
+        //.click("(//div[text()='Settings'])")
         .clearValue("(//textarea[@class='content-field-textarea'])")
         .setValue("(//textarea[@class='content-field-textarea'])", 'Nightwatch testing')
         .pause(model.pause + 1000)
@@ -109,6 +111,6 @@ var ObjectId = require('mongodb')
         .click("//div[@class='float-right clickable']")
         .click("//div[@class='collections-confirm-delete-button delete float-left clickable']")
         .pause(model.pause + 500)
-        //.end();  
+        .end();  
   },
 }
