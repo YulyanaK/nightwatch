@@ -85,11 +85,12 @@ var ObjectId = require('mongodb')
         .pause(model.pause + 500)
         .click("//div[@class='page-navigation-title ']")
         .pause(model.pause + 1000)
+        .end(); 
 
   },
 
 
-  'collection settings are working and make sure collection gets deleted' : function(browser) {
+  /*'collection settings are working and make sure collection gets deleted' : function(browser) {
       browser
         .refresh()
         .pause(model.pause + 2000)
@@ -110,7 +111,7 @@ var ObjectId = require('mongodb')
         .pause(model.pause + 500)
         .click("//div[@class='float-right clickable']")
         .click("//div[@class='collections-confirm-delete-button delete float-left clickable']")
-        .pause(model.pause + 500)
-        .end();  
-  },
+        .pause(model.pause + 500)*/
+        
+  
 }

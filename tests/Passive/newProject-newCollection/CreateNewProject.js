@@ -98,7 +98,7 @@ var ObjectId = require('mongodb')
         .verify.elementPresent("(//div[@class='side-nav-settings-icons'])[8]", 'verify for delte the project').pause(model.pause + 500)
         .click("(//div[@class='side-nav-settings-icons'])[8]")
         .verify.elementPresent("//div[text()='Settings']", 'settings').pause(model.pause + 1500)
-        .click("//div[text()='Settings']")
+        /*.click("//div[text()='Settings']")
 
         .useCss()
         .verify.elementPresent('div.delete-project-button').pause(model.pause + 500)
@@ -107,7 +107,7 @@ var ObjectId = require('mongodb')
         .click('div.project-delete-buttons.confirm')
 
         .verify.elementPresent('div.confirmation-button.no-cancel.red.undefined', 'Delete project').pause(model.pause + 1500)
-        .click('div.confirmation-button.no-cancel.red.undefined')
+        .click('div.confirmation-button.no-cancel.red.undefined')*/
         .end();
   },
  }
