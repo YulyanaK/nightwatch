@@ -1,5 +1,5 @@
-var model = require('../../helpers/model');
-var controller = require('../../helpers/controller');
+var model = require('../../../helpers/model');
+var controller = require('../../../helpers/controller');
 var ObjectId = require('mongodb').ObjectId;
 
 
@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://app.glidr.io')
-       .resizeWindow(1366, 768).pause(model.pause + 500)
+        .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')

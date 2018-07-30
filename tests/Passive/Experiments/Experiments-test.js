@@ -11,7 +11,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-        // .resizeWindow(1024, 768).pause(model.pause + 500)
+         // .resizeWindow(1024, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -29,9 +29,11 @@ module.exports = {
 
   'Verify the organizations for project dashboard' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
-        .verify.elementPresent('.project-image-main.project-image-59b6e26d72bde10001000002', 'entering Spain organization').pause(model.pause + 500)
-        .click('.project-image-main.project-image-59b6e26d72bde10001000002')
+        .useXpath()
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[7]", 4000).pause(model.pause + 500)
+        .click("(//div[@class='org-dashboard-card-container'])[7]")
+
+        .useCss()
         .waitForElementPresent('div.hamburger-holder', 4000)
         .click('div.hamburger-holder')
   },
@@ -42,8 +44,9 @@ module.exports = {
         .waitForElementPresent('.side-nav-subSection-title', 4000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
-        .verify.elementPresent('div.lpc-add-button-mini-gray.float-right.clickable', '+ to add a research').pause(model.pause + 1500)
-        .click('div.lpc-add-button-mini-gray.float-right.clickable')
+
+        .verify.elementPresent('div.workspace-takeover-btn', '+ to add a research').pause(model.pause + 1500)
+        .click('div.workspace-takeover-btn')
         .verify.elementPresent('div.lpc-evaluation', 'selects an experiment').pause(model.pause + 1500)
         .click('div.lpc-evaluation')
   },
@@ -60,6 +63,7 @@ module.exports = {
         .click('div.experiment-add-member-container')
         .verify.elementPresent('.experiments-navigation-member-container', 'closes dropdown users').pause(model.pause + 500)
         .click('.experiments-navigation-member-container')
+
         // enter tags
         .verify.elementPresent('div.float-left.hover.experiments-tags-icon', 'adding tags').pause(model.pause + 1500)
         .click('div.float-left.hover.experiments-tags-icon') 
@@ -69,6 +73,7 @@ module.exports = {
         .pause(model.pause + 1500)
         .setValue('input.tag-field-label-input.focused', ['Clarification', browser.Keys.ENTER])
         .pause(model.pause + 1500) 
+
         //adding research
         .verify.elementPresent('div.content-field-container.organization-setting-input.org-name', 'research name').pause(model.pause + 1500)
         .click('div.content-field-container.organization-setting-input.org-name')
@@ -77,7 +82,6 @@ module.exports = {
         
         .useXpath()
         .click("(//textarea[@class='content-field-textarea'])[2]")
-        //.click('div.content-field-container.organization-setting-input.org-name:nth-of-type(2)')
         .setValue("(//textarea[@class='content-field-textarea'])[2]", ['this is the objective on testing', browser.Keys.ENTER])
 
         .useCss()
@@ -110,30 +114,28 @@ module.exports = {
         .click("(//textarea[@class='content-field-textarea'])[6]")
         .setValue("(//textarea[@class='content-field-textarea'])[6]", ['2nd What are the metrics for the assumption that will be entered for testing', browser.Keys.ENTER])
 
-        .useXpath()
         .click("(//textarea[@class='content-field-textarea'])[7]")
         .setValue("(//textarea[@class='content-field-textarea'])[7]", ['2nd The metrics result should be in most casese a positive one since it is for testing purpuses', browser.Keys.ENTER])
         .click("//div[text()='ADD']")
 
-        .useCss()
-        .verify.elementPresent('div.reusable-circle-button', 'connect an assumption').pause(model.pause + 1500)  
-        .click('div.reusable-circle-button')
-        .verify.elementPresent('div.reusable-circle-hover-slideout', 'opens connections for assumptions ghost box').pause(model.pause + 1500)  
-        .click('div.reusable-circle-hover-slideout')
         // connects assumptions
-        .verify.elementPresent('div.connect-card-card-container', 'selects an assumptions').pause(model.pause + 1500) 
+        .verify.elementPresent("(//div[@class='hover position-relative float-right success-circle-button'])[2]", 'selects an assumptions').pause(model.pause + 500) 
+        .click("(//div[@class='hover position-relative float-right success-circle-button'])[2]")
+        .pause(model.pause + 2000) 
+        
+        .useCss()
+        .verify.elementPresent('div.connect-card-card-container', 'selects 1st assumption').pause(model.pause + 1500) 
         .click('div.connect-card-card-container')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(2)', 'selects an assumption').pause(model.pause + 1500) 
-        .click('div.connect-card-card-container:nth-of-type(2)')
         .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'selects 2nd assumption').pause(model.pause + 1500) 
         .click('div.connect-card-card-container:nth-of-type(3)')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'selects 3rd assumption').pause(model.pause + 1500) 
-        .click('div.connect-card-card-container:nth-of-type(3)')
-        .click('div.float-right.experiments-success-metrics-close')
-
-        // clicks over icons messages
-        .verify.elementPresent('div.connect-cards-close-icon', 'close connect assumption').pause(model.pause + 1500) 
+        .verify.elementPresent('div.connect-card-card-container:nth-of-type(4)', 'selects 3rd assumption').pause(model.pause + 1500) 
+        .click('div.connect-card-card-container:nth-of-type(4)')
+        .verify.elementPresent('div.connect-card-card-container:nth-of-type(5)', 'selects 4th assumption').pause(model.pause + 1500) 
+        .click('div.connect-card-card-container:nth-of-type(5)')
+        .verify.elementPresent('div.connect-cards-close-icon', 'close selected assumptions').pause(model.pause + 1500) 
         .click('div.connect-cards-close-icon')
+        
+        // clicks over icons messages
         .verify.elementPresent('div.content-field-edit-icon', 'tooltip message').pause(model.pause + 1500) 
         .click('div.content-field-edit-icon')
         .verify.elementPresent('div.tooltip-close-container.clearfix', 'close tooltip').pause(model.pause + 1500) 
@@ -153,54 +155,77 @@ module.exports = {
   },
 
   'Run an experiment connect an evidence': function(browser) {
-    browser
-      .verify.elementPresent('div.reusable-circle-button', 'connect an evidence').pause(model.pause + 500)
-      .click('div.reusable-circle-button')
-      .verify.elementPresent('div.connect-card-card-container', 'connected evidence').pause(model.pause + 3000)
-      .click('div.connect-card-card-container')
-      .pause(model.pause + 500)
-      .click('div.connect-more-info')
-      .pause(model.pause + 500)
-      .click('div.connect-more-info')
-      // connecting assumptions
-      .verify.elementPresent('div.connect-card-card-container:nth-of-type(2)', 'connected 2nd evidence').pause(model.pause + 1500)
-      .click('div.connect-card-card-container:nth-of-type(2)')
-      .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'connected 3rd evidence').pause(model.pause + 1500)
-      .click('div.connect-card-card-container:nth-of-type(3)')
-      .verify.elementPresent('div.connect-cards-close-icon', 'close-icon').pause(model.pause + 1500)
-      .click('div.connect-cards-close-icon')
-      .verify.elementPresent('div.criteria-selection-icon-checkmark', 'check mark').pause(model.pause + 1500)
-      .click('div.criteria-selection-icon-checkmark')
+     browser
+        .verify.elementPresent('div.reusable-circle-button', 'connect an evidence').pause(model.pause + 1000)
+        .click('div.reusable-circle-button')
+        .verify.elementPresent('div.connect-card-card-container', 'connected evidence').pause(model.pause + 3000)
+        .click('div.connect-card-card-container')
+        .pause(model.pause + 500)
+        .click('div.connect-more-info')
+        .pause(model.pause + 500)
+        .click('div.connect-more-info')
 
-      .useXpath()
-      .click("(//div[@class='criteria-selection-icon-x'])[2]")
-      .click("(//div[@class='criteria-selection-icon-checkmark'])[3]")
-      .click("(//div[@class='criteria-selection-icon-x'])[4]")
-      .click("(//div[@class='criteria-selection-icon-checkmark'])[5]")
-      .click("(//div[@class='criteria-selection-icon-x'])[6]")
+        // connecting assumptions
+        .verify.elementPresent('div.connect-card-card-container:nth-of-type(2)', 'connected 2nd evidence').pause(model.pause + 1500)
+        .click('div.connect-card-card-container:nth-of-type(2)')
+        .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'connected 3rd evidence').pause(model.pause + 1500)
+        .click('div.connect-card-card-container:nth-of-type(3)')
+        .verify.elementPresent('div.connect-cards-close-icon', 'close-icon').pause(model.pause + 1500)
+        .click('div.connect-cards-close-icon')
+        .verify.elementPresent('div.criteria-selection-icon-checkmark', 'check mark select criteria').pause(model.pause + 1500)
+        .click('div.criteria-selection-icon-checkmark')
 
-      .useCss()
-      .verify.elementPresent('div.evidence-icon.hover.Disconfirming', 'Disconfirming').pause(model.pause + 500)
-      .click('div.evidence-icon.hover.Disconfirming')
+        //select checkmark
+        .useXpath()
+        .click("(//div[@class='criteria-selection-icon-checkmark'])")
+        .pause(model.pause + 500)
+        .click("(//div[@class='criteria-selection-icon-x'])[2]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='criteria-selection-icon-checkmark'])[3]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='criteria-selection-icon-x'])[4]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='criteria-selection-icon-checkmark'])[5]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='criteria-selection-icon-x'])[6]")
+        .pause(model.pause + 500)
 
-      // .useXpath()
-      // .click("(//div[@class='evidence-icon.hover.Leaning.Disconfirming'])[3]")
-      // .click("(//div[@class='evidence-icon.hover.Neutral'])[3]")
-      // .click("(//div[@class='evidence-icon.hover.Leaning.Confirming'])[4]")
-      // .click("(//div[@class='evidence-icon.hover.Confirming'])[5]")
-      // .verify.elementPresent('div.evidence-icon.hover.Leaning.Confirming', 'leaning Confirming').pause(model.pause + 500)
-
+        //conforming disconfirming 
+        .click("(//div[@class='evidence-icon hover Disconfirming'])")
+        .pause(model.pause + 500)
+        .click("(//div[@class='evidence-icon hover Leaning Disconfirming'])[2]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='evidence-icon hover Neutral'])[3]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='evidence-icon hover Leaning Confirming'])[4]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='evidence-icon hover Confirming'])[5]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='evidence-icon hover Leaning Confirming'])[6]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='evidence-icon hover Neutral'])[7]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='evidence-icon hover Leaning Disconfirming'])[8]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='evidence-icon hover Disconfirming'])[9]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='evidence-icon hover Leaning Disconfirming'])[10]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='evidence-icon hover Neutral'])[11]")
+        .pause(model.pause + 500)
+        .click("(//div[@class='evidence-icon hover Leaning Confirming'])[12]")
     },
 
-  'Run Analysis': function(browser) {
-    browser
+  'Run Analysis step 1': function(browser) {
+     browser
+        .useCss()
         .verify.elementPresent('div.takeover-navigation-button-container.clearfix.next', 'start analysis').pause(model.pause + 500)
         .click('div.takeover-navigation-button-container.clearfix.next')
         .verify.elementPresent('div.criteria-selection-icon-checkmark', 'objective met').pause(model.pause + 500)
         .click('div.criteria-selection-icon-checkmark')
 
-        .useXpath()
         // check mark 
+        .useXpath()
         .click("(//div[@class='criteria-selection-icon-checkmark'])[2]")
 
         .useCss()
@@ -219,6 +244,10 @@ module.exports = {
         .click('div.content-field-container')
         .setValue('.content-field-textarea' , ['need to make more experiments to find out a good result', browser.Keys.ENTER])
 
+},
+
+  'Run Analysis step 2': function(browser) {
+     browser
         .useXpath()
         //set value for first text area
         .click("(//textarea[@class='content-field-textarea'])")
@@ -226,33 +255,206 @@ module.exports = {
         // set value for second text area
         .click("(//textarea[@class='content-field-textarea']) [2]")
         .setValue("(//textarea[@class='content-field-textarea']) [2]", ['2nd What are the metrics for the assumption that will be entered for testing', browser.Keys.ENTER])
-        
-        .useCss()
+
+},
+
+  'Run Analysis step 3': function(browser) {
+     browser
         //opens grid
+        .useCss()
         .verify.elementPresent('div.experiment-analyze-view-grid.float-right', 'opens grid').pause(model.pause + 500)
         .click('div.experiment-analyze-view-grid.float-right')
         .verify.elementPresent('div.grid-close-icon.float-right', 'closes grid').pause(model.pause + 500)
         .click('div.grid-close-icon.float-right')
 
-        .verify.elementPresent('div.experiment-analyze-results-button.clickable:nth-of-type(3)', 'keep testing').pause(model.pause + 500)
-        .click('div.experiment-analyze-results-button.clickable:nth-of-type(3)')
-      
-        .verify.elementPresent('div.experiment-analyze-results-button.clickable', 'invalidate').pause(model.pause + 500)
-        .click('div.experiment-hypothesis-impact-card-validate.clearfix > div.experiment-analyze-results-button.not-clickable:nth-of-type(2)')
+},
 
-.pause()
-        .verify.elementPresent('div.experiment-analyze-results-button.not-clickable:nth-of-type(3)', 'keep testing').pause(model.pause + 500)
-        .click('div.experiment-analyze-results-button.not-clickable:nth-of-type(3)')
-
+   'Run Analysis step 4': function(browser) {
+     browser
+        //impact of project
         .verify.elementPresent('div.project-impact-section-container.hypothesis', 'hypothesis').pause(model.pause + 500)
         .click('div.project-impact-section-container.hypothesis')
-        .verify.elementPresent('div.project-impact-section-container.market', 'market').pause(model.pause + 500)
-        .click('div.project-impact-section-container.market')
-        .verify.elementPresent('div.project-impact-section-container.investments', 'investments').pause(model.pause + 500)
-        .click('div.project-impact-section-container.investments')
+        .verify.elementPresent('div.hypothesis-edit-header-close-wrapper', 'closes assumption').pause(model.pause + 500)
+        .click('div.hypothesis-edit-header-close-wrapper')
 
-        .saveScreenshot('./reports/Experiments/experiments.png')
+        .verify.elementPresent('div.project-impact-section-container.market', 'market size').pause(model.pause + 500)
+        .click('div.project-impact-section-container.market')
+
+        .verify.elementPresent('div.experiment-market-size-currency-input', 'target').pause(model.pause + 500)
+        .click('input.experiment-market-size-currency-input')
+        .clearValue('input.experiment-market-size-currency-input')
+        .setValue('input.experiment-market-size-currency-input', '14234')
+
+        .useXpath()
+        .verify.elementPresent("(//input[@class='experiment-market-size-currency-input'])[2]", 'serverd').pause(model.pause + 500)
+        .click("(//input[@class='experiment-market-size-currency-input'])[2]")
+        .clearValue("(//input[@class='experiment-market-size-currency-input'])[2]")
+        .pause(model.pause + 500)
+        .setValue("(//input[@class='experiment-market-size-currency-input'])[2]", '4325')
+
+        .verify.elementPresent("(//input[@class='experiment-market-size-currency-input'])[3]", 'Total').pause(model.pause + 500)
+        .click("(//input[@class='experiment-market-size-currency-input'])[3]")
+        .clearValue("(//input[@class='experiment-market-size-currency-input'])[3]")
+        .setValue("(//input[@class='experiment-market-size-currency-input'])[3]", '52342')
+
+        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[3]", 'market notes').pause(model.pause + 500)
+        .click("(//textarea[@class='content-field-textarea'])[3]")
+        .clearValue("(//textarea[@class='content-field-textarea'])[3]")
+        .pause(model.pause + 500)
+        .setValue("(//textarea[@class='content-field-textarea'])[3]", 'to enter market notes')
+              
+        .useCss()
+        .verify.elementPresent('div.hypothesis-edit-header-close-wrapper', 'closes market size').pause(model.pause + 500)
+        .click('div.hypothesis-edit-header-close-wrapper')
+
+        .verify.elementPresent('div.project-impact-section-container.investment', 'investments').pause(model.pause + 500)
+        .click('div.project-impact-section-container.investment')
+
+        .verify.elementPresent('div.experiment-market-size-currency-input', 'target').pause(model.pause + 500)
+        .click('input.experiment-market-size-currency-input')
+        .clearValue('input.experiment-market-size-currency-input')
+        .setValue('input.experiment-market-size-currency-input', '14234')
+
+        .useXpath()
+        .verify.elementPresent("(//input[@class='experiment-market-size-currency-input'])[2]", 'serverd').pause(model.pause + 500)
+        .click("(//input[@class='experiment-market-size-currency-input'])[2]")
+        .clearValue("(//input[@class='experiment-market-size-currency-input'])[2]")
+        .pause(model.pause + 500)
+        .setValue("(//input[@class='experiment-market-size-currency-input'])[2]", '4325')
+
+        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[3]", 'market notes').pause(model.pause + 500)
+        .click("(//textarea[@class='content-field-textarea'])[3]")
+        .clearValue("(//textarea[@class='content-field-textarea'])[3]")
+        .pause(model.pause + 500)
+        .setValue("(//textarea[@class='content-field-textarea'])[3]", 'to enter market notes')
+              
+        .useCss()
+        .verify.elementPresent('div.hypothesis-edit-header-close-wrapper', 'closes market size').pause(model.pause + 500)
+        .click('div.hypothesis-edit-header-close-wrapper')
+
+        .verify.elementPresent('div.project-impact-section-container.details', 'project overview').pause(model.pause + 500)
+        .click('div.project-impact-section-container.details')
+
+        .useXpath()
+        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[3]", 'market notes').pause(model.pause + 500)
+        .click("(//textarea[@class='content-field-textarea'])[3]")
+        .clearValue("(//textarea[@class='content-field-textarea'])[3]")
+        .pause(model.pause + 1500)
+        .setValue("(//textarea[@class='content-field-textarea'])[3]", 'The Evidence is concrete data you can use to validate Assumptions, learn more about a topic during Research, or help an Experiment succeed or fail. There are two types of Evidence; Interview and Other. Using this “Other” type of Evidence, you can easily post survey results, landing page test results, secondary research, competitive analysis, and any other evidence.  The Evidence is most useful when its connected to other data in your project to help you confirm or disconfirm your assumptions. Check out the “Connections” area to connect your interview to an assumption, research, or experiment.')
+        
+        //dropdowns
+        .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])", 'type of project').pause(model.pause + 500)
+        .click("(//div[@class='project-dashboard-dropdown-container'])")
+        .pause(model.pause + 1500)
+        .click("//div[text()='Service']")
+        .pause(model.pause + 800)
+        .click("(//div[@class='project-dashboard-dropdown-container'])")
+        .pause(model.pause + 500)
+        .click("//div[text()='Product']")
+        .pause(model.pause + 800)
+
+        .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[2]", 'time frame').pause(model.pause + 1500)
+        .click("(//div[@class='project-dashboard-dropdown-container'])[2]")
+        .pause(model.pause + 1500)
+        .click("//div[text()='3 - 6 months']")
+        .pause(model.pause + 800)
+        .click("(//div[@class='project-dashboard-dropdown-container'])[2]")
+        .pause(model.pause + 500)
+        .click("//div[text()='6 - 12 months']")
+        .pause(model.pause + 800)
+
+        .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]", 'stage').pause(model.pause + 500)
+        .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
+        .pause(model.pause + 800)
+        .click("//div[text()='Problem Validation']")
+        .pause(model.pause + 800)
+        .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
+        .pause(model.pause + 800)
+        .click("//div[text()='Solution Validation']")
+
+        .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[4]", 'describe the market').pause(model.pause + 500)
+        .click("(//div[@class='project-dashboard-dropdown-container'])[4]")
+        .pause(model.pause + 800)
+        .click("//div[text()='Existing market that we currently serve']")
+        .pause(model.pause + 800)
+        .click("(//div[@class='project-dashboard-dropdown-container'])[4]")
+        .pause(model.pause + 800)
+        .click("//div[text()='Existing market that we do not serve']")
+        .pause(model.pause + 800)
+
+        .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[5]", 'describe the technology').pause(model.pause + 500)
+        .click("(//div[@class='project-dashboard-dropdown-container'])[5]")
+        .pause(model.pause + 800)
+        .click("//div[text()='Existing technology that we currently use/deploy']")
+        .pause(model.pause + 800)
+        .click("(//div[@class='project-dashboard-dropdown-container'])[5]")
+        .pause(model.pause + 800)
+        .click("//div[text()='Existing technology that we do not currently use/deploy']")
+        .pause(model.pause + 800)
+
+        .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[6]", 'describe the technology').pause(model.pause + 500)
+        .click("(//div[@class='project-dashboard-dropdown-container'])[6]")
+        .pause(model.pause + 800)
+        .click("//div[text()='tacos']")
+        .pause(model.pause + 800)
+        .click("(//div[@class='project-dashboard-dropdown-container'])[6]")
+        .pause(model.pause + 800)
+        .click("//div[text()='ice-cream']")
+        .pause(model.pause + 800)
+
+        .useCss()
+        .verify.elementPresent('input.experiment-analyze-details-currency-input', 'input invested raised').pause(model.pause + 500)
+        .click('input.experiment-analyze-details-currency-input')
+        .clearValue('input.experiment-analyze-details-currency-input')
+        .pause(model.pause + 800)
+        .setValue('input.experiment-analyze-details-currency-input', '132454')
+        .pause(model.pause + 1500)
+
+        .useXpath()
+        .verify.elementPresent("(//input[@class='experiment-analyze-details-currency-input'])[2]", 'input invested raised').pause(model.pause + 1500)
+        .click("(//input[@class='experiment-analyze-details-currency-input'])[2]")
+        .clearValue("(//input[@class='experiment-analyze-details-currency-input'])[2]")
+        .pause(model.pause + 1500)
+        .setValue("(//input[@class='experiment-analyze-details-currency-input'])[2]", '543190')
+        .pause(model.pause + 1500)
+
+        .useCss()
+        .verify.elementPresent('div.hypothesis-edit-header-close-wrapper', 'closes market size').pause(model.pause + 500)
+        .click('div.hypothesis-edit-header-close-wrapper')
+
+        //move up to validate
+        .useXpath()
+        .pause(model.pause + 1500)
+        .click("//div[text()='VALIDATE']")
+
+        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[3]", 'validate notes').pause(model.pause + 1500)
+        .click("(//textarea[@class='content-field-textarea'])[3]")
+        // .clearValue("(//textarea[@class='content-field-textarea'])[3]")
+        .pause(model.pause + 1500)
+        .setValue("(//textarea[@class='content-field-textarea'])[3]", 'The test for validtaio has pass 100% and true.')
+        
+        .verify.elementPresent("(//div[@class='connected-evidence-show'])", 'opens evidence raitings').pause(model.pause + 1500)
+        .click("(//div[@class='connected-evidence-show'])")
+        .pause(model.pause + 1500)
+        .click("(//div[@class='experiment-hypothesis-impact-expand-container'])")
+        .pause(model.pause + 1500)
+
+        .click("(//div[text()='INVALIDATE'])[2]")
+        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[4]", 'validate notes').pause(model.pause + 1500)
+        .click("(//textarea[@class='content-field-textarea'])[4]")
+        // .clearValue("(//textarea[@class='content-field-textarea'])[4]")
+        .pause(model.pause + 1500)
+        .setValue("(//textarea[@class='content-field-textarea'])[4]", 'The test for invalidation has pass 100% and true.')
+        
+        .click("(//div[text()='KEEP TESTING'])[3]")
+        .pause(model.pause + 1500)
+        .click("(//div[text()='VALIDATE'])[4]")
+        .pause(model.pause + 1500)
+        .setValue("(//textarea[@class='content-field-textarea'])[5]", 'eight years working in the testing industry.')
+        .click("//span[text()='COMPLETE']")
+        //.saveScreenshot('./reports/Experiments/experiments.png')
         .end();
     
       },
   }
+

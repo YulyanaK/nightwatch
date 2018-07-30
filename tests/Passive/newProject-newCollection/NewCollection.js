@@ -85,21 +85,16 @@ var ObjectId = require('mongodb')
         .pause(model.pause + 500)
         .click("//div[@class='page-navigation-title ']")
         .pause(model.pause + 1000)
-        .end(); 
 
   },
 
 
-  /*'collection settings are working and make sure collection gets deleted' : function(browser) {
+  'collection settings are working and make sure collection gets deleted' : function(browser) {
       browser
         .refresh()
-        .pause(model.pause + 2000)
-        .moveToElement("(//div[text()='Settings'])", 10, 10)
-        .waitForElementVisible("(//div[text()='Settings'])", 2000)
+        .pause(model.pause + 4000)
+        .verify.elementPresent("(//div[text()='Settings'])", 'opens settings').pause(model.pause + 1000)
         .click("(//div[text()='Settings'])")
-        .pause(model.pause + 2000)
-        //.verify.elementPresent("(//div[text()='Settings'])", 'opens settings').pause(model.pause + 1000)
-        //.click("(//div[text()='Settings'])")
         .clearValue("(//textarea[@class='content-field-textarea'])")
         .setValue("(//textarea[@class='content-field-textarea'])", 'Nightwatch testing')
         .pause(model.pause + 1000)
@@ -111,7 +106,7 @@ var ObjectId = require('mongodb')
         .pause(model.pause + 500)
         .click("//div[@class='float-right clickable']")
         .click("//div[@class='collections-confirm-delete-button delete float-left clickable']")
-        .pause(model.pause + 500)*/
-        
-  
+        .pause(model.pause + 500)
+        //.end();  
+  },
 }

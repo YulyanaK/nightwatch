@@ -56,9 +56,9 @@ module.exports = {
   'Verify the organizations for profile notifications' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[text()='Ruwanda']", 4000)
+        .waitForElementPresent("//div[text()='Nunavut']", 4000)
         //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
-        .click("//div[text()='Ruwanda']")
+        .click("//div[text()='Senegal']")
         .pause(model.pause + 4000)
         
         .verify.elementPresent("//div[@class='profile-image-container profile-image right-nav-profile']//img", 'profile image container is present').pause(model.pause + 500)

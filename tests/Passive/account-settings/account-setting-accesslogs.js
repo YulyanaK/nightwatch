@@ -1,4 +1,4 @@
-  var model = require('../../../helpers/model');
+ var model = require('../../../helpers/model');
 var controller = require('../../../helpers/controller');
 
 module.exports = {

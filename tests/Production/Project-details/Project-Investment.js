@@ -1,5 +1,5 @@
-var model = require('../../helpers/model');
-var controller = require('../../helpers/controller');
+var model = require('../../../helpers/model');
+var controller = require('../../../helpers/controller');
 var ObjectId = require('mongodb').ObjectId;
 
 
@@ -38,7 +38,7 @@ module.exports = {
 
   'Project invesments': function(browser) {
       browser
-        .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 1500)
+        .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 2000)
         .click('div.side-nav-subSection-title')
         .verify.elementPresent('div.checklist-x-icon', 'closes help center').pause(model.pause + 1500)
         .click('div.checklist-x-icon')

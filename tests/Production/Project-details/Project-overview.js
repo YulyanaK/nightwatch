@@ -142,6 +142,23 @@ module.exports = {
         .click("(//div[@class='project-dashboard-dropdown-container'])[5]")
         .click("//div[text()='New technology']")
 
+        //add comments
+        .useXpath()
+        .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'adding first comment').pause(model.pause + 1500)
+        .click("(//div[@class='public-DraftEditor-content'])")
+        .setValue("(//div[@class='public-DraftEditor-content'])", 'Clarification')
+        .keys([browser.Keys.ENTER])
+
+        .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'second comment').pause(model.pause + 1500)
+        .click("(//div[@class='public-DraftEditor-content'])")
+        .setValue("(//div[@class='public-DraftEditor-content'])", 'adding more text to see if this works')
+        .keys([browser.Keys.ENTER])
+
+        .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'third comment').pause(model.pause + 1500)
+        .click("(//div[@class='public-DraftEditor-content'])")
+        .setValue("(//div[@class='public-DraftEditor-content'])", 'placeres implecables')
+        .keys([browser.Keys.ENTER])
+
         //add labels
         .useXpath()
         .verify.elementPresent("(//div[@class='project-labels-add float-right'])", 'opens to add labels').pause(model.pause + 1500)
@@ -178,23 +195,6 @@ module.exports = {
         .click("(//div[@class='label-hover-container'])")
         .click("(//div[@class='lpc-close-cancel-mini-icon-white dashboard-label-delete'])")
         .pause(model.pause + 1500)
-
-        //add comments
-        .useXpath()
-        .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'adding first comment').pause(model.pause + 1500)
-        .click("(//div[@class='public-DraftEditor-content'])")
-        .setValue("(//div[@class='public-DraftEditor-content'])", 'Clarification')
-        .keys([browser.Keys.ENTER])
-
-        .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'second comment').pause(model.pause + 1500)
-        .click("(//div[@class='public-DraftEditor-content'])")
-        .setValue("(//div[@class='public-DraftEditor-content'])", 'adding more text to see if this works')
-        .keys([browser.Keys.ENTER])
-
-        .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'third comment').pause(model.pause + 1500)
-        .click("(//div[@class='public-DraftEditor-content'])")
-        .setValue("(//div[@class='public-DraftEditor-content'])", 'placeres implecables')
-        .keys([browser.Keys.ENTER])
         .end();
     },
 }
