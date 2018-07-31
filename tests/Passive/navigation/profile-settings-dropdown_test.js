@@ -8,7 +8,7 @@ module.exports = {
   'login to profile settings': function(browser) {
       browser
         .url('https://passive.glidr.io')
-        .resizeWindow(1366, 768).pause(model.pause + 500)
+       .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -41,8 +41,6 @@ module.exports = {
         .waitForElementPresent('.side-nav-subSection-title', 4000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project to initialize left drawer').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
-        .verify.elementPresent('div.checklist-x-icon', 'closes help center').pause(model.pause + 1500)
-        .click('div.checklist-x-icon')
         .verify.elementPresent('div.profile-image-container.profile-image.right-nav-profile', 'opens right drawer').pause(model.pause + 500)
         .click('div.profile-image-container.profile-image.right-nav-profile')
         //opens profile settings

@@ -95,9 +95,9 @@ module.exports = {
         //Populates field and cancels and deletes
         .verify.elementPresent("(//span[@class='content-field-cancel'])", 'cancel').pause(model.pause + 500)
         .click("(//span[@class='content-field-cancel'])")
-        .verify.elementPresent("(//div[@class='content-field-delete-holder'])", 'trash can').pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='content-field-delete-holder'])", 3000)
         .click("(//div[@class='content-field-delete-holder'])")
-        .verify.elementPresent("(//span[@class='content-field-cancel'])", 'delete').pause(model.pause + 500)
+        .waitForElementPresent("(//span[@class='content-field-cancel'])", 3000)
         .click("(//span[@class='content-field-cancel delete'])")
 
         //dropdowns
@@ -195,7 +195,6 @@ module.exports = {
         .click("(//div[@class='label-hover-container'])")
         .click("(//div[@class='lpc-close-cancel-mini-icon-white dashboard-label-delete'])")
         .pause(model.pause + 1500)
-
         .end();
     },
 }

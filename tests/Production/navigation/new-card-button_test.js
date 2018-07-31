@@ -41,25 +41,16 @@ module.exports = {
       browser
         .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 1500)
         .click('div.side-nav-subSection-title')
-    
-        .verify.elementPresent('.nav-new-card-type.lpc-hypothesis-new', 'assumptions').pause(model.pause + 500)
-        .verify.elementPresent('.nav-new-card-type-title.hypothesis', 'assumptions title').pause(model.pause + 500)
-        .verify.elementPresent('.nav-new-card-type.lpc-interview-new ', 'interview').pause(model.pause + 500)
-        .verify.elementPresent('.nav-new-card-type-title.customerInterview', 'interview title').pause(model.pause + 500)
-        .verify.elementPresent('.nav-new-card-type.lpc-post-new ', 'post').pause(model.pause + 500)
-        .verify.elementPresent('.nav-new-card-type-title.post', 'post title').pause(model.pause + 500)
   },
 
   'create a new assuption card once new card button is clicked' : function (browser) {
       browser
         .verify.elementPresent('div.nav-new-card-btn-plus.lpc-material-plus').pause(model.pause + 500)
         .click('div.nav-new-card-btn-plus.lpc-material-plus')
-        .verify.elementPresent('.nav-new-card-type.lpc-hypothesis-new', 'assumptions icon').pause(model.pause + 500)
-        .click('.nav-new-card-type.lpc-hypothesis-new')
+        .verify.elementPresent('div.hypothesis', 'assumptions icon').pause(model.pause + 500)
+        .click('div.hypothesis')
         
         .useXpath()
-        .pause(model.pause + 1500)
-        //.click("(//div[@class='content-field-container.assumption-title'])")
         .pause(model.pause + 1500)
         .setValue("(//textarea[@class='content-field-textarea'])", ['this is the objective on testing', browser.Keys.ENTER])
 
@@ -80,13 +71,17 @@ module.exports = {
      browser
         .verify.elementPresent('div.nav-new-card-btn-container', 'opens up + button to create a post').pause(model.pause + 500)
         .click('div.nav-new-card-btn-container')
-        .verify.elementPresent('div.nav-new-card-type.lpc-post-new', 'post icon').pause(model.pause + 2000)
-        .click('div.nav-new-card-type.lpc-post-new')
-        .pause(model.pause + 4000)
-        .verify.elementPresent('div > div.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr', 'whats on your mind post').pause(model.pause + 1500)
-        .click('div > div.public-DraftStyleDefault-ltr')
-        .pause(model.pause + 800)
-        .setValue('div > div.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr', ' testing')
+        .verify.elementPresent('div.post', 'post icon').pause(model.pause + 2000)
+        .click('div.post')
+        .pause(model.pause + 2000)
+        .verify.elementPresent('div.text-editor-container.editable.post', 'create a post').pause(model.pause + 3000)
+        .click('div.text-editor-container.editable.post')
+        .pause(model.pause + 1000)
+
+        .useXpath()
+        .setValue("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'JAPANで始まる記事の一覧')
+
+        .useCss()
         .verify.elementPresent('div.card-full-nav.full-nav-edit-mode-btn', 'publish post').pause(model.pause + 500)
         .click('div.card-full-nav.full-nav-edit-mode-btn')
         .verify.elementPresent('div.current-card .card-full-nav-x-container', 'exit post button').pause(model.pause + 800)
@@ -95,13 +90,15 @@ module.exports = {
 
   'create a new interview card once new card button is clicked' : function (browser) {
       browser
-        .verify.elementPresent('.nav-new-card-btn-container','opens the + button').pause(model.pause + 500)
-        .click('.nav-new-card-btn-container')
-        .verify.elementPresent('.lpc-interview-new ', 'interview icon').pause(model.pause + 500)
-        .click('.lpc-interview-new ')
-        .verify.elementPresent('div.choose-card-type-card-container', 'full card button').pause(model.pause + 500)
+        .verify.elementPresent('div.nav-new-card-btn-container','opens the + button').pause(model.pause + 1500)
+        .click('div.nav-new-card-btn-container')
+        .pause(model.pause + 1000)
+        .verify.elementPresent('div.nav-new-card-type.interview-new  ', 'interview icon').pause(model.pause + 1500)
+        .click('div.nav-new-card-type.interview-new ')
+        .verify.elementPresent('div.choose-card-type-card-container', 'full card button').pause(model.pause + 1500)
         .click('div.choose-card-type-card-container')
         .pause(model.pause + 1000)
+        
         .useXpath()
         .click("(//div[@class='card-full-nav-x-container'])")
         

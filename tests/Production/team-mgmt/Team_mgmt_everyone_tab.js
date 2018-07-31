@@ -34,7 +34,7 @@ module.exports = {
         .click("(//div[@class='org-dashboard-card-container'])[5]")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 2000)
+        .waitForElementPresent('div.hamburger-holder', 4000)
         .click('div.hamburger-holder')
         .verify.elementPresent('div.side-nav-organization-name-holder', 'opens left nav').pause(model.pause + 500)
         .click('div.side-nav-organization-name-holder')

@@ -1,4 +1,4 @@
-var model = require('../../helpers/model.js');
+var model = require('../../../helpers/model.js');
 var controller = require('../../../helpers/controller.js');
 var ObjectId = require('mongodb').ObjectId;
 
@@ -27,8 +27,8 @@ module.exports = {
   'Verify the organizations' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[5]")
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[7]", 4000).pause(model.pause + 500)
+        .click("(//div[@class='org-dashboard-card-container'])[7]")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)

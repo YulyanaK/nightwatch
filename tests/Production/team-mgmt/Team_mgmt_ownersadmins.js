@@ -67,7 +67,7 @@ module.exports = {
   'everyone tab assests and functionality': function(browser) {
     browser
         .verify.elementPresent('div.reusable-dropdown-container.show.mgmt-dropdown', 'team-mgmt drop down').pause(model.pause + 1500)
-        .click('div.reusable-dropdown-container.show.mgmt-dropdown') 
+        .click('div.reusable-dropdown-container.show.mgmt-dropdown')
         .verify.elementPresent('div.admin', 'admin').pause(model.pause + 1500)
         .click('div.admin')
         .verify.elementPresent('div.reusable-dropdown-container.show.mgmt-dropdown', 'container opens again').pause(model.pause + 1500)

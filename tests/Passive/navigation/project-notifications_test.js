@@ -7,7 +7,7 @@ module.exports = {
   'login to canvas': function(browser) {
       browser
         .url('https://passive.glidr.io')
-       .resizeWindow(1366, 768).pause(model.pause + 500)
+        .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -40,16 +40,16 @@ module.exports = {
         
         .useXpath()
         .click("(//div[@class='side-nav-settings-icons'])[2]")
-        
+        .pause(model.pause + 800)
+        .click("//div[text()='Notifications']")
+     
         .useCss()
+        .verify.elementPresent('div.project-notification-toggle-button.on', 'turn on').pause(model.pause + 1500)
+        .click('div.project-notification-toggle-button.on')
+
+        .verify.elementPresent('div.project-notification-toggle-button.off').pause(model.pause + 1500)
+        .click('div.project-notification-toggle-button.off')
         .pause(model.pause + 1500)
-        //.verify.elementPresent('div[data-test="/project-settings/59b6ec9ab57edd000186af0b/notifications"]', 'Project Notifications').pause(model.pause + 1500)
-        .verify.elementPresent('div.project-notifications-toggle-circle.on', 'project settings turn off').pause(model.pause + 1500)
-        .click('div.project-notifications-toggle-circle.on')
-        .verify.elementPresent('div.project-notifications-toggle-circle.off', 'turn on').pause(model.pause + 1500)
-        .click('div.project-notifications-toggle-circle.off')
-        .verify.elementPresent('div.custom-toggle-container.notification').pause(model.pause + 1500)
-        .click('div.custom-toggle-container.notification')
         .click('div.custom-toggle-container.notification')
         .verify.elementPresent('div.custom-toggle-container.notification', 'on and off email mentions').pause(model.pause + 1500)
 

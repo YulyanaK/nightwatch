@@ -41,8 +41,6 @@ module.exports = {
         .waitForElementPresent('.side-nav-subSection-title', 4000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project to initialize left drawer').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
-        .verify.elementPresent('div.checklist-x-icon', 'closes help center').pause(model.pause + 1500)
-        .click('div.checklist-x-icon')
         .verify.elementPresent('div.profile-image-container.profile-image.right-nav-profile', 'opens right drawer').pause(model.pause + 500)
         .click('div.profile-image-container.profile-image.right-nav-profile')
         //opens profile settings
