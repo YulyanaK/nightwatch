@@ -74,9 +74,9 @@ module.exports = {
         .verify.elementPresent('div.float-right.supporting-documents-add-button.clickable')
         .click('div.float-right.supporting-documents-add-button.clickable')
 
-        .setValue('input[type="file"]', require('path').resolve(__dirname + '/log.png'))
-        .refresh()
-        .pause(model.pause + 1800)
+        //.setValue('input[type="file"]', require('path').resolve(__dirname + '/log.png'))
+        //.refresh()
+        //.pause(model.pause + 1800)
         .end();
     },
 }
