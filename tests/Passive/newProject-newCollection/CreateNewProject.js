@@ -86,10 +86,11 @@ var ObjectId = require('mongodb')
         .click('div.create-project-member-option:nth-of-type(3)')
         .verify.elementPresent('div.create-project-nav-button', 'end of test').pause(model.pause + 500)
         .click('div.create-project-nav-button')
+        .end();
 
     },
 
-    'Delete the project just created' : function(browser) {
+    /*'Delete the project just created' : function(browser) {
       browser
         .verify.elementPresent('div.hamburger-holder').pause(model.pause + 4000)
         .click('div.hamburger-holder')
@@ -109,6 +110,6 @@ var ObjectId = require('mongodb')
         .verify.elementPresent('div.confirmation-button.no-cancel.red.undefined', 'Delete project').pause(model.pause + 1500)
         .click('div.confirmation-button.no-cancel.red.undefined')
         .end();
-  },
+  },*/
  }
 

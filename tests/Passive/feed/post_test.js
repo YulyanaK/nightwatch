@@ -62,9 +62,10 @@ module.exports = {
         .pause(model.pause + 1500)
         .setValue('textarea[class=activity-new-post-input]', 'その他のジャパン')
         .click('.activity-post-save')
+        .end()
 
  },
-  'Test post creation file upload and save' : function(browser){
+  /*'Test post creation file upload and save' : function(browser){
       browser
         .pause(model.pause + 300)
         .verify.elementPresent('.activity-new-post-form', 'create a post').pause(model.pause + 500)
@@ -72,9 +73,9 @@ module.exports = {
         .setValue('textarea[class=activity-new-post-input]', 'JAPANで始まる記事の一覧')
         .pause(model.pause + 300) 
         .verify.elementPresent('.activity-new-post-upload-icon.lpc-upload-dark', 'click cloud to upload file').pause(model.pause + 500) 
-        .click('.activity-new-post-upload-icon.lpc-upload-dark')
-        .setValue('input[type="file"]', require('path').resolve(__dirname + '/spain.png'))
-        .verify.elementPresent('div.activity-new-post-media-delete.lpc-close-cancel-mini-icon-white', 'deletes just uploaded file').pause(model.pause + 500) 
+        //.click('.activity-new-post-upload-icon.lpc-upload-dark')
+        //.setValue('input[type="file"]', require('path').resolve(__dirname + '/spain.png'))
+        //.verify.elementPresent('div.activity-new-post-media-delete.lpc-close-cancel-mini-icon-white', 'deletes just uploaded file').pause(model.pause + 500) 
         .click('div.activity-new-post-media-delete.lpc-close-cancel-mini-icon-white')
         .verify.elementPresent('.activity-new-post-form', 'create a post').pause(model.pause + 500)
         .click('.activity-new-post-form')
@@ -87,6 +88,6 @@ module.exports = {
         // Take another screenshot at the end of the post activity image saved as post_test.png
         .saveScreenshot('./reports/feed/post_test.png')
     .end()
-  },
+  },*/
  } 
 
