@@ -28,6 +28,7 @@ module.exports = {
       browser
         .useXpath()
         .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal']", 4000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal']", 10, 10)
         .click("//div[@class='org-dashboard-card-title' and text()='Senegal']")
 
         .useCss()
