@@ -116,7 +116,8 @@ module.exports = {
         .click("(//div[@class='content-field-delete-holder'])").pause(model.pause + 1500)
 
         //Populates field and cancels and deletes
-        .verify.elementPresent("(//span[@class='content-field-cancel'])", 'cancel').pause(model.pause + 500)
+        
+        .moveToElement("(//span[@class='content-field-cancel'])", 10, 10).pause(model.pause + 500)
         .click("(//span[@class='content-field-cancel'])")
         .waitForElementPresent("(//div[@class='content-field-delete-holder'])", 3000)
         .click("(//div[@class='content-field-delete-holder'])")
