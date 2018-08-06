@@ -128,9 +128,11 @@ module.exports = {
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])", 'drop down time frame').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])")
         .pause(model.pause + 500)
-        .click("//div[text()='Product']")
-        .pause(model.pause + 500)
-        .click("(//div[@class='project-dashboard-dropdown-container'])")
+        //.click("//div[text()='Product']")
+        
+
+        //.pause(model.pause + 500)
+        //.click("(//div[@class='project-dashboard-dropdown-container'])")
         .click("//div[text()='Service']")
 
         .pause(model.pause + 500)
