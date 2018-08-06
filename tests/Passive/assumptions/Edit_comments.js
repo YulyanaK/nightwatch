@@ -6,7 +6,7 @@ module.exports = {
 
  'login to hypothesis': function(browser) {
       browser
-        .url('https://passive.glidr.io')
+        .url('https://app.glidr.io')
         .resizeWindow(1124, 868).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
@@ -38,9 +38,10 @@ module.exports = {
         .click("//textarea[@class='content-field-textarea']")
         .clearValue("//textarea[@class='content-field-textarea']").pause(model.pause + 500)
         .setValue("//textarea[@class='content-field-textarea']", 'Editing Assumption Title').pause(model.pause + 500)
+        .click("//div[text()='SUMMARY']").pause(model.pause + 1500)
         .click("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[5]").pause(model.pause + 500)
-        .clearValue("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[5]").pause(model.pause + 2000)
-        .setValue("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[5]", "Edited Summary").pause(model.pause + 2000)
+        .setValue("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[5]", 'summary').pause(model.pause + 2000)
+        //.setValue("//div[@class='hypothesis-summary']//div[@class='text-editor-container    hypothesis']", "Edited Summary").pause(model.pause + 2000)
         
     },  
 'Comments can be added' : function(browser){
@@ -52,15 +53,16 @@ module.exports = {
       //.waitForElementVisible("(//div[text()='Leave a comment'])[3]", model.pause + 2000)
       //.click("(//div[text()='Leave a comment'])[3]")
       //.click("//div[@className='comment-form-outer-container']").pause(model.pause + 500)
-      .waitForElementPresent("(//div[@class='public-DraftEditorPlaceholder-root'])[6]", 6000)
+      .waitForElementPresent("(//div[@id='currentCard-input-container' and @class='comment-editor'])[3]", 6000)
 
-      .click("(//div[@class='public-DraftEditorPlaceholder-root'])[6]")
+      //.click("(//div[@class='public-DraftEditorPlaceholder-root'])[6]")
       //.waitForElementPresent("//div[@class='public-DraftEditorPlaceholder-root public-DraftEditorPlaceholder-hasFocus']", 6000)
-      
-      .setValue("(//div[@class='public-DraftEditorPlaceholder-root'])[6]", 'new comment')
-      .pause(model.pause + 1000)
+      .click("(//div[@id='currentCard-input-container' and @class='comment-editor'])[3]").pause(model.pause + 500)
+      //client.setValue("(//div[@id='currentCard-input-container' and @class='comment-editor'])[3]", 'new comment')
+      //.pause(model.pause + 1000)
 
-     
+      .execute("document.getElementById('currentCard').setAttribute('focused', 'true');")
+      .setValue("(//div[@id='currentCard-input-container' and @class='comment-editor'])[3]", 'new comment')
       //.setValue("(//div[@id='currentCard-input-container' and @class='comment-editor'])[3]", ['new comment', browser.Keys.ENTER])
       .keys([browser.Keys.ENTER])
       //.setValue("(//div[@id='currentCard-input-container' and @class='comment-editor'])[3]", ['new comment', browser.Keys.ENTER])
@@ -71,6 +73,10 @@ module.exports = {
       .getText("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[7]", function(text) {
           this.verify.equal(text.value, 'new comment')
       })*/
+
+
+
+    
 
 
   },

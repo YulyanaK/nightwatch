@@ -27,9 +27,9 @@ module.exports = {
   'Verify the organizations' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal']", 4000).pause(model.pause + 500)
-        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal']", 10, 10)
-        .click("//div[@class='org-dashboard-card-title' and text()='Senegal']")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Ghana']", 4000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Ghana']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Ghana']")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)
