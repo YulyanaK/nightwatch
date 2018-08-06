@@ -56,13 +56,13 @@ module.exports = {
   'Verify the organizations for profile notifications' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[text()='Nunavut']", 4000)
+        .waitForElementPresent("//div[text()='Ruwanda']", 4000)
         //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
-        .click("//div[text()='Senegal']")
-        .pause(model.pause + 4000)
+        .click("//div[text()='Ruwanda']")
+        .pause(model.pause + 6000)
         
-        .verify.elementPresent("//div[@class='profile-image-container profile-image right-nav-profile']//img", 'profile image container is present').pause(model.pause + 500)
-        .click("//div[@class='profile-image-container profile-image right-nav-profile']//img")
+        .verify.elementPresent("(//div[text()='DO'])[1]", 'profile image container is present').pause(model.pause + 500)
+        .click("(//div[text()='DO'])[1]")
         .verify.elementPresent("//div[text()='Profile & Account Settings']", 'Profile').pause(model.pause + 500)
         .click("//div[text()='Profile & Account Settings']")
         .pause(model.pause + 3000)

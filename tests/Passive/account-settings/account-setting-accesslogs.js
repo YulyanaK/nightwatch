@@ -55,13 +55,13 @@ module.exports = {
 
   'Verify the organizations for profile notifications' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
-        .verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
-        .click('div.org-dashboard-card-container div:nth-of-type(3)')
-        .pause(model.pause + 2000)
         .useXpath()
-        .verify.elementPresent("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']", 'profile image container is present').pause(model.pause + 500)
-        .click("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']")
+        .waitForElementPresent("//div[text()='Ruwanda']", 4000)
+        //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
+        .click("//div[text()='Ruwanda']")
+        .pause(model.pause + 6000)
+        .verify.elementPresent("(//div[text()='DO'])[1]", 'profile image container is present').pause(model.pause + 500)
+        .click("(//div[text()='DO'])[1]")
         .verify.elementPresent("//div[text()='Profile & Account Settings']", 'Profile & Account settings').pause(model.pause + 1000)
         .click("//div[text()='Profile & Account Settings']")
         .verify.elementPresent("//div[text()='Access Logs']").pause(model.pause + 500)

@@ -63,7 +63,7 @@ module.exports = {
       browser
         .pause(model.pause + 4000)
         .useXpath()
-        .click("//div[text()='Nunavut']")
+        .click("//div[text()='Ruwanda']")
         .pause(model.pause + 5000)
         .click("//div[@class='dropdown-menu-icon inbox active']").pause(model.pause + 1000)
         .waitForElementPresent("//div[@class='notificaiton-description']", 6000, 'Edits to cards in a project I have access to')
