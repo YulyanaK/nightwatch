@@ -66,7 +66,7 @@ module.exports = {
         .click("//div[text()='Nunavut']")
         .pause(model.pause + 5000)
         .click("//div[@class='dropdown-menu-icon inbox active']").pause(model.pause + 1000)
-        .verify.elementPresent("//div[@class='notificaiton-description']", 'Edits to cards in a project I have access to')
+        .waitForElementPresent("//div[@class='notificaiton-description']", 6000, 'Edits to cards in a project I have access to')
         .click("//div[@class='dropdown-menu-icon inbox active']").pause(model.pause + 1000)
         .click("//div[text()='VIEW IN YOUR INBOX']")
         .pause(model.pause + 4000)
