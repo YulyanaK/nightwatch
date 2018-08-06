@@ -113,7 +113,7 @@ module.exports = {
         .click("(//div[@class='reusable-content-field projectDetails'])[5]")
         .setValue("(//textarea[@class='content-field-text'])[5]", 'new card for safety')
         .pause(model.pause + 500)
-        .click("(//div[@class='content-field-delete-holder'])")
+        .click("(//div[@class='content-field-delete-holder'])").pause(model.pause + 1500)
 
         //Populates field and cancels and deletes
         .verify.elementPresent("(//span[@class='content-field-cancel'])", 'cancel').pause(model.pause + 500)
