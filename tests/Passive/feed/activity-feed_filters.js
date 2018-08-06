@@ -111,8 +111,8 @@ module.exports = {
         .useXpath()
         .verify.elementPresent("//div[@class='DayPicker-Day' and text()='1']", 'selecting dates').pause(model.pause + 1500)
         .click("//div[@class='DayPicker-Day' and text()='1']").pause(model.pause + 1000)
-        .verify.elementPresent("//div[@class='DayPicker-Day' and text()='5']", 'days selected').pause(model.pause + 1500)
-        .click("//div[@class='DayPicker-Day' and text()='5']")
+        .verify.elementPresent("//div[@class='DayPicker-Day' and text()='3']", 'days selected').pause(model.pause + 1500)
+        .click("//div[@class='DayPicker-Day' and text()='3']")
 
         
         .pause(model.pause + 1500)
