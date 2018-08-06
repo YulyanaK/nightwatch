@@ -41,8 +41,31 @@ module.exports = {
       browser
         .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 1500)
         .click('div.side-nav-subSection-title')
-        .verify.elementPresent('div.checklist-x-icon', 'closes help center').pause(model.pause + 500)
-        .click('div.checklist-x-icon')
+
+
+       /* .element('css', 'div.checklist-x-icon', function(visible) {
+        if(visible.status !== -1){
+          
+         browser.click('div.checklist-x-icon')
+        
+                         
+        } else {
+         
+            
+        }*/
+
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click('div.checklist-x-icon');
+            } else {
+                // Element is not present.
+            }
+        });
+
+
+       browser
+        .useCss()
         .verify.elementPresent('div.workspace-overview-btn', 'opens overview').pause(model.pause + 500)
         .click('div.workspace-overview-btn')
         .pause(model.pause + 500)
