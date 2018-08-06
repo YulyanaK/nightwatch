@@ -6,9 +6,10 @@ module.exports = {
 
 
   'login': function(browser) {
-    browser
-        .url('https://passive.glidr.io')
-       .resizeWindow(1366, 768).pause(model.pause + 500)
+      browser
+        //.url(model.url + '')
+        .url('https://app.glidr.io')
+        .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -21,6 +22,7 @@ module.exports = {
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
+
     },
 
   'Verify the project name' : function(browser) {
@@ -32,27 +34,38 @@ module.exports = {
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 4000)
         .click('div.hamburger-holder')
-
+    },
+  
+  'Selects new top nav links' : function (browser) {
+      browser
         .waitForElementPresent('.side-nav-subSection-title', 4000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
-    },
-
-  'verify dropdown visible once help menu icon is clicked' : function (browser) {
-      browser
         .verify.elementPresent('div.checklist-x-icon', 'closes help center').pause(model.pause + 1500)
         .click('div.checklist-x-icon')
-        .verify.elementPresent('.right-nav-profile', 'opens right drawer').pause(model.pause + 500)
-        .click('.right-nav-profile')
-        //opens help link
-        .verify.elementPresent('div.profile-settings-text.undefined:nth-of-type(2)', 'opens help center').pause(model.pause + 500)
-        .click('div.profile-settings-text.undefined:nth-of-type(2)')
-        //closes video
-        .verify.elementPresent('div.wistia_placebo_close_button', 'closes helpCenter').pause(model.pause + 500)
-        .click('div.wistia_placebo_close_button')
-        //sign out
-        .verify.elementPresent('div.profile-drawer-icon.bottom', 'sign out').pause(model.pause + 500)
-        .click('div.profile-drawer-icon.bottom')
+        .verify.elementPresent('div[data-test="dashboard-nav"]', 'click activity').pause(model.pause + 1500)
+        .click('div[data-test="activity-nav"]')
+        .verify.elementPresent('div[data-test="dashboard-nav"]', 'click dashboard').pause(model.pause + 1500)
+        .click('div[data-test="dashboard-nav"]')
+        //opens right drawer for notifications
+        .verify.elementPresent('div.position-relative.notif-drawer-icon-wrapper', 'opens right drawer notifications').pause(model.pause + 500)
+        .click('div.position-relative.notif-drawer-icon-wrapper')
+        
+        .verify.elementPresent('div.options:nth-of-type(2)', 'opens drafts').pause(model.pause + 1500)
+        .click('div.options:nth-of-type(2)')
+        
+        .useXpath()
+        .click("(//div[@class='close'])")
+
+        .useCss()
+        .verify.elementPresent('div.dropdown-menu-icon.clickable', 'opens gear dropdown-menu-icon').pause(model.pause + 1500)
+        .click('div.dropdown-menu-icon.clickable')
+        // returns to dashboard
+        .verify.elementPresent('div[data-test="dashboard-nav"]', 'click dashboard').pause(model.pause + 500)
+        .click('div[data-test="dashboard-nav"]')
+        .verify.elementPresent('a.org-nav-title.project-view.go-to-project.truncate', 'click on project name').pause(model.pause + 500)
+        .click('a.org-nav-title.project-view.go-to-project.truncate')
         .end();
-  }
+  },
+
 }

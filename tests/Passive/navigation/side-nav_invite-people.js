@@ -5,7 +5,7 @@ module.exports = {
 
   'login to side nav to invite people': function(browser) {
       browser
-        .url('https://passive.glidr.io')
+        .url('https://app.glidr.io')
         .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'checks for logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'checks for container to log in').pause(model.pause + 500)

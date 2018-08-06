@@ -9,7 +9,6 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://app.glidr.io')
-        
         .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
@@ -32,110 +31,125 @@ module.exports = {
         .verify.elementPresent('.org-dashboard-card-container', 'entering basic tier organization').pause(model.pause + 500)
 
         .useXpath()
-        .click("(//div[@class='org-dashboard-card-container'])[4]")
+        .click("(//div[@class='org-dashboard-card-container'])[8]")
 
     },
 
-  'Navigates modal' : function (browser) {
-    browser
-    //     .execute(function () {
-    //         typeof window !== 'undefined' &&
-    //         window.document &&
-    //         window.document.createElement);
+  // 'Navigates modal' : function (browser) {
+  //   // browser
+  //   // //     .execute(function () {
+  //   // //         typeof window !== 'undefined' &&
+  //   // //         window.document &&
+  //   // //         window.document.createElement);
 
-    //     return 'causeUseDom ?' + window;
+  //   // //     return 'causeUseDom ?' + window;
 
-    //     }, ['MasterOverviewPage--dwfEntryList'], function ()
-    // },
-        
-
-
-
-        console.log('window.resetOnboarding()',[browser.Keys.ENTER]); 
+  //   // //     }, ['MasterOverviewPage--dwfEntryList'], function ()
+  //   // // },
+  //   // //console.log('window.resetOnboarding()',[browser.Keys.ENTER]); 
             
-      browser
-        .pause(model.pause + 1500)
-        // .pause()
+  //   //   browser
+  //   //     .pause(model.pause + 1500)
         
 
+  //   //     .verify.elementPresent("(//div[@class='dot unselected'])", 'first assumption').pause(model.pause + 1500)
+  //   //     .click("(//div[@class='dot unselected'])")
 
-        .verify.elementPresent("(//div[@class='dot unselected'])", 'first assumption').pause(model.pause + 1500)
-        .click("(//div[@class='dot unselected'])")
-        .pause(model.pause + 1500)
-        .verify.elementPresent("(//div[@class='dot unselected'])[2]", 'second assumption').pause(model.pause + 1500)
-        .click("(//div[@class='dot unselected'])[2]")
+  //   //     .pause(model.pause + 1500)
+  //   //     .verify.elementPresent("(//div[@class='dot unselected'])[2]", 'second assumption').pause(model.pause + 1500)
+  //   //     .click("(//div[@class='dot unselected'])[2]")
 
-        .pause(model.pause + 1500)
-        .setValue("(//textarea[@class='content-field-textarea'])", 'new value to set')
+  //   //     .pause(model.pause + 1500)
+  //   //     .setValue("(//textarea[@class='content-field-textarea'])", 'new value to set')
 
-        .pause(model.pause + 1500)
-        .setValue("(//textarea[@class='content-field-textarea'])[2]", 'second value to set')
+  //   //     .pause(model.pause + 1500)
+  //   //     .setValue("(//textarea[@class='content-field-textarea'])[2]", 'second value to set')
 
-        .pause(model.pause + 1500)
-        .setValue("(//textarea[@class='content-field-textarea'])[3]", 'third value to set')
+  //   //     .pause(model.pause + 1500)
+  //   //     .setValue("(//textarea[@class='content-field-textarea'])[3]", 'third value to set')
 
-        .useCss()
-        .verify.elementPresent('div.button-text', 'start').pause(model.pause + 1500)
-        .click('div.button-text')
-    },
+  //   //     .useCss()
+  //   //     .verify.elementPresent('div.button-text', 'start').pause(model.pause + 1500)
+  //   //     .click('div.button-text')
+  //   },
     
 
   'Guide tour' : function(browser){
       browser
         .useXpath()
-        .verify.elementPresent("(//div[text()='Run Research'])", 'run research').pause(model.pause + 1500)
-        .click("//div[text()='Run Research']")
+        //run reserach
+        .pause(model.pause + 1500)
+        .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'open guided tour').pause(model.pause + 1500)
+        .click("//div[@class='float-left nav-dropdown-styles clickable']")
+        .pause(model.pause + 500)
+        .verify.elementPresent("//div[text()='Plan Research']", 'run research').pause(model.pause + 800)
+        .click("//div[text()='Plan Research']")
+        .verify.elementPresent("(//div[text()='Plan Research'])[2]", 'run research').pause(model.pause + 800)
+        .click("(//div[text()='Plan Research'])[2]")
+        .waitForElementPresent("(//div[@class='onboarding-tooltip-close'])", 3000)
+        .click("//div[@class='onboarding-tooltip-close']")
 
+        //run evidence
         .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'open checklist').pause(model.pause + 1500)
         .click("(//div[@class='float-left nav-dropdown-styles clickable'])")
-
         .verify.elementPresent("(//div[text()='Add Evidence'])", 'add evidence').pause(model.pause + 1500)
         .click("//div[text()='Add Evidence']")
+        .verify.elementPresent("(//div[@class='checklist-start-button clearfix'])", 'adding evidence').pause(model.pause + 1500)
+        .click("(//div[@class='checklist-start-button clearfix'])")
+        .pause(model.pause + 1000)
+        .click("(//div[@class='onboarding-tooltip-close'])")
 
+        //run experiments
         .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'open checklist').pause(model.pause + 1500)
         .click("(//div[@class='float-left nav-dropdown-styles clickable'])")  
+        .verify.elementPresent("(//div[text()='Run Experiment'])", 'run an experiment').pause(model.pause + 1500)
+        .click("//div[text()='Run Experiment']")
+        .verify.elementPresent("(//div[text()='Run Experiment'])[2]", 'run an experiment').pause(model.pause + 900)
+        .click("(//div[text()='Run Experiment'])[2]")
+        .pause(model.pause + 1000)
+        .verify.elementPresent("(//div[@class='onboarding-tooltip-close'])", 'open guided tour').pause(model.pause + 3000)
+        .click("(//div[@class='onboarding-tooltip-close'])")
 
-        .verify.elementPresent("(//div[text()='Run an Experiment'])", 'run an experiment').pause(model.pause + 1500)
-        .click("//div[text()='Run an Experiment']")
-
+        //run canvas
         .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'open checklist').pause(model.pause + 2000)
         .click("(//div[@class='float-left nav-dropdown-styles clickable'])")     
-
         .verify.elementPresent("(//div[text()='Tour the Canvas'])", 'tour the canvas').pause(model.pause + 2000)
         .click("//div[text()='Tour the Canvas']")
+        .verify.elementPresent("(//div[@class='checklist-start-button clearfix'])", 'adding evidence').pause(model.pause + 900)
+        .click("(//div[@class='checklist-start-button clearfix'])")
+        .pause(model.pause + 1000)
+        .verify.elementPresent("(//div[@class='onboarding-tooltip-close'])", 'open guided tour').pause(model.pause + 3000)
+        .click("(//div[@class='onboarding-tooltip-close'])")
 
+        //tour the overvivew
         .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'open checklist').pause(model.pause + 200)
         .click("(//div[@class='float-left nav-dropdown-styles clickable'])")
+        .verify.elementPresent("//div[text()='Tour the Overview']", 'tour the overview').pause(model.pause + 2000)
+        .click("//div[text()='Tour the Overview']")
+        .pause(model.pause + 1000)
+        .verify.elementPresent("(//div[@class='checklist-start-button clearfix'])", 'adding evidence').pause(model.pause + 900)
+        .click("(//div[@class='checklist-start-button clearfix'])")
+        .pause(model.pause + 1000)
+        .verify.elementPresent("(//div[@class='onboarding-tooltip-close'])", 'open guided tour').pause(model.pause + 3000)
+        .click("(//div[@class='onboarding-tooltip-close'])")
 
-        .verify.elementPresent("(//div[text()='Tour the  Overview'])", 'tour the overview').pause(model.pause + 2000)
-        .click("//div[text()='Tour the  Overview']")
-
-        .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'open checklist').pause(model.pause + 2000)
-        .click("(//div[@class='float-left nav-dropdown-styles clickable'])") 
-
-        .verify.elementPresent("(//div[text()='Run Research'])", 'Run Research').pause(model.pause + 2000)
-        .click("//div[text()='Run Research']")
-
-        .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'open checklist').pause(model.pause + 2000)
-        .click("(//div[@class='float-left nav-dropdown-styles clickable'])") 
-
-        .verify.elementPresent("(//div[@class='checklist-not-show-text'])", 'dont open this menu automatically').pause(model.pause + 2000)
-        .click("//div[@class='checklist-not-show-text']")
-
-        .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'open checklist').pause(model.pause + 2000)
-        .click("(//div[@class='float-left nav-dropdown-styles clickable'])") 
 },
 
  'Help Center' : function(browser){
      browser
-        .verify.elementPresent("(//div[text()='Help Center'])", 'open help center').pause(model.pause + 1000)
-        .click("//div[@class='HELP CENTER']")
-
-        .verify.elementPresent("(//div[text()='Help Center'])", 'help center').pause(model.pause + 1000)
-        .verify.elementPresent("(//div[text()='Getting Started'])", 'getting started').pause(model.pause + 1000)
-        .verify.elementPresent("(//div[text()='Discovery Tools & Methods'])", 'discovery').pause(model.pause + 1000)
-        .verify.elementPresent("(//div[text()='GLIDR Blog'])", 'blog').pause(model.pause + 1000)
-        .click("(//div[@class='checklist-x-icon']")
+        .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'open checklist').pause(model.pause + 200)
+        .click("(//div[@class='float-left nav-dropdown-styles clickable'])")
+        .verify.elementPresent("(//div[@class='checklist-tab help float-right'])", 'open help center').pause(model.pause + 1000)
+        .click("(//div[@class='checklist-tab help float-right'])")
+        .verify.elementPresent("(//div[@class='checklist-help-center-link'])", 'help center')
+        .pause(model.pause + 1000)
+        .verify.elementPresent("(//div[@class='checklist-help-center-link'])[2]", 'getting started')
+        .pause(model.pause + 1000)
+        .verify.elementPresent("(//div[@class='checklist-help-center-link'])[3]", 'discovery')
+        .pause(model.pause + 1000)
+        .verify.elementPresent("(//div[@class='checklist-help-center-link'])[4]", 'blog')
+        .pause(model.pause + 1000)
+        .click("(//div[@class='checklist-x-icon'])")
  },
 
 
@@ -199,8 +213,6 @@ module.exports = {
         .useCss()
         .verify.elementPresent('div.profile-drawer-icon.bottom', 'sign out').pause(model.pause + 1500)
         .click('div.profile-drawer-icon.bottom')
-        
-
         .end();
   },
 

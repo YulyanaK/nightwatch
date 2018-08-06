@@ -8,7 +8,7 @@ var ObjectId = require('mongodb')
   'login to create a new project': function(browser) {
       browser
         //.url(model.url + '')
-        .url('https://passive.glidr.io')
+        .url('https://app.glidr.io')
         .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
@@ -94,7 +94,7 @@ var ObjectId = require('mongodb')
 
   },
 
-  'Backlog project' : function(browser) {
+  'Delete project' : function(browser) {
       browser
         .waitForElementPresent('.dropdown-menu-icon.clickable', 2000)
         .verify.elementPresent('.dropdown-menu-icon.clickable', 'opens dropdown gear icon').pause(model.pause + 2500)
@@ -105,11 +105,20 @@ var ObjectId = require('mongodb')
         .click("(//div[text()='Settings'])")
 
         .useCss()
-        .verify.elementPresent('div.reusable-dropdown-container.show.status-dropdown', 'dropdown to archive project').pause(model.pause + 500)
-        .click('div.reusable-dropdown-container.show.status-dropdown')
-
-        .verify.elementPresent('.backlog', 'backlog the project').pause(model.pause + 1500)
-        .click('.backlog')
+        .verify.elementPresent('div.checklist-x-icon', 'closes help center').pause(model.pause + 500)
+        .click('div.checklist-x-icon')
+        .verify.elementPresent('div.delete-project-button', 'deletes project').pause(model.pause + 500)
+        .click('div.delete-project-button')
+        .verify.elementPresent('div.project-delete-buttons.confirm', 'deleting project').pause(model.pause + 500)
+        .click('div.project-delete-buttons.confirm')
+        .verify.elementPresent('div.confirmation-button.yes-delete.red.undefined', 'cancel delete').pause(model.pause + 500)
+        .click('div.confirmation-button.yes-delete.red.undefined')
+        .verify.elementPresent('div.delete-project-button', 'deletes project').pause(model.pause + 500)
+        .click('div.delete-project-button')
+        .verify.elementPresent('div.project-delete-buttons.confirm', 'deleting project').pause(model.pause + 500)
+        .click('div.project-delete-buttons.confirm')
+        .verify.elementPresent('div.confirmation-button.no-cancel.red.undefined').pause(model.pause + 500)
+        .click('div.confirmation-button.no-cancel.red.undefined')
         .end();
   },
  }
