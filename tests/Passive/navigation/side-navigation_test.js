@@ -93,6 +93,7 @@ module.exports = {
       browser
         .verify.elementPresent('div.side-sub-section-holder', 'opens an active project').pause(model.pause + 500)
         .click('div.side-sub-section-holder')
+        .pause(model.pause + 1500)
         .verify.elementPresent('div[data-test="dashboard-nav"]', 'dashboard').pause(model.pause + 500)
         .click('div[data-test="dashboard-nav"]')
         .verify.elementPresent('div[data-test="activity-nav"]', 'activity feed').pause(model.pause + 500)

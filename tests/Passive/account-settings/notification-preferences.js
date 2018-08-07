@@ -78,9 +78,10 @@ module.exports = {
       browser
         .waitForElementPresent('div.org-dashboard-card-container', 6000)
         .useXpath()
+        .moveToElement("//div[text()='Ruwanda']", 10, 10)
         .click("//div[text()='Ruwanda']")
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 5000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
         .useXpath()
         .waitForElementPresent("//div[text()='ACTIVE PROJECTS']", 5000)
