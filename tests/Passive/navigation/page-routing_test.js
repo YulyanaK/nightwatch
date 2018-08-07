@@ -40,8 +40,17 @@ module.exports = {
       .waitForElementPresent('.side-nav-subSection-title', 4000)
       .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project to initialize the canvas').pause(model.pause + 1500)
       .click('.side-nav-subSection-title')
-      .verify.elementPresent('div.checklist-x-icon', 'closes help center').pause(model.pause + 1500)
-      .click('div.checklist-x-icon')
+      .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click('div.checklist-x-icon');
+            } else {
+                // Element is not present.
+            }
+        });
+      //.verify.elementPresent('div.checklist-x-icon', 'closes help center').pause(model.pause + 1500)
+      //.click('div.checklist-x-icon')
+      browser
       .verify.elementPresent('div.clickable.float-right', 'opens the canvas').pause(model.pause + 500)
       .click('div.clickable.float-right')
   },
