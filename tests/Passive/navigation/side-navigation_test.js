@@ -103,8 +103,8 @@ module.exports = {
         .useCss()
         .verify.elementPresent('div.dropdown-menu-icon.clickable', 'project settings').pause(model.pause + 500)
         .click('div.dropdown-menu-icon.clickable')
-        .verify.elementPresent('.dropdown-menu-selection', 'project notifications').pause(model.pause + 500)
-        .click('.dropdown-menu-selection')
+        //.verify.elementPresent('.dropdown-menu-selection', 'project notifications').pause(model.pause + 500)
+        //.click('.dropdown-menu-selection')
 
         .useXpath()
         .verify.elementPresent("(//div[text()='Team'])", 'team').pause(model.pause + 500)

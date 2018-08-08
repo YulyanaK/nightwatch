@@ -71,7 +71,7 @@ module.exports = {
     'route to the dashboard': function(browser) {
       browser
         .useXpath()
-        .click("//div[@class='nav-center-container   ']//div//a[2]/div")
+        .click("//div[@class='nav-center-container   ']//div//a[3]/div")
         .useCss()
         //.verify.cssClassPresent('div[data-test="dashboard-nav"]', "active").pause(model.pause + 500)
         .verify.urlContains('dashboard').pause(model.pause + 1500)
