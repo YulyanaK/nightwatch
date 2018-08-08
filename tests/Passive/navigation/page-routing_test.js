@@ -59,8 +59,10 @@ module.exports = {
 
   'route to the activity feed': function(browser) {
       browser
-        .verify.elementPresent('div[data-test="activity-nav"]', 'verifies for activity link and icon').pause(model.pause + 500)
-        .click('div[data-test="activity-nav"]')
+        .useXpath()
+        .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[2]/div", 'verifies for activity link and icon').pause(model.pause + 500)
+        .click("//div[@class='nav-center-container   ']//div//a[2]/div")
+        .useCss()
         .verify.cssClassPresent('div[data-test="activity-nav"]', "active").pause(model.pause + 500)
         .verify.urlContains('activity').pause(model.pause + 500)
         .verify.elementPresent('.activity-main-container', 'activity main container').pause(model.pause + 500)

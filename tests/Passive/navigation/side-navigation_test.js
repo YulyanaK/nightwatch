@@ -31,7 +31,7 @@ module.exports = {
         .click("(//div[@class='org-dashboard-card-container'])[5]")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 2000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
   },
 
