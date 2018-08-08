@@ -27,9 +27,9 @@ module.exports = {
   'Verify the organizations' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Ghana']", 4000).pause(model.pause + 500)
-        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Ghana']", 10, 10)
-        .click("//div[@class='org-dashboard-card-title' and text()='Ghana']")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal']", 4000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal']")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)
@@ -51,7 +51,7 @@ module.exports = {
 
       browser
         .getText('div.filter-type-content', function(result) { 
-        this.verify.equal(result.value, "Assumptions")
+        this.verify.containsText('div.filter-type-content', "Assumptions")
       })     
         .moveTo('div.filter-type-content', 2, 2,function(){
       browser
@@ -59,7 +59,7 @@ module.exports = {
       })
       browser
         .getText('div.clearfix.clickable.activity-filter-type:nth-of-type(2)', function(result) { 
-        this.verify.equal(result.value, "Evidence")
+        this.verify.containsText('div.clearfix.clickable.activity-filter-type:nth-of-type(2)', "Evidence")
       })     
         .moveTo('div.clearfix.clickable.activity-filter-type:nth-of-type(2)', 2, 2,function(){
       browser
@@ -67,7 +67,7 @@ module.exports = {
     })
       browser
         .getText('div.clearfix.clickable.activity-filter-type:nth-of-type(3)', function(result) { 
-        this.verify.equal(result.value, "Experiments & Research")
+        this.verify.containsText('div.clearfix.clickable.activity-filter-type:nth-of-type(3)', "Experiments & Research")
       })     
         .moveTo('div.clearfix.clickable.activity-filter-type:nth-of-type(3)', 2, 2,function(){
       browser
@@ -75,7 +75,7 @@ module.exports = {
     })        
       browser
         .getText('div.clearfix.clickable.activity-filter-type:nth-of-type(4)', function(result) { 
-        this.verify.equal(result.value, "Posts")
+        this.verify.containsText('div.clearfix.clickable.activity-filter-type:nth-of-type(4)', "Posts")
       })     
         .moveTo('div.clearfix.clickable.activity-filter-type:nth-of-type(4)', 2, 2,function(){
       browser
