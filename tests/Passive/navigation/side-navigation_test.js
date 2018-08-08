@@ -101,14 +101,19 @@ module.exports = {
         .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[2]/div", 'activity feed').pause(model.pause + 1500)
         .click("//div[@class='nav-center-container   ']//div//a[2]/div")
         .useCss()
-        .verify.elementPresent('div.dropdown-menu-icon.clickable', 'project settings').pause(model.pause + 500)
-        .click('div.dropdown-menu-icon.clickable')
+        .waitForElementPresent('div.hamburger-holder', 3000)
+        .click('div.hamburger-holder').pause(model.pause + 4000)
+        .useXpath()
+        .moveToElement("(//div[@class='side-nav-settings-icons'])[2]", 10, 10)
+        .click("(//div[@class='side-nav-settings-icons'])[2]").pause(model.pause + 500)
+        //.verify.elementPresent('div.dropdown-menu-icon.clickable', 'project settings').pause(model.pause + 500)
+        //.click('div.dropdown-menu-icon.clickable')
         //.verify.elementPresent('.dropdown-menu-selection', 'project notifications').pause(model.pause + 500)
         //.click('.dropdown-menu-selection')
 
-        .useXpath()
+        
         .verify.elementPresent("(//div[text()='Team'])", 'team').pause(model.pause + 500)
-        .click("(//div[text()='Team'])")
+        .click("(//div[text()='Team'])").pause(model.pause + 1500)
 
         .verify.elementPresent("(//div[text()='Notifications'])", 'notifications').pause(model.pause + 500)
         .click("(//div[text()='Team'])")
