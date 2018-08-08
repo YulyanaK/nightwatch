@@ -173,17 +173,17 @@ module.exports = {
         .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'adding first comment').pause(model.pause + 1500)
         .click("(//div[@class='public-DraftEditor-content'])")
         .setValue("(//div[@class='public-DraftEditor-content'])", 'Clarification')
-        .keys('\n')
+        .keys('\uE006')
 
         .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'second comment').pause(model.pause + 1500)
         .click("(//div[@class='public-DraftEditor-content'])")
         .setValue("(//div[@class='public-DraftEditor-content'])", 'adding more text to see if this works')
-        .keys('\n')
+        .keys('\uE006')
 
         .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'third comment').pause(model.pause + 1500)
         .click("(//div[@class='public-DraftEditor-content'])")
         .setValue("(//div[@class='public-DraftEditor-content'])", 'placeres implecables')
-        .keys('\n')
+        .keys('\uE006')
 
         //add labels
         .useXpath()
@@ -192,7 +192,7 @@ module.exports = {
         .pause(model.pause + 500)
         .setValue("(//input[@class='project-label-input focused'])", 'label')
         .pause(model.pause + 2000)
-        .keys('\n')
+        .keys('\uE006')
         .pause(model.pause + 1000)
 
         .verify.elementPresent("(//div[@class='project-labels-add float-right'])", 'creates second label').pause(model.pause + 1500)
@@ -200,14 +200,14 @@ module.exports = {
         .pause(model.pause + 1500)
         .setValue("(//input[@class='project-label-input focused'])", 'two labels')
         .pause(model.pause + 2000)
-        .keys('\n')
+        .keys('\uE006')
         .pause(model.pause + 1000)
 
         // .click("(//div[@class='project-labels-add float-right'])")
         .pause(model.pause + 1500)
         .setValue("(//input[@class='project-label-input focused'])", 'three labels')
         .pause(model.pause + 2000)
-        .keys('\n')
+        .keys('\uE006')
         .pause(model.pause + 1000)
 
         .moveToElement("(//div[@class='label-hover-container'])", 10, 10)
