@@ -33,7 +33,7 @@ module.exports = {
         .pause(model.pause + 2000)
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
   },
 
@@ -210,11 +210,11 @@ module.exports = {
         .keys([browser.Keys.ENTER])
         .pause(model.pause + 1000)
 
-        .click("(//div[@class='label-hover-container'])")
+        .moveToElement("(//div[@class='label-hover-container'])", 10, 10)
         .click("(//div[@class='lpc-close-cancel-mini-icon-white dashboard-label-delete'])")
         .pause(model.pause + 1500)
 
-        .click("(//div[@class='label-hover-container'])")
+        .moveToElement("(//div[@class='label-hover-container'])", 10, 10)
         .click("(//div[@class='lpc-close-cancel-mini-icon-white dashboard-label-delete'])[2]")
         .pause(model.pause + 1500)
 
