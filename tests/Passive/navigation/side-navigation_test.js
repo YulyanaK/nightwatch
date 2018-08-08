@@ -7,7 +7,7 @@ module.exports = {
   'login to create a new project': function(browser) {
       browser
         //.url(model.url + '')
-        .url('https://app.glidr.io')
+        .url('https://passive.glidr.io')
         .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
@@ -77,6 +77,7 @@ module.exports = {
       browser
         .verify.elementPresent('div.hamburger-holder', 'opens left nav').pause(model.pause + 1500)
         .click('div.hamburger-holder')
+
         .verify.elementPresent('div.portfolio-dashboard-side-nav', 'portfolio dashboard').pause(model.pause + 1500)
         .click('div.portfolio-dashboard-side-nav')
         .verify.elementPresent('div.hamburger-holder', 'opens left nav').pause(model.pause + 1500)
@@ -94,10 +95,12 @@ module.exports = {
         .verify.elementPresent('div.side-sub-section-holder', 'opens an active project').pause(model.pause + 500)
         .click('div.side-sub-section-holder')
         .pause(model.pause + 1500)
-        .verify.elementPresent('div[data-test="dashboard-nav"]', 'dashboard').pause(model.pause + 500)
-        .click('div[data-test="dashboard-nav"]')
-        .verify.elementPresent('div[data-test="activity-nav"]', 'activity feed').pause(model.pause + 500)
-        .click('div[data-test="activity-nav"]')
+        .useXpath()
+        .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[3]/div", 'dashboard').pause(model.pause + 1500)
+        .click("//div[@class='nav-center-container   ']//div//a[3]/div")
+        .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[2]/div", 'activity feed').pause(model.pause + 1500)
+        .click("//div[@class='nav-center-container   ']//div//a[2]/div")
+        .useCss()
         .verify.elementPresent('div.dropdown-menu-icon.clickable', 'project settings').pause(model.pause + 500)
         .click('div.dropdown-menu-icon.clickable')
         .verify.elementPresent('.dropdown-menu-selection', 'project notifications').pause(model.pause + 500)

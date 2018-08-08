@@ -7,7 +7,7 @@ module.exports = {
 
   'login for page routing': function(browser) {
     browser
-        .url('https://app.glidr.io')
+        .url('https://passive.glidr.io')
         .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'seraches for active container for email').pause(model.pause + 500)
@@ -75,7 +75,9 @@ module.exports = {
 
     'route back to canvas': function(browser) {
       browser
-        .click('div[data-test="workspace-nav"]')
+        .useXpath("//div[@class='nav-center-container   ']//div//a[1]/div")
+        .click("//div[@class='nav-center-container   ']//div//a[1]/div").pause(model.pause + 1500)
+        .useCss()
         .verify.cssClassPresent('div[data-test="workspace-nav"]', "active").pause(model.pause + 500)
         .verify.urlContains('workspace').pause(model.pause + 500)
         .verify.elementPresent('.main-content-area', 'main content area').pause(model.pause + 500)
