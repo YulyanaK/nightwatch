@@ -30,7 +30,7 @@ module.exports = {
         .click("(//div[@class='org-dashboard-card-container'])[5]")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
     },
 
@@ -63,16 +63,18 @@ module.exports = {
         .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[2]/div", 'verifies for activity link and icon').pause(model.pause + 500)
         .click("//div[@class='nav-center-container   ']//div//a[2]/div")
         .useCss()
-        .verify.cssClassPresent('div[data-test="activity-nav"]', "active").pause(model.pause + 500)
+        //.verify.cssClassPresent('div[data-test="activity-nav"]', "active").pause(model.pause + 500)
         .verify.urlContains('activity').pause(model.pause + 500)
         .verify.elementPresent('.activity-main-container', 'activity main container').pause(model.pause + 500)
   },
 
     'route to the dashboard': function(browser) {
       browser
-        .click('div[data-test=dashboard-nav]')
-        .verify.cssClassPresent('div[data-test="dashboard-nav"]', "active").pause(model.pause + 500)
-        .verify.urlContains('dashboard').pause(model.pause + 500)
+        .useXpath()
+        .click("//div[@class='nav-center-container   ']//div//a[2]/div")
+        .useCss()
+        //.verify.cssClassPresent('div[data-test="dashboard-nav"]', "active").pause(model.pause + 500)
+        .verify.urlContains('dashboard').pause(model.pause + 1500)
   },
 
     'route back to canvas': function(browser) {
@@ -80,7 +82,7 @@ module.exports = {
         .useXpath("//div[@class='nav-center-container   ']//div//a[1]/div")
         .click("//div[@class='nav-center-container   ']//div//a[1]/div").pause(model.pause + 1500)
         .useCss()
-        .verify.cssClassPresent('div[data-test="workspace-nav"]', "active").pause(model.pause + 500)
+        //.verify.cssClassPresent('div[data-test="workspace-nav"]', "active").pause(model.pause + 500)
         .verify.urlContains('workspace').pause(model.pause + 500)
         .verify.elementPresent('.main-content-area', 'main content area').pause(model.pause + 500)
         .verify.elementPresent('div.clickable.float-right', 'opens the canvas').pause(model.pause + 500)
