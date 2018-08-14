@@ -4,41 +4,6 @@ var ObjectId = require('mongodb').ObjectId;
 
 
 module.exports = {
-  // options : {
-  //   domain: 'http://dev.launchpadcentral.com/',
-  //   email : 'someInvitetestemail@launchpadcentral.com',
-  //   firstName :'Launchpad',
-  //   fullName : 'Launchpad Central',
-  //   lastName: 'Central',
-  //   password: '1234567890',
-  //   url : model.url + '/canvas',
-  //   userName: 'sandstorm'
-  // },
-
-  // before : function(browser, done){
-  //   var context = this;
-  //   var pastProjectDate = new Date(new Date().getTime() - (86400000*10));
-  //   var pastCardDate = new Date(new Date().getTime() - (86400000*9));
-  //   var startTest = function () {
-  //     browser.url(context.options.url)
-  //     browser.resizeWindow().pause(model.pause + 500)
-  //     done()
-  //   };
-
-
-  //   controller.initializeCanvas(function(token){
-  //     browser.url(context.options.url)
-  //     browser.setCookie(token);
-  //     startTest()
-  //   })      
-  // },
-
-  // after : function (browser, done) {
-  //     controller.connect().close();
-  //     done();
-  //     browser.end();
-  
-  // },
 
 
   'login to an org to invite a member': function(browser) {
@@ -49,7 +14,7 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'checks for container to log in').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'ortizcdavid@gmail.com')
+        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
         .verify.elementPresent('div.signin-form-container', 'checks for container to log in').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -61,39 +26,168 @@ module.exports = {
 
   'Verify the project name' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
-        .click('div.org-dashboard-card-container')
-        .waitForElementPresent('div.hamburger-holder', 2000)
+        .useXpath()
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[7]", 6000).pause(model.pause + 500)
+        .click("(//div[@class='org-dashboard-card-container'])[7]")
+
+        .useCss()
+        .waitForElementPresent('div.hamburger-holder', 4000)
         .click('div.hamburger-holder')
-        .verify.elementPresent('.side-nav-organization-name', 'organization name').pause(model.pause + 500)
-        .getText('.side-nav-organization-name', function(text) {
-         this.verify.equal(text.value, "dognate")
-        })
-        .verify.elementPresent('div.side-nav-organization-name-holder', 'checks for name holder').pause(model.pause + 500)
-        .click('div.side-nav-organization-name-holder')
-        .verify.elementPresent('div.invite', 'checks for invite link').pause(model.pause + 500)
-        .click('div.invite')
-        .pause()
   },
 
 
   'Invite group, single and two invitees' : function(browser) {
       browser
-        .verify.elementPresent('div.access-row-item-member', 'checks for member to be present').pause(model.pause + 500)
-        .click('div.access-row-item-member')
-        .verify.elementPresent('input.invite-input-label', ' verifies for email').pause(model.pause + 500)
-        .click('input.invite-input-label')
-        .setValue('input.invite-input-label', 'davidortiz1324@comcast')
-        .setValue('input.invite-input-label', 'kawika-')
-        .verify.elementPresent('button.add-invite-button.list-add-invite-button', 'checks for trigger tooltip, orange  turns into red ').pause(model.pause + 1500)
+        .verify.elementPresent('div.side-nav-organization-name-holder', 'checks for name holder').pause(model.pause + 500)
+        .click('div.side-nav-organization-name-holder')
+        .verify.elementPresent('div.invite', 'checks for invite link').pause(model.pause + 500)
+        .click('div.invite')
+
+        //invite an admin
+        .verify.elementPresent('div.access-row-item-admin', 'invite an admin').pause(model.pause + 500)
+        .click('div.access-row-item-admin')
+
+        //bad email
+        .verify.elementPresent('div.invite-form-list-item-container', 'verifies for email').pause(model.pause + 500)
+        .click('div.invite-form-list-item-container')
+        .clearValue('div.invite-form-list-item-container').pause(model.pause + 500)
+        .setValue('input.invite-input.invite-email-input ', 'davidortiz1324@comcast')
+
+        .useXpath()
+        //first name
+        .verify.elementPresent("(//input[@class='invite-input'])", 'verifies for firstname').pause(model.pause + 500)
+        .click("(//input[@class='invite-input'])")
+        .clearValue("(//input[@class='invite-input'])").pause(model.pause + 500)
+        .setValue("(//input[@class='invite-input'])", 'kawika-')
+
+        //last name
+        .verify.elementPresent("(//input[@class='invite-input'])[2]", 'verifies for lastname').pause(model.pause + 500)
+        .click("(//input[@class='invite-input'])[2]")
+        .clearValue("(//input[@class='invite-input'])[2]").pause(model.pause + 500)
+        .setValue("(//input[@class='invite-input'])[2]", 'Kahanamokukuko')
+
+        //good email
+        .useCss()
+        .verify.elementPresent('input.invite-input.invite-email-input.invalid', 'verifies for email').pause(model.pause + 500)
+        .click('input.invite-input.invite-email-input.invalid')
+        .clearValue('input.invite-input.invite-email-input.invalid').pause(model.pause + 500)
+        .setValue('input.invite-input.invite-email-input', 'davidortiz1324@comcast.net')
+
+        //opens new fields
+        .verify.elementPresent('button.invite-list-small-button', 'adds another invitee').pause(model.pause + 500)
+        .click('button.invite-list-small-button').pause(model.pause + 500)
+        .click('button.invite-list-small-button').pause(model.pause + 500)
+        .click('button.invite-list-small-button').pause(model.pause + 500)
+
+        .useXpath()
+        //closes new fields
+        .verify.elementPresent("(//div[@class='lpc-close-cancel-icon-gray remove-input-x'])", 'closes extra fields').pause(model.pause + 1500)
+        .click("(//div[@class='lpc-close-cancel-icon-gray remove-input-x'])[2]").pause(model.pause + 500)
+        .click("(//div[@class='lpc-close-cancel-icon-gray remove-input-x'])[3]").pause(model.pause + 500)
+        .click("(//div[@class='lpc-close-cancel-icon-gray remove-input-x'])[2]").pause(model.pause + 500)
+       
+        //adds another invitee
+        .verify.elementPresent("(//div[@class='invite-form-list-item-container'])[2]", 'adding another invitee') 
+        .click("(//input[@class='invite-input invite-email-input '])[2]").pause(model.pause + 1500)  
+        .setValue("(//input[@class='invite-input invite-email-input '])[2]", 'idobarowitz@comcast.net').pause(model.pause + 500) 
+
+        .click("(//input[@class='invite-input'])[3]")
+        .pause(model.pause + 1500)
+        .setValue("(//input[@class='invite-input'])[3]", 'ortiz')
+        .pause(model.pause + 1500)
+        .click("(//input[@class='invite-input'])[4]")
+        .pause(model.pause + 1500)
+        .setValue("(//input[@class='invite-input'])[4]", 'idobarowitz')
+
+        .useCss()
+        //invite 
+        .verify.elementPresent('button.add-invite-button.list-add-invite-button', 'sents invite').pause(model.pause + 1500)
         .click('button.add-invite-button.list-add-invite-button')
-        .clearValue('input.invalid-input-label')
-        .verify.elementPresent('input.warning-input-label', 'cleared invalid email and sets correct email')
-        .setValue('input.warning-input-label', 'idobarowitz@comcast.net')
-        .verify.elementPresent('div.invite-lastname-label').pause(model.pause + 500)
-        .click('div.invite-lastname-label')
-        .setValue('div.invite-lastname-label', 'ortiz')
-        .click('buton.add-invite-button.list-add-invite-button')
+
+        //re-invite remove invitation
+        .useXpath()
+        .click("//p[text()='Re-Invite']")
+        .pause(model.pause + 1500)
+        .click("(//p[text()='Re-Invite'])[2]")
+        .pause(model.pause + 1500)
+        .click("//p[text()='Remove']")
+        .pause(model.pause + 1500)
+        .click("//p[text()='Remove']")
+
+        //invite more
+        .useCss()
+        .verify.elementPresent('button.invite-more-button')
+        .click('button.invite-more-button')
+
+        .verify.elementPresent('div.invite-form-list-item-container', 'verifies for email').pause(model.pause + 500)
+        .click('div.invite-form-list-item-container')
+        .clearValue('div.invite-form-list-item-container').pause(model.pause + 500)
+        .setValue('input.invite-input.invite-email-input ', 'davidortiz1324@comcast')
+
+        .useXpath()
+        //first name
+        .verify.elementPresent("(//input[@class='invite-input'])", 'verifies for firstname').pause(model.pause + 500)
+        .click("(//input[@class='invite-input'])")
+        .clearValue("(//input[@class='invite-input'])").pause(model.pause + 500)
+        .setValue("(//input[@class='invite-input'])", 'kawika-')
+
+        //last name
+        .verify.elementPresent("(//input[@class='invite-input'])[2]", 'verifies for lastname').pause(model.pause + 500)
+        .click("(//input[@class='invite-input'])[2]")
+        .clearValue("(//input[@class='invite-input'])[2]").pause(model.pause + 500)
+        .setValue("(//input[@class='invite-input'])[2]", 'Kahanamokukuko')
+
+        //good email
+        .useCss()
+        .verify.elementPresent('input.invite-input.invite-email-input.invalid', 'verifies for email').pause(model.pause + 500)
+        .click('input.invite-input.invite-email-input.invalid')
+        .clearValue('input.invite-input.invite-email-input.invalid').pause(model.pause + 500)
+        .setValue('input.invite-input.invite-email-input', 'davidortiz1324@comcast.net')
+
+        //opens new fields
+        .verify.elementPresent('button.invite-list-small-button', 'adds another invitee').pause(model.pause + 500)
+        .click('button.invite-list-small-button').pause(model.pause + 500)
+        .click('button.invite-list-small-button').pause(model.pause + 500)
+        .click('button.invite-list-small-button').pause(model.pause + 500)
+
+        .useXpath()
+        //closes new fields
+        .verify.elementPresent("(//div[@class='lpc-close-cancel-icon-gray remove-input-x'])", 'closes extra fields').pause(model.pause + 1500)
+        .click("(//div[@class='lpc-close-cancel-icon-gray remove-input-x'])[2]").pause(model.pause + 500)
+        .click("(//div[@class='lpc-close-cancel-icon-gray remove-input-x'])[3]").pause(model.pause + 500)
+        .click("(//div[@class='lpc-close-cancel-icon-gray remove-input-x'])[2]").pause(model.pause + 500)
+       
+        //adds another invitee
+        .verify.elementPresent("(//div[@class='invite-form-list-item-container'])[2]", 'adding another invitee') 
+        .click("(//input[@class='invite-input invite-email-input '])[2]").pause(model.pause + 1500)  
+        .setValue("(//input[@class='invite-input invite-email-input '])[2]", 'idobarowitz@comcast.net').pause(model.pause + 500) 
+
+        .click("(//input[@class='invite-input'])[3]")
+        .pause(model.pause + 1500)
+        .setValue("(//input[@class='invite-input'])[3]", 'ortiz')
+        .pause(model.pause + 1500)
+        .click("(//input[@class='invite-input'])[4]")
+        .pause(model.pause + 1500)
+        .setValue("(//input[@class='invite-input'])[4]", 'idobarowitz')
+
+        .useCss()
+        //invite 
+        .verify.elementPresent('button.add-invite-button.list-add-invite-button', 'sents invite').pause(model.pause + 1500)
+        .click('button.add-invite-button.list-add-invite-button')
+
+        .useXpath()
+        .click("//p[text()='Re-Invite']")
+        .pause(model.pause + 1500)
+        .click("(//p[text()='Re-Invite'])[2]")
+        .pause(model.pause + 1500)
+        .click("//p[text()='Remove']")
+        .pause(model.pause + 1500)
+        .click("//p[text()='Remove']")
+
+        .useCss()
+        .verify.elementPresent('button.done-button', 'done button').pause(model.pause + 1500)
+        .click('button.done-button')
+
         .end();
   },
 }

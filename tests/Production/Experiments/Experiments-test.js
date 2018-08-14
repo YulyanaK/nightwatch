@@ -78,11 +78,26 @@ module.exports = {
         .verify.elementPresent('div.content-field-container.organization-setting-input.org-name', 'research name').pause(model.pause + 1500)
         .click('div.content-field-container.organization-setting-input.org-name')
         .setValue('.content-field-textarea', ['What is the name of the variable being tested in an experiment?', browser.Keys.ENTER]) 
-        .verify.elementPresent('div.content-field-container.organization-setting-input.org-name:nth-of-type(2)', 'experiment name').pause(model.pause + 1500)
-        
+
+        .verify.elementPresent('div.text-editor-container', 'hypothesis statement').pause(model.pause + 1500) 
+        .click('div.text-editor-container')
+
         .useXpath()
-        .click("(//textarea[@class='content-field-textarea'])[2]")
-        .setValue("(//textarea[@class='content-field-textarea'])[2]", ['this is the objective on testing', browser.Keys.ENTER])
+        .click("(//div[@class='text-editor-container  editable  organization-setting-input experiment-richtext clearfix'])")
+        .pause(model.pause + 500) 
+        .setValue("(//div[@class='text-editor-container '])", ['this is the objective on testing', '\uE007']).pause(model.pause + 1500)
+    
+        .execute(function() {
+            document.getElementClass('.text-editor-container  editable  organization-setting-input experiment-richtext clearfix').
+                value = 'this is the objective on testing';
+            })
+        .execute(function()
+            {
+                $('siv.text-editor-container  editable  organization-setting-input experiment-richtext clearfix').
+                val('this is the objective on testing', '\uE007');
+            })
+
+        .pause()
 
         .useCss()
         .verify.elementPresent('.content-field-container.organization-setting-input.org-name div:nth-of-type(3)', 'hypothesis statement').pause(model.pause + 1500)
