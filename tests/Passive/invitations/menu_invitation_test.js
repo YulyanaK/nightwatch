@@ -106,6 +106,7 @@ module.exports = {
 
         //re-invite remove invitation
         .useXpath()
+        .waitForElementPresent("//p[text()='Re-Invite']", 6000)
         .click("//p[text()='Re-Invite']")
         .pause(model.pause + 1500)
         .click("(//p[text()='Re-Invite'])[2]")
@@ -174,8 +175,11 @@ module.exports = {
         //invite 
         .verify.elementPresent('button.add-invite-button.list-add-invite-button', 'sents invite').pause(model.pause + 1500)
         .click('button.add-invite-button.list-add-invite-button')
+        .pause(model.pause + 3000)
+        
 
         .useXpath()
+        .waitForElementPresent("//p[text()='Re-Invite']", 6000)
         .click("//p[text()='Re-Invite']")
         .pause(model.pause + 1500)
         .click("(//p[text()='Re-Invite'])[2]")

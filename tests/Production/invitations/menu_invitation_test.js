@@ -174,6 +174,7 @@ module.exports = {
         //invite 
         .verify.elementPresent('button.add-invite-button.list-add-invite-button', 'sents invite').pause(model.pause + 1500)
         .click('button.add-invite-button.list-add-invite-button')
+        .pause()
 
         .useXpath()
         .click("//p[text()='Re-Invite']")

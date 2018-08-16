@@ -22,13 +22,14 @@ module.exports = {
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
-        .waitForElementPresent('div.org-container', 4000).pause(model.pause + 500)
+        .waitForElementPresent('div.org-container', 6000)
+        
   },
 
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[10]", 4000).pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[10]", 6000).pause(model.pause + 500)
         .click("(//div[@class='org-dashboard-card-container'])[10]")
 
         .useCss()
@@ -43,7 +44,8 @@ module.exports = {
 
   'Pending invites tab': function(browser) {
       browser
-        .verify.elementPresent('div[data-test="/org-management/team-management"]', 'verifies for name holder for organizations').pause(model.pause + 500)
+        .waitForElementPresent('div[data-test="/org-management/team-management"]', 6000)
+        .pause(model.pause + 500)
         .click('div[data-test="/org-management/team-management"]')
         .verify.elementPresent('.teamMgmtTab.pending-invites', 'verifies for pending invites').pause(model.pause + 500)
         .click('.teamMgmtTab.pending-invites')
