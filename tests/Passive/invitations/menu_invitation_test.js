@@ -89,7 +89,7 @@ module.exports = {
         //adds another invitee
         .verify.elementPresent("(//div[@class='invite-form-list-item-container'])[2]", 'adding another invitee')
         .waitForElementPresent("(//input[@class='invite-input invite-email-input '])[2]", 4000) 
-        .click("(//input[@class='invite-input invite-email-input '])[2]").pause(model.pause + 1500)  
+        .click("(//input[@class='invite-input invite-email-input '])[2]").pause(model.pause + 4500)  
         .setValue("(//input[@class='invite-input invite-email-input '])[2]", 'idobarowitz@comcast.net').pause(model.pause + 500) 
 
         .click("(//input[@class='invite-input'])[3]")
@@ -109,11 +109,11 @@ module.exports = {
         .useXpath()
         .waitForElementPresent("//p[text()='Re-Invite']", 6000)
         .click("//p[text()='Re-Invite']")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 3500)
         .click("(//p[text()='Re-Invite'])[2]")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 3500)
         .click("//p[text()='Remove']")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 3500)
         .click("//p[text()='Remove']")
 
         //invite more
@@ -160,7 +160,7 @@ module.exports = {
         .click("(//div[@class='lpc-close-cancel-icon-gray remove-input-x'])[2]").pause(model.pause + 500)
        
         //adds another invitee
-        .verify.elementPresent("(//div[@class='invite-form-list-item-container'])[2]", 'adding another invitee') 
+        .waitForElementPresent("(//input[@class='invite-input invite-email-input '])[2]", 6000, 'adding another invitee') 
         .click("(//input[@class='invite-input invite-email-input '])[2]").pause(model.pause + 1500)  
         .setValue("(//input[@class='invite-input invite-email-input '])[2]", 'idobarowitz@comcast.net').pause(model.pause + 500) 
 
@@ -182,11 +182,11 @@ module.exports = {
         .useXpath()
         .waitForElementPresent("//p[text()='Re-Invite']", 6000)
         .click("//p[text()='Re-Invite']")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 3500)
         .click("(//p[text()='Re-Invite'])[2]")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 3500)
         .click("//p[text()='Remove']")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 3500)
         .click("//p[text()='Remove']")
 
         .useCss()

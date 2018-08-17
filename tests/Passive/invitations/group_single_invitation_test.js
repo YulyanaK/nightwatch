@@ -120,6 +120,7 @@ module.exports = {
         .click("//p[text()='Remove']")
         .pause(model.pause + 1500)
         .click("//p[text()='Remove']")
+        .pause(model.pause + 2500)
 
         .useCss()
         //done button

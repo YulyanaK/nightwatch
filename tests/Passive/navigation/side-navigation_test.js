@@ -55,7 +55,7 @@ module.exports = {
         .click("(//div[@class='side-nav-settings-icons'])[1]")
 
         .useCss()
-        .verify.elementPresent('div.sidenav-search-box-container', 'opens input searches container').pause(model.pause + 500)
+        /*.verify.elementPresent('div.sidenav-search-box-container', 'opens input searches container').pause(model.pause + 500)
         .click('div.sidenav-search-box-container')
        
         .setValue('input.input', 'al').pause(model.pause + 1500)
@@ -74,7 +74,7 @@ module.exports = {
         .verify.elementPresent('div.hamburger-holder.open', 'side nav inbox').pause(model.pause + 500)
         .click('div.hamburger-holder.open')
         .verify.elementPresent('div.hamburger-holder', 'side nav inbox').pause(model.pause + 500)
-        .click('div.hamburger-holder')
+        .click('div.hamburger-holder')*/
   },
 
   'Go to inbox from side navigation' : function(browser) {
