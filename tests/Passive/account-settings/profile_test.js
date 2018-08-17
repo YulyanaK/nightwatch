@@ -79,24 +79,27 @@ module.exports = {
   'Profile' : function (browser) {
       browser
         .verify.elementPresent("//input[@placeholder='First name']", 'first name').pause(model.pause + 500)
-        .click("//input[@placeholder='First name']")
-        .clearValue("//input[@placeholder='First name']")
-        .setValue("//input[@placeholder='First name']", 'davitis')
+        .click("//input[@placeholder='First name']").pause(model.pause + 500)
+        .clearValue("//input[@placeholder='First name']").pause(model.pause + 500)
+        //.setValue("//input[@placeholder='First name']", 'davitis')
 
         .verify.elementPresent("//input[@placeholder='Last name']", 'last name').pause(model.pause + 500)
-        .click("//input[@placeholder='Last name']")
-        .clearValue("//input[@placeholder='Last name']")
-        .setValue("//input[@placeholder='Last name']", 'ortizzz')
+        .click("//input[@placeholder='Last name']").pause(model.pause + 500)
+        .clearValue("//input[@placeholder='Last name']").pause(model.pause + 500)
+        //.setValue("//input[@placeholder='First name']", 'davitis')
+        //.setValue("//input[@placeholder='First name']", 'davitis')
+        //.setValue("//input[@placeholder='Last name']", 'ortizzz')
+
 
         .verify.elementPresent("//input[@placeholder='Phone number']", 'phone').pause(model.pause + 500)
         .click("//input[@placeholder='Phone number']")
         .clearValue("//input[@placeholder='Phone number']")
-        .setValue("//input[@placeholder='Phone number']", '1234567890')
+        //.setValue("//input[@placeholder='Phone number']", '1234567890')
 
         .verify.elementPresent("//input[@placeholder='Linkedin handle']", 'linkedin').pause(model.pause + 500)
         .click("//input[@placeholder='Linkedin handle']")
         .clearValue("//input[@placeholder='Linkedin handle']")
-        .setValue("//input[@placeholder='Linkedin handle']", 'linkis linkis')
+        //.setValue("//input[@placeholder='Linkedin handle']", 'linkis linkis')
 
         .verify.elementPresent("//input[@placeholder='Twitter handle']", 'twitter').pause(model.pause + 500)
         .click("//input[@placeholder='Twitter handle']")
@@ -106,17 +109,17 @@ module.exports = {
         .verify.elementPresent("//input[@placeholder='Your title']", 'title').pause(model.pause + 500)
         .click("//input[@placeholder='Your title']")
         .clearValue("//input[@placeholder='Your title']")
-        .setValue("//input[@placeholder='Your title']", 'King David, your majesty at your service')
+        //.setValue("//input[@placeholder='Your title']", 'King David, your majesty at your service')
 
         .verify.elementPresent("//input[@placeholder='Company department']", 'department').pause(model.pause + 500)
         .click("//input[@placeholder='Company department']")
         .clearValue("//input[@placeholder='Company department']")
-        .setValue("//input[@placeholder='Company department']", 'Matanga dijo la changa')
+        //.setValue("//input[@placeholder='Company department']", 'Matanga dijo la changa')
 
         .verify.elementPresent("//textarea[@placeholder='Write something about yourself']", 'about me').pause(model.pause + 500)
         .click("//textarea[@placeholder='Write something about yourself']")
         .clearValue("//textarea[@placeholder='Write something about yourself']")
-        .setValue("//textarea[@placeholder='Write something about yourself']", ' On three occasions (1325–1521, 1821–1823, and 1863–1867), the country was known as Imperio Mexicano (Mexican Empire). All three federal constitutions (1824, 1857 and 1917, the current constitution) used the name Estados Unidos Mexicanos')
+        //.setValue("//textarea[@placeholder='Write something about yourself']", ' On three occasions (1325–1521, 1821–1823, and 1863–1867), the country was known as Imperio Mexicano (Mexican Empire). All three federal constitutions (1824, 1857 and 1917, the current constitution) used the name Estados Unidos Mexicanos')
         
         .verify.elementPresent("//button[@class='account-settings-profile-settings-button on']")
         .click("//button[@class='account-settings-profile-settings-button on']")

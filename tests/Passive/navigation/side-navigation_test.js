@@ -96,7 +96,7 @@ module.exports = {
         .click('div.side-sub-section-holder')
         .pause(model.pause + 1500)
         .useXpath()
-        .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[3]/div", 'dashboard').pause(model.pause + 1500)
+        .waitForElementPresent("//div[@class='nav-center-container   ']//div//a[3]/div", 6000)
         .click("//div[@class='nav-center-container   ']//div//a[3]/div")
         .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[2]/div", 'activity feed').pause(model.pause + 1500)
         .click("//div[@class='nav-center-container   ']//div//a[2]/div")
