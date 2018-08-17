@@ -57,8 +57,11 @@ module.exports = {
         .useCss()
         .verify.elementPresent('div.sidenav-search-box-container', 'opens input searches container').pause(model.pause + 500)
         .click('div.sidenav-search-box-container')
-        .waitForElementPresent('input.input', 4000)
+       
         .setValue('input.input', 'al').pause(model.pause + 1500)
+
+        //.waitForElementPresent('input.input', 4000)
+        //.setValue('input.input', 'al').pause(model.pause + 1500)
         .clearValue('input.input')
         .pause(model.pause + 1500)
         .verify.elementPresent('div.sidenav-search-box-container', 'opens input searches container').pause(model.pause + 500)
