@@ -96,10 +96,11 @@ module.exports = {
 
   'Go to New Collection and explore top nav bar' : function(browser) {
       browser
-        .verify.elementPresent('div.side-sub-section-holder', 'opens an active project').pause(model.pause + 500)
-        .click('div.side-sub-section-holder')
-        .pause(model.pause + 1500)
         .useXpath()
+        .verify.elementPresent("//div[@class='side-nav-subSection-title' and text()='Batgirl new']")
+        .click("//div[@class='side-nav-subSection-title' and text()='Batgirl new']")
+        .pause(model.pause + 1500)
+       
         .waitForElementPresent("//div[@class='nav-center-container   ']//div//a[3]/div", 6000)
         .click("//div[@class='nav-center-container   ']//div//a[3]/div")
 
