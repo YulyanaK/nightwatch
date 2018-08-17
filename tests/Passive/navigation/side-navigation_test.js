@@ -57,6 +57,7 @@ module.exports = {
         .useCss()
         .verify.elementPresent('div.sidenav-search-box-container', 'opens input searches container').pause(model.pause + 500)
         .click('div.sidenav-search-box-container')
+        .waitForElementPresent('input.input', 4000)
         .setValue('input.input', 'al').pause(model.pause + 1500)
         .clearValue('input.input')
         .pause(model.pause + 1500)
@@ -85,7 +86,7 @@ module.exports = {
         .verify.elementPresent('div.side-nav-inbox-container', 'opens inbox').pause(model.pause + 1500)
         .click('div.side-nav-inbox-container')
         .verify.elementPresent('div.hamburger-holder', 'opens left nav').pause(model.pause + 1500)
-        .click('div.hamburger-holder')
+        .click('div.hamburger-holder').pause(model.pause + 1500)
         .verify.elementPresent('div.sub-section-container', 'opens leftnav project').pause(model.pause + 1500)
         .click('div.sub-section-container')
   },
@@ -98,6 +99,7 @@ module.exports = {
         .useXpath()
         .waitForElementPresent("//div[@class='nav-center-container   ']//div//a[3]/div", 6000)
         .click("//div[@class='nav-center-container   ']//div//a[3]/div")
+
         .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[2]/div", 'activity feed').pause(model.pause + 1500)
         .click("//div[@class='nav-center-container   ']//div//a[2]/div")
         .useCss()
