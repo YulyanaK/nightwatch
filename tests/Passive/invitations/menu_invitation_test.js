@@ -87,7 +87,8 @@ module.exports = {
         .click("(//div[@class='lpc-close-cancel-icon-gray remove-input-x'])[2]").pause(model.pause + 500)
        
         //adds another invitee
-        .verify.elementPresent("(//div[@class='invite-form-list-item-container'])[2]", 'adding another invitee') 
+        .verify.elementPresent("(//div[@class='invite-form-list-item-container'])[2]", 'adding another invitee')
+        .waitForElementPresent("(//input[@class='invite-input invite-email-input '])[2]", 4000) 
         .click("(//input[@class='invite-input invite-email-input '])[2]").pause(model.pause + 1500)  
         .setValue("(//input[@class='invite-input invite-email-input '])[2]", 'idobarowitz@comcast.net').pause(model.pause + 500) 
 

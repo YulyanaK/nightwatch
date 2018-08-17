@@ -96,7 +96,7 @@ module.exports = {
         
         .verify.elementPresent("//div[@class='project-notifications-toggle-circle on']", 'verifies for toggle circle').pause(model.pause + 1500)
         .click("//div[@class='project-notifications-toggle-circle on']")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 3500)
         .verify.elementPresent("//div[@class='blur-out-holder']", 'on blur out').pause(model.pause + 1500)
         .verify.elementPresent("//div[@class='project-notifications-toggle-circle off']", 'turn off toggle').pause(model.pause + 1500)
         .click("//div[@class='project-notifications-toggle-circle off']")

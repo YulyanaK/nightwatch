@@ -91,8 +91,9 @@ module.exports = {
 
   'Add invitees to a project': function(browser){
       browser    
-        .verify.elementPresent('div.add-project-input-container', 'adding porjects').pause(model.pause + 500)
+        .verify.elementPresent('div.add-project-input-container', 'adding porjects').pause(model.pause + 1500)
         .click('div.add-project-input-container')
+        .pause(model.pause + 1500)
 
         .useXpath()
         .verify.elementPresent("(//div[@class='list-project-name'])", 'sample project').pause(model.pause + 500)
