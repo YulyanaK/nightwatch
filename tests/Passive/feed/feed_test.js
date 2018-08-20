@@ -75,7 +75,7 @@ module.exports = {
         .pause(model.pause + 500)
         .click("(//div[@class='public-DraftEditor-content'])[4]")
         .setValue("(//div[@class='public-DraftEditor-content'])[4]",['Danach wurde es zu einem festen Bestand­teil der restlichen Tour, und die Band spielte ihn auch bei den meisten Auftritten der Lovetown-Tour im Jahr 1989.', browser.Keys.ENTER])
-        .pause(model.pause + 500)
+        .pause(model.pause + 1500)
         .click("(//div[@class='public-DraftEditor-content'])[2]")
         .setValue("(//div[@class='public-DraftEditor-content'])[2]", ['مقالات مختارة أخرى: الجبهة الغربية (الحرب العالمية الأولى) – داء نيوكاسل – سلاما هي المقالات المختارة؟ – بوابة الحرب العالمية الأولى – بوابة تاريخ أوروبا', browser.Keys.ENTER])
         .pause(model.pause + 500)

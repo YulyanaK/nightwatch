@@ -102,21 +102,26 @@ module.exports = {
   'Activity feed date range' : function (browser) {
       browser
         .useCss()
-        //.verify.elementPresent('div.filter-date-range-container', 'date range').pause(model.pause + 500)
-        //.click('div.filter-date-range-container')
-        //.verify.elementPresent('input.activity-feed-calendar-input', 'calendar dates').pause(model.pause + 500)
+        .verify.elementPresent('div.filter-date-range-container', 'date range').pause(model.pause + 500)
+        .click('div.filter-date-range-container')
+        .verify.elementPresent('input.activity-feed-calendar-input', 'calendar dates').pause(model.pause + 500)
         // input field not working, unable to to click or to set any value. input fields is not fucntional
-        .click('input.activity-feed-calendar-input')
-        // .setValue('input.activity-feed-calendar-input', ['5/1/2018 to 5/31/2018','\uE008'])
+        //.click('input.activity-feed-calendar-input')
+        //.setValue('input.activity-feed-calendar-input', ['5/1/2018 to 5/31/2018','\uE008'])
         .useXpath()
         .verify.elementPresent("//div[@class='DayPicker-Day' and text()='1']", 'selecting dates').pause(model.pause + 1500)
         .click("//div[@class='DayPicker-Day' and text()='1']").pause(model.pause + 1000)
-        //.verify.elementPresent("//div[@class='DayPicker-Day' and text()='3']", 'days selected').pause(model.pause + 1500)
-        //.click("//div[@class='DayPicker-Day' and text()='3']")
+        .verify.elementPresent("//div[@class='DayPicker-Day' and text()='3']", 'days selected').pause(model.pause + 1500)
+        .click("//div[@class='DayPicker-Day' and text()='3']")
 
         
-        //.pause(model.pause + 1500)
+        .pause(model.pause + 1500)
+      browser
+        .useXpath()
+        .getValue("//input[@class='activity-feed-calendar-input']", function(result) {
+       this.verify.equal(result.value, "8/1/2018 to 8/3/2018");
        
+    });
   },
 
   'Tem memebrs' : function(browser){
