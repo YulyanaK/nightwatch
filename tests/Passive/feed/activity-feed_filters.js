@@ -102,8 +102,9 @@ module.exports = {
   'Activity feed date range' : function (browser) {
       browser
         .useCss()
+        .moveToElement('div.filter-date-range-container', 10, 10)
         .verify.elementPresent('div.filter-date-range-container', 'date range').pause(model.pause + 500)
-        .click('div.filter-date-range-container')
+        .click('div.filter-date-range-container').pause(model.pause + 1500)
         .verify.elementPresent('input.activity-feed-calendar-input', 'calendar dates').pause(model.pause + 500)
         // input field not working, unable to to click or to set any value. input fields is not fucntional
         //.click('input.activity-feed-calendar-input')
