@@ -109,8 +109,10 @@ module.exports = {
         //.click('input.activity-feed-calendar-input')
         //.setValue('input.activity-feed-calendar-input', ['5/1/2018 to 5/31/2018','\uE008'])
         .useXpath()
+        .moveToElement("//div[@class='DayPicker-Day' and text()='1']", 10, 10)
         .verify.elementPresent("//div[@class='DayPicker-Day' and text()='1']", 'selecting dates').pause(model.pause + 1500)
         .click("//div[@class='DayPicker-Day' and text()='1']").pause(model.pause + 1000)
+        .moveToElement("//div[@class='DayPicker-Day' and text()='3']", 10, 10)
         .verify.elementPresent("//div[@class='DayPicker-Day' and text()='3']", 'days selected').pause(model.pause + 1500)
         .click("//div[@class='DayPicker-Day' and text()='3']")
 
@@ -118,10 +120,16 @@ module.exports = {
         .pause(model.pause + 1500)
       browser
         .useXpath()
-        .getValue("//input[@class='activity-feed-calendar-input']", function(result) {
-       this.verify.equal(result.value, "8/1/2018 to 8/3/2018");
+        .getAttribute("//input[@class='activity-feed-calendar-input']", 'value', function(result){
+          if(result.value === ''){
+            console.error('Error! DayPicker not working!')
+            browser.end()
+          }
+        })
+        //.getValue("//input[@class='activity-feed-calendar-input']", function(result) {
+       //this.verify.containsText("8/1/2018 to 8/3/2018");
        
-    });
+    //});
   },
 
   'Tem memebrs' : function(browser){
