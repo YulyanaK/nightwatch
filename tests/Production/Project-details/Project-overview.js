@@ -39,10 +39,32 @@ module.exports = {
 
   'Project overview': function(browser) {
       browser
-        .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 1500)
+        .waitForElementPresent('div.side-nav-subSection-title', 1500)
         .click('div.side-nav-subSection-title')
-        .verify.elementPresent('div.checklist-x-icon', 'closes help center').pause(model.pause + 500)
-        .click('div.checklist-x-icon')
+
+
+       /* .element('css', 'div.checklist-x-icon', function(visible) {
+        if(visible.status !== -1){
+          
+         browser.click('div.checklist-x-icon')
+        
+                         
+        } else {
+         
+            
+        }*/
+
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click('div.checklist-x-icon');
+            } else {
+                // Element is not present.
+            }
+        });
+
+      
+      browser
         .verify.elementPresent('div.workspace-overview-btn', 'opens overview').pause(model.pause + 500)
         .click('div.workspace-overview-btn')
         .pause(model.pause + 500)
@@ -51,21 +73,25 @@ module.exports = {
         .verify.elementPresent("(//div[@class='details-content'])", 'project description').pause(model.pause + 500)
         .click("(//div[@class='details-content'])")
         .clearValue("(//textarea[@class='content-field-text'])")
+        .pause(model.pause + 500)
         .setValue("(//textarea[@class='content-field-text'])", 'La Ciudad de México, anteriormente conocida como el Distrito Federal,nota 1​ es una de las 32 entidades federativas de México,18​19​20​')
 
         .verify.elementPresent("(//div[@class='details-content'])[2]", 'problem statement').pause(model.pause + 500)
         .click("(//div[@class='details-content'])[2]")
         .clearValue("(//textarea[@class='content-field-text'])[2]")
+        .pause(model.pause + 500)
         .setValue("(//textarea[@class='content-field-text'])[2]", 'Water. It is increasingly difficult to supply regular and equitable clean and affordable water to all inhabitants of the city and surrounding areas. Many people in the city are living with an amount of water that does not allow meet their basic needs.')
 
         .verify.elementPresent("(//div[@class='details-content'])[3]", 'solution statement').pause(model.pause + 500)
         .click("(//div[@class='details-content'])[3]")
         .clearValue("(//textarea[@class='content-field-text'])[3]")
+        .pause(model.pause + 500)
         .setValue("(//textarea[@class='content-field-text'])[3]", 'Public security. Although the situation has improved greatly over recent years and other cities of the world (including US)')
 
         .verify.elementPresent("(//div[@class='details-content'])[4]", 'who is it for').pause(model.pause + 500)
         .click("(//div[@class='details-content'])[4]")
         .clearValue("(//textarea[@class='content-field-text'])[4]")
+        .pause(model.pause + 500)
         .setValue("(//textarea[@class='content-field-text'])[4]", 'Mexico City, Mexico’s largest city and the most populous metropolitan area in the Western Hemisphere, is also known as Distrito Federal, or the federal district. ')
 
         .useCss()
@@ -91,55 +117,54 @@ module.exports = {
         .setValue("(//textarea[@class='content-field-text'])[5]", 'new card for safety')
         .pause(model.pause + 500)
         .click("(//div[@class='content-field-delete-holder'])")
-
-        //Populates field and cancels and deletes
-        .verify.elementPresent("(//span[@class='content-field-cancel'])", 'cancel').pause(model.pause + 500)
-        .click("(//span[@class='content-field-cancel'])")
-        .verify.elementPresent("(//div[@class='content-field-delete-holder'])", 'trash can').pause(model.pause + 500)
-        .click("(//div[@class='content-field-delete-holder'])")
-        .verify.elementPresent("(//span[@class='content-field-cancel'])", 'delete').pause(model.pause + 500)
-        .click("(//span[@class='content-field-cancel delete'])")
+        .pause(model.pause + 500)
+        .click("//span[text()='DELETE']")
 
         //dropdowns
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])", 'drop down time frame').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])")
-        .pause(model.pause + 500)
+        .pause(model.pause + 800)
         .click("//div[text()='Product']")
-        .pause(model.pause + 500)
+        .pause(model.pause + 800)
         .click("(//div[@class='project-dashboard-dropdown-container'])")
+        .pause(model.pause + 800)
         .click("//div[text()='Service']")
 
-        .pause(model.pause + 500)
+        .pause(model.pause + 800)
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[2]", 'drop down type of project').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])[2]")
-        .pause(model.pause + 500)
+        .pause(model.pause + 800)
         .click("//div[text()='Problem Validation']")
-        .pause(model.pause + 500)
+        .pause(model.pause + 800)
         .click("(//div[@class='project-dashboard-dropdown-container'])[2]")
+        .pause(model.pause + 800)
         .click("//div[text()='Solution Validation']")
 
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]", 'stage').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
-        .pause(model.pause + 500)
+        .pause(model.pause + 800)
         .click("//div[text()='1 - 3 months']")
-        .pause(model.pause + 500)
+        .pause(model.pause + 800)
         .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
+        .pause(model.pause + 800)
         .click("//div[text()='12 - 18 months']")
 
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[4]", 'describe the market').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])[4]")
-        .pause(model.pause + 500)
+        .pause(model.pause + 800)
         .click("//div[text()='Existing market that we currently serve']")
-        .pause(model.pause + 500)
+        .pause(model.pause + 800)
         .click("(//div[@class='project-dashboard-dropdown-container'])[4]")
+        .pause(model.pause + 800)
         .click("//div[text()='New market']")
 
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[5]", 'describe the technology').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])[5]")
-        .pause(model.pause + 500)
+        .pause(model.pause + 800)
         .click("//div[text()='Existing technology that we currently use/deploy']")
-        .pause(model.pause + 500)
+        .pause(model.pause + 800)
         .click("(//div[@class='project-dashboard-dropdown-container'])[5]")
+        .pause(model.pause + 800)
         .click("//div[text()='New technology']")
 
         //add comments
@@ -147,48 +172,48 @@ module.exports = {
         .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'adding first comment').pause(model.pause + 1500)
         .click("(//div[@class='public-DraftEditor-content'])")
         .setValue("(//div[@class='public-DraftEditor-content'])", 'Clarification')
-        .keys([browser.Keys.ENTER])
+        .keys('\uE006')
 
         .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'second comment').pause(model.pause + 1500)
         .click("(//div[@class='public-DraftEditor-content'])")
         .setValue("(//div[@class='public-DraftEditor-content'])", 'adding more text to see if this works')
-        .keys([browser.Keys.ENTER])
+        .keys('\uE006')
 
         .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'third comment').pause(model.pause + 1500)
         .click("(//div[@class='public-DraftEditor-content'])")
         .setValue("(//div[@class='public-DraftEditor-content'])", 'placeres implecables')
-        .keys([browser.Keys.ENTER])
+        .keys('\uE006')
 
         //add labels
         .useXpath()
         .verify.elementPresent("(//div[@class='project-labels-add float-right'])", 'opens to add labels').pause(model.pause + 1500)
         .click("(//div[@class='project-labels-add float-right'])")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 500)
         .setValue("(//input[@class='project-label-input focused'])", 'label')
-        .pause(model.pause + 1000)
-        .keys([browser.Keys.ENTER])
+        .pause(model.pause + 2000)
+        .keys('\uE006')
         .pause(model.pause + 1000)
 
         .verify.elementPresent("(//div[@class='project-labels-add float-right'])", 'creates second label').pause(model.pause + 1500)
         // .click("(//div[@class='project-labels-add float-right'])")
         .pause(model.pause + 1500)
         .setValue("(//input[@class='project-label-input focused'])", 'two labels')
-        .pause(model.pause + 1000)
-        .keys([browser.Keys.ENTER])
+        .pause(model.pause + 2000)
+        .keys('\uE006')
         .pause(model.pause + 1000)
 
         // .click("(//div[@class='project-labels-add float-right'])")
         .pause(model.pause + 1500)
         .setValue("(//input[@class='project-label-input focused'])", 'three labels')
-        .pause(model.pause + 1000)
-        .keys([browser.Keys.ENTER])
+        .pause(model.pause + 2000)
+        .keys('\uE006')
         .pause(model.pause + 1000)
 
-        .click("(//div[@class='label-hover-container'])")
+        .moveToElement("(//div[@class='label-hover-container'])", 10, 10)
         .click("(//div[@class='lpc-close-cancel-mini-icon-white dashboard-label-delete'])")
         .pause(model.pause + 1500)
 
-        .click("(//div[@class='label-hover-container'])")
+        .moveToElement("(//div[@class='label-hover-container'])", 10, 10)
         .click("(//div[@class='lpc-close-cancel-mini-icon-white dashboard-label-delete'])[2]")
         .pause(model.pause + 1500)
 
