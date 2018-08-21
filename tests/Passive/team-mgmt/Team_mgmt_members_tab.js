@@ -28,8 +28,8 @@ module.exports = {
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[5]")
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Ghana']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Ghana']")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 4000)
@@ -49,8 +49,8 @@ module.exports = {
         .click('li.teamMgmtTab.members')
         .verify.elementPresent('input.team-management-search-input', 'input text area').pause(model.pause + 1500)
         .click('input.team-management-search-input')
-        .setValue('input.team-management-search-input', 'Ma').pause(model.pause + 1500)
-        .clearValue('input.team-management-search-input')
+        .setValue('input.team-management-search-input', 'automation').pause(model.pause + 1500)
+        /*.clearValue('input.team-management-search-input')
         .setValue('input.team-management-search-input', 'D').pause(model.pause + 1500)
         .clearValue('input.team-management-search-input')
         .setValue('input.team-management-search-input', 'caco').pause(model.pause + 1500)
@@ -58,7 +58,7 @@ module.exports = {
         .clearValue('input.team-management-search-input').pause(model.pause + 500)
         .click('input.team-management-search-input')
         .setValue('input.team-management-search-input', 'a')
-        .clearValue('input.team-management-search-input')
+        .clearValue('input.team-management-search-input')*/
         .pause(model.pause + 500)
   },
 
@@ -77,7 +77,7 @@ module.exports = {
         .verify.elementPresent('div.reusable-dropdown-container.show.mgmt-dropdown', 'drop down opens again').pause(model.pause + 1500)
         .click('div.reusable-dropdown-container.show.mgmt-dropdown') 
         .verify.elementPresent('div.member', 'member').pause(model.pause + 1500)
-        .click('div.member')
-        .end();
+        .click('div.member').pause(model.pause + 1500)
+        //.end();
   },
 }

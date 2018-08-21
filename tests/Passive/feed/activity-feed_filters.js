@@ -101,21 +101,20 @@ module.exports = {
 
   'Activity feed date range' : function (browser) {
       browser
-        .useCss()
-        .moveToElement('div.filter-date-range-container', 10, 10)
-        .verify.elementPresent('div.filter-date-range-container', 'date range').pause(model.pause + 500)
-        .click('div.filter-date-range-container').pause(model.pause + 1500)
-        .verify.elementPresent('input.activity-feed-calendar-input', 'calendar dates').pause(model.pause + 500)
+        
+        .moveToElement("//input[@class='activity-feed-calendar-input']", 10, 10)
+        .verify.elementPresent("//input[@class='activity-feed-calendar-input']", 'date range').pause(model.pause + 500)
+        .click("//input[@class='activity-feed-calendar-input']").pause(model.pause + 2500)
+        
         // input field not working, unable to to click or to set any value. input fields is not fucntional
         //.click('input.activity-feed-calendar-input')
         //.setValue('input.activity-feed-calendar-input', ['5/1/2018 to 5/31/2018','\uE008'])
-        .useXpath()
-        .moveToElement("//div[@class='DayPicker-Day' and text()='1']", 10, 10)
-        .verify.elementPresent("//div[@class='DayPicker-Day' and text()='1']", 'selecting dates').pause(model.pause + 1500)
+        
+        .moveToElement("//div[@class='DayPicker-Day' and text()='1']", 10, 10).pause(model.pause + 1000)
         .click("//div[@class='DayPicker-Day' and text()='1']").pause(model.pause + 1000)
         .moveToElement("//div[@class='DayPicker-Day' and text()='3']", 10, 10)
         .verify.elementPresent("//div[@class='DayPicker-Day' and text()='3']", 'days selected').pause(model.pause + 1500)
-        .click("//div[@class='DayPicker-Day' and text()='3']")
+        .click("//div[@class='DayPicker-Day' and text()='3']").pause(model.pause + 1000)
 
         
         .pause(model.pause + 1500)

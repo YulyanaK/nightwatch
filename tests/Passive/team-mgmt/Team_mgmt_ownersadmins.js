@@ -51,23 +51,25 @@ module.exports = {
         .click('li.teamMgmtTab.owners-admin')
         .verify.elementPresent('input.team-management-search-input', 'input text area').pause(model.pause + 1500)
         .click('input.team-management-search-input')
-        .setValue('input.team-management-search-input', 'cacomixtle').pause(model.pause + 1500)
-        .clearValue('input.team-management-search-input')
+        .setValue('input.team-management-search-input', 'juan').pause(model.pause + 1500)
+        /*.clearValue('input.team-management-search-input')
         .setValue('input.team-management-search-input', 'D').pause(model.pause + 1500)
         .clearValue('input.team-management-search-input')
         .setValue('input.team-management-search-input', 'cacomixtle').pause(model.pause + 1500)
       browser
         .clearValue('input.team-management-search-input').pause(model.pause + 500)
         .click('input.team-management-search-input')
-        .setValue('input.team-management-search-input', 'a')
-        .clearValue('input.team-management-search-input')
+        .setValue('input.team-management-search-input', 'a')*/
+        //.clearValue('input.team-management-search-input')
         .pause(model.pause + 3000) 
   },
 
   'everyone tab assests and functionality': function(browser) {
     browser
-        .verify.elementPresent('div.reusable-dropdown-container.show.mgmt-dropdown', 'team-mgmt drop down').pause(model.pause + 1500)
-        .click('div.reusable-dropdown-container.show.mgmt-dropdown') 
+        .useXpath()
+        .verify.elementPresent("//div[@class='reusable-dropdown-caret']", 'team-mgmt drop down').pause(model.pause + 1500)
+        .click("//div[@class='reusable-dropdown-caret']")
+        .useCss()
         .verify.elementPresent('div.admin', 'admin').pause(model.pause + 1500)
         .click('div.admin')
         .verify.elementPresent('div.reusable-dropdown-container.show.mgmt-dropdown', 'container opens again').pause(model.pause + 1500)
