@@ -40,10 +40,7 @@ module.exports = {
       .waitForElementPresent('.side-nav-subSection-title', 4000)
       .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project to initialize the canvas').pause(model.pause + 1500)
       .click('.side-nav-subSection-title')
-      .verify.elementPresent('div.checklist-x-icon', 'closes help center').pause(model.pause + 1500)
-      .click('div.checklist-x-icon')
-      .verify.elementPresent('div.clickable.float-right', 'opens the canvas').pause(model.pause + 500)
-      .click('div.clickable.float-right')
+
   },
 
   'route to the activity feed': function(browser) {
