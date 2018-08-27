@@ -1,10 +1,10 @@
-var model = require('../../../helpers/model');
+  var model = require('../../../helpers/model');
 var controller = require('../../../helpers/controller');
 
 module.exports = {
  
 
- 'login to Assumptions': function(browser) {
+ 'login to hypothesis': function(browser) {
       browser
         .url('https://passive.glidr.io')
         .resizeWindow(1124, 868).pause(model.pause + 500)
@@ -12,11 +12,11 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'ykarpava+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
-        .setValue('input[type=password]', 'Testtest1!')
+        .setValue('input[type=password]', 'Brooklyn1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
@@ -26,9 +26,9 @@ module.exports = {
   'Verify user is able to connect Evidence to Assumption' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[text()='Senegal']", 4000)
+        .waitForElementPresent("//div[text()='Senegal_QA']", 4000)
         
-        .click("//div[text()='Senegal']")
+        .click("//div[text()='Senegal_QA']")
         .pause(model.pause + 4000)
         .click("//div[@class='hamburger-holder close ']").pause(model.pause + 2000)
         .click("//div[@class='side-nav-subSection-title' and text()=' San Francisco de asis in the bay area and golden gate']").pause(model.pause + 2000)
@@ -70,7 +70,8 @@ module.exports = {
         .click("//div[@class='interviewee-close-text']")
         .waitForElementPresent("(//div[@class='details-title no-content' and text()='KEY INSIGHTS'])[2]", 6000)
         .click("(//div[@class='details-title no-content' and text()='KEY INSIGHTS'])[2]")
-        .setValue("(//div[@data-contents='true'])[6]", 'Assumptions_Evidence_Test. Key Insights')
+        .keys('key insights')
+        //.setValue("(//div[@data-contents='true'])[6]", 'Assumptions_Evidence_Test. Key Insights')
         .pause(model.pause + 1000)
         .click("//div[@class='publish-btn']")//publishing Evidence
         .pause(model.pause + 4000)

@@ -12,11 +12,11 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'ykarpava+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
-        .setValue('input[type=password]', 'Testtest1!')
+        .setValue('input[type=password]', 'Brooklyn1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
@@ -26,9 +26,9 @@ module.exports = {
   'Verify user is able to create and delete Assumption' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[text()='Senegal']", 4000)
+        .waitForElementPresent("//div[text()='Senegal_QA']", 4000)
         
-        .click("//div[text()='Senegal']")
+        .click("//div[text()='Senegal_QA']")
         .pause(model.pause + 4000)
         .click("//div[@class='hamburger-holder close ']").pause(model.pause + 2000)
         .click("//div[@class='side-nav-subSection-title' and text()=' San Francisco de asis in the bay area and golden gate']").pause(model.pause + 2000)
@@ -40,7 +40,10 @@ module.exports = {
         .setValue("//textarea[@class='content-field-textarea']", 'Automation Tests Assumption').pause(model.pause + 2000)
         .click("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='PUBLISH']")
         .click("(//div[@class='card-full-nav-x'])[3]")
-        .waitForElementPresent("//div[@class='nav-center-container   ']//div//a/div", 6000)//returns to Worspace
+        .waitForElementPresent("//div[@class='nav-center-container   ']//div//a/div", 6000)
+        .click("//div[@class='nav-center-container   ']//div//a/div")
+        //returns to Worspace
+        .waitForElementPresent("(//div[@class='priority-card-summary '])[1]", 6000)
         .getText("(//div[@class='priority-card-summary '])[1]", function(result) { 
         this.verify.equal(result.value, "Automation Tests Assumption")
       })
@@ -99,7 +102,7 @@ module.exports = {
         this.verify.equal(result.value, "Canvas Section Assumption- Real-time")
       })
         .click("//div[@class='card-content' and text()='Canvas Section Assumption- Real-time']")
-        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)//Assumption card takeover displayed
+        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 7000)//Assumption card takeover displayed
         .pause(model.pause + 2000)
         .click("(//div[@class='dropdown-menu-icon clickable '])[5]").pause(model.pause + 500)
         .click("//div[text()='Delete Assumption']")
