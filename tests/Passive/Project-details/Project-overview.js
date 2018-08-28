@@ -14,7 +14,7 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -28,8 +28,8 @@ module.exports = {
   'Verify a project and org' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[11]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[11]")
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[6]", 4000).pause(model.pause + 500)
+        .click("(//div[@class='org-dashboard-card-container'])[6]")
         .pause(model.pause + 2000)
 
         .useCss()
@@ -39,9 +39,8 @@ module.exports = {
 
   'Project overview': function(browser) {
       browser
-        .waitForElementPresent('div.side-nav-subSection-title', 1500)
+        .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 2000)
         .click('div.side-nav-subSection-title')
-
 
        /* .element('css', 'div.checklist-x-icon', function(visible) {
         if(visible.status !== -1){

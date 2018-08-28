@@ -14,7 +14,7 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'checks for container to log in').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'checks for container to log in').pause(model.pause + 500)
         .click('input[type=password]')
       browser

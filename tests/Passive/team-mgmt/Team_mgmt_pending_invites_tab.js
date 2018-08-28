@@ -14,7 +14,7 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'seraches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -29,8 +29,8 @@ module.exports = {
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[10]", 6000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[10]")
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 6000).pause(model.pause + 500)
+        .click("(//div[@class='org-dashboard-card-container'])[5]")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)

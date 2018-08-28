@@ -13,7 +13,7 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'seraches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -30,7 +30,7 @@ module.exports = {
         .click("(//div[@class='org-dashboard-card-container'])[5]")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
     },
 
@@ -40,29 +40,42 @@ module.exports = {
       .waitForElementPresent('.side-nav-subSection-title', 4000)
       .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project to initialize the canvas').pause(model.pause + 1500)
       .click('.side-nav-subSection-title')
-
+      .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click('div.checklist-x-icon');
+            } else {
+                // Element is not present.
+            }
+        });
   },
 
   'route to the activity feed': function(browser) {
       browser
-        .verify.elementPresent('div[data-test="activity-nav"]', 'verifies for activity link and icon').pause(model.pause + 500)
-        .click('div[data-test="activity-nav"]')
-        .verify.cssClassPresent('div[data-test="activity-nav"]', "active").pause(model.pause + 500)
+        .useXpath()
+        .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[2]/div", 'verifies for activity link and icon').pause(model.pause + 500)
+        .click("//div[@class='nav-center-container   ']//div//a[2]/div")
+        .useCss()
+        //.verify.cssClassPresent('div[data-test="activity-nav"]', "active").pause(model.pause + 500)
         .verify.urlContains('activity').pause(model.pause + 500)
         .verify.elementPresent('.activity-main-container', 'activity main container').pause(model.pause + 500)
   },
 
     'route to the dashboard': function(browser) {
       browser
-        .click('div[data-test=dashboard-nav]')
-        .verify.cssClassPresent('div[data-test="dashboard-nav"]', "active").pause(model.pause + 500)
-        .verify.urlContains('dashboard').pause(model.pause + 500)
+        .useXpath()
+        .click("//div[@class='nav-center-container   ']//div//a[3]/div")
+        .useCss()
+        //.verify.cssClassPresent('div[data-test="dashboard-nav"]', "active").pause(model.pause + 500)
+        .verify.urlContains('dashboard').pause(model.pause + 1500)
   },
 
     'route back to canvas': function(browser) {
       browser
-        .click('div[data-test="workspace-nav"]')
-        .verify.cssClassPresent('div[data-test="workspace-nav"]', "active").pause(model.pause + 500)
+        .useXpath("//div[@class='nav-center-container   ']//div//a[1]/div")
+        .click("//div[@class='nav-center-container   ']//div//a[1]/div").pause(model.pause + 1500)
+        .useCss()
+        //.verify.cssClassPresent('div[data-test="workspace-nav"]', "active").pause(model.pause + 500)
         .verify.urlContains('workspace').pause(model.pause + 500)
         .verify.elementPresent('.main-content-area', 'main content area').pause(model.pause + 500)
         .verify.elementPresent('div.clickable.float-right', 'opens the canvas').pause(model.pause + 500)

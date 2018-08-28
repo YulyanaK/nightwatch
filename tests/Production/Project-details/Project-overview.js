@@ -9,12 +9,12 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://app.glidr.io')
-        //.resizeWindow(1366, 768).pause(model.pause + 500)
+       //.resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -28,8 +28,8 @@ module.exports = {
   'Verify a project and org' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[11]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[11]")
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[6]", 4000).pause(model.pause + 500)
+        .click("(//div[@class='org-dashboard-card-container'])[6]")
         .pause(model.pause + 2000)
 
         .useCss()
@@ -39,7 +39,7 @@ module.exports = {
 
   'Project overview': function(browser) {
       browser
-        .waitForElementPresent('div.side-nav-subSection-title', 1500)
+        .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 2000)
         .click('div.side-nav-subSection-title')
 
 
@@ -63,35 +63,34 @@ module.exports = {
             }
         });
 
-      
       browser
         .verify.elementPresent('div.workspace-overview-btn', 'opens overview').pause(model.pause + 500)
         .click('div.workspace-overview-btn')
-        .pause(model.pause + 500)
+        .pause(model.pause + 1500)
 
         .useXpath()
         .verify.elementPresent("(//div[@class='details-content'])", 'project description').pause(model.pause + 500)
         .click("(//div[@class='details-content'])")
         .clearValue("(//textarea[@class='content-field-text'])")
-        .pause(model.pause + 500)
+        .pause(model.pause + 1500)
         .setValue("(//textarea[@class='content-field-text'])", 'La Ciudad de México, anteriormente conocida como el Distrito Federal,nota 1​ es una de las 32 entidades federativas de México,18​19​20​')
 
         .verify.elementPresent("(//div[@class='details-content'])[2]", 'problem statement').pause(model.pause + 500)
         .click("(//div[@class='details-content'])[2]")
         .clearValue("(//textarea[@class='content-field-text'])[2]")
-        .pause(model.pause + 500)
+        .pause(model.pause + 1500)
         .setValue("(//textarea[@class='content-field-text'])[2]", 'Water. It is increasingly difficult to supply regular and equitable clean and affordable water to all inhabitants of the city and surrounding areas. Many people in the city are living with an amount of water that does not allow meet their basic needs.')
 
         .verify.elementPresent("(//div[@class='details-content'])[3]", 'solution statement').pause(model.pause + 500)
         .click("(//div[@class='details-content'])[3]")
         .clearValue("(//textarea[@class='content-field-text'])[3]")
-        .pause(model.pause + 500)
+        .pause(model.pause + 1500)
         .setValue("(//textarea[@class='content-field-text'])[3]", 'Public security. Although the situation has improved greatly over recent years and other cities of the world (including US)')
 
         .verify.elementPresent("(//div[@class='details-content'])[4]", 'who is it for').pause(model.pause + 500)
         .click("(//div[@class='details-content'])[4]")
         .clearValue("(//textarea[@class='content-field-text'])[4]")
-        .pause(model.pause + 500)
+        .pause(model.pause + 1500)
         .setValue("(//textarea[@class='content-field-text'])[4]", 'Mexico City, Mexico’s largest city and the most populous metropolitan area in the Western Hemisphere, is also known as Distrito Federal, or the federal district. ')
 
         .useCss()
@@ -107,9 +106,9 @@ module.exports = {
         .click("(//div[@class='new-content-field-save position-absolute enabled cancel'])")
         .pause(model.pause + 500)
         .click("(//div[@class='project-details-add-section-container clickable'])")
-        .pause(model.pause + 2000)
+        .pause(model.pause + 1500)
         .setValue("(//input[@class='new-content-field-title'])", 'Public Safety')
-
+        .pause(model.pause + 500)
         .verify.elementPresent("(//div[@class='new-content-field-save position-absolute enabled'])", 'enter new text').pause(model.pause + 500)
         .click("(//div[@class='new-content-field-save position-absolute enabled'])")
         .pause(model.pause + 500)
@@ -189,7 +188,7 @@ module.exports = {
         .click("(//div[@class='project-labels-add float-right'])")
         .pause(model.pause + 500)
         .setValue("(//input[@class='project-label-input focused'])", 'label')
-        .pause(model.pause + 2000)
+        .pause(model.pause + 1000)
         .keys('\uE006')
         .pause(model.pause + 1000)
 
