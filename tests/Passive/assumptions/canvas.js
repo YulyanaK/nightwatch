@@ -110,24 +110,5 @@ module.exports = {
         .click("//div[@class='confirmation-button-holder']/div[text()='Delete Assumption']").pause(model.pause + 4000)
         .end()
 
-
-
-
-
-
   },
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
 }

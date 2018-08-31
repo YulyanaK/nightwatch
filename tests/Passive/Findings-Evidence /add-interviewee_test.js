@@ -153,12 +153,6 @@ module.exports = {
         .click('div.DraftEditor-editorContainer')
         .pause()
         .setValue('div.DraftEditor-editorContainer', 'public-DraftStyleDefault-block public-DraftStyleDefault-ltr')
-
-
-
-        
-
-
       .end();
   }
 }

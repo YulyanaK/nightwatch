@@ -77,11 +77,6 @@ module.exports = {
           this.verify.equal(text.value, 'new comment')
       })
 
-
-
-    
-
-
   },
   'Comments a user created display "You" as the owner' : function (browser){
     browser.expect.element("//span[@class='comment-username']").text.to.equal("You")
@@ -137,9 +132,5 @@ module.exports = {
     .end()
 
     },
-
-
-
-
 
 }

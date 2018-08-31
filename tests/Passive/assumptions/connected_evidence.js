@@ -84,15 +84,5 @@ module.exports = {
         .click("(//div[text()='Delete Evidence • Interview'])[2]").pause(model.pause + 500)
         .end()
 
-
-
-
-
-
-
-
-
-
-
     },
 }
