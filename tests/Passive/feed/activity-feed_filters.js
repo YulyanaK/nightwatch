@@ -14,11 +14,11 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'ykarpava+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
-        .setValue('input[type=password]', 'Testtest1!')
+        .setValue('input[type=password]', 'Brooklyn1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
@@ -27,9 +27,9 @@ module.exports = {
   'Verify the organizations' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal']", 4000).pause(model.pause + 500)
-        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal']", 10, 10)
-        .click("//div[@class='org-dashboard-card-title' and text()='Senegal']")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 4000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)
