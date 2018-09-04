@@ -397,7 +397,7 @@ module.exports = {
         .pause(model.pause + 1500)
 
         .useCss()
-        .verify.elementPresent('div.hypothesis-edit-header-close-wrapper', 'closes market size').pause(model.pause + 500)
+        .verify.elementPresent('div.hypothesis-edit-header-close-wrapper', 'closes market size, completes, cancels and completes').pause(model.pause + 500)
         .click('div.hypothesis-edit-header-close-wrapper')
         
         .useXpath()

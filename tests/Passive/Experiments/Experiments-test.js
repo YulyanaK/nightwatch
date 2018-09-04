@@ -111,8 +111,7 @@ module.exports = {
         .click("//*[contains(text(), 'ADD')]")
 
         // connects assumptions
-        .pause(model.pause + 6000) 
-        .verify.elementPresent("(//div[@class='hover position-relative float-right success-circle-button'])[2]", 'selects an assumptions').pause(model.pause + 500) 
+        .waitForElementPresent("(//div[@class='hover position-relative float-right success-circle-button'])[2]", 6000) 
         .click("(//div[@class='hover position-relative float-right success-circle-button'])[2]")
         
         .useCss()
@@ -150,7 +149,7 @@ module.exports = {
      browser
         .verify.elementPresent('div.reusable-circle-button', 'connect an evidence').pause(model.pause + 1500)
         .click('div.reusable-circle-button')
-        .verify.elementPresent('div.connect-card-card-container', 'connected evidence').pause(model.pause + 3000)
+        .waitForElementPresent('div.connect-card-card-container', 3000)
         .click('div.connect-card-card-container')
         .pause(model.pause + 500)
         .click('div.connect-more-info')
@@ -458,11 +457,11 @@ module.exports = {
         .useXpath()
         .pause(model.pause + 1500)
         .click("//span[text()='COMPLETE']")
-        .pause(model.pause + 500)
+        .pause(model.pause + 900)
         .click("//*[contains(text(), 'CANCEL')]")
-        .pause(model.pause + 500)
+        .pause(model.pause + 900)
         .click("//span[text()='COMPLETE']")
-        .pause(model.pause + 500)
+        .pause(model.pause + 900)
         .click("//*[contains(text(), 'COMPLETE')]")
         //.saveScreenshot('./reports/Experiments/experiments.png')
         .end();

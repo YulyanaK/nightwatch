@@ -100,7 +100,7 @@ module.exports = {
         .useCss()
         .verify.elementPresent('div.reusable-circle-button', 'selects 1st assumption').pause(model.pause + 1500) 
         .click('div.reusable-circle-button ')
-        .pause(model.pause + 1500) 
+        .pause(model.pause + 3000) 
 
         .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'selects 2nd assumption').pause(model.pause + 1500) 
         .click('div.connect-card-card-container:nth-of-type(3)')
@@ -397,7 +397,7 @@ module.exports = {
         .pause(model.pause + 1500)
 
         .useCss()
-        .verify.elementPresent('div.hypothesis-edit-header-close-wrapper', 'closes market size').pause(model.pause + 500)
+        .verify.elementPresent('div.hypothesis-edit-header-close-wrapper', 'closes market size, completes, cancels and completes').pause(model.pause + 500)
         .click('div.hypothesis-edit-header-close-wrapper')
         
         .useXpath()

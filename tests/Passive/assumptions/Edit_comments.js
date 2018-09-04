@@ -33,7 +33,7 @@ module.exports = {
         .click("//div[@class='side-nav-subSection-title' and text()=' San Francisco de asis in the bay area and golden gate']").pause(model.pause + 2000)
         .click("//div[@class='nav-center-container   ']//div//a[1]/div")
         .waitForElementPresent("(//div[@class='priority-card-summary '])[2]", 6000)
-        .click("(//div[@class='priority-card-summary '])[2]")
+        .click("(//div[@class='priority-card-summary '])[1]")
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)//Assumptions open
         .pause(model.pause + 2000)
         .verify.elementPresent("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='Done Editing']")
@@ -72,7 +72,7 @@ module.exports = {
       
       
       .pause(model.pause + 1000)
-      .waitForElementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[7]", model.pause + 2000)
+      //waitForElementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[7]", model.pause + 2000)
       .getText("//span[@data-text='true']", function(text) {
           this.verify.equal(text.value, 'new comment')
       })
