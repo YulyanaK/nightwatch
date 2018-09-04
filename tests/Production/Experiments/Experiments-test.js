@@ -156,7 +156,9 @@ module.exports = {
         .pause(model.pause + 500)
         .click('div.connect-more-info')
 
-        // connecting assumptions
+        // connecting evidence
+        .verify.elementPresent('div.connect-card-card-container', 'connected 1st evidence').pause(model.pause + 1500)
+        .click('div.connect-card-card-container')
         .verify.elementPresent('div.connect-card-card-container:nth-of-type(2)', 'connected 2nd evidence').pause(model.pause + 1500)
         .click('div.connect-card-card-container:nth-of-type(2)')
         .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'connected 3rd evidence').pause(model.pause + 1500)
@@ -378,21 +380,21 @@ module.exports = {
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])", 'type of project').pause(model.pause + 500)
         .click("(//div[@class='project-dashboard-dropdown-container'])")
         .pause(model.pause + 1500)
-        .click("//div[text()='Service']")
+        .click("//*[contains(text(), 'Service')]")
         .pause(model.pause + 800)
         .click("(//div[@class='project-dashboard-dropdown-container'])")
         .pause(model.pause + 800)
-        .click("//div[text()='Product']")
+        .click("//*[contains(text(), 'Product')]")
         .pause(model.pause + 800)
 
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[2]", 'time frame').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])[2]")
         .pause(model.pause + 1500)
-        .click("//div[text()='3 - 6 months']")
+        .click("//*[contains(text(), '3 - 6 months')]")
         .pause(model.pause + 800)
         .click("(//div[@class='project-dashboard-dropdown-container'])[2]")
         .pause(model.pause + 800)
-        .click("//div[text()='6 - 12 months']")
+        .click("//*[contains(text(), '6 - 12 months')]")
         .pause(model.pause + 800)
 
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]", 'stage').pause(model.pause + 500)
@@ -451,7 +453,7 @@ module.exports = {
         .pause(model.pause + 1500)
 
         .useCss()
-        .verify.elementPresent('div.hypothesis-edit-header-close-wrapper', 'closes market size').pause(model.pause + 500)
+        .verify.elementPresent('div.hypothesis-edit-header-close-wrapper', 'closes market size, complete, cancel, complete').pause(model.pause + 500)
         .click('div.hypothesis-edit-header-close-wrapper')
         
         .useXpath()

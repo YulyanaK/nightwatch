@@ -33,7 +33,7 @@ module.exports = {
         .click("//div[@class='hamburger-holder close ']").pause(model.pause + 2000)
         .click("//div[@class='side-nav-subSection-title' and text()=' San Francisco de asis in the bay area and golden gate']").pause(model.pause + 2000)
         .click("//div[@class='nav-new-card-btn-plus lpc-material-plus ']").pause(model.pause + 2000)
-        .click("//div[@class='nav-new-card-type-title hypothesis' and text()='Assumption']")
+        .click("(//div[@class='nav-new-card-type-title hypothesis opened'])[1]")
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)
         .pause(model.pause + 2000)
         .click("//textarea[@class='content-field-textarea']")

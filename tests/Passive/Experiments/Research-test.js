@@ -100,7 +100,7 @@ module.exports = {
         .useCss()
         .verify.elementPresent('div.reusable-circle-button', 'selects 1st assumption').pause(model.pause + 1500) 
         .click('div.reusable-circle-button ')
-        .pause(model.pause + 3000) 
+        .pause(model.pause + 1500) 
 
         .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'selects 2nd assumption').pause(model.pause + 1500) 
         .click('div.connect-card-card-container:nth-of-type(3)')
@@ -138,11 +138,11 @@ module.exports = {
         .click('div.connect-more-info')
 
         // connecting evidences
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(2)', 'connected 2nd evidence').pause(model.pause + 1500)
+        .verify.elementPresent('div.connect-card-card-container:nth-of-type(2)', 'connected 3rd evidence').pause(model.pause + 1500)
         .click('div.connect-card-card-container:nth-of-type(2)')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'connected 3rd evidence').pause(model.pause + 1500)
+        .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'connected 4th evidence').pause(model.pause + 1500)
         .click('div.connect-card-card-container:nth-of-type(3)')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(4)', 'connected 3rd evidence').pause(model.pause + 1500)
+        .verify.elementPresent('div.connect-card-card-container:nth-of-type(4)', 'connected 5th evidence').pause(model.pause + 1500)
         .click('div.connect-card-card-container:nth-of-type(4)')
         .verify.elementPresent('div.connect-cards-close-icon', 'close-icon').pause(model.pause + 1500)
         .click('div.connect-cards-close-icon')
@@ -174,7 +174,7 @@ module.exports = {
   'Run Analysis step 1': function(browser) {
      browser
         .useCss()
-        .verify.elementPresent('div.takeover-navigation-button-container.clearfix.next', 'start analysis').pause(model.pause + 500)
+        .verify.elementPresent('div.takeover-navigation-button-container.clearfix.next', 'start analysis, object met, unmet, inconclusive').pause(model.pause + 500)
         .click('div.takeover-navigation-button-container.clearfix.next')
 
         // Validate
@@ -193,7 +193,7 @@ module.exports = {
      browser
         .useXpath()
         //set value for first text area
-        .verify.elementPresent("(//div[@class='experiment-results-success-question-title'])", 'key learnings') .pause(model.pause + 500)
+        .verify.elementPresent("(//div[@class='experiment-results-success-question-title'])", 'result of the research') .pause(model.pause + 500)
         .click("//*[contains(text(), 'RESULTS OF THE RESEARCH')]")
         .pause(model.pause + 500)
         .keys('The test to be tested with name and number periodically')
