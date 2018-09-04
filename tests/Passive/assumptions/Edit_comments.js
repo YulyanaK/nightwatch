@@ -42,7 +42,7 @@ module.exports = {
         .setValue("//textarea[@class='content-field-textarea']", 'Editing Assumption Title').pause(model.pause + 500)
         .click("//div[text()='SUMMARY']").pause(model.pause + 1500)
         .click("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[5]").pause(model.pause + 500)
-        .setValue("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[5]", 'summary').pause(model.pause + 2000)
+        .clearValue("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[5]").pause(model.pause + 2000)
         //.setValue("//div[@class='hypothesis-summary']//div[@class='text-editor-container    hypothesis']", "Edited Summary").pause(model.pause + 2000)
         
     },  
