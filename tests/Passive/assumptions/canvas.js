@@ -47,8 +47,9 @@ module.exports = {
         .getText("(//div[@class='priority-card-summary '])[1]", function(result) { 
         this.verify.equal(result.value, "Automation Tests Assumption")
       })
-        .click("(//div[@class='priority-card-summary '])[1]")
+        .click("(//div[@class='priority-card-summary '])[1]").pause(model.pause + 2500)
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)//Assumption card takeover displayed
+        .moveToElement("(//div[@class='dropdown-menu-icon clickable '])[5]", 10, 10)
         .click("(//div[@class='dropdown-menu-icon clickable '])[5]").pause(model.pause + 500)
         .click("//div[text()='Delete Assumption']")
         .waitForElementPresent("//div[@class='confirmation-button no-cancel red undefined' and text()='Delete Assumption']", 6000)
