@@ -79,6 +79,7 @@ module.exports = {
         .verify.elementPresent("//div[@class='connections-card-evidence-title' and text()='Any name']")
         .click("//div[@class='connections-card-evidence-title' and text()='Any name']")
         .pause(model.pause + 3000)
+        .moveToElement("(//div[@class='dropdown-menu-icon clickable '])[5]", 10, 10)
         .click("(//div[@class='dropdown-menu-icon clickable '])[5]").pause(model.pause + 500)
         .click("//div[text()='Delete Evidence • Interview']").pause(model.pause + 500)
         .click("(//div[text()='Delete Evidence • Interview'])[2]").pause(model.pause + 500)

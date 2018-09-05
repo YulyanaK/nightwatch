@@ -102,7 +102,7 @@ module.exports = {
   'Comments can be deleted if user is owner' : function(browser){ 
     browser
       .useXpath()
-      .moveToElement("//span[@data-text='true']", 10, 10) 
+      .moveToElement("//span[@data-text='true']", 10, 10).pause(model.pause + 500)
       
 
       .click("//div[@class='delete-comment-icon lpc-close-cancel-mini-icon-gray']")
