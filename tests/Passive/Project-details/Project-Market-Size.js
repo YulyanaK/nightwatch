@@ -38,7 +38,8 @@ module.exports = {
 
   'Project market size': function(browser) {
       browser
-                .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 2000)
+        .waitForElementPresent('div.side-nav-subSection-title', 6000, 'selects a project')
+        .pause(model.pause + 2000)
         .click('div.side-nav-subSection-title')
         
        /* .element('css', 'div.checklist-x-icon', function(visible) {
