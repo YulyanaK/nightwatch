@@ -129,7 +129,8 @@ module.exports = {
         // clicks over icons messages
         .verify.elementPresent('div.content-field-edit-icon', 'tooltip message').pause(model.pause + 1500) 
         .click('div.content-field-edit-icon')
-        .verify.elementPresent('div.tooltip-close-container.clearfix', 'close tooltip').pause(model.pause + 1500) 
+        .verify.elementPresent('div.tooltip-close-container.clearfix', 'close tooltip').pause(model.pause + 2500) 
+        .moveToElement('div.tooltip-close-container.clearfix', 10, 10)
         .click('div.tooltip-close-container.clearfix')
         .verify.elementPresent('div.content-field-edit-icon', 'tooltip message').pause(model.pause + 1500) 
         .click('div.content-field-edit-icon')
@@ -177,7 +178,7 @@ module.exports = {
         .click("(//div[@class='criteria-selection-icon-x'])[2]")
         .pause(model.pause + 500)
         .click("(//div[@class='criteria-selection-icon-checkmark'])[3]")
-        .pause(model.pause + 500)
+        .pause(model.pause + 1500)
         .click("(//div[@class='criteria-selection-icon-x'])[4]")
         .pause(model.pause + 500)
         .click("(//div[@class='criteria-selection-icon-x'])")
