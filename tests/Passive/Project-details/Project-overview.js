@@ -65,10 +65,10 @@ module.exports = {
       
       browser
         .verify.elementPresent('div.workspace-overview-btn', 'opens overview').pause(model.pause + 500)
-        .click('div.workspace-overview-btn')
-        .pause(model.pause + 1500)
-
         .useXpath()
+        .click("//div[@class='workspace-overview-btn ']")
+        .pause(model.pause + 2500)
+
         .verify.elementPresent("(//div[@class='details-content'])", 'project description').pause(model.pause + 500)
         .click("(//div[@class='details-content'])")
         .clearValue("(//textarea[@class='content-field-text'])")

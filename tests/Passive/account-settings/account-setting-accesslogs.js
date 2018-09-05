@@ -43,11 +43,11 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'ykarpava+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
-        .setValue('input[type=password]', 'Testtest1!')
+        .setValue('input[type=password]', 'Brooklyn1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
@@ -56,9 +56,9 @@ module.exports = {
   'Verify the organizations for profile notifications' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[text()='Ruwanda']", 4000)
+        .waitForElementPresent("//div[text()='Ruwanda_QA']", 4000)
         //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
-        .click("//div[text()='Ruwanda']")
+        .click("//div[text()='Ruwanda_QA']")
         .pause(model.pause + 6000)
         .verify.elementPresent("(//div[text()='DO'])[1]", 'profile image container is present').pause(model.pause + 500)
         .click("(//div[text()='DO'])[1]")

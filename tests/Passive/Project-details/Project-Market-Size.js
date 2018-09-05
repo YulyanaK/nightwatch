@@ -64,12 +64,12 @@ module.exports = {
       
       browser
         .verify.elementPresent('div.workspace-overview-btn', 'opens overview').pause(model.pause + 500)
-        .click('div.workspace-overview-btn')
-        .pause(model.pause + 1500)
-
         .useXpath()
-        .pause(model.pause + 1500)
+        .click("//div[@class='workspace-overview-btn ']")
+        
+        .pause(model.pause + 2500)
         .click("(//div[text()='MARKET SIZE'])")
+        .pause(model.pause + 2500)
 
         .useCss()
         .verify.elementPresent('div.market-size-currency-input', 'set market').pause(model.pause + 1500)
