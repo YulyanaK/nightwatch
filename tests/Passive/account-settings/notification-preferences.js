@@ -78,8 +78,8 @@ module.exports = {
       browser
         .waitForElementPresent('div.org-dashboard-card-container', 6000)
         .useXpath()
-        .moveToElement("//div[text()='Ruwanda']", 10, 10)
-        .click("//div[text()='Ruwanda']")
+        .moveToElement("//div[text()='Ruwanda_QA']", 10, 10)
+        .click("//div[text()='Ruwanda_QA']")
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
@@ -96,7 +96,7 @@ module.exports = {
         
         .verify.elementPresent("//div[@class='project-notifications-toggle-circle on']", 'verifies for toggle circle').pause(model.pause + 1500)
         .click("//div[@class='project-notifications-toggle-circle on']")
-        .pause(model.pause + 3500)
+        .pause(model.pause + 1500)
         .verify.elementPresent("//div[@class='blur-out-holder']", 'on blur out').pause(model.pause + 1500)
         .verify.elementPresent("//div[@class='project-notifications-toggle-circle off']", 'turn off toggle').pause(model.pause + 1500)
         .click("//div[@class='project-notifications-toggle-circle off']")

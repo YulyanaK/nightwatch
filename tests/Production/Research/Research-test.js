@@ -128,13 +128,11 @@ module.exports = {
 
   'Run an experiment connect an evidence': function(browser) {
      browser
-        .verify.elementPresent('div.reusable-circle-button', 'opens first connecton box').pause(model.pause + 1500)
+        .verify.elementPresent('div.reusable-circle-button', 'clicks on circle btn').pause(model.pause + 2000)
         .click('div.reusable-circle-button')
-        .waitForElementPresent('div.connect-card-card-container', 3000)
-        .click('div.connect-card-card-container')
-        .pause(model.pause + 500)
+        .pause(model.pause + 1000)
         .click('div.connect-more-info')
-        .pause(model.pause + 500)
+        .pause(model.pause + 900)
         .click('div.connect-more-info')
 
         // connecting evidences

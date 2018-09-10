@@ -11,16 +11,16 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-         // .resizeWindow(1024, 768).pause(model.pause + 500)
+          // .resizeWindow(1024, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
+        .setValue('input[type=text]', 'ykarpava+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
-        .setValue('input[type=password]', 'Testtest1!')
+        .setValue('input[type=password]', 'Brooklyn1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
@@ -129,8 +129,7 @@ module.exports = {
         // clicks over icons messages
         .verify.elementPresent('div.content-field-edit-icon', 'tooltip message').pause(model.pause + 1500) 
         .click('div.content-field-edit-icon')
-        .verify.elementPresent('div.tooltip-close-container.clearfix', 'close tooltip').pause(model.pause + 2500) 
-        .moveToElement('div.tooltip-close-container.clearfix', 10, 10)
+        .verify.elementPresent('div.tooltip-close-container.clearfix', 'close tooltip').pause(model.pause + 1500) 
         .click('div.tooltip-close-container.clearfix')
         .verify.elementPresent('div.content-field-edit-icon', 'tooltip message').pause(model.pause + 1500) 
         .click('div.content-field-edit-icon')
@@ -148,14 +147,13 @@ module.exports = {
 
   'Run an experiment connect an evidence': function(browser) {
      browser
-        .verify.elementPresent('div.reusable-circle-button', 'connect an evidence').pause(model.pause + 1500)
+        .verify.elementPresent('div.reusable-circle-button', 'clicks on circle btn').pause(model.pause + 1000)
         .click('div.reusable-circle-button')
-        .waitForElementPresent('div.connect-card-card-container', 3000)
-        .click('div.connect-card-card-container')
-        .pause(model.pause + 500)
+        .pause(model.pause + 900)
         .click('div.connect-more-info')
-        .pause(model.pause + 500)
+        .pause(model.pause + 900)
         .click('div.connect-more-info')
+
 
         // connecting evidence
         .verify.elementPresent('div.connect-card-card-container', 'connected 1st evidence').pause(model.pause + 1500)
@@ -178,7 +176,7 @@ module.exports = {
         .click("(//div[@class='criteria-selection-icon-x'])[2]")
         .pause(model.pause + 500)
         .click("(//div[@class='criteria-selection-icon-checkmark'])[3]")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 500)
         .click("(//div[@class='criteria-selection-icon-x'])[4]")
         .pause(model.pause + 500)
         .click("(//div[@class='criteria-selection-icon-x'])")
