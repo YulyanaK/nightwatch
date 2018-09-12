@@ -115,15 +115,15 @@ module.exports = {
         .click("(//div[@class='hover position-relative float-right success-circle-button'])[2]")
         
         .useCss()
-        .verify.elementPresent('div.connect-card-card-container', 'selects 1st assumption').pause(model.pause + 1500) 
+        .waitForElementPresent('div.connect-card-card-container', 6000, 'selects 1st assumption').pause(model.pause + 1500) 
         .click('div.connect-card-card-container')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'selects 2nd assumption').pause(model.pause + 1500) 
+        .waitForElementPresent('div.connect-card-card-container:nth-of-type(3)', 6000, 'selects 2nd assumption').pause(model.pause + 1500) 
         .click('div.connect-card-card-container:nth-of-type(3)')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(4)', 'selects 3rd assumption').pause(model.pause + 1500) 
+        .waitForElementPresent('div.connect-card-card-container:nth-of-type(4)', 6000, 'selects 3rd assumption').pause(model.pause + 1500) 
         .click('div.connect-card-card-container:nth-of-type(4)')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(5)', 'selects 4th assumption').pause(model.pause + 1500) 
+        .waitForElementPresent('div.connect-card-card-container:nth-of-type(5)', 6000, 'selects 4th assumption').pause(model.pause + 1500) 
         .click('div.connect-card-card-container:nth-of-type(5)')
-        .verify.elementPresent('div.connect-cards-close-icon', 'close selected assumptions').pause(model.pause + 1500) 
+        .waitForElementPresent('div.connect-cards-close-icon', 6000, 'close selected assumptions').pause(model.pause + 1500) 
         .click('div.connect-cards-close-icon')
         
         // clicks over icons messages
@@ -156,17 +156,17 @@ module.exports = {
 
 
         // connecting evidence
-        .verify.elementPresent('div.connect-card-card-container', 'connected 1st evidence').pause(model.pause + 1500)
+        .waitForElementPresent('div.connect-card-card-container', 6000, 'connected 1st evidence').pause(model.pause + 1500)
         .click('div.connect-card-card-container')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(2)', 'connected 2nd evidence').pause(model.pause + 1500)
+        .waitForElementPresent('div.connect-card-card-container:nth-of-type(2)', 6000, 'connected 2nd evidence').pause(model.pause + 1500)
         .click('div.connect-card-card-container:nth-of-type(2)')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'connected 3rd evidence').pause(model.pause + 1500)
+        .waitForElementPresent('div.connect-card-card-container:nth-of-type(3)', 6000, 'connected 3rd evidence').pause(model.pause + 1500)
         .click('div.connect-card-card-container:nth-of-type(3)')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(4)', 'connected 3rd evidence').pause(model.pause + 1500)
+        .waitForElementPresent('div.connect-card-card-container:nth-of-type(4)', 6000, 'connected 3rd evidence').pause(model.pause + 1500)
         .click('div.connect-card-card-container:nth-of-type(4)')
-        .verify.elementPresent('div.connect-cards-close-icon', 'close-icon').pause(model.pause + 1500)
+        .waitForElementPresent('div.connect-cards-close-icon', 4000, 'close-icon').pause(model.pause + 1500)
         .click('div.connect-cards-close-icon')
-        .verify.elementPresent('div.criteria-selection-icon-checkmark', 'check mark select criteria').pause(model.pause + 1500)
+        .waitForElementPresent('div.criteria-selection-icon-checkmark', 6000, 'check mark select criteria').pause(model.pause + 1500)
         .click('div.criteria-selection-icon-checkmark')
 
         //select checkmark

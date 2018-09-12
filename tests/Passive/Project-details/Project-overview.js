@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-       //.resizeWindow(1366, 768).pause(model.pause + 500)
+       .resizeWindow(1566, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -64,10 +64,12 @@ module.exports = {
 
       
       browser
-        .verify.elementPresent('div.workspace-overview-btn', 'opens overview').pause(model.pause + 500)
         .useXpath()
-        .click("//div[@class='workspace-overview-btn ']")
-        .pause(model.pause + 2500)
+        .waitForElementPresent("//div[@class='workspace-overview-btn ']", 6000, 'opens overview')
+        .moveToElement("//div[@class='workspace-overview-title']", 10, 10).pause(model.pause + 1500)
+        .click("//div[@class='workspace-overview-title']")
+       
+        .pause(model.pause + 4500)
 
         .verify.elementPresent("(//div[@class='details-content'])", 'project description').pause(model.pause + 500)
         .click("(//div[@class='details-content'])")

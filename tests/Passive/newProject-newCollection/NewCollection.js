@@ -23,13 +23,13 @@ var ObjectId = require('mongodb')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
-        .waitForElementPresent('div.org-container', 4000).pause(model.pause + 500)
+        .waitForElementPresent('div.org-container', 6000).pause(model.pause + 500)
   },
 
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 4000).pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 6000).pause(model.pause + 500)
         .click("(//div[@class='org-dashboard-card-container'])[5]")
 
         .useCss()
@@ -72,7 +72,7 @@ var ObjectId = require('mongodb')
 
   'Adding a project to a collection' : function(browser){
       browser
-        .waitForElementPresent('div > input.collection-settings-add-project-input', 6000)
+        .waitForElementPresent('div > input.collection-settings-add-project-input', 8000)
         .click('input.collection-settings-add-project-input')
         .pause(model.pause + 1000)
         .verify.elementPresent('div.collection-settings-option-data-test', 'checking a collection').pause(model.pause + 500)
