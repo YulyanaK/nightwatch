@@ -21,8 +21,14 @@ module.exports = {
         .setValue('input[type=password]', 'Testtest1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
-        .click('div.login-button')
+        .useXpath()
+        .moveToElement("//div[@class='login-button']", 10, 10)
+        .mouseButtonClick(0)
+        //.click("//div[@class='login-button']")
+        
+        .useCss()
         .waitForElementPresent('div.org-container', 4000).pause(model.pause + 500)
+        
   },
 
   'Verify a project and org' : function(browser) {
@@ -40,7 +46,9 @@ module.exports = {
   'Project overview': function(browser) {
       browser
         .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 2000)
-        .click('div.side-nav-subSection-title')
+        .moveToElement('div.side-nav-subSection-title', 10, 10)
+        .mouseButtonClick(0)
+
 
        /* .element('css', 'div.checklist-x-icon', function(visible) {
         if(visible.status !== -1){
@@ -81,7 +89,7 @@ module.exports = {
         .click("(//div[@class='details-content'])[2]")
         .clearValue("(//textarea[@class='content-field-text'])[2]")
         .pause(model.pause + 1500)
-        .setValue("(//textarea[@class='content-field-text'])[2]", 'Water. It is increasingly difficult to supply regular and equitable clean and affordable water to all inhabitants of the city and surrounding areas. Many people in the city are living with an amount of water that does not allow meet their basic needs.')
+        .setValue("(//textarea[@class='content-field-text'])[2]", 'Water.')
 
         .verify.elementPresent("(//div[@class='details-content'])[3]", 'solution statement').pause(model.pause + 500)
         .click("(//div[@class='details-content'])[3]")
@@ -111,15 +119,19 @@ module.exports = {
         .pause(model.pause + 1500)
         .setValue("(//input[@class='new-content-field-title'])", 'Public Safety')
         .pause(model.pause + 500)
-        .verify.elementPresent("(//div[@class='new-content-field-save position-absolute enabled'])", 'enter new text').pause(model.pause + 500)
+        .verify.elementPresent("(//div[@class='new-content-field-save position-absolute enabled'])", 'enter new text').pause(model.pause + 2500)
         .click("(//div[@class='new-content-field-save position-absolute enabled'])")
-        .pause(model.pause + 500)
+        .pause(model.pause + 2500)
         .click("(//div[@class='reusable-content-field projectDetails'])[5]")
         .setValue("(//textarea[@class='content-field-text'])[5]", 'new card for safety')
-        .pause(model.pause + 500)
-        .click("(//div[@class='content-field-delete-holder'])")
-        .pause(model.pause + 500)
+        .pause(model.pause + 2500)
+        .moveToElement("(//div[@class='takeover-title-container'])[6]", 10, 10)
+        .click("//*[@class='content-field-edit-icon']").pause(model.pause + 1500)
+        .click("//div[@class='content-field-delete-holder']").pause(model.pause + 1500)
+        //.click("(//div[@class='content-field-delete-holder'])")
+        //.pause(model.pause + 500)
         .click("//*[contains(text(), 'DELETE')]")
+        
 
         //dropdowns
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])", 'drop down time frame').pause(model.pause + 1500)
@@ -138,6 +150,7 @@ module.exports = {
         .pause(model.pause + 900)
         .click("(//div[@class='project-dashboard-dropdown-container'])[2]")
         .pause(model.pause + 900)
+        .moveToElement("//*[contains(text(), 'Solution Validation')]", 10, 10)
         .click("//*[contains(text(), 'Solution Validation')]")
 
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]", 'stage').pause(model.pause + 1500)
@@ -165,6 +178,7 @@ module.exports = {
         .pause(model.pause + 900)
         .click("(//div[@class='project-dashboard-dropdown-container'])[5]")
         .pause(model.pause + 900)
+        .moveToElement("//*[contains(text(), 'New technology')]", 10, 10)
         .click("//*[contains(text(), 'New technology')]")
 
         //add comments
@@ -191,7 +205,9 @@ module.exports = {
         .pause(model.pause + 500)
         .setValue("(//input[@class='project-label-input focused'])", 'label')
         .pause(model.pause + 1000)
-        .keys('\uE006')
+        //.keys('apple\n').pause(model.pause + 1000)
+        .keys(browser.Keys.RETURN)
+        //.keys('\uE006')
         .pause(model.pause + 1000)
 
         .verify.elementPresent("(//div[@class='project-labels-add float-right'])", 'creates second label').pause(model.pause + 1500)
@@ -199,15 +215,17 @@ module.exports = {
         .pause(model.pause + 1500)
         .setValue("(//input[@class='project-label-input focused'])", 'two labels')
         .pause(model.pause + 2000)
-        .keys('\uE006')
+        .keys(browser.Keys.ENTER)
+        //.keys('\uE006')
         .pause(model.pause + 1000)
 
         // .click("(//div[@class='project-labels-add float-right'])")
         .pause(model.pause + 1500)
         .setValue("(//input[@class='project-label-input focused'])", 'three labels')
         .pause(model.pause + 2000)
-        .keys('\uE006')
-        .pause(model.pause + 1000)
+        .keys(browser.Keys.ENTER)
+        //.keys('\uE006')
+        /*.pause(model.pause + 1000)
 
         .moveToElement("(//div[@class='label-hover-container'])", 10, 10)
         .click("(//div[@class='lpc-close-cancel-mini-icon-white dashboard-label-delete'])")
@@ -219,7 +237,7 @@ module.exports = {
 
         .click("(//div[@class='label-hover-container'])")
         .click("(//div[@class='lpc-close-cancel-mini-icon-white dashboard-label-delete'])")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 1500)*/
         .end();
     },
 }
