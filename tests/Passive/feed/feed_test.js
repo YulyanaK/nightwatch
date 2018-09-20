@@ -46,7 +46,7 @@ module.exports = {
         .useCss()
         .waitForElementPresent('div.activity-card-container', 1000)
         .verify.elementPresent('div.activity-card-container', 'VP1 name of card').pause(model.pause + 500)
-        .verify.elementPresent('div.activity-feed.comment-editor', ' verify input element').pause(model.pause + 500)
+        .verify.elementPresent('div.activity-feed.comment-editor', ' verify input element').pause(model.pause + 1500)
         .click('div.DraftEditor-root')
         .setValue('div.public-DraftEditor-content', ['I am a comment for all the nice and humbled people in this planet earth, are we alone??', browser.Keys.ENTER])
   },
