@@ -60,7 +60,7 @@ module.exports = {
         //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
         .click("//div[text()='Ruwanda_QA']")
         .pause(model.pause + 6000)
-        .waitForElementPresent("(//div[text()='DO'])[1]", 'profile image container is present', 6000)
+        .waitForElementPresent("(//div[text()='DO'])[1]", 6000)
         .click("(//div[text()='DO'])[1]")
         .verify.elementPresent("//div[text()='Profile & Account Settings']", 'Profile & Account settings').pause(model.pause + 1000)
         .click("//div[text()='Profile & Account Settings']")
