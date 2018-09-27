@@ -23,7 +23,7 @@ module.exports = {
         .pause(model.pause + 5000)
     },
 
-  'Verify user is able to create and delete Assumption' : function(browser) {
+  'Verify user is able to create Assumption' : function(browser) {
       browser
         .useXpath()
         .waitForElementPresent("//div[text()='DataIntegrity_QA']", 4000)
@@ -48,12 +48,21 @@ module.exports = {
         .click("//div[@class='nav-new-card-type-title hypothesis opened' and text()='assumption']")
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)
         .pause(model.pause + 2000)
+        .waitForElementPresent("//textarea[@class='content-field-textarea']", 5000)
+        .moveToElement("//textarea[@class='content-field-textarea']", 10, 10)
         .click("//textarea[@class='content-field-textarea']")
         .setValue("//textarea[@class='content-field-textarea']", 'Data Integrity Tests Assumption').pause(model.pause + 2000)
         .click("//div[@class='details-title no-content' and text()='SUMMARY']")
         .keys('Summary for data integrity Assumption').pause(model.pause + 2000)
-        .click("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='PUBLISH']")
+        //.click("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='PUBLISH']")
+
         .click("(//div[@class='card-full-nav-x'])[3]")
+        .pause(model.pause + 2000)
+        .waitForElementPresent("//div[@class='confirmation-button yes-delete undefined' and text()='Publish']", 6000)
+        .click("//div[@class='confirmation-button yes-delete undefined' and text()='Publish']")
+        .pause(model.pause + 6000)
+        //.moveToElement("(//div[@class='card-full-nav-x'])[3]", 10, 10)
+        //.click("(//div[@class='card-full-nav-x'])[3]")
         .waitForElementPresent("//div[@class='nav-center-container   ']//div//a/div", 6000)
         .click("//div[@class='nav-center-container   ']//div//a/div")
         //returns to Worspace
@@ -62,6 +71,11 @@ module.exports = {
         this.verify.equal(result.value, "Data Integrity Tests Assumption")
       })
         .waitForElementPresent("//div[@class='nav-new-card-btn-plus lpc-material-plus roll-out']", 6000)
+
+    },
+
+    'Verify user is able to create Evidence Interview and Other' : function(browser) {
+      browser
         .moveToElement("//div[@class='nav-new-card-btn-plus lpc-material-plus roll-out']", 10, 10).pause(model.pause + 2000)
         .click("//div[@class='nav-new-card-btn-plus lpc-material-plus roll-out']").pause(model.pause + 500)
         .click("//div[@class='nav-new-card-type-title hypothesis opened' and text()='evidence']")
@@ -98,6 +112,8 @@ module.exports = {
         .click("//div[@class='details-title no-content' and text()='NOTES']")
         .keys('Notes: Some notes to test Data Being Stored and displayed back correctly')
         .pause(model.pause + 1000)
+        .waitForElementPresent("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='PUBLISH']", 4000)
+        .moveToElement("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='PUBLISH']", 10, 10)
         .click("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='PUBLISH']")//publishing Evidence
         .pause(model.pause + 4000)
         .click("(//div[@class='card-full-nav-x'])[3]")
@@ -123,6 +139,11 @@ module.exports = {
         .pause(model.pause + 4000)
         .click("(//div[@class='card-full-nav-x'])[3]")
         .waitForElementPresent("(//div[@class='nav-center-container   ']//div//a/div)[2]", 6000)
+    },
+
+
+    'Verify all Assumption & Evidence fields displayed if opened from Activity Feed' : function(browser) {
+      browser
         .click("(//div[@class='nav-center-container   ']//div//a/div)[2]")//entering Activity Feed
         .waitForElementPresent("//div[@class='filter-type-content']", 5000)
         .pause(model.pause + 2000)
@@ -130,6 +151,9 @@ module.exports = {
         .pause(model.pause + 7000)
         .getText("//div[@class='activity-card-body-title']", function(result) {
         this.verify.equal(result.value, "Data Integrity Tests Assumption")
+      })
+        .getText("(//div[@class='text-container ']/div)[1]", function(result) {
+        this.verify.equal(result.value, "Summary for data integrity Assumption")
       })
         .click("//div[@class='activity-card-body-title']")
         .waitForElementPresent("//textarea[@class='content-field-textarea']", 4000)
@@ -142,6 +166,12 @@ module.exports = {
         .pause(model.pause + 2000)
         .click("//div[@class='filter-type-content' and text()='Evidence']")
         .pause(model.pause + 5000)
+        .getText("//div[@class='activity-card-body-title']", function(result) {
+        this.verify.equal(result.value, "Evidence Other Title For Data Integrity QA")
+      })
+        .getText("(//div[@class='text-container ']/div)[1]", function(result) {
+        this.verify.equal(result.value, "New Summary Enter To check how it is stored and displayed")
+      })
         .click("//div[@class='activity-card-body-title']")
         .waitForElementPresent("//textarea[@class='content-field-textarea']", 6000)
         .getText("//textarea[@class='content-field-textarea']", function(result) {
@@ -170,17 +200,20 @@ module.exports = {
         .waitForElementPresent("(//div[@class='nav-center-container   ']//div//a/div)[1]", 6000)
         .moveToElement("(//div[@class='nav-center-container   ']//div//a/div)[1]", 10, 10)
         .click("(//div[@class='nav-center-container   ']//div//a/div)[1]")
+        .click("(//div[@class='nav-center-container   ']//div//a/div)[1]")
+
 
     
         .useCss()
         .waitForElementPresent('div.workspace-takeover-btn', 6000)
+        .moveToElement('div.workspace-takeover-btn', 10, 10)
         .click('div.workspace-takeover-btn')
         .verify.elementPresent('div.lpc-exploration', 'selects a research').pause(model.pause + 1500)
         .click('div.lpc-exploration')
 
     },
 
-  'Verify user is able to edit Assumption and select Canvas Section': function(browser) {
+  'Verify Assumption Fields content displayed if opened from Research': function(browser) {
       browser
         //.url(model.url + '')
         .waitForElementPresent('div.interview-datepicker-holder', 6000)
@@ -245,44 +278,12 @@ module.exports = {
         
                
         .pause(model.pause + 6000)
+        .moveToElement("(//span[@class='takeover-navigation-button-title float-left' and text()='RUN RESEARCH'])[2]", 10, 10)
         .click("(//span[@class='takeover-navigation-button-title float-left' and text()='RUN RESEARCH'])[2]")
         .pause(model.pause + 6000)
         .moveToElement("(//div[@class='card-full-nav-x'])[3]", 10, 10)
         .click("(//div[@class='card-full-nav-x'])[3]")
-        .waitForElementPresent("(//div[@class='experiment-card-title'])[1]", 6000)
-        .moveToElement("(//div[@class='experiment-card-title'])[1]", 10, 10)
-        .click("(//div[@class='experiment-card-title'])[1]")
-        .pause(model.pause + 2000)
-        .useCss()
-        .verify.elementPresent('div.reusable-circle-button', 'clicks on circle btn').pause(model.pause + 2000)
-        .click('div.reusable-circle-button')
-        .pause(model.pause + 900)
-        .click('div.connect-more-info')
-        .pause(model.pause + 900)
-        .click('div.connect-more-info')
-
-        // connecting evidences
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(2)', 'connected 3rd evidence').pause(model.pause + 1500)
-        .click('div.connect-card-card-container:nth-of-type(2)')
-        
-        .verify.elementPresent('div.connect-cards-close-icon', 'close-icon').pause(model.pause + 1500)
-        .click('div.connect-cards-close-icon')
-        .waitForElementPresent("//div[@class='text-container ']/div", 6000)
-        .click("//div[@class='text-container ']/div")
-        .waitForElementPresent("(//textarea[@class='content-field-textarea'])[2]", 6000)
-        .getText("(//textarea[@class='content-field-textarea'])[2]", function(result) {
-        this.verify.equal(result.value, "Evidence Other Title For Data Integrity QA")
-      })
-        .waitForElementPresent("(//span[@data-text='true'])[2]", 6000)
-        .getText("(//span[@data-text='true'])[2]", function(result) {
-        this.verify.equal(result.value, "New Summary Enter To check how it is stored and displayed")
-      })
-        .click("(//div[@class='card-full-last-card-btn lpc-back-arrow-button-white'])[3]")
-        .waitForElementPresent("(//div[@class='card-full-nav-x'])[3]", 6000)
-        .moveToElement("(//div[@class='card-full-nav-x'])[3]", 10, 10)
-        .click("(//div[@class='card-full-nav-x'])[3]")
         .end()
-
 
   },
 }

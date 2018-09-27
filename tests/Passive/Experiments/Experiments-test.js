@@ -151,8 +151,8 @@ module.exports = {
         .click('div.reusable-circle-button')
         //.pause(model.pause + 900)
         //.click('div.connect-more-info')
-        .pause(model.pause + 900)
-        .click('div.connect-more-info')
+        //.pause(model.pause + 900)
+        //.click('div.connect-more-info')
 
 
         // connecting evidence
