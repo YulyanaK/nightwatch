@@ -149,10 +149,10 @@ module.exports = {
      browser
         .verify.elementPresent('div.reusable-circle-button', 'clicks on circle btn').pause(model.pause + 1000)
         .click('div.reusable-circle-button')
-        //.pause(model.pause + 900)
-        //.click('div.connect-more-info')
-        //.pause(model.pause + 900)
-        //.click('div.connect-more-info')
+        .pause(model.pause + 900)
+        .click('div.connect-more-info')
+        .pause(model.pause + 900)
+        .click('div.connect-more-info')
 
 
         // connecting evidence

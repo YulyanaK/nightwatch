@@ -71,6 +71,23 @@ module.exports = {
         .verify.elementPresent('div[data-test="Drafts"]', 'filter section drafts is selected').pause(model.pause + 1500)
         .click('div[data-test="Drafts"]')
         .verify.elementPresent('div.selected-true:nth-child(1)', 'Drafts has been selected and it is true').pause(model.pause + 1500)
+    },
+
+
+  'verify show more link' : function (browser) {
+    browser
+       .verify.elementPresent('div[data-test="Unread"]', 'filter section inbox is selected').pause(model.pause + 500)
+       .click('div[data-test="Unread"]')
+       .verify.elementPresent('div.inbox-show-more', 'click show more 20 times').pause(model.pause + 500)
+       .click('div.inbox-show-more')
+
+        .elements('css selector', 'div.inbox-show-more', function (result) {
+            for (var i = 1; i < 21; i++) {
+           var element = result.value[i];
+    browser
+        .click('div.inbox-show-more').pause(model.pause + 1500);
+          }
+        })
         .end();
   }
 }

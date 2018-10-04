@@ -82,7 +82,7 @@ module.exports = {
         .verify.elementPresent('textarea.multi-invite-textarea', 'entering list of new invitees').pause(model.pause + 800)
         .click('textarea.multi-invite-textarea')
         .pause(model.pause + 800)
-        .setValue('textarea.multi-invite-textarea', 'cacomixtle19@gmail.com, cacomixtle@icloud.com, karenubence@comcast.net, ortizcdavid@gmail.com')
+        .setValue('textarea.multi-invite-textarea', 'ykarpava@glidr.io, dortiz@glidr.io, karenubence@comcast.net, ortiz.german@comcast.net')
         .pause(model.pause + 800)
         .verify.elementPresent('button.add-invite-button', 'adding invitess to list')
         .click('button.add-invite-button')

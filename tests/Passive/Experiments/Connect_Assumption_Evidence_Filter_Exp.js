@@ -115,7 +115,7 @@ module.exports = {
         .click("(//div[@class='hover position-relative float-right success-circle-button'])[2]")
         
         .useCss()
-        .verify.elementPresent('div.connect-card-card-container', 'selects 1st assumption').pause(model.pause + 1500) 
+        .verify.elementPresent('div.connect-card-card-container', 'selects 1st assumption').pause(model.pause + 2000) 
         .click('div.connect-card-card-container')
         .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'selects 2nd assumption').pause(model.pause + 1500) 
         .click('div.connect-card-card-container:nth-of-type(3)')

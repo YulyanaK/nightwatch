@@ -48,8 +48,6 @@ module.exports = {
     },  
 'Comments can be added' : function(browser){
     browser
-
-      
       //.click("(//div[@data-tooltiptext='Open and close comments'])[3]")
       //.click("(//div[@data-tooltiptext='Open and close comments'])[3]")
       //.waitForElementVisible("(//div[text()='Leave a comment'])[3]", model.pause + 2000)
@@ -62,7 +60,6 @@ module.exports = {
       .click("(//div[@id='currentCard-input-container' and @class='comment-editor'])[3]").pause(model.pause + 500)
       //client.setValue("(//div[@id='currentCard-input-container' and @class='comment-editor'])[3]", 'new comment')
       //.pause(model.pause + 1000)
-
       .execute("document.getElementById('currentCard').setAttribute('focused', 'true');")
       .click("(//div[@id='currentCard-input-container' and @class='comment-editor'])[3]")
       .keys('new comment')
