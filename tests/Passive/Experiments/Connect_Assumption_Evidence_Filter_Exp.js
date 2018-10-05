@@ -64,16 +64,6 @@ module.exports = {
         .verify.elementPresent('.experiments-navigation-member-container', 'closes dropdown users').pause(model.pause + 500)
         .click('.experiments-navigation-member-container')
 
-        // enter tags
-        .verify.elementPresent('div.float-left.hover.experiments-tags-icon', 'adding tags').pause(model.pause + 1500)
-        .click('div.float-left.hover.experiments-tags-icon') 
-        .setValue('input.tag-field-label-input.focused', ['cast iron', browser.Keys.ENTER]) 
-        .pause(model.pause + 1500)
-        .setValue('input.tag-field-label-input.focused', ['The who', browser.Keys.ENTER])
-        .pause(model.pause + 1500)
-        .setValue('input.tag-field-label-input.focused', ['nine', browser.Keys.ENTER])
-        .pause(model.pause + 1500) 
-
         //adding research
         .verify.elementPresent('div.content-field-container.organization-setting-input.org-name', 'research name').pause(model.pause + 1500)
         .click('div.content-field-container.organization-setting-input.org-name')
@@ -173,8 +163,7 @@ module.exports = {
         .keys('Hãy cùng xây dựng Wiktionary! Bitwa o Knipawę – całość zmagań o kontrolę nad portową dzielnicą Królewca, wzrost związanych z nią podatków skutkował zmianą orientacji politycznej pospólstwa i prokrzyżackim powstaniem. W jego następstwie dzielnice Stare Miasto i Lipnik powróciły pod władzę zakonu krzyżackiego, a wierna Kazimierzowi IV pozostała jedynie portowa dzielnica Knipawa. Wielki mistrz Zakonu Ludwig von Erlichshausen skierował przeciwko niej siły dowodzone przez wielkiego szpitalnika Heinricha Reuss von Plauena, które niedostatecznie silne aby przeprowadzić szturm, rozpoczęły oblężenie ufortyfikowanej i położonej na rzecznej wyspie dzielnicy. Wobec otrzymania niewystarczającej pomocy ze strony kierowanego przez Johannesa von Baysen Związku Pruskiego i rozbicia przez Krzyżaków odsieczy, zmuszona została po szturmie do kapitulacji na honorowych warunkach po 14 tygodniach oblężenia. Czytaj więcej…')
         .click("(//div[@class='publish-btn'])")
         .pause(model.pause + 1500)
-
-        .click("(//span[text()='RUN EXPERIMENT'])[2]")
+        .click("(//*[contains(text(), 'RUN EXPERIMENT')])[2]")
         .pause(model.pause + 1000)
   },
 

@@ -68,11 +68,11 @@ module.exports = {
         .verify.elementPresent('div.float-left.hover.experiments-tags-icon', 'adding tags').pause(model.pause + 1500)
         .click('div.float-left.hover.experiments-tags-icon') 
         .setValue('input.tag-field-label-input.focused', ['lol', browser.Keys.ENTER]) 
-        .pause(model.pause + 1500)
+        .pause(model.pause + 2000)
         .setValue('input.tag-field-label-input.focused', ['omg', browser.Keys.ENTER])
-        .pause(model.pause + 1500)
+        .pause(model.pause + 2000)
         .setValue('input.tag-field-label-input.focused', ['np', browser.Keys.ENTER])
-        .pause(model.pause + 1500) 
+        .pause(model.pause + 2000) 
 
         //adding research
         .verify.elementPresent('div.content-field-container.organization-setting-input.org-name', 'research name').pause(model.pause + 1500)
@@ -174,7 +174,7 @@ module.exports = {
         .pause(model.pause + 500)
         .click('div.connect-more-info')
         .pause(model.pause + 500)
-        .click('div.connect-more-info')
+        //.click('div.connect-more-info')
 
         // connecting evidences
         .verify.elementPresent('div.connect-card-card-container:nth-of-type(2)', 'connected 3rd evidence').pause(model.pause + 1500)
@@ -191,6 +191,7 @@ module.exports = {
         .pause(model.pause + 900) 
         .clearValue('input.connect-cards-search-input')
         .setValue('input.connect-cards-search-input', 'an')
+    .pause()
         .pause(model.pause + 900) 
         .clearValue('input.connect-cards-search-input')
         .setValue('input.connect-cards-search-input', 'c')

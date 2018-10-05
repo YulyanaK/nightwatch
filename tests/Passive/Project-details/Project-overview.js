@@ -128,8 +128,6 @@ module.exports = {
         .moveToElement("(//div[@class='takeover-title-container'])[6]", 10, 10)
         .click("//*[@class='content-field-edit-icon']").pause(model.pause + 1500)
         .click("//div[@class='content-field-delete-holder']").pause(model.pause + 1500)
-        //.click("(//div[@class='content-field-delete-holder'])")
-        //.pause(model.pause + 500)
         .click("//*[contains(text(), 'DELETE')]")
         
 

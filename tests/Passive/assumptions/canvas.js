@@ -73,7 +73,8 @@ module.exports = {
         .click("(//div[@class='reusable-dropdown-caret'])[2]").pause(model.pause + 2000)
         .click("//div[text()='Channels']").pause(model.pause + 500)
         .click("(//span[@id='connections'])[3]").pause(model.pause + 500)//click Connections
-        .click("//div[text()='Research & Experiments']").pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='connections-tab  clickable float-left  '])[2]", 6000)
+        .click("(//div[@class='connections-tab  clickable float-left  '])[2]").pause(model.pause + 500)
         .click("//div[@class='connections-circle-button ']")
         .pause(model.pause + 3000)
         //.click("//span[text()='Connect']")//Connection Pop UP opens

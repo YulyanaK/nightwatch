@@ -157,12 +157,12 @@ module.exports = {
         .pause(model.pause + 5000)
         .useXpath()
         .click("//div[@class='text-container ']/div")
-        .waitForElementPresent("(//span[@data-text='true'])[2]", 6000)
-        .getText("(//span[@data-text='true'])[2]", function(result) {
-        this.verify.equal(result.value, "key insights data integrity")
-      })
         .waitForElementPresent("(//span[@data-text='true'])[3]", 6000)
         .getText("(//span[@data-text='true'])[3]", function(result) {
+        this.verify.equal(result.value, "key insights data integrity")
+      })
+        .waitForElementPresent("(//span[@data-text='true'])[4]", 6000)
+        .getText("(//span[@data-text='true'])[4]", function(result) {
         this.verify.equal(result.value, "Notes: Some notes to test Data Being Stored and displayed back correctly")
       })
         .click("(//div[@class='card-full-last-card-btn lpc-back-arrow-button-white'])[3]")

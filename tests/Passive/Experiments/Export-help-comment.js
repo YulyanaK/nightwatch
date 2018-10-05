@@ -11,7 +11,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-        .resizeWindow(1024, 768).pause(model.pause + 500)
+        //.resizeWindow(1024, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -45,14 +45,17 @@ module.exports = {
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
         .verify.elementPresent('div.experiment-card-container.position-relative', 'selects analyzed card').pause(model.pause + 1500)
-        .click('div.experiment-card-container.position-relative:nth-of-type(22)')
+        
+        .useXpath()
+        .click("(//*[contains(text(), 'EXPERIMENT')])[21]")
 
   },
 
 
   'Run an experiment connect an evidence': function(browser) {
      browser
-        .verify.elementPresent('div.reusable-circle-button', 'clicks on circle btn').pause(model.pause + 2000)
+        .useCss()
+        .waitForElementPresent('div.reusable-circle-button', 2000, 'clicks on circle btn')
         .click('div.reusable-circle-button')
         .pause(model.pause + 900)
         .click('div.connect-more-info')
@@ -106,9 +109,9 @@ module.exports = {
         .verify.elementPresent("(//div[@class='help-section-button'])[3]", 'export pdf').pause(model.pause + 500)
         .click("(//div[@class='help-section-button'])[3]")
         .pause(model.pause + 500)
-		.click("//*[contains(text(), 'Include full Evidence note')]")
-		.pause(model.pause + 500)
-		.click("//*[contains(text(), 'Export Pdf')]")
+		    .click("//*[contains(text(), 'Include full Evidence note')]")
+		    .pause(model.pause + 500)
+		    .click("//*[contains(text(), 'Export Pdf')]")
         //.saveScreenshot('./reports/Experiments/experiments.png')
         .end();
     

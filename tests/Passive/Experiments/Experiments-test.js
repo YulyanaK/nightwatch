@@ -147,7 +147,7 @@ module.exports = {
 
   'Run an experiment connect an evidence': function(browser) {
      browser
-        .verify.elementPresent('div.reusable-circle-button', 'clicks on circle btn').pause(model.pause + 1000)
+        .waitForElementPresent('div.reusable-circle-button', 1500, 'clicks on circle btn')
         .click('div.reusable-circle-button')
         .pause(model.pause + 900)
         .click('div.connect-more-info')

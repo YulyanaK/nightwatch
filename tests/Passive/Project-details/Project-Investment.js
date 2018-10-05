@@ -28,8 +28,8 @@ module.exports = {
   'Verify a project and org' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[3]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[3]")
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 4000).pause(model.pause + 500)
+        .click("(//div[@class='org-dashboard-card-container'])[2]")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)
