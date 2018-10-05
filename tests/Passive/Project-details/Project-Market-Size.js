@@ -59,7 +59,7 @@ module.exports = {
         .click("//div[@class='workspace-overview-title']")
        
         .pause(model.pause + 4500)
-        .click("(//div[text()='MARKET SIZE'])")
+        .click("//*[contains(text(), 'MARKET SIZE')]")
         .pause(model.pause + 2500)
 
         .useCss()
