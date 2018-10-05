@@ -71,8 +71,6 @@ module.exports = {
         .pause(model.pause + 2000)
         .setValue('input.tag-field-label-input.focused', ['omg', browser.Keys.ENTER])
         .pause(model.pause + 2000)
-        .setValue('input.tag-field-label-input.focused', ['np', browser.Keys.ENTER])
-        .pause(model.pause + 2000) 
 
         //adding research
         .verify.elementPresent('div.content-field-container.organization-setting-input.org-name', 'research name').pause(model.pause + 1500)
@@ -191,7 +189,6 @@ module.exports = {
         .pause(model.pause + 900) 
         .clearValue('input.connect-cards-search-input')
         .setValue('input.connect-cards-search-input', 'an')
-    .pause()
         .pause(model.pause + 900) 
         .clearValue('input.connect-cards-search-input')
         .setValue('input.connect-cards-search-input', 'c')

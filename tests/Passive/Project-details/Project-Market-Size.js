@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-       .resizeWindow(1566, 768).pause(model.pause + 500)
+        //.resizeWindow(1566, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -32,13 +32,13 @@ module.exports = {
         .click("(//div[@class='org-dashboard-card-container'])[2]")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
   },
 
   'Project market size': function(browser) {
       browser
-                .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 2000)
+        .waitForElementPresent('div.side-nav-subSection-title', 6000, 'selects a project')
         .click('div.side-nav-subSection-title')
         
 
