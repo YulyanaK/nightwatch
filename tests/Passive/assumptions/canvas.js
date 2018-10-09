@@ -103,6 +103,7 @@ module.exports = {
         .getText("//div[@data-test='Channels0']/div[@class='card-content']", function(result) {
         this.verify.equal(result.value, "Canvas Section Assumption- Real-time")
       })
+        .moveToElement("//div[@class='card-content' and text()='Canvas Section Assumption- Real-time']", 10, 10)
         .click("//div[@class='card-content' and text()='Canvas Section Assumption- Real-time']")
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 7000)//Assumption card takeover displayed
         .pause(model.pause + 2000)

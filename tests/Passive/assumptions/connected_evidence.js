@@ -42,7 +42,7 @@ module.exports = {
         .click("(//span[@id='connections'])[3]").pause(model.pause + 500)//click Connections
         .click("//div[@class='connections-circle-button ']")
         .pause(model.pause + 3000)
-        .click("//div[text()='NEW']")//Click add new Evidence
+        .click("//div[text()='CREATE NEW']")//Click add new Evidence
         .waitForElementPresent("//div[@class='choose-card-type-selection-card-title' and text()='INTERVIEW']", 5000)
         .pause(model.pause + 2000)
         .click("//div[@class='choose-card-type-selection-card-title' and text()='INTERVIEW']")//select Interview
@@ -75,6 +75,7 @@ module.exports = {
         .pause(model.pause + 1000)
         .click("//div[@class='publish-btn']")//publishing Evidence
         .pause(model.pause + 4000)
+        .waitForElementPresent("(//span[@id='connections'])[3]", 6000)
         .click("(//span[@id='connections'])[3]").pause(model.pause + 500)
         .verify.elementPresent("//div[@class='connections-card-evidence-title' and text()='Any name']")
         .click("//div[@class='connections-card-evidence-title' and text()='Any name']")

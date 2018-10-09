@@ -36,7 +36,7 @@ module.exports = {
         .click("(//div[@class='priority-card-summary '])[1]")
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)//Assumptions open
         .pause(model.pause + 2000)
-        .verify.elementPresent("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='Done Editing']")
+        .waitForElementPresent("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='Done Editing']", 6000)
         .click("//textarea[@class='content-field-textarea']")
         .clearValue("//textarea[@class='content-field-textarea']").pause(model.pause + 500)
         .setValue("//textarea[@class='content-field-textarea']", 'Editing Assumption Title').pause(model.pause + 500)
