@@ -49,18 +49,6 @@ module.exports = {
         .moveToElement('div.side-nav-subSection-title', 10, 10)
         .mouseButtonClick(0)
 
-
-       /* .element('css', 'div.checklist-x-icon', function(visible) {
-        if(visible.status !== -1){
-          
-         browser.click('div.checklist-x-icon')
-        
-                         
-        } else {
-         
-            
-        }*/
-
         .element('css selector', 'div.checklist-x-icon', function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
@@ -73,10 +61,9 @@ module.exports = {
       
       browser
         .useXpath()
-        .waitForElementPresent("//div[@class='workspace-overview-btn ']", 6000, 'opens overview')
+        //.verify.elementPresent("//div[@class='workspace-overview-btn']", 'opens overview').pause(model.pause + 1500)
         .moveToElement("//div[@class='workspace-overview-title']", 10, 10).pause(model.pause + 1500)
         .click("//div[@class='workspace-overview-title']")
-       
         .pause(model.pause + 4500)
 
         .verify.elementPresent("(//div[@class='details-content'])", 'project description').pause(model.pause + 500)
@@ -126,11 +113,10 @@ module.exports = {
         .setValue("(//textarea[@class='content-field-text'])[5]", 'new card for safety')
         .pause(model.pause + 2500)
         .moveToElement("(//div[@class='takeover-title-container'])[6]", 10, 10)
-        .click("(//*[@class='content-field-edit-icon'])").pause(model.pause + 1500)
-        .click("(//div[@class='content-field-delete-holder'])").pause(model.pause + 1500)
+        .click("(//*[@class='content-field-edit-icon'])").pause(model.pause + 2000)
+        .click("(//div[@class='content-field-delete-holder'])").pause(model.pause + 2000)
         .click("(//*[contains(text(), 'DELETE')])")
         
-
         //dropdowns
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])", 'drop down time frame').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])")

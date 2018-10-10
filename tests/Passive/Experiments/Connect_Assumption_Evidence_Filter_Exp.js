@@ -101,7 +101,7 @@ module.exports = {
         .click("//*[contains(text(), 'ADD')]")
 
         // connects assumptions
-        .waitForElementPresent("(//div[@class='hover position-relative float-right success-circle-button'])[2]", 4000) 
+        .waitForElementPresent("(//div[@class='hover position-relative float-right success-circle-button'])[2]", 6000) 
         .click("(//div[@class='hover position-relative float-right success-circle-button'])[2]")
         
         .useCss()

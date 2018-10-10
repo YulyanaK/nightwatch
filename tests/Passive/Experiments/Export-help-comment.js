@@ -44,7 +44,7 @@ module.exports = {
         .waitForElementPresent('.side-nav-subSection-title', 4000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
-        .verify.elementPresent('div.experiment-card-container.position-relative', 'selects analyzed card').pause(model.pause + 1500)
+        //.verify.elementPresent('div.experiment-card-container.position-relative', 'selects analyzed card').pause(model.pause + 1500)
         
         .useXpath()
         .click("(//*[contains(text(), 'EXPERIMENT')])[21]")
@@ -55,7 +55,7 @@ module.exports = {
   'Run an experiment connect an evidence': function(browser) {
      browser
         .useCss()
-        .waitForElementPresent('div.reusable-circle-button', 2000, 'clicks on circle btn')
+        .waitForElementPresent('div.reusable-circle-button', 4000, 'clicks on circle btn')
         .click('div.reusable-circle-button')
         .pause(model.pause + 900)
         .click('div.connect-more-info')
