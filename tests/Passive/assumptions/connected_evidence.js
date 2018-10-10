@@ -42,6 +42,7 @@ module.exports = {
         .click("(//span[@id='connections'])[3]").pause(model.pause + 500)//click Connections
         .click("//div[@class='connections-circle-button ']")
         .pause(model.pause + 3000)
+        .waitForElementPresent("//div[text()='CREATE NEW']", 6000)
         .click("//div[text()='CREATE NEW']")//Click add new Evidence
         .waitForElementPresent("//div[@class='choose-card-type-selection-card-title' and text()='INTERVIEW']", 5000)
         .pause(model.pause + 2000)
