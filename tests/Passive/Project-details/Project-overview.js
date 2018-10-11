@@ -62,6 +62,8 @@ module.exports = {
       browser
         .useXpath()
         //.verify.elementPresent("//div[@class='workspace-overview-btn']", 'opens overview').pause(model.pause + 1500)
+        .waitForElementPresent("//div[@class='workspace-overview-title']", 6000)
+        .moveToElement("//div[@class='profile-text text-nav ']", 10, 10)
         .moveToElement("//div[@class='workspace-overview-title']", 10, 10).pause(model.pause + 1500)
         .click("//div[@class='workspace-overview-title']")
         .pause(model.pause + 4500)
