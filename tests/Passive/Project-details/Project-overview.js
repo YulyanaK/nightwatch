@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-       .resizeWindow(1566, 768).pause(model.pause + 500)
+        .resizeWindow(1566, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -113,13 +113,25 @@ module.exports = {
         .setValue("(//textarea[@class='content-field-text'])[5]", 'new card for safety')
         .pause(model.pause + 2500)
         .moveToElement("(//div[@class='takeover-title-container'])[6]", 10, 10)
-        .click("(//*[@class='content-field-edit-icon'])").pause(model.pause + 2000)
+        .click("(//*[@class='content-field-edit-icon'])").pause(model.pause + 2500)
         .moveToElement("(//div[@class='content-field-delete-holder'])", 10, 10)
-        .click("(//div[@class='content-field-delete-holder'])").pause(model.pause + 2000)
-        .waitForElementPresent("(//*[contains(text(), 'DELETE')])", 2000)
-        .click("(//*[contains(text(), 'DELETE')])")
-        
+        .click("(//div[@class='content-field-delete-holder'])").pause(model.pause + 2500)
+       
+        .useCss()
+        .element('css selector', 'span.content-field-cancel.delete', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click('span.content-field-cancel.delete');
+            } else {
+                // Element is not present.
+            }
+        });
+
+
+
         //dropdowns
+      browser
+        .useXpath()
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])", 'drop down time frame').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])")
         .pause(model.pause + 900)
