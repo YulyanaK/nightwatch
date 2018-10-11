@@ -114,8 +114,9 @@ module.exports = {
         .pause(model.pause + 2500)
         .moveToElement("(//div[@class='takeover-title-container'])[6]", 10, 10)
         .click("(//*[@class='content-field-edit-icon'])").pause(model.pause + 2000)
+        .moveToElement("(//div[@class='content-field-delete-holder'])", 10, 10)
         .click("(//div[@class='content-field-delete-holder'])").pause(model.pause + 2000)
-        .waitForElementPresent("(//*[contains(text(), 'DELETE')])", 6000)
+        .waitForElementPresent("(//*[contains(text(), 'DELETE')])", 2000)
         .click("(//*[contains(text(), 'DELETE')])")
         
         //dropdowns
