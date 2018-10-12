@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://app.glidr.io')
-        .resizeWindow(1366, 768).pause(model.pause + 500)
+        //.resizeWindow(1566, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -28,20 +28,19 @@ module.exports = {
   'Verify a project and org' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[3]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[3]")
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 6000).pause(model.pause + 500)
+        .click("(//div[@class='org-dashboard-card-container'])[2]")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
   },
 
   'Project invesments': function(browser) {
       browser
-        .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 2000)
+        .waitForElementPresent('div.side-nav-subSection-title', 6000, 'selects a project').pause(model.pause + 2000)
         .click('div.side-nav-subSection-title')
-
-
+        
        /* .element('css', 'div.checklist-x-icon', function(visible) {
         if(visible.status !== -1){
           
@@ -62,13 +61,15 @@ module.exports = {
             }
         });
 
-      browser  
-        .verify.elementPresent('div.workspace-overview-btn', 'opens overview').pause(model.pause + 1500)
-        .click('div.workspace-overview-btn')
-
+      browser
         .useXpath()
-        .pause(model.pause + 1500)
+        .waitForElementPresent("//div[@class='workspace-overview-btn ']", 6000, 'opens overview')
+        .moveToElement("//div[@class='workspace-overview-title']", 10, 10).pause(model.pause + 1500)
+        .click("//div[@class='workspace-overview-title']")
+       
+        .pause(model.pause + 6000)
         .click("(//div[text()='INVESTMENT'])")
+        .pause(model.pause + 2500)
 
         .useCss()
         .verify.elementPresent('div.investment-currency-input.current', 'set currency').pause(model.pause + 1500)
@@ -95,9 +96,9 @@ module.exports = {
         .verify.elementPresent('div.float-right.supporting-documents-add-button.clickable')
         .click('div.float-right.supporting-documents-add-button.clickable')
 
-        .setValue('input[type="file"]', require('path').resolve(__dirname + '/log.png'))
-        .refresh()
-        .pause(model.pause + 1800)
+        //.setValue('input[type="file"]', require('path').resolve(__dirname + '/log.png'))
+        //.refresh()
+        //.pause(model.pause + 1800)
         .end();
     },
 }

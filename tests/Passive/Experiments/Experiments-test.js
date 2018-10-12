@@ -154,7 +154,6 @@ module.exports = {
         .pause(model.pause + 900)
         .click('div.connect-more-info')
 
-
         // connecting evidence
         .waitForElementPresent('div.connect-card-card-container', 6000, 'connected 1st evidence').pause(model.pause + 1500)
         .click('div.connect-card-card-container')

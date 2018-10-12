@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-        .resizeWindow(1566, 768).pause(model.pause + 500)
+        .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -61,12 +61,10 @@ module.exports = {
       
       browser
         .useXpath()
-        //.verify.elementPresent("//div[@class='workspace-overview-btn']", 'opens overview').pause(model.pause + 1500)
-        .waitForElementPresent("//div[@class='workspace-overview-title']", 6000)
-        .moveToElement("//div[@class='profile-text text-nav ']", 10, 10)
-        .moveToElement("//div[@class='workspace-overview-title']", 10, 10).pause(model.pause + 1500)
-        .click("//div[@class='workspace-overview-title']")
-        .pause(model.pause + 4500)
+        .verify.elementPresent("//*[contains(text(), 'Dashboard')]", 'opens overview via dashboard').pause(model.pause + 1500)
+        .click("//*[contains(text(), 'Dashboard')]")
+        .verify.elementPresent("//*[contains(text(), '+ EDIT')]", 'opens overview to edit').pause(model.pause + 1500)
+        .click("//*[contains(text(), '+ EDIT')]").pause(model.pause + 900)
 
         .verify.elementPresent("(//div[@class='details-content'])", 'project description').pause(model.pause + 500)
         .click("(//div[@class='details-content'])")
@@ -153,14 +151,14 @@ module.exports = {
         .moveToElement("//*[contains(text(), 'Solution Validation')]", 10, 10)
         .click("//*[contains(text(), 'Solution Validation')]")
 
-        .waitForElementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]",2000, 'stage')
-        .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
-        .pause(model.pause + 900)
-        .click("(//*[contains(text(), '1 - 3 months')])")
-        .pause(model.pause + 900)
-        .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
-        .pause(model.pause + 900)
-        .click("//*[contains(text(), '12 - 18 months')]")
+        // .waitForElementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]",2000, 'stage')
+        // .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
+        // .pause(model.pause + 900)
+        // .click("(//*[contains(text(), '1 - 3 months')])")
+        // .pause(model.pause + 900)
+        // .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
+        // .pause(model.pause + 900)
+        // .click("//*[contains(text(), '12 - 18 months')]")
 
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[4]", 'describe the market').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])[4]")
