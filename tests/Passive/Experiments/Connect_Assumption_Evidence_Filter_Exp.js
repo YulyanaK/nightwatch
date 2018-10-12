@@ -11,7 +11,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://app.glidr.io')
-          // .resizeWindow(1024, 768).pause(model.pause + 500)
+        .resizeWindow(1440, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -30,18 +30,18 @@ module.exports = {
   'Verify the organizations for project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 4000).pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 6000).pause(model.pause + 500)
         .click("(//div[@class='org-dashboard-card-container'])[2]")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
   },
   
 
    'Select a project to create an experiments': function(browser) {
       browser
-        .waitForElementPresent('.side-nav-subSection-title', 4000)
+        .waitForElementPresent('.side-nav-subSection-title', 6000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
 
@@ -151,10 +151,11 @@ module.exports = {
         .pause(model.pause + 900) 
         .click("//*[contains(text(), 'RESET')]")
         .pause(model.pause + 900) 
+        .click("(//div[@class='experiments-filter-icon hover'])")
 
         //add a new assupmtion
-        .verify.elementPresent("//div[text()='NEW']", 'add a new assumption').pause(model.pause + 1500) 
-        .click("//div[text()='NEW']")
+        .verify.elementPresent("//div[text()='CREATE NEW']", 'add a new assumption').pause(model.pause + 2000) 
+        .click("//div[text()='CREATE NEW']")
         .pause(model.pause + 900) 
         .click("(//textarea[@class='content-field-textarea'])[3]").pause(model.pause + 1000)
         .clearValue("(//textarea[@class='content-field-textarea'])[5]").pause(model.pause + 1000)
@@ -212,12 +213,12 @@ module.exports = {
 'Add new Evidence to connections': function(browser){
       browser
         .useXpath()
-        .click("//div[text()='NEW']")
+        .click("//div[text()='CREATE NEW']")
         .waitForElementPresent("//div[@class='choose-card-type-selection-card-title' and text()='INTERVIEW']", 5000)
         .pause(model.pause + 2000)
         .click("//div[@class='choose-card-type-selection-card-title' and text()='INTERVIEW']")//select Interview
-        .waitForElementPresent("(//div[text()='Add person'])[2]", 5000)
-        .click("(//div[text()='Add person'])[2]")
+        .waitForElementPresent("(//div[text()='Add Interviewee'])[2]", 5000)
+        .click("(//div[text()='Add Interviewee'])[2]")
         .pause(model.pause + 2000)
         .moveToElement("(//input[@class='new-interviewee-input'])[1]", 10, 10)
         .setValue("(//input[@class='new-interviewee-input'])[1]", 'Any name')//Adding Interviewee

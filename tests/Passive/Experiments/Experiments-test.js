@@ -11,7 +11,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-          // .resizeWindow(1024, 768).pause(model.pause + 500)
+        .resizeWindow(1440, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -30,18 +30,18 @@ module.exports = {
   'Verify the organizations for project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 4000).pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 6000).pause(model.pause + 500)
         .click("(//div[@class='org-dashboard-card-container'])[2]")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
   },
   
 
   'Select a project to create an experiments': function(browser) {
       browser
-        .waitForElementPresent('.side-nav-subSection-title', 4000)
+        .waitForElementPresent('.side-nav-subSection-title', 6000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
 
