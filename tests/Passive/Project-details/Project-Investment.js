@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-        .resizeWindow(1440, 768).pause(model.pause + 500)
+        .resizeWindow(1020, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -63,8 +63,9 @@ module.exports = {
 
       browser
         .useXpath()
-        .verify.elementPresent("//*[contains(text(), 'Dashboard')]", 'opens overview via dashboard').pause(model.pause + 1500)
-        .click("//*[contains(text(), 'Dashboard')]")
+        //.verify.elementPresent("(//div[@class='mobile-nav-container position-relative'])[2]", 'opens overview via dashboard')
+        .pause(model.pause + 3000)
+        .click("(//div[@class='mobile-nav-container position-relative '])[2]")
         .verify.elementPresent("//*[contains(text(), '+ EDIT')]", 'opens overview to edit').pause(model.pause + 1500)
         .click("//*[contains(text(), '+ EDIT')]").pause(model.pause + 900)
        
