@@ -47,8 +47,8 @@ module.exports = {
         .waitForElementPresent("//div[@class='choose-card-type-selection-card-title' and text()='INTERVIEW']", 5000)
         .pause(model.pause + 2000)
         .click("//div[@class='choose-card-type-selection-card-title' and text()='INTERVIEW']")//select Interview
-        .waitForElementPresent("(//div[text()='Add Interviewee'])[2]", 5000)
-        .click("(//div[text()='Add Interviewee'])[2]")
+        .waitForElementPresent("(//div[@class='interviewee-add-text clickable interview-edit-mode-text'])[2]", 5000)
+        .click("(//div[@class='interviewee-add-text clickable interview-edit-mode-text'])[2]")
         .pause(model.pause + 2000)
         .moveToElement("(//input[@class='new-interviewee-input'])[1]", 10, 10)
         .setValue("(//input[@class='new-interviewee-input'])[1]", 'Any name')//Adding Interviewee

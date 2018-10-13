@@ -65,7 +65,7 @@ module.exports = {
         this.verify.equal(result.value, "Summary for data integrity Assumption")
       })
 
-        
+        .end()
 
 
 
