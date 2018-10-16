@@ -24,7 +24,7 @@ module.exports = {
   'Verify the project invite to name' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 4000).pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 6000).pause(model.pause + 500)
         .click("(//div[@class='org-dashboard-card-container'])[5]")
 
         .useCss()

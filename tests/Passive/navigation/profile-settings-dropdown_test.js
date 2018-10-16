@@ -25,7 +25,7 @@ module.exports = {
 
   'Verify the organizations name' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
+        .waitForElementPresent('div.org-dashboard-card-container', 6000)
         .verify.elementPresent('.org-dashboard-card-container', 'entering basic tier organization').pause(model.pause + 500)
 
         .useXpath()
@@ -38,7 +38,7 @@ module.exports = {
 
   'Initialize left drawer' : function (browser) {
       browser
-        .waitForElementPresent('.side-nav-subSection-title', 4000)
+        .waitForElementPresent('.side-nav-subSection-title', 6000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project to initialize left drawer').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
         .verify.elementPresent('div.profile-image-container.profile-image.right-nav-profile', 'opens right drawer').pause(model.pause + 500)

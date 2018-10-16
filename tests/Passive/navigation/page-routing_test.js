@@ -26,7 +26,7 @@ module.exports = {
   'Verify the project name' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 4000).pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 6000).pause(model.pause + 500)
         .click("(//div[@class='org-dashboard-card-container'])[2]")
 
         .useCss()
@@ -37,7 +37,7 @@ module.exports = {
 
   'intialize on the canvas': function(browser) {
       browser
-      .waitForElementPresent('.side-nav-subSection-title', 4000)
+      .waitForElementPresent('.side-nav-subSection-title', 6000)
       .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project to initialize the canvas').pause(model.pause + 1500)
       .click('.side-nav-subSection-title')
       .element('css selector', 'div.checklist-x-icon', function(result){

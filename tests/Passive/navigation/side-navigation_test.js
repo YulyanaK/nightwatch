@@ -21,13 +21,13 @@ module.exports = {
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
-        .waitForElementPresent('div.org-container', 4000).pause(model.pause + 500)
+        .waitForElementPresent('div.org-container', 6000).pause(model.pause + 500)
   },
 
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 4000).pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 6000).pause(model.pause + 500)
         .click("(//div[@class='org-dashboard-card-container'])[5]")
 
         .useCss()
