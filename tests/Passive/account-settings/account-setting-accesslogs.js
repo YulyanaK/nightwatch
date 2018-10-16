@@ -56,7 +56,7 @@ module.exports = {
   'Verify the organizations for profile notifications' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[text()='Ruwanda_QA']", 4000)
+        .waitForElementPresent("//div[text()='Ruwanda_QA']", 6000)
         //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
         .click("//div[text()='Ruwanda_QA']")
         .pause(model.pause + 6000)

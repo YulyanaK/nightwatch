@@ -91,7 +91,7 @@ module.exports = {
   'verify dropdown visible once overflow icon is clicked and project notifications shows' : function (browser) {
       browser
         .pause(model.pause + 2000)
-        .waitForElementPresent("//div[text()='Notifications']", 4000)
+        .waitForElementPresent("//div[text()='Notifications']", 6000)
         .click("//div[text()='Notifications']")
         
         .verify.elementPresent("//div[@class='project-notifications-toggle-circle on']", 'verifies for toggle circle').pause(model.pause + 1500)

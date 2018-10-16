@@ -63,6 +63,7 @@ module.exports = {
       browser
         .pause(model.pause + 4000)
         .useXpath()
+        .waitForElementPresent("//div[text()='Ruwanda_QA']", 6000)
         .click("//div[text()='Ruwanda_QA']")
         .pause(model.pause + 5000)
         .click("//div[@class='dropdown-menu-icon inbox active']").pause(model.pause + 1000)

@@ -54,7 +54,10 @@ module.exports = {
 
   'Verify the organizations for profile' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
+        //.waitForElementPresent("//div[text()='Ruwanda_QA']", 6000)
+        //.click("//div[text()='Ruwanda_QA']")
+
+        .waitForElementPresent('div.org-dashboard-card-container', 6000)
         .verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
         .click('div.org-dashboard-card-container div:nth-of-type(3)')
   },
@@ -63,6 +66,7 @@ module.exports = {
       browser
         .pause(model.pause + 4000)
         .useXpath()
+        .waitForElementPresent("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']", 6000)
         .click("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']")
         .pause(model.pause + 500)
         .getText("//div[@class='profile-name profile-name-settings truncate']", function(text) {
