@@ -43,9 +43,9 @@ module.exports = {
 			.click('.side-nav-subSection-title')
 
 			.useXpath()
-			.waitForElementPresent("(//*[contains(text(), 'EXPERIMENT')])[18]", 2000)
+			.waitForElementPresent("(//*[contains(text(), 'EXPERIMENT')])[18]", 6000)
 			.click("(//*[contains(text(), 'EXPERIMENT')])[18]")
-			.pause(model.pause + 1500)
+			.pause(model.pause + 2000)
 			.click("(//div[@class='hover position-relative float-right success-circle-button'])")
 	},
 
@@ -58,6 +58,7 @@ module.exports = {
 			.click('div.connect-more-info')
 			.pause(model.pause + 1900)
             .click('div.connect-more-info',)
+            .pause(model.pause + 1900)
 			
 			// connect evidences
             .verify.elementPresent('div.connect-card-card-container:nth-of-type(2)', 'connect first evidence').pause(model.pause + 500)

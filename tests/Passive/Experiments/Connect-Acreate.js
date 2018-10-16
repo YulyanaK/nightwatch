@@ -58,17 +58,6 @@ module.exports = {
         .verify.elementPresent('.experiments-navigation-member-container', 'closes dropdown users').pause(model.pause + 500)
         .click('.experiments-navigation-member-container')
 
-        // enter tags
-        //.verify.elementPresent('div.float-left.hover.experiments-tags-icon', 'adding tags').pause(model.pause + 1500)
-        .pause(model.pause + 1500)
-        .click('div.float-left.hover.experiments-tags-icon') 
-        .setValue('input.tag-field-label-input.focused', ['nightwatch', browser.Keys.ENTER]) 
-        .pause(model.pause + 1500)
-        .setValue('input.tag-field-label-input.focused', ['Test nightwatch', browser.Keys.ENTER])
-        .pause(model.pause + 1500)
-        .setValue('input.tag-field-label-input.focused', ['Clarification', browser.Keys.ENTER])
-        .pause(model.pause + 1500) 
-
         //adding research
         .verify.elementPresent('div.content-field-container.organization-setting-input.org-name', 'research name').pause(model.pause + 1500)
         .click('div.content-field-container.organization-setting-input.org-name')
