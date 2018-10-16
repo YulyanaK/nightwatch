@@ -76,8 +76,8 @@
     "ie": {
       "desiredCapabilities": {
         "platform": "Windows 10",
-        "browserName": "internet_explorer",
-        "version": "latest"
+        "browserName": "internet explorer",
+        "version": "11"
       }
     },
 
