@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://app.glidr.io')
-        .resizeWindow(1566, 768).pause(model.pause + 500)
+        .resizeWindow(1020, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -45,9 +45,9 @@ module.exports = {
 
   'Project overview': function(browser) {
       browser
-        .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 2000)
-        .moveToElement('div.side-nav-subSection-title', 10, 10)
-        .mouseButtonClick(0)
+        .waitForElementPresent('div.side-nav-subSection-title', 6000, 'selects a project')
+        .click('div.side-nav-subSection-title')
+        
 
         .element('css selector', 'div.checklist-x-icon', function(result){
             if (result.value && result.value.ELEMENT) {
@@ -61,10 +61,10 @@ module.exports = {
       
       browser
         .useXpath()
-        //.verify.elementPresent("//div[@class='workspace-overview-btn']", 'opens overview').pause(model.pause + 1500)
-        .moveToElement("//div[@class='workspace-overview-title']", 10, 10).pause(model.pause + 1500)
-        .click("//div[@class='workspace-overview-title']")
-        .pause(model.pause + 4500)
+        .pause(model.pause + 3000)
+        .click("(//div[@class='mobile-nav-container position-relative '])[2]")
+        .verify.elementPresent("//*[contains(text(), '+ EDIT')]", 'opens overview to edit').pause(model.pause + 1500)
+        .click("//*[contains(text(), '+ EDIT')]").pause(model.pause + 900)
 
         .verify.elementPresent("(//div[@class='details-content'])", 'project description').pause(model.pause + 500)
         .click("(//div[@class='details-content'])")
@@ -112,11 +112,11 @@ module.exports = {
         .click("(//div[@class='reusable-content-field projectDetails'])[5]")
         .setValue("(//textarea[@class='content-field-text'])[5]", 'new card for safety')
         .pause(model.pause + 2500)
-        .moveToElement("(//div[@class='takeover-title-container'])[6]", 10, 10)
+        .moveToElement("(//div[@class='takeover-title-container'])[6]", 2, 2)
         .click("(//*[@class='content-field-edit-icon'])").pause(model.pause + 2500)
-        .moveToElement("(//div[@class='content-field-delete-holder'])", 10, 10)
+        .moveToElement("(//div[@class='content-field-delete-holder'])", 2, 2)
         .click("(//div[@class='content-field-delete-holder'])").pause(model.pause + 2500)
-       
+
         .useCss()
         .element('css selector', 'span.content-field-cancel.delete', function(result){
             if (result.value && result.value.ELEMENT) {
@@ -151,14 +151,14 @@ module.exports = {
         .moveToElement("//*[contains(text(), 'Solution Validation')]", 10, 10)
         .click("//*[contains(text(), 'Solution Validation')]")
 
-        .waitForElementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]",2000, 'stage')
-        .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
-        .pause(model.pause + 900)
-        .click("(//*[contains(text(), '1 - 3 months')])")
-        .pause(model.pause + 900)
-        .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
-        .pause(model.pause + 900)
-        .click("//*[contains(text(), '12 - 18 months')]")
+        // .waitForElementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]",2000, 'stage')
+        // .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
+        // .pause(model.pause + 900)
+        // .click("(//*[contains(text(), '1 - 3 months')])")
+        // .pause(model.pause + 900)
+        // .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
+        // .pause(model.pause + 900)
+        // .click("//*[contains(text(), '12 - 18 months')]")
 
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[4]", 'describe the market').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])[4]")
