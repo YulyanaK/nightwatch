@@ -69,7 +69,7 @@ module.exports = {
         .waitForElementPresent("(//div[@class='reusable-circle-button '])[2]", 3000) 
         .click("(//div[@class='reusable-circle-button '])[2]")
 
-        .verify.elementPresent("(//div[@class='connect-card-card-container '])", 'selects 1st assumption').pause(model.pause + 1000) 
+        .waitForElementPresent("(//div[@class='connect-card-card-container '])", 4000 , 'selects 1st assumption')
         .click("(//div[@class='connect-card-card-container '])")
         .verify.elementPresent("(//div[@class='connect-card-card-container '])[2]", 'selects 2nd assumption').pause(model.pause + 1000) 
         .click("(//div[@class='connect-card-card-container '])[2]")

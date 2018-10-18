@@ -60,17 +60,6 @@ module.exports = {
         .click("(//*[contains(text(), 'EXPERIMENT')])")
   },
 
-  'Comments': function(browser) {
-     browser
-      .useXpath()
-      .waitForElementPresent("(//div[@id='currentCard-input-container' and @class='comment-editor'])[2]", 1000)
-      .click("(//div[@id='currentCard-input-container' and @class='comment-editor'])[2]").pause(model.pause + 500)
-      .execute("document.getElementById('currentCard').setAttribute('focused', 'true');")
-      .click("(//div[@id='currentCard-input-container' and @class='comment-editor'])[2]")
-      .keys('new comment')
-      .keys([browser.Keys.ENTER])
-      .pause(model.pause + 1000)
-},
 
   'Run Help': function(browser) {
      browser
@@ -256,24 +245,24 @@ module.exports = {
         .click('div.project-impact-section-container.details')
 
         .useXpath()
-        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[3]", 'market notes').pause(model.pause + 500)
+        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[3]", 'validation notes').pause(model.pause + 500)
         .click("(//textarea[@class='content-field-textarea'])[3]")
         .clearValue("(//textarea[@class='content-field-textarea'])[3]")
         .pause(model.pause + 1500)
-        .setValue("(//textarea[@class='content-field-textarea'])[3]", 'Савва Иванович МамонтовСавва Иванович МамонтовСавва Иванович Мамонтов (2 [14] октября 1841, Ялуторовск — 6 апреля 1918, Абрамцево) — русский предприниматель и меценат. Представитель купеческой династии Мамонтовых. В 1869 году, получив по наследству от отца, Ивана Фёдоровича Мамонтова, акции принадлежавшей ему железнодорожной компании, начал активно заниматься железнодорожным строительством.')
-        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[5]", 'market notes').pause(model.pause + 500)
+        .setValue("(//textarea[@class='content-field-textarea'])[3]", 'Савва Иванович МамонтовСавва Иванович МамонтовСавва Иванович Мамонтов.')
+        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[5]", 'solution statements').pause(model.pause + 500)
         .click("(//textarea[@class='content-field-textarea'])[5]")
         .clearValue("(//textarea[@class='content-field-textarea'])[5]")
         .pause(model.pause + 1500)
         .setValue("(//textarea[@class='content-field-textarea'])[5]", 'The Evidence is concrete data you can use to validate Assumptions, learn more about a topic during Research, or help an Experiment succeed or fail. There are two types of Evidence; Interview and Other. Using this “Other” type of Evidence, you can easily post survey results, landing page test results, secondary research, competitive analysis, and any other evidence.  The Evidence is most useful when its connected to other data in your project to help you confirm or disconfirm your assumptions. Check out the “Connections” area to connect your interview to an assumption, research, or experiment.')
 
-        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[6]", 'market notes').pause(model.pause + 500)
+        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[6]", 'notes').pause(model.pause + 500)
         .click("(//textarea[@class='content-field-textarea'])[6]")
         .clearValue("(//textarea[@class='content-field-textarea'])[6]")
         .pause(model.pause + 1500)
         .setValue("(//textarea[@class='content-field-textarea'])[6]", 'Your search for GLIDR Jobs in San Francisco, CA does not match any jobs. We suggest you. Make sure all words are spelled correctly Try more general keywords Replace abbreviations with the entire word Check your spelling')
 
-        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[8]", 'Investment').pause(model.pause + 500)
+        .verify.elementPresent("(//textarea[@class='content-field-textarea'])[8]", 'Investment').pause(model.pause + 1500)
         .click("(//textarea[@class='content-field-textarea'])[8]")
         .clearValue("(//textarea[@class='content-field-textarea'])[8]")
         .pause(model.pause + 1500)
@@ -282,11 +271,11 @@ module.exports = {
 
  
         //dropdowns
-        .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])", 'type of project').pause(model.pause + 500)
+        .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])", 'type of project').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])")
         .pause(model.pause + 1500)
         .click("//*[contains(text(), 'Service')]")
-        .pause(model.pause + 800)
+        .pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])")
         .pause(model.pause + 800)
         .click("//*[contains(text(), 'Product')]")
@@ -296,13 +285,13 @@ module.exports = {
         .click("(//div[@class='project-dashboard-dropdown-container'])[2]")
         .pause(model.pause + 1500)
         .click("//*[contains(text(), '3 - 6 months')]")
-        .pause(model.pause + 800)
+        .pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])[2]")
-        .pause(model.pause + 800)
+        .pause(model.pause + 1500)
         .click("//*[contains(text(), '6 - 12 months')]")
-        .pause(model.pause + 800)
+        .pause(model.pause + 1500)
 
-        .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]", 'stage').pause(model.pause + 500)
+        .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]", 'stage').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
         .pause(model.pause + 800)
         .click("//div[text()='Problem Validation']")
@@ -311,7 +300,7 @@ module.exports = {
         .pause(model.pause + 800)
         .click("//div[text()='Solution Validation']")
 
-        .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[5]", 'describe the technology').pause(model.pause + 500)
+        .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[5]", 'describe the technology').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])[5]")
         .pause(model.pause + 800)
         .click("//div[text()='Existing technology that we currently use/deploy']")
@@ -322,7 +311,7 @@ module.exports = {
         .pause(model.pause + 800)
 
         .useCss()
-        .verify.elementPresent('input.experiment-analyze-details-currency-input', 'input invested raised').pause(model.pause + 500)
+        .verify.elementPresent('input.experiment-analyze-details-currency-input', 'input invested raised').pause(model.pause + 1500)
         .click('input.experiment-analyze-details-currency-input')
         .clearValue('input.experiment-analyze-details-currency-input')
         .pause(model.pause + 800)
@@ -338,7 +327,7 @@ module.exports = {
         .pause(model.pause + 1500)
 
         .useCss()
-        .verify.elementPresent('div.hypothesis-edit-header-close-wrapper', 'closes market size, complete, cancel, complete').pause(model.pause + 500)
+        .verify.elementPresent('div.hypothesis-edit-header-close-wrapper', 'closes market size, complete, cancel, complete').pause(model.pause + 1500)
         .click('div.hypothesis-edit-header-close-wrapper')
         
         .useXpath()
@@ -349,7 +338,7 @@ module.exports = {
         .pause(model.pause + 900)
         .click("//span[text()='COMPLETE']")
         .pause(model.pause + 900)
-        .click("//*[contains(text(), 'COMPLETE')]")
+        .click("(//div[@class='confirmation-button no-cancel undefined'])")
         //.saveScreenshot('./reports/Experiments/experiments.png')
         .end();
     

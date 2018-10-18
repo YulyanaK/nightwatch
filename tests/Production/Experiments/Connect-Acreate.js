@@ -30,8 +30,8 @@ module.exports = {
   'Verify the organizations for project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 6000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[2]")
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[12]", 6000).pause(model.pause + 500)
+        .click("(//div[@class='org-dashboard-card-container'])[12]")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)
@@ -41,10 +41,30 @@ module.exports = {
 
   'Select a project to create an experiments': function(browser) {
       browser
-        .waitForElementPresent('.side-nav-subSection-title', 6000)
-        .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
-        .click('.side-nav-subSection-title')
+        .waitForElementPresent('div.side-nav-subSection-title', 6000, 'selects a project').pause(model.pause + 2000)
+        .click('div.side-nav-subSection-title')
+        
+       /* .element('css', 'div.checklist-x-icon', function(visible) {
+        if(visible.status !== -1){
+          
+         browser.click('div.checklist-x-icon')
+        
+                         
+        } else {
+         
+            
+        }*/
 
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click('div.checklist-x-icon');
+            } else {
+                // Element is not present.
+            }
+        });
+          
+     browser
         .verify.elementPresent('div.workspace-takeover-btn', '+ to add a research').pause(model.pause + 1500)
         .click('div.workspace-takeover-btn')
         .verify.elementPresent('div.lpc-evaluation', 'selects an experiment').pause(model.pause + 1500)
