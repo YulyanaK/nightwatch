@@ -26,7 +26,8 @@ module.exports = {
   'Verify the organizations activiyt feed for post' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 4000).pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 6000).pause(model.pause + 500)
+        .moveToElement("(//div[@class='org-dashboard-card-container'])[2]", 10, 10)
         .click("(//div[@class='org-dashboard-card-container'])[2]")
 
         .useCss()
@@ -36,7 +37,7 @@ module.exports = {
 
   'Test post cancel' : function(browser){
       browser
-        .waitForElementPresent('.side-nav-subSection-title', 4000)
+        .waitForElementPresent('.side-nav-subSection-title', 6000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
         .useXpath()

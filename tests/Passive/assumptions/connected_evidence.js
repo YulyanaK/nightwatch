@@ -78,7 +78,7 @@ module.exports = {
         .pause(model.pause + 4000)
         .waitForElementPresent("(//span[@id='connections'])[3]", 6000)
         .click("(//span[@id='connections'])[3]").pause(model.pause + 500)
-        .verify.elementPresent("//div[@class='connections-card-evidence-title' and text()='Any name']")
+        .waitForElementPresent("//div[@class='connections-card-evidence-title' and text()='Any name']", 6000)
         .click("//div[@class='connections-card-evidence-title' and text()='Any name']")
         .pause(model.pause + 3000)
         .moveToElement("(//div[@class='dropdown-menu-icon clickable '])[5]", 10, 10)

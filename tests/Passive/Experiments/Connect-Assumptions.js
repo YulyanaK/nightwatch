@@ -30,8 +30,8 @@ module.exports = {
   'Verify the organizations for project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 6000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[2]")
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[3]", 6000).pause(model.pause + 500)
+        .click("(//div[@class='org-dashboard-card-container'])[3]")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)
@@ -46,9 +46,19 @@ module.exports = {
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
 
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click('div.checklist-x-icon');
+            } else {
+                // Element is not present.
+            }
+        });
+
+     browser
         .useXpath()
-        .waitForElementPresent("(//*[contains(text(), 'EXPERIMENT')])[6]", 2000)
-        .click("(//*[contains(text(), 'EXPERIMENT')])[6]")
+        .waitForElementPresent("(//*[contains(text(), 'EXPERIMENT')])", 2000)
+        .click("(//*[contains(text(), 'EXPERIMENT')])")
 
   },
 
@@ -56,20 +66,17 @@ module.exports = {
     browser
     
         // connects assumptions
-        .waitForElementPresent("(//div[@class='reusable-circle-button '])[2]", 2000) 
+        .waitForElementPresent("(//div[@class='reusable-circle-button '])[2]", 3000) 
         .click("(//div[@class='reusable-circle-button '])[2]")
-        
-        .useCss()
-        .verify.elementPresent('.connect-card-card-container', 'selects 1st assumption').pause(model.pause + 2000) 
-        .click('.connect-card-card-container')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(3)', 'selects 2nd assumption').pause(model.pause + 1500) 
-        .click('div.connect-card-card-container:nth-of-type(3)')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(4)', 'selects 3rd assumption').pause(model.pause + 1500) 
-        .click('div.connect-card-card-container:nth-of-type(4)')
-        .verify.elementPresent('div.connect-card-card-container:nth-of-type(5)', 'selects 4th assumption').pause(model.pause + 1500) 
-        .click('div.connect-card-card-container:nth-of-type(5)')
+
+        .verify.elementPresent("(//div[@class='connect-card-card-container '])", 'selects 1st assumption').pause(model.pause + 1000) 
+        .click("(//div[@class='connect-card-card-container '])")
+        .verify.elementPresent("(//div[@class='connect-card-card-container '])[2]", 'selects 2nd assumption').pause(model.pause + 1000) 
+        .click("(//div[@class='connect-card-card-container '])[2]")
+        .verify.elementPresent("(//div[@class='connect-card-card-container '])[3]", 'selects 3rd assumption').pause(model.pause + 1500) 
 
         //search for connectd assumptions
+        .useCss()
         .verify.elementPresent('input.connect-cards-search-input', 'search field').pause(model.pause + 900) 
         .click('input.connect-cards-search-input')
         .setValue('input.connect-cards-search-input', 'an')
@@ -127,5 +134,6 @@ module.exports = {
       },
   }
 
+        
 
 

@@ -81,7 +81,8 @@ module.exports = {
   'Comments can be edited if user is owner' : function(browser){ 
     browser
       .pause(model.pause + 200)
-      
+      .waitForElementPresent("//span[@data-text='true']", 6000)
+      .moveToElement("//span[@data-text='true']", 10, 10)
       .click("//span[@data-text='true']")
       .pause(model.pause + 1000)
       .keys(' edited')
@@ -124,7 +125,7 @@ module.exports = {
       browser
         
     .click("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='Done Editing']").pause(model.pause + 1000)
-    .verify.elementPresent("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='Edit']").pause(model.pause + 1000)    
+    .waitForElementPresent("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='Edit']", 6000)   
     .pause(model.pause + 1000)
     .end()
 
