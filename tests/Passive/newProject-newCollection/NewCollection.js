@@ -66,7 +66,7 @@ var ObjectId = require('mongodb')
         .click("(//div[@class='cancel-icon lpc-close-cancel-mini-icon-blue'])[1]")
 
         .useCss()
-        .verify.elementPresent('div.create-collection-nav-button', 'click button').pause(model.pause + 500)
+        .waitForElementPresent('div.create-collection-nav-button', 6000)
         .click('div.create-collection-nav-button')
 
   },

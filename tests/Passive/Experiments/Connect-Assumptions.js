@@ -11,7 +11,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-        .resizeWindow(1440, 768).pause(model.pause + 500)
+        .resizeWindow(1440, 780).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -57,7 +57,7 @@ module.exports = {
 
      browser
         .useXpath()
-        .waitForElementPresent("(//*[contains(text(), 'EXPERIMENT')])", 6000)
+        .waitForElementPresent("(//*[contains(text(), 'EXPERIMENT')])", 2000)
         .click("(//*[contains(text(), 'EXPERIMENT')])")
 
   },
@@ -66,10 +66,12 @@ module.exports = {
     browser
     
         // connects assumptions
-        .waitForElementPresent("(//div[@class='reusable-circle-button '])[2]", 6000) 
+        //.verify.elementPresent("(//div[@class='reusable-circle-button '])[2]") 
+        .pause(model.pause + 6000) 
         .click("(//div[@class='reusable-circle-button '])[2]")
 
-        .waitForElementPresent("(//div[@class='connect-card-card-container '])", 6000 , 'selects 1st assumption')
+        //selects assumption to connect
+        .waitForElementPresent("(//div[@class='connect-card-card-container '])", 4000 , 'selects 1st assumption')
         .click("(//div[@class='connect-card-card-container '])")
         .verify.elementPresent("(//div[@class='connect-card-card-container '])[2]", 'selects 2nd assumption').pause(model.pause + 1000) 
         .click("(//div[@class='connect-card-card-container '])[2]")
