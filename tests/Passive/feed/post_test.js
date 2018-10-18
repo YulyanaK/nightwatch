@@ -49,7 +49,7 @@ module.exports = {
         .pause(model.pause + 1500) 
 
         .useXpath()
-        .waitForElementPresent("(//textarea[@class='activity-new-post-input'])", 6000)
+        .pause(model.pause + 3500)
         .setValue("(//textarea[@class='activity-new-post-input'])", 'just to cancel').pause(model.pause + 500)
         .pause(model.pause + 500) 
 
@@ -62,7 +62,7 @@ module.exports = {
         .pause(model.pause + 500)
         .verify.elementPresent('.activity-new-post-form', 'save to drafts').pause(model.pause + 1500)
         .click('.activity-new-post-form')
-        .pause(model.pause + 1500)
+        .pause(model.pause + 3500)
         .setValue('textarea[class=activity-new-post-input]', 'その他のジャパン')
         .click('.activity-post-save')
         .end()
