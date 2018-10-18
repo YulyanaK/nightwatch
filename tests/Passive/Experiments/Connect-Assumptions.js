@@ -57,7 +57,7 @@ module.exports = {
 
      browser
         .useXpath()
-        .waitForElementPresent("(//*[contains(text(), 'EXPERIMENT')])", 2000)
+        .waitForElementPresent("(//*[contains(text(), 'EXPERIMENT')])", 6000)
         .click("(//*[contains(text(), 'EXPERIMENT')])")
 
   },
@@ -66,10 +66,10 @@ module.exports = {
     browser
     
         // connects assumptions
-        .waitForElementPresent("(//div[@class='reusable-circle-button '])[2]", 3000) 
+        .waitForElementPresent("(//div[@class='reusable-circle-button '])[2]", 6000) 
         .click("(//div[@class='reusable-circle-button '])[2]")
 
-        .waitForElementPresent("(//div[@class='connect-card-card-container '])", 4000 , 'selects 1st assumption')
+        .waitForElementPresent("(//div[@class='connect-card-card-container '])", 6000 , 'selects 1st assumption')
         .click("(//div[@class='connect-card-card-container '])")
         .verify.elementPresent("(//div[@class='connect-card-card-container '])[2]", 'selects 2nd assumption').pause(model.pause + 1000) 
         .click("(//div[@class='connect-card-card-container '])[2]")

@@ -58,7 +58,7 @@ module.exports = {
         //.click("//div[text()='Ruwanda_QA']")
 
         .waitForElementPresent('div.org-dashboard-card-container', 6000)
-        .verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
+        .waitForElementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 6000)
         .moveToElement('div.org-dashboard-card-container div:nth-of-type(3)', 10, 10)
         .click('div.org-dashboard-card-container div:nth-of-type(3)')
   },

@@ -26,9 +26,9 @@ module.exports = {
   'Verify the organizations activiyt feed for post' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 6000).pause(model.pause + 500)
-        .moveToElement("(//div[@class='org-dashboard-card-container'])[2]", 10, 10)
-        .click("(//div[@class='org-dashboard-card-container'])[2]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)
@@ -49,6 +49,7 @@ module.exports = {
         .pause(model.pause + 1500) 
 
         .useXpath()
+        .waitForElementPresent("(//textarea[@class='activity-new-post-input'])", 6000)
         .setValue("(//textarea[@class='activity-new-post-input'])", 'just to cancel').pause(model.pause + 500)
         .pause(model.pause + 500) 
 

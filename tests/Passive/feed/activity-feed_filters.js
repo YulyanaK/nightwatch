@@ -27,7 +27,7 @@ module.exports = {
   'Verify the organizations' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 4000).pause(model.pause + 500)
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
         .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
         .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
 
