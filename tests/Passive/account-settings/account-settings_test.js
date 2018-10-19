@@ -58,6 +58,7 @@ module.exports = {
         .useXpath()
         .waitForElementPresent("//div[text()='Ruwanda_QA']", 6000)
         //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
+        .moveToElement("//div[text()='Ruwanda_QA']", 10, 10)
         .click("//div[text()='Ruwanda_QA']")
         .pause(model.pause + 6000)
         
