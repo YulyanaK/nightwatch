@@ -62,7 +62,7 @@ module.exports = {
         .click("//div[text()='Ruwanda_QA']")
         .pause(model.pause + 6000)
         
-        .verify.elementPresent("(//div[text()='DO'])[1]", 'profile image container is present').pause(model.pause + 500)
+        .waitForElementPresent("(//div[text()='DO'])[1]", 'profile image container is present', 6000)
         .click("(//div[text()='DO'])[1]")
         .verify.elementPresent("//div[text()='Profile & Account Settings']", 'Profile').pause(model.pause + 500)
         .click("//div[text()='Profile & Account Settings']")
