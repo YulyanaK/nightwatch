@@ -26,12 +26,25 @@ module.exports = {
   'Verify user is able to create and delete Assumption' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[text()='Senegal_QA']", 4000)
+        .waitForElementPresent("//div[text()='AssumptionsTest_QA']", 4000)
         
-        .click("//div[text()='Senegal_QA']")
+        .click("//div[text()='AssumptionsTest_QA']")
         .pause(model.pause + 4000)
         .click("//div[@class='hamburger-holder close ']").pause(model.pause + 2000)
-        .click("//div[@class='side-nav-subSection-title' and text()=' San Francisco de asis in the bay area and golden gate']").pause(model.pause + 2000)
+        .click("//div[@class='side-nav-subSection-title' and text()='Sample Project']").pause(model.pause + 2000)
+
+
+        .useCss()
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click('div.checklist-x-icon');
+            } else {
+                // Element is not present.
+            }
+        });
+        browser
+        .useXpath()
         .click("//div[@class='nav-new-card-btn-plus lpc-material-plus ']").pause(model.pause + 2000)
         .click("(//div[@class='nav-new-card-type-title hypothesis opened'])[1]")
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)
@@ -49,8 +62,10 @@ module.exports = {
       })
         .click("(//div[@class='priority-card-summary '])[1]").pause(model.pause + 2500)
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)//Assumption card takeover displayed
-        .moveToElement("(//div[@class='dropdown-menu-icon clickable '])[5]", 10, 10)
-        .click("(//div[@class='dropdown-menu-icon clickable '])[5]").pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='dropdown-menu-icon clickable '])[3]", 6000)
+        .moveToElement("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='Done Editing']", 10, 10)
+        .click("(//div[@class='dropdown-menu-icon clickable '])[3]").pause(model.pause + 500)
+        .waitForElementPresent("//div[text()='Delete Assumption']", 6000)
         .click("//div[text()='Delete Assumption']")
         .waitForElementPresent("//div[@class='confirmation-button no-cancel red undefined' and text()='Delete Assumption']", 6000)
         .click("//div[@class='confirmation-button-holder']/div[text()='Delete Assumption']").pause(model.pause + 4000)
