@@ -62,7 +62,7 @@ module.exports = {
         .click("//div[text()='Ruwanda_QA']")
         .pause(model.pause + 6000)
         
-        .waitForElementPresent("(//div[text()='DO'])[1]", 'profile image container is present', 6000)
+        .waitForElementPresent("(//div[text()='DO'])[1]", 6000)
         .click("(//div[text()='DO'])[1]")
         .verify.elementPresent("//div[text()='Profile & Account Settings']", 'Profile').pause(model.pause + 500)
         .click("//div[text()='Profile & Account Settings']")
@@ -77,7 +77,7 @@ module.exports = {
         .verify.elementPresent("//div[@class='user-email-password-title email']", 'verify email').pause(model.pause + 1000)
         .verify.elementPresent("//div[@class='user-email-password-title password']", 'verify password')
         .click("(//div[text()='CHANGE'])[1]")
-        .verify.elementPresent("(//input[@class='account-settings-input email'])[1]", ' current password to change email').pause(model.pause + 500)
+        .waitForElementPresent("(//input[@class='account-settings-input email'])[1]", 6000)
         .setValue("(//input[@class='account-settings-input email'])[1]", 'Testtest1!')
       browser
         .verify.elementPresent("//input[@placeholder='Enter Email']", 'verify new email').pause(model.pause + 500)

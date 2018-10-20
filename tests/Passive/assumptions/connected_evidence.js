@@ -26,17 +26,31 @@ module.exports = {
   'Verify user is able to connect Evidence to Assumption' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[text()='Senegal_QA']", 4000)
+        .waitForElementPresent("//div[text()='AssumptionsTest_QA']", 4000)
         
-        .click("//div[text()='Senegal_QA']")
+        .click("//div[text()='AssumptionsTest_QA']")
         .pause(model.pause + 4000)
         .click("//div[@class='hamburger-holder close ']").pause(model.pause + 2000)
-        .click("//div[@class='side-nav-subSection-title' and text()=' San Francisco de asis in the bay area and golden gate']").pause(model.pause + 2000)
+        .click("//div[@class='side-nav-subSection-title' and text()='Sample Project']").pause(model.pause + 2000)
+
+
+        .useCss()
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.useXpath()
+                .click("//div[@class='checklist-not-show-text']");
+            } else {
+                // Element is not present.
+            }
+        });
+        browser
+        .useXpath()
+        .waitForElementPresent("//div[@class='nav-new-card-btn-plus lpc-material-plus ']", 10000)
         .click("//div[@class='nav-new-card-btn-plus lpc-material-plus ']").pause(model.pause + 2000)
         .click("(//div[@class='nav-new-card-type-title hypothesis opened'])[1]")
-        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)
+        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 8000)
         .pause(model.pause + 2000)
-
         .click("//textarea[@class='content-field-textarea']")
         .setValue("//textarea[@class='content-field-textarea']", 'Automation Tests Assumption_Connect_Evidence').pause(model.pause + 2000)
         .click("(//span[@id='connections'])[3]").pause(model.pause + 500)//click Connections
@@ -80,11 +94,11 @@ module.exports = {
         .click("(//span[@id='connections'])[3]").pause(model.pause + 500)
         .waitForElementPresent("//div[@class='connections-card-evidence-title' and text()='Any name']", 6000)
         .click("//div[@class='connections-card-evidence-title' and text()='Any name']")
-        .pause(model.pause + 3000)
+        /*.pause(model.pause + 3000)
         .moveToElement("(//div[@class='dropdown-menu-icon clickable '])[5]", 10, 10)
         .click("(//div[@class='dropdown-menu-icon clickable '])[5]").pause(model.pause + 500)
         .click("//div[text()='Delete Evidence • Interview']").pause(model.pause + 500)
-        .click("(//div[text()='Delete Evidence • Interview'])[2]").pause(model.pause + 500)
+        .click("(//div[text()='Delete Evidence • Interview'])[2]").pause(model.pause + 500)*/
         .end()
 
     },

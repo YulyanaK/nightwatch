@@ -38,16 +38,18 @@ module.exports = {
         .element('css selector', 'div.checklist-x-icon', function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
-                browser.click('div.checklist-x-icon');
+                browser.useXpath()
+                .click("//div[@class='checklist-not-show-text']");
             } else {
                 // Element is not present.
             }
         });
         browser
         .useXpath()
+        .waitForElementPresent("//div[@class='nav-new-card-btn-plus lpc-material-plus ']", 10000)
         .click("//div[@class='nav-new-card-btn-plus lpc-material-plus ']").pause(model.pause + 2000)
         .click("(//div[@class='nav-new-card-type-title hypothesis opened'])[1]")
-        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)
+        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 8000)
         .pause(model.pause + 2000)
         .click("//textarea[@class='content-field-textarea']")
         .setValue("//textarea[@class='content-field-textarea']", 'Automation Tests Assumption').pause(model.pause + 2000)
@@ -60,18 +62,19 @@ module.exports = {
         .getText("(//div[@class='priority-card-summary '])[1]", function(result) { 
         this.verify.equal(result.value, "Automation Tests Assumption")
       })
-        .click("(//div[@class='priority-card-summary '])[1]").pause(model.pause + 2500)
+        /*.click("(//div[@class='priority-card-summary '])[1]").pause(model.pause + 2500)
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)//Assumption card takeover displayed
         .waitForElementPresent("(//div[@class='dropdown-menu-icon clickable '])[3]", 6000)
         .moveToElement("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='Done Editing']", 10, 10)
+        .moveToElement("(//div[@class='dropdown-menu-icon clickable '])[3]", 10, 10)
         .click("(//div[@class='dropdown-menu-icon clickable '])[3]").pause(model.pause + 500)
-        .waitForElementPresent("//div[text()='Delete Assumption']", 6000)
-        .click("//div[text()='Delete Assumption']")
+        .waitForElementPresent("//div[text()='Delete assumption']", 6000)
+        .click("//div[text()='Delete assumption']")
         .waitForElementPresent("//div[@class='confirmation-button no-cancel red undefined' and text()='Delete Assumption']", 6000)
         .click("//div[@class='confirmation-button-holder']/div[text()='Delete Assumption']").pause(model.pause + 4000)
         .waitForElementPresent("//div[@class='nav-center-container   ']//div//a/div", 6000)//Returns to Workspace
         
-
+*/
     },
 
   'Verify user is able to edit Assumption and select Canvas Section': function(browser) {
@@ -118,14 +121,15 @@ module.exports = {
         .getText("//div[@data-test='Channels0']/div[@class='card-content']", function(result) {
         this.verify.equal(result.value, "Canvas Section Assumption- Real-time")
       })
-        .moveToElement("//div[@class='card-content' and text()='Canvas Section Assumption- Real-time']", 10, 10)
-        .click("//div[@class='card-content' and text()='Canvas Section Assumption- Real-time']")
-        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 7000)//Assumption card takeover displayed
-        .pause(model.pause + 2000)
+        /*.moveToElement("//div[@class='card-content' and text()='Canvas Section Assumption- Real-time']", 10, 10)
+        .click("(//div[@class='card-content' and text()='Canvas Section Assumption- Real-time'])[1]")
+        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 10000)//Assumption card takeover displayed
+        
+        .waitForElementPresent("(//div[@class='dropdown-menu-icon clickable '])[5]", 6000)
         .click("(//div[@class='dropdown-menu-icon clickable '])[5]").pause(model.pause + 500)
         .click("//div[text()='Delete Assumption']")
         .waitForElementPresent("//div[@class='confirmation-button no-cancel red undefined' and text()='Delete Assumption']", 6000)
-        .click("//div[@class='confirmation-button-holder']/div[text()='Delete Assumption']").pause(model.pause + 4000)
+        .click("//div[@class='confirmation-button-holder']/div[text()='Delete Assumption']").pause(model.pause + 4000)*/
         .end()
 
   },

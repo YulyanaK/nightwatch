@@ -26,11 +26,26 @@ module.exports = {
     'Verify user is able to edit Assumption' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("//div[text()='Senegal_QA']", 4000)
-        .click("//div[text()='Senegal_QA']")
+        .waitForElementPresent("//div[text()='AssumptionsTest_QA']", 4000)
+        
+        .click("//div[text()='AssumptionsTest_QA']")
         .pause(model.pause + 4000)
         .click("//div[@class='hamburger-holder close ']").pause(model.pause + 2000)
-        .click("//div[@class='side-nav-subSection-title' and text()=' San Francisco de asis in the bay area and golden gate']").pause(model.pause + 2000)
+        .click("//div[@class='side-nav-subSection-title' and text()='Sample Project']").pause(model.pause + 2000)
+
+
+        .useCss()
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.useXpath()
+                .click("//div[@class='checklist-not-show-text']");
+            } else {
+                // Element is not present.
+            }
+        });
+        browser
+        .useXpath()
         .click("//div[@class='nav-center-container   ']//div//a[1]/div")
         .waitForElementPresent("(//div[@class='priority-card-summary '])[2]", 6000)
         .click("(//div[@class='priority-card-summary '])[1]")
