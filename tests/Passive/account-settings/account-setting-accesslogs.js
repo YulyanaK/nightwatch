@@ -67,7 +67,7 @@ module.exports = {
         .verify.elementPresent("//div[text()='Access Logs']").pause(model.pause + 500)
         .click("//div[text()='Access Logs']")
         .pause(model.pause + 2000)
-        .verify.elementPresent("//span[@class='text-aqua-green font-14']").pause(model.pause + 500)
+        .waitForElementPresent("//span[@class='text-aqua-green font-14']", 6000)
         .end();
      },
   }      

@@ -85,6 +85,8 @@ module.exports = {
         .click('div.hamburger-holder')
         .useXpath()
         .waitForElementPresent("//div[text()='ACTIVE PROJECTS']", 5000)
+        .waitForElementPresent("(//div[@class='side-nav-settings-icons'])[8]", 6000)
+        .moveToElement("(//div[@class='side-nav-settings-icons'])[8]", 10, 10)
         .click("(//div[@class='side-nav-settings-icons'])[8]")
     },
 
