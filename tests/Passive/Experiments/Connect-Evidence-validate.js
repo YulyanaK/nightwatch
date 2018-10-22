@@ -21,7 +21,7 @@ module.exports = {
     			.click('div.signup-show-password')
     			.verify.elementPresent('.login-button', 'checks for button is active').pause(model.pause + 500)
     			.click('.login-button')
-    			.waitForElementPresent('.org-container', 4000).pause(model.pause + 500)
+    			.waitForElementPresent('.org-container', 8000).pause(model.pause + 500)
 	},
 
 	'Verify for a project and an organization' : function(browser) {
@@ -31,7 +31,7 @@ module.exports = {
     			.click("(//div[@class='org-dashboard-card-container'])[3]")
 
     			.useCss()
-    			.waitForElementPresent('div.hamburger-holder', 6000, 'waits for hemaburger to open')
+    			.waitForElementPresent('div.hamburger-holder', 6000, 'waits for hamburger to open')
     			.click('div.hamburger-holder')
 
 	},
@@ -54,22 +54,25 @@ module.exports = {
 
         browser
     			.useXpath()
-    			.waitForElementPresent("(//*[contains(text(), 'EXPERIMENT')])", 6000)
-    			.click("(//*[contains(text(), 'EXPERIMENT')])")
+    			.waitForElementPresent("(//div[@class='workspace-inner-column-container'])[2]//div//div//div[@class='experiment-card-title']", 6000)
+    			//.waitForElementPresent("(//*[contains(text(), 'EXPERIMENT')])", 6000)
+    			//.click("(//*[contains(text(), 'EXPERIMENT')])")
+    			.click("(//div[@class='workspace-inner-column-container'])[2]//div//div//div[@class='experiment-card-title']")
     			.pause(model.pause + 2000)
+    			.waitForElementPresent("(//div[@class='hover position-relative float-right success-circle-button'])", 6000)
     			.click("(//div[@class='hover position-relative float-right success-circle-button'])")
 	},
 
 	'Run an experiment connect an evidence' : function (browser) {
 		   browser
     			.pause(model.pause + 2000)
-          .verify.elementPresent("(//div[@class='connect-more-info'])", 'opens and closes').pause(model.pause + 1900)
-    			.click("(//div[@class='connect-more-info'])")
+                .waitForElementPresent("(//div[@class='connect-more-info'])", 6000)
+    	        .click("(//div[@class='connect-more-info'])")
     			.pause(model.pause + 1900)
-          .click("(//div[@class='connect-more-info'])")
+                .click("(//div[@class='connect-more-info'])")
 
           // connect evidences
-          .verify.elementPresent("(//div[@class='connect-card-card-container '])", 'selects 1st assumption').pause(model.pause + 1000) 
+          .waitForElementPresent("(//div[@class='connect-card-card-container '])", 6000) 
           .click("(//div[@class='connect-card-card-container '])")
           .verify.elementPresent("(//div[@class='connect-card-card-container '])[2]", 'selects 2nd assumption').pause(model.pause + 1000) 
           .click("(//div[@class='connect-card-card-container '])[2]")

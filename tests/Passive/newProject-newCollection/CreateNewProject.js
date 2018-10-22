@@ -20,9 +20,9 @@ var ObjectId = require('mongodb')
       browser
         .setValue('input[type=password]', 'Testtest1!')
         .click('div.signup-show-password')
-        .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
+        .waitForElementPresent('div.login-button', 6000)
         .click('div.login-button')
-        .waitForElementPresent('div.org-container', 4000).pause(model.pause + 500)
+        .waitForElementPresent('div.org-container', 7000).pause(model.pause + 500)
   },
 
   'Verify the organizations for Project dashboard' : function(browser) {

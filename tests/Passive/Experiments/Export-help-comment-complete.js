@@ -56,21 +56,21 @@ module.exports = {
 
      browser
         .useXpath()
-        .waitForElementPresent("(//*[contains(text(), 'EXPERIMENT')])", 4000, 'searches for experiments on analyze phase')
-        .click("(//*[contains(text(), 'EXPERIMENT')])")
+        .waitForElementPresent("(//div[@class='workspace-inner-column-container'])[3]//div//div//div[@class='experiment-card-title']", 6000, 'searches for experiments on analyze phase')
+        .click("(//div[@class='workspace-inner-column-container'])[3]//div//div//div[@class='experiment-card-title']")
   },
 
 
   'Run Help': function(browser) {
      browser
-        .verify.elementPresent("(//div[@class='help-section-button'])[4]", 'help, plan, analize, run').pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='help-section-button'])[4]", 6000)
         .click("(//div[@class='help-section-button'])[4]")
-        .pause(model.pause + 1500)
+        /*.pause(model.pause + 1500)
         .click("(//*[contains(text(), 'Plan')])[2]")
         .pause(model.pause + 1500)
         .click("(//*[contains(text(), 'Run')])[2]")
         .pause(model.pause + 1500)
-        .click("(//*[contains(text(), 'Analyze')])[2]")
+        .click("(//*[contains(text(), 'Analyze')])[2]")*/
 },
 
 
@@ -89,14 +89,18 @@ module.exports = {
 
   'analysis step 1 and 2': function(browser) {
     browser
-        .useCss()
-        .verify.elementPresent('div.criteria-selection-icon-checkmark', 'to start analysis').pause(model.pause + 500)
-        .click('div.criteria-selection-icon-checkmark')
-        .verify.elementPresent('div.criteria-selection-icon-x').pause(model.pause + 500)
-        .click('div.criteria-selection-icon-x')
-        .verify.elementPresent('div.experiment-analyze-results-button.clickable', 'succesful').pause(model.pause + 500)       .click('div.experiment-analyze-results-button.clickable ')
-      
-         .useXpath()
+        
+        .waitForElementPresent("//div[@class='criteria-selection-icon-checkmark']", 6000)
+        .moveToElement("//div[@class='criteria-selection-icon-checkmark']", 10, 10)
+        .click("//div[@class='criteria-selection-icon-checkmark']")
+        //.verify.elementPresent('div.criteria-selection-icon-x').pause(model.pause + 500)
+        //.click('div.criteria-selection-icon-x')
+        //.verify.elementPresent('div.experiment-analyze-results-button.clickable', 'succesful').pause(model.pause + 500)       .click('div.experiment-analyze-results-button.clickable ')
+         
+         
+         .waitForElementPresent("//span[@class='takeover-navigation-button-title float-left' and text()='Analyze']", 6000)
+         .moveToElement("//span[@class='takeover-navigation-button-title float-left' and text()='Analyze']", 10, 10)
+         .click("//span[@class='takeover-navigation-button-title float-left' and text()='Analyze']")
          .pause(model.pause + 500)
          .click("//*[contains(text(), 'FAILED')]")
          .pause(model.pause + 500)
@@ -169,9 +173,9 @@ module.exports = {
         .pause(model.pause + 900)
         .click("(//div[@class='show-icon'])[3]")
         .pause(model.pause + 900)
-        // .click("(//textarea[@class='content-field-textarea'])[3]")
-        // .clearValue("(//textarea[@class='content-field-textarea'])[3]")
-        // .keys('ADN noticias sin limite desde las horas de la manan hast las horas de la noche.')
+        .click("(//textarea[@class='content-field-textarea'])[3]")
+        .clearValue("(//textarea[@class='content-field-textarea'])[3]")
+        .keys('ADN noticias sin limite desde las horas de la manan hast las horas de la noche.')
         .click("(//div[@class='show-icon'])[4]")
         .pause(model.pause + 900)
         .click("(//div[@class='show-icon'])[4]")
@@ -254,13 +258,13 @@ module.exports = {
         .click("(//textarea[@class='content-field-textarea'])[5]")
         .clearValue("(//textarea[@class='content-field-textarea'])[5]")
         .pause(model.pause + 1500)
-        .setValue("(//textarea[@class='content-field-textarea'])[5]", 'The Evidence is concrete data you can use to validate Assumptions, learn more about a topic during Research, or help an Experiment succeed or fail. There are two types of Evidence; Interview and Other. Using this “Other” type of Evidence, you can easily post survey results, landing page test results, secondary research, competitive analysis, and any other evidence.  The Evidence is most useful when its connected to other data in your project to help you confirm or disconfirm your assumptions. Check out the “Connections” area to connect your interview to an assumption, research, or experiment.')
+        .setValue("(//textarea[@class='content-field-textarea'])[5]", 'The Evidence is concrete data')
 
         .verify.elementPresent("(//textarea[@class='content-field-textarea'])[6]", 'notes').pause(model.pause + 500)
         .click("(//textarea[@class='content-field-textarea'])[6]")
         .clearValue("(//textarea[@class='content-field-textarea'])[6]")
         .pause(model.pause + 1500)
-        .setValue("(//textarea[@class='content-field-textarea'])[6]", 'Your search for GLIDR Jobs in San Francisco, CA does not match any jobs. We suggest you. Make sure all words are spelled correctly Try more general keywords Replace abbreviations with the entire word Check your spelling')
+        .setValue("(//textarea[@class='content-field-textarea'])[6]", 'Your search for GLIDR Jobs in San Francisco, CA ')
 
         .verify.elementPresent("(//textarea[@class='content-field-textarea'])[8]", 'Investment').pause(model.pause + 1500)
         .click("(//textarea[@class='content-field-textarea'])[8]")
@@ -332,8 +336,10 @@ module.exports = {
         
         .useXpath()
         .pause(model.pause + 1500)
+        .moveToElement("//span[text()='COMPLETE']", 10, 10)
         .click("//span[text()='COMPLETE']")
         .pause(model.pause + 900)
+        .waitForElementPresent("//*[contains(text(), 'CANCEL')]", 6000)
         .click("//*[contains(text(), 'CANCEL')]")
         .pause(model.pause + 900)
         .click("//span[text()='COMPLETE']")

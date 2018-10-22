@@ -95,11 +95,12 @@ module.exports = {
         .clearValue('input.connect-cards-search-input')
 
         //filter canvas section
-        .verify.elementPresent('div.experiments-filter-icon', 'filter opens').pause(model.pause + 900) 
+        .waitForElementPresent('div.experiments-filter-icon', 6000) 
         .click('div.experiments-filter-icon')
         .pause(model.pause + 900) 
 
         .useXpath()
+        .waitForElementPresent("//*[contains(text(), 'CANVAS SECTION')]", 6000)
         .click("//*[contains(text(), 'CANVAS SECTION')]")
         .pause(model.pause + 900) 
         .click("//*[contains(text(), 'Key Resources')]")
