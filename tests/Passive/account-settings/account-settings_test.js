@@ -38,8 +38,8 @@ module.exports = {
         //.url(model.url + '')
         .url('https://passive.glidr.io')
         .resizeWindow(1024, 968).pause(model.pause + 500)
-        .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
-        .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
+        .waitForElementPresent('div.login-logo.lpc-glidr-beta-login', 6000, 'looks for glidr logo').pause(model.pause + 500)
+        .waitForElementPresent('div.signin-form-container', 6000, 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
         .setValue('input[type=text]', 'dortiz@launchpadcentral.com')

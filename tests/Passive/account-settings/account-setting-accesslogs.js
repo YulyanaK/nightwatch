@@ -64,7 +64,7 @@ module.exports = {
         .click("(//div[text()='DO'])[1]")
         .verify.elementPresent("//div[text()='Profile & Account Settings']", 'Profile & Account settings').pause(model.pause + 1000)
         .click("//div[text()='Profile & Account Settings']")
-        .verify.elementPresent("//div[text()='Access Logs']").pause(model.pause + 500)
+        .waitForElementPresent("//div[text()='Access Logs']", 6000)
         .click("//div[text()='Access Logs']")
         .pause(model.pause + 2000)
         .waitForElementPresent("//span[@class='text-aqua-green font-14']", 6000)

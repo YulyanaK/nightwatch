@@ -65,11 +65,27 @@ module.exports = {
 
   'verify account profile dropdown menu' : function (browser) {
       browser
-        .pause(model.pause + 4000)
+        .pause(model.pause + 12000)
+        .useXpath()
+        .element('xpath', "//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser
+                .click("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']");
+            } else {
+                // Element is not present.
+                browser
+                .useCss()
+                .moveToElement('div.org-dashboard-card-container div:nth-of-type(3)', 10, 10)
+                .click('div.org-dashboard-card-container div:nth-of-type(3)')
+            }
+        });
+        browser
+        
+        .pause(model.pause + 500)
         .useXpath()
         .waitForElementPresent("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']", 6000)
         .click("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']")
-        .pause(model.pause + 500)
         .getText("//div[@class='profile-name profile-name-settings truncate']", function(text) {
             this.verify.equal(text.value, "davitis ortizzz")
         })

@@ -81,7 +81,7 @@ module.exports = {
         .moveToElement("//div[text()='Ruwanda_QA']", 10, 10)
         .click("//div[text()='Ruwanda_QA']")
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 6000)
+        .waitForElementPresent('div.hamburger-holder', 10000)
         .click('div.hamburger-holder')
         .useXpath()
         .waitForElementPresent("//div[text()='ACTIVE PROJECTS']", 5000)

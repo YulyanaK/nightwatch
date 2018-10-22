@@ -19,7 +19,7 @@ module.exports = {
     		browser
     			.setValue('input[type=password]', 'Brooklyn1!')
     			.click('div.signup-show-password')
-    			.verify.elementPresent('.login-button', 'checks for button is active').pause(model.pause + 500)
+    			.waitForElementPresent('.login-button', 6000)
     			.click('.login-button')
     			.waitForElementPresent('.org-container', 8000).pause(model.pause + 500)
 	},
