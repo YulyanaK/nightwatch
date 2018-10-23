@@ -137,11 +137,15 @@ module.exports = {
           // publish evidence
           .click("(//div[@class='publish-btn'])")
           .pause(model.pause + 1500)
-          .verify.elementPresent("(//div[@class='experiment-connected-evidence-expand'])", 'opens measure and rate').pause(model.pause + 900)
+          .waitForElementPresent("(//div[@class='experiment-connected-evidence-expand'])", 6000, 'opens measure and rate').pause(model.pause + 900)
+          .waitForElementPresent("(//div[@class='experiment-connected-evidence-expand'])[3]", 6000)
+          .moveToElement("(//div[@class='experiment-connected-evidence-expand'])[3]", 10, 10)
           .click("(//div[@class='experiment-connected-evidence-expand'])[3]")
           .pause(model.pause + 500)
+          .moveToElement("(//div[@class='experiment-connected-evidence-expand'])[4]", 10, 10)
           .click("(//div[@class='experiment-connected-evidence-expand'])[4]")
           .pause(model.pause + 500)
+          .moveToElement("(//div[@class='experiment-connected-evidence-expand'])[4]", 10, 10)
           .click("(//div[@class='experiment-connected-evidence-expand'])[5]")
           .pause(model.pause + 500)
 
@@ -149,7 +153,7 @@ module.exports = {
 
     'Run experiments and validate connections before analyzed': function(browser) {
         browser
-          .verify.elementPresent("(//div[@class='criteria-selection-icon-checkmark'])[2]", 'checkmark validation').pause(model.pause + 900)
+          .waitForElementPresent("(//div[@class='criteria-selection-icon-checkmark'])[2]", 6000, 'checkmark validation').pause(model.pause + 900)
           .click("(//div[@class='criteria-selection-icon-checkmark'])[2]")
           .pause(model.pause + 500)
           .click("(//div[@class='criteria-selection-icon-checkmark'])[4]")
@@ -185,7 +189,11 @@ module.exports = {
           .click("(//div[@class='evidence-icon hover Leaning Confirming'])[12]")
           .pause(model.pause + 500) 
           .verify.elementPresent("(//div[@class='takeover-navigation-button-container clearfix next '])[2]", 'starts analysis').pause(model.pause + 500)  
-          .click("(//div[@class='takeover-navigation-button-container clearfix next '])[2]")    
+          .click("(//div[@class='takeover-navigation-button-container clearfix next '])[2]")
+          .waitForElementPresent("//span[@class='takeover-navigation-button-title float-left' and text()='START ANALYSIS']", 6000)
+          .moveToElement("//span[@class='takeover-navigation-button-title float-left' and text()='START ANALYSIS']", 10, 10)
+          .click("//span[@class='takeover-navigation-button-title float-left' and text()='START ANALYSIS']")
+
         .end()
 
    },

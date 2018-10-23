@@ -126,9 +126,10 @@ module.exports = {
         .clearValue("(//textarea[@class='content-field-textarea'])[5]").pause(model.pause + 1000)
         .keys('Canvas Section Assumption').pause(model.pause + 500)
         .click("(//*[contains(text(), 'SUMMARY')])[2]")
-        .keys('Hãy cùng xây dựng Wiktionary! Bitwa o Knipawę – całość zmagań o kontrolę nad portową dzielnicą Królewca, wzrost związanych z nią podatków skutkował zmianą orientacji politycznej pospólstwa i prokrzyżackim powstaniem. W jego następstwie dzielnice Stare Miasto i Lipnik powróciły pod władzę zakonu krzyżackiego, a wierna Kazimierzowi IV pozostała jedynie portowa dzielnica Knipawa. Wielki mistrz Zakonu Ludwig von Erlichshausen skierował przeciwko niej siły dowodzone przez wielkiego szpitalnika Heinricha Reuss von Plauena, które niedostatecznie silne aby przeprowadzić szturm, rozpoczęły oblężenie ufortyfikowanej i położonej na rzecznej wyspie dzielnicy. Wobec otrzymania niewystarczającej pomocy ze strony kierowanego przez Johannesa von Baysen Związku Pruskiego i rozbicia przez Krzyżaków odsieczy, zmuszona została po szturmie do kapitulacji na honorowych warunkach po 14 tygodniach oblężenia. Czytaj więcej…')
+        .keys('Hãy cùng xây dựng Wiktionary! Bitwa o Knipawę – całość zmagań o kontrolę ')
         .click("(//div[@class='publish-btn'])")
         .pause(model.pause + 1500)
+        .waitForElementPresent("(//*[contains(text(), 'RUN EXPERIMENT')])[2]", 6000)
         .click("(//*[contains(text(), 'RUN EXPERIMENT')])[2]")
         .pause(model.pause + 1000)
 
