@@ -76,7 +76,7 @@ module.exports = {
         .click('.activity-body-target-holder')
         .click('.current-card-nav > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)')
         .pause(model.pause + 500)
-        .verify.elementPresent('.activity-body-target-holder', 'it goes back to the holder')
+        .waitForElementPresent('.activity-body-target-holder', 6000, 'it goes back to the holder')
         .pause(model.pause + 500)
   },
 
@@ -86,9 +86,11 @@ module.exports = {
         .click("(//div[@class='public-DraftEditor-content'])")
         .setValue("(//div[@class='public-DraftEditor-content'])", ['Avrupada kayda geçmiş ilk yazılı belge olarak ise MÖ yıllarında Antik Yunanistanda Homerosun yazdığı İlyada destanı gösterilebilir', browser.Keys.ENTER])
         .pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='DraftEditor-editorContainer'])[2]", 6000)
         .click("(//div[@class='DraftEditor-editorContainer'])[2]")
         .setValue("(//div[@class='public-DraftEditor-content']) [2]", ['Kuasar, evrenin en uzak köşelerinde yüksek bir enerjiyle parlayan gökadalara verilen addır', browser.Keys.ENTER])
         .pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='DraftEditor-editorContainer'])[2]", 6000)
         .click("(//div[@class='public-DraftEditor-content'])[3]")
         .setValue("(//div[@class='public-DraftEditor-content'])[3]", ['Die Wikipedia ist ein offenes Projekt, in dem jeder mitarbeiten darf – also sei mutig und hilf mit, sie zu erweitern und zu verbessern! Diese Seite gibt einen ersten Überblick', browser.Keys.ENTER])
         .pause(model.pause + 500)
