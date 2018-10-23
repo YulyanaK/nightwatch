@@ -31,8 +31,26 @@ module.exports = {
         .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 6000)
-        .click('div.hamburger-holder')
+        .waitForElementPresent('div.hamburger-holder', 8000)
+        .element('css selector', 'div.hamburger-holder', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser
+                .click('div.hamburger-holder');
+            } else {
+                // Element is not present.
+                browser
+                
+                .useXpath()
+                .click("(//div[@class='org-dashboard-card-container'])[2]")
+                .useCss()
+                .waitForElementPresent('div.hamburger-holder', 10000)
+                .click('div.hamburger-holder')
+
+            }
+        });
+
+       
   },
 
   'Test post cancel' : function(browser){

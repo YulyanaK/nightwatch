@@ -336,6 +336,7 @@ module.exports = {
         
         .useXpath()
         .pause(model.pause + 1500)
+        .waitForElementPresent("//span[text()='COMPLETE']", 6000)
         .moveToElement("//span[text()='COMPLETE']", 10, 10)
         .click("//span[text()='COMPLETE']")
         .pause(model.pause + 900)
