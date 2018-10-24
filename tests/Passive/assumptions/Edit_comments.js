@@ -30,6 +30,7 @@ module.exports = {
         
         .click("//div[text()='AssumptionsTest_QA']")
         .pause(model.pause + 4000)
+        .waitForElementPresent("//div[@class='hamburger-holder close ']", 6000)
         .click("//div[@class='hamburger-holder close ']").pause(model.pause + 2000)
         .click("//div[@class='side-nav-subSection-title' and text()='Sample Project']").pause(model.pause + 2000)
 
