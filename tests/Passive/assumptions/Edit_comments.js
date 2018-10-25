@@ -25,6 +25,21 @@ module.exports = {
 
     'Verify user is able to edit Assumption' : function(browser) {
       browser
+          .useXpath()
+          .frame("intercom-borderless-frame")
+          .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+
         .useXpath()
         .waitForElementPresent("//div[text()='AssumptionsTest_QA']", 4000)
         
@@ -57,8 +72,8 @@ module.exports = {
         .clearValue("//textarea[@class='content-field-textarea']").pause(model.pause + 500)
         .setValue("//textarea[@class='content-field-textarea']", 'Editing Assumption Title').pause(model.pause + 500)
         .click("//div[text()='SUMMARY']").pause(model.pause + 1500)
-        .click("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[5]").pause(model.pause + 500)
-        .clearValue("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[5]").pause(model.pause + 2000)
+        .click("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[4]").pause(model.pause + 500)
+        .clearValue("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[4]").pause(model.pause + 2000)
         //.setValue("//div[@class='hypothesis-summary']//div[@class='text-editor-container    hypothesis']", "Edited Summary").pause(model.pause + 2000)
         
     },  
@@ -87,7 +102,7 @@ module.exports = {
       .pause(model.pause + 1000)
       //waitForElementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])[7]", model.pause + 2000)
       .getText("//span[@data-text='true']", function(text) {
-          this.verify.equal(text.value, 'new comment')
+          this.verify.equal(text.value, ' new comment')
       })
 
   },
@@ -117,6 +132,7 @@ module.exports = {
     browser
       .useXpath()
       .moveToElement("//span[@data-text='true']", 10, 10).pause(model.pause + 500)
+      .waitForElementPresent("//div[@class='delete-comment-icon lpc-close-cancel-mini-icon-gray']", 6000)
       
 
       .click("//div[@class='delete-comment-icon lpc-close-cancel-mini-icon-gray']")

@@ -26,6 +26,20 @@ module.exports = {
   'Verify user is able to connect Evidence to Assumption' : function(browser) {
       browser
         .useXpath()
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        .useXpath()
         .waitForElementPresent("//div[text()='AssumptionsTest_QA']", 4000)
         
         .click("//div[text()='AssumptionsTest_QA']")
@@ -61,8 +75,8 @@ module.exports = {
         .waitForElementPresent("//div[@class='choose-card-type-selection-card-title' and text()='INTERVIEW']", 5000)
         .pause(model.pause + 2000)
         .click("//div[@class='choose-card-type-selection-card-title' and text()='INTERVIEW']")//select Interview
-        .waitForElementPresent("(//div[@class='interviewee-add-text clickable interview-edit-mode-text'])[2]", 5000)
-        .click("(//div[@class='interviewee-add-text clickable interview-edit-mode-text'])[2]")
+        .waitForElementPresent("(//div[@class='interviewee-add-text clickable interview-edit-mode-text'])[1]", 5000)
+        .click("(//div[@class='interviewee-add-text clickable interview-edit-mode-text'])[1]")
         .pause(model.pause + 2000)
         .moveToElement("(//input[@class='new-interviewee-input'])[1]", 10, 10)
         .setValue("(//input[@class='new-interviewee-input'])[1]", 'Any name')//Adding Interviewee
@@ -83,8 +97,8 @@ module.exports = {
         .click("//button[@class='new-interviewee-submit']")
         .pause(model.pause + 1000)
         .click("//div[@class='interviewee-close-text']")
-        .waitForElementPresent("(//div[@class='details-title no-content' and text()='KEY INSIGHTS'])[2]", 6000)
-        .click("(//div[@class='details-title no-content' and text()='KEY INSIGHTS'])[2]")
+        .waitForElementPresent("(//div[@class='details-title no-content' and text()='KEY INSIGHTS'])[1]", 6000)
+        .click("(//div[@class='details-title no-content' and text()='KEY INSIGHTS'])[1]")
         .keys('key insights')
         //.setValue("(//div[@data-contents='true'])[6]", 'Assumptions_Evidence_Test. Key Insights')
         .pause(model.pause + 1000)

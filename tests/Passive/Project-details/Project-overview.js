@@ -28,6 +28,21 @@ module.exports = {
         
         .useCss()
         .waitForElementPresent('div.org-container', 4000).pause(model.pause + 500)
+        browser
+        .useXpath()
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
         
   },
 
@@ -114,7 +129,9 @@ module.exports = {
         .pause(model.pause + 2500)
         .moveToElement("(//div[@class='takeover-title-container'])[6]", 2, 2)
         .click("(//*[@class='content-field-edit-icon'])").pause(model.pause + 2500)
+        .waitForElementPresent("(//div[@class='content-field-delete-holder'])", 6000)
         .moveToElement("(//div[@class='content-field-delete-holder'])", 2, 2)
+        .waitForElementPresent("(//div[@class='content-field-delete-holder'])", 6000)
         .click("(//div[@class='content-field-delete-holder'])").pause(model.pause + 2500)
 
         .useCss()
