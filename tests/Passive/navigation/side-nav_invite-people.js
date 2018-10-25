@@ -25,10 +25,11 @@ module.exports = {
       browser
         .useXpath()
         .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 6000).pause(model.pause + 500)
+        .moveToElement("(//div[@class='org-dashboard-card-container'])[5]", 10, 10)
         .click("(//div[@class='org-dashboard-card-container'])[5]")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 6000)
+        .waitForElementPresent('div.hamburger-holder', 8000)
         .click('div.hamburger-holder')
         .verify.elementPresent('div.side-nav-organization-name-holder', 'opens left nav').pause(model.pause + 500)
         .click('div.side-nav-organization-name-holder')

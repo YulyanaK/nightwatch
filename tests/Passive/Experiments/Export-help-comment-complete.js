@@ -56,13 +56,34 @@ module.exports = {
 
      browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='workspace-inner-column-container'])[3]//div//div//div[@class='experiment-card-title']", 6000, 'searches for experiments on analyze phase')
-        .click("(//div[@class='workspace-inner-column-container'])[3]//div//div//div[@class='experiment-card-title']")
-  },
+        
+        
+        .frame("intercom-borderless-frame")
+
+        //.click("//div[text()='Which one most closely matches your role?']")
+        //.waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+        //.click("//div[@class='intercom-borderless-dismiss-button']")
+        
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+
+    },
 
 
   'Run Help': function(browser) {
      browser
+        .waitForElementPresent("(//div[@class='workspace-inner-column-container'])[3]//div//div//div[@class='experiment-card-title']", 6000, 'searches for experiments on analyze phase')
+        .click("((//div[@class='workspace-inner-column-container'])[3]//div//div//div[@class='experiment-card-title'])[1]")
         .waitForElementPresent("(//div[@class='help-section-button'])[4]", 6000)
         .click("(//div[@class='help-section-button'])[4]")
         /*.pause(model.pause + 1500)
