@@ -119,18 +119,20 @@ module.exports = {
         .click("(//div[@class='experiments-filter-icon hover'])")
 
         //add a new assupmtion
-        .verify.elementPresent("//div[text()='CREATE NEW']", 'creates a new assumption').pause(model.pause + 2000) 
+        /*.verify.elementPresent("//div[text()='CREATE NEW']", 'creates a new assumption').pause(model.pause + 2000) 
         .click("//div[text()='CREATE NEW']")
         .pause(model.pause + 900) 
-        .click("(//textarea[@class='content-field-textarea'])[5]").pause(model.pause + 1000)
-        .clearValue("(//textarea[@class='content-field-textarea'])[5]").pause(model.pause + 1000)
+        .click("(//textarea[@class='content-field-textarea'])[4]").pause(model.pause + 1000)
+        .clearValue("(//textarea[@class='content-field-textarea'])[4]").pause(model.pause + 1000)
         .keys('Canvas Section Assumption').pause(model.pause + 500)
         .click("(//*[contains(text(), 'SUMMARY')])[2]")
         .keys('Hãy cùng xây dựng Wiktionary! Bitwa o Knipawę – całość zmagań o kontrolę ')
         .click("(//div[@class='publish-btn'])")
-        .pause(model.pause + 1500)
-        .waitForElementPresent("(//*[contains(text(), 'RUN EXPERIMENT')])[2]", 6000)
-        .click("(//*[contains(text(), 'RUN EXPERIMENT')])[2]")
+        .pause(model.pause + 1500)*/
+        .waitForElementPresent("//div[@class='connect-cards-close-icon ']", 6000)
+        .click("//div[@class='connect-cards-close-icon ']")
+        .waitForElementPresent("(//*[contains(text(), 'RUN EXPERIMENT')])[1]", 6000)
+        .click("(//*[contains(text(), 'RUN EXPERIMENT')])[1]")
         .pause(model.pause + 1000)
 
         //.saveScreenshot('./reports/Experiments/experiments.png')

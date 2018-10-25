@@ -95,7 +95,7 @@ module.exports = {
   
   'Add new avidence' : function(browser){
       browser
-          .useXpath()
+          /*.useXpath()
           .verify.elementPresent("(//div[text()='CREATE NEW'])", 'creates a new evidence').pause(model.pause + 1000)
           .click("(//div[text()='CREATE NEW'])")
           .pause(model.pause + 1500)
@@ -132,11 +132,13 @@ module.exports = {
           .pause(model.pause + 500)
           .click("(//div[@class='details-title no-content' and text()='NOTES'])[2]")
           .keys('1921 قثسفهبر شبشسيصمثمح رسيبمضثم /سيبمسكيبمجخنقفس/يلبومينبلسرتذ ،شسيب، بننضخ٢٠٣٨٠٩٨٠٩٤٣-٤٥٠ه-٠نيترنس٩٨٠٩سبح ،خجنلسخنحخ-٠ه-٣٤=كولبسي')
-          .pause(model.pause + 500)
+          .pause(model.pause + 500)*/
 
           // publish evidence
-          .click("(//div[@class='publish-btn'])")
-          .pause(model.pause + 1500)
+          /*.click("(//div[@class='publish-btn'])")
+          .pause(model.pause + 1500)*/
+          .waitForElementPresent("//div[@class='close-icon']", 6000)
+          .click("//div[@class='close-icon']")
           .waitForElementPresent("(//div[@class='experiment-connected-evidence-expand'])", 6000, 'opens measure and rate').pause(model.pause + 900)
           .waitForElementPresent("(//div[@class='experiment-connected-evidence-expand'])[3]", 6000)
           .moveToElement("(//div[@class='experiment-connected-evidence-expand'])[3]", 10, 10)
