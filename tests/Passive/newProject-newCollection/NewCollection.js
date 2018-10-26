@@ -67,13 +67,14 @@ var ObjectId = require('mongodb')
 
         .useCss()
         .waitForElementPresent('div.create-collection-nav-button', 6000)
+        .moveToElement('div.create-collection-nav-button', 10, 10)
         .click('div.create-collection-nav-button')
 
   },
 
   'Adding a project to a collection' : function(browser){
       browser
-        .waitForElementPresent('div > input.collection-settings-add-project-input', 8000)
+        .waitForElementPresent('div > input.collection-settings-add-project-input', 12000)
         .click('input.collection-settings-add-project-input')
         .pause(model.pause + 1000)
         .verify.elementPresent('div.collection-settings-option-data-test', 'checking a collection').pause(model.pause + 500)
