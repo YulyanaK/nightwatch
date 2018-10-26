@@ -113,7 +113,13 @@ module.exports = {
         //.verifyElementPresent("//div[@class='card-content' and text()='Canvas Section Assumption']")
         .click("//div[@class='kanban-icon']").pause(model.pause + 500)
         .click("//div[@class='canvas-icon']").pause(model.pause + 500)
-        .click("//div[@class='card-content' and text()='Canvas Section Assumption']")
+        .moveToElement("//div[@class='kanban-icon']/div", 10, 10)
+        .click("//div[@class='kanban-icon']/div")
+
+       
+        .waitForElementPresent("//div[text()='Canvas Section Assumption']", 16000)
+        .moveToElement("//div[text()='Canvas Section Assumption']", 10, 10)
+        .click("//div[text()='Canvas Section Assumption']")
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)//Assumption card takeover displayed
         .pause(model.pause + 2000)
         .clearValue("//textarea[@class='content-field-textarea']").pause(model.pause + 1000)
@@ -128,8 +134,12 @@ module.exports = {
         .click("(//div[@class='card-content' and text()='Canvas Section Assumption- Real-time'])[1]")
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 10000)//Assumption card takeover displayed
         
-        .waitForElementPresent("(//div[@class='dropdown-menu-icon clickable '])[5]", 6000)
-        .click("(//div[@class='dropdown-menu-icon clickable '])[5]").pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='basic-dropdown-selected-text more-dropdown  '])[3]", 6000)
+        .moveToElement("(//div[@class='card-full-nav-x-container'])[3]", 10, 10)
+        
+        .click("(//div[@class='dropdown-menu-icon clickable '])[3]").pause(model.pause + 500)
+        .pause()
+        .click("(//div[@class='dropdown-menu-icon clickable '])[3]")
         .click("//div[text()='Delete Assumption']")
         .waitForElementPresent("//div[@class='confirmation-button no-cancel red undefined' and text()='Delete Assumption']", 6000)
         .click("//div[@class='confirmation-button-holder']/div[text()='Delete Assumption']").pause(model.pause + 4000)*/
