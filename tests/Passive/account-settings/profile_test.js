@@ -99,7 +99,24 @@ module.exports = {
 
   'Profile' : function (browser) {
       browser
-        .verify.elementPresent("//input[@placeholder='First name']", 'first name').pause(model.pause + 500)
+        .useXpath()
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+
+
+
+        .waitForElementPresent("//input[@placeholder='First name']", 6000, 'first name')
         .click("//input[@placeholder='First name']").pause(model.pause + 500)
         .clearValue("//input[@placeholder='First name']").pause(model.pause + 500)
         //.setValue("//input[@placeholder='First name']", 'davitis')
