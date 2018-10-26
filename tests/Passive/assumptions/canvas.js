@@ -85,6 +85,7 @@ module.exports = {
         //.url(model.url + '')
         .refresh()
         .pause(model.pause + 4000)
+        .waitForElementPresent("(//div[@class='priority-card-summary '])[1]", 6000)
         .click("(//div[@class='priority-card-summary '])[1]")
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)//Assumption card takeover displayed
         .pause(model.pause + 2000)
