@@ -54,6 +54,19 @@ module.exports = {
 
         browser
     			.useXpath()
+          .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+          .frame(null)
     			.waitForElementPresent("(//div[@class='workspace-inner-column-container'])[2]//div//div//div[@class='experiment-card-title']", 6000)
     			//.waitForElementPresent("(//*[contains(text(), 'EXPERIMENT')])", 6000)
     			//.click("(//*[contains(text(), 'EXPERIMENT')])")
@@ -137,6 +150,7 @@ module.exports = {
           // publish evidence
           /*.click("(//div[@class='publish-btn'])")
           .pause(model.pause + 1500)*/
+          .useXpath()
           .waitForElementPresent("//div[@class='close-icon']", 6000)
           .click("//div[@class='close-icon']")
           .waitForElementPresent("(//div[@class='experiment-connected-evidence-expand'])", 6000, 'opens measure and rate').pause(model.pause + 900)
@@ -190,11 +204,11 @@ module.exports = {
           .pause(model.pause + 500)
           .click("(//div[@class='evidence-icon hover Leaning Confirming'])[12]")
           .pause(model.pause + 500) 
-          .verify.elementPresent("(//div[@class='takeover-navigation-button-container clearfix next '])[2]", 'starts analysis').pause(model.pause + 500)  
-          .click("(//div[@class='takeover-navigation-button-container clearfix next '])[2]")
-          .waitForElementPresent("//span[@class='takeover-navigation-button-title float-left' and text()='START ANALYSIS']", 6000)
+          
+          .waitForElementPresent("//span[@class='takeover-navigation-button-title float-left' and text()='START ANALYSIS']", 6000, 'starts analysis').pause(model.pause + 500)  
           .moveToElement("//span[@class='takeover-navigation-button-title float-left' and text()='START ANALYSIS']", 10, 10)
           .click("//span[@class='takeover-navigation-button-title float-left' and text()='START ANALYSIS']")
+          
 
         .end()
 

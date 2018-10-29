@@ -14,25 +14,40 @@ module.exports = {
         .click('div.signin-form-container')
       browser
         .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
-        .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
+        .waitForElementPresent('div.signin-form-container', 6000, 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
         .setValue('input[type=password]', 'Testtest1!')
         .click('div.signup-show-password')
-        .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
+        .waitForElementPresent('div.login-button', 6000, 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
   },
 
   'Verify the organizations name' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 6000)
-        .verify.elementPresent('.org-dashboard-card-container', 'entering basic tier organization').pause(model.pause + 500)
+        .useXpath()
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        .useCss()
+        .waitForElementPresent('div.org-dashboard-card-container', 8000)
+        .waitForElementPresent('.org-dashboard-card-container', 6000, 'entering basic tier organization').pause(model.pause + 500)
 
         .useXpath()
         .click("(//div[@class='org-dashboard-card-container'])[7]")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 6000)
+        .waitForElementPresent('div.hamburger-holder', 8000)
         .click('div.hamburger-holder')
   },
 

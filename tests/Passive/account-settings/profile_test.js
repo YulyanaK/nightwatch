@@ -48,7 +48,7 @@ module.exports = {
       browser
         .setValue('input[type=password]', 'Testtest1!')
         .click('div.signup-show-password')
-        .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
+        .waitForElementPresent('div.login-button', 6000, 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
   },
 
@@ -56,18 +56,7 @@ module.exports = {
       browser
         //.waitForElementPresent("//div[text()='Ruwanda_QA']", 6000)
         //.click("//div[text()='Ruwanda_QA']")
-
-        .waitForElementPresent('div.org-dashboard-card-container', 6000)
-        .waitForElementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 6000)
-        .moveToElement('div.org-dashboard-card-container div:nth-of-type(3)', 10, 10)
-        .click('div.org-dashboard-card-container div:nth-of-type(3)')
-  },
-
-  'verify account profile dropdown menu' : function (browser) {
-      browser
-        .pause(model.pause + 12000)
         .useXpath()
-        
         .frame("intercom-borderless-frame")
         .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
             if (result.value && result.value.ELEMENT) {
@@ -81,6 +70,17 @@ module.exports = {
         });
     browser
         .frame(null)
+        .useCss()
+        .waitForElementPresent('div.org-dashboard-card-container', 6000)
+        .waitForElementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 6000)
+        .moveToElement('div.org-dashboard-card-container div:nth-of-type(3)', 10, 10)
+        .click('div.org-dashboard-card-container div:nth-of-type(3)')
+  },
+
+  'verify account profile dropdown menu' : function (browser) {
+      browser
+        .pause(model.pause + 12000)
+        .useXpath()
         .element('xpath', "//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']", function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
