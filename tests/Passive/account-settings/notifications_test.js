@@ -50,6 +50,7 @@ module.exports = {
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
+        
   },
 
  /* 'Verify the organizations for profile notifications' : function(browser) {
@@ -66,7 +67,15 @@ module.exports = {
         .waitForElementPresent("//div[text()='Ruwanda_QA']", 6000)
         .moveToElement("//div[text()='Ruwanda_QA']", 10, 10)
         .click("//div[text()='Ruwanda_QA']")
-        .waitForElementPresent("//div[@class='dropdown-menu-icon inbox active']", 8000)
+        .getLogTypes(function(result) {
+        console.log(result);
+      })
+        .getLog('browser', function(result) {
+        console.log(result);
+      })
+    ;
+    browser
+        .waitForElementPresent("//div[@class='dropdown-menu-icon inbox active']", 12000)
         .click("//div[@class='dropdown-menu-icon inbox active']").pause(model.pause + 1000)
         .waitForElementPresent("//div[@class='notificaiton-description']", 6000, 'Edits to cards in a project I have access to')
         .click("//div[@class='dropdown-menu-icon inbox active']").pause(model.pause + 1000)
