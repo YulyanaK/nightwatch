@@ -110,8 +110,9 @@ module.exports = {
         .click("(//div[@class='card-full-nav-x'])[3]")
         .waitForElementPresent("//div[@class='nav-center-container   ']//div//a/div", 6000)//returns to Worspace
         .click("//div[@class='canvas-btn-title inline-block']")
-        .waitForElementPresent("//div[@class='canvas-nav-date-text']", 6000)//switch to Canvas
+        //.waitForElementPresent("//div[@class='canvas-nav-date-text']", 6000)//switch to Canvas
         //.verifyElementPresent("//div[@class='card-content' and text()='Canvas Section Assumption']")
+        .waitForElementPresent("//div[@class='kanban-icon']/div", 6000)
         .click("//div[@class='kanban-icon']").pause(model.pause + 500)
         .click("//div[@class='canvas-icon']").pause(model.pause + 500)
         .moveToElement("//div[@class='kanban-icon']/div", 10, 10)
@@ -127,7 +128,8 @@ module.exports = {
         .setValue("//textarea[@class='content-field-textarea']", 'Canvas Section Assumption- Real-time').pause(model.pause + 2000)//Enter title
         .click("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='Done Editing']").pause(model.pause + 500)
         .click("(//div[@class='card-full-nav-x'])[3]")
-        .waitForElementPresent("//div[@class='canvas-nav-date-text']", 6000)//switch to Canvas
+        .pause(model.pause + 5000)
+        .waitForElementPresent("//div[@data-test='Channels0']/div[@class='card-content']", 6000)//switch to Canvas
         .getText("//div[@data-test='Channels0']/div[@class='card-content']", function(result) {
         this.verify.equal(result.value, "Canvas Section Assumption- Real-time")
       })
