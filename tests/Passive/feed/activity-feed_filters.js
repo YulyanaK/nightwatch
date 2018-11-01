@@ -123,11 +123,11 @@ module.exports = {
         //.click('input.activity-feed-calendar-input')
         //.setValue('input.activity-feed-calendar-input', ['5/1/2018 to 5/31/2018','\uE008'])
         
-        .moveToElement("//div[@class='DayPicker-Day' and text()='1']", 10, 10).pause(model.pause + 1000)
-        .click("//div[@class='DayPicker-Day' and text()='1']").pause(model.pause + 1000)
-        .moveToElement("//div[@class='DayPicker-Day' and text()='3']", 10, 10)
-        .verify.elementPresent("//div[@class='DayPicker-Day' and text()='3']", 'days selected').pause(model.pause + 1500)
-        .click("//div[@class='DayPicker-Day' and text()='3']").pause(model.pause + 1000)
+        .moveToElement("//div[@class='DayPicker-Day' and text()='15']", 10, 10).pause(model.pause + 1000)
+        .click("//div[@class='DayPicker-Day' and text()='15']").pause(model.pause + 1000)
+        .moveToElement("//div[@class='DayPicker-Day' and text()='30']", 10, 10)
+        .verify.elementPresent("//div[@class='DayPicker-Day' and text()='30']", 'days selected').pause(model.pause + 1500)
+        .click("//div[@class='DayPicker-Day' and text()='30']").pause(model.pause + 1000)
 
         
         .pause(model.pause + 1500)

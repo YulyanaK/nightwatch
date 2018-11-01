@@ -105,16 +105,16 @@ module.exports = {
         .pause(model.pause + 500)
         .waitForElementPresent("(//div[@class='DraftEditor-editorContainer'])[2]", 6000)
         .click("(//div[@class='public-DraftEditor-content'])[3]")
-        .setValue("(//div[@class='public-DraftEditor-content'])[3]", ['Die Wikipedia ist ein offenes Projekt, in dem jeder mitarbeiten darf – also sei mutig und hilf mit, sie zu erweitern und zu verbessern! Diese Seite gibt einen ersten Überblick', browser.Keys.ENTER])
+        .setValue("(//div[@class='public-DraftEditor-content'])[3]", ['Die Wikipedia ist ein offenes Projekt', browser.Keys.ENTER])
         .pause(model.pause + 500)
         .click("(//div[@class='public-DraftEditor-content'])[4]")
-        .setValue("(//div[@class='public-DraftEditor-content'])[4]",['Danach wurde es zu einem festen Bestand­teil der restlichen Tour, und die Band spielte ihn auch bei den meisten Auftritten der Lovetown-Tour im Jahr 1989.', browser.Keys.ENTER])
+        .setValue("(//div[@class='public-DraftEditor-content'])[4]",['Danach wurde es zu einem festen Bestand­teil der restlichen Tour.', browser.Keys.ENTER])
         .pause(model.pause + 1500)
         .click("(//div[@class='public-DraftEditor-content'])[2]")
-        .setValue("(//div[@class='public-DraftEditor-content'])[2]", ['مقالات مختارة أخرى: الجبهة الغربية (الحرب العالمية الأولى) – داء نيوكاسل – سلاما هي المقالات المختارة؟ – بوابة الحرب العالمية الأولى – بوابة تاريخ أوروبا', browser.Keys.ENTER])
+        .setValue("(//div[@class='public-DraftEditor-content'])[2]", ['مقالات مختارة أخرى: الجبهة ', browser.Keys.ENTER])
         .pause(model.pause + 500)
         .click("(//div[@class='public-DraftEditor-content'])[3]")
-        .setValue("(//div[@class='public-DraftEditor-content'])[3]",['ألمانيا للوكسمبورغ وبلجيكا في سنة 1914، ثم السيطرة العسكرية على المناطق الصناعية المهمة في فرنسا. كانت الحرب سجالًا في الجبهة الغربية، بدءًا من انتصار الحلفاء في معركة المارن الأولى، وبعد ذلك، حفر كلا الجانبين خطاً متعرجاً محصناً من الخنادق لتبدأ حرب الخنادق. امتد خط الخنادق من بحر الشمال إلى الحدود السويسرية مع فرنسا، وظل هذا الخط ثابتًا لم يتغير معظم أيام الحرب. بين', browser.Keys.ENTER])
+        .setValue("(//div[@class='public-DraftEditor-content'])[3]",['ألمانيا للوكسمبورغ ', browser.Keys.ENTER])
         .pause(model.pause + 500)
         .click("(//div[@class='public-DraftEditor-content'])[4]")
         .setValue("(//div[@class='public-DraftEditor-content'])[4]", ['Panait Istrati, (d. 10 Ağustos 1884 - ö. 18 Nisan 1935) Romen yazar. Balkanların Maksim Gorkisi olarak anılır', browser.Keys.ENTER])
@@ -123,7 +123,7 @@ module.exports = {
         .verify.elementPresent('div.card-full-nav-x-container', 'return to activity feed').pause(model.pause + 500)
         .click('div.card-full-nav-x-container')
         // Take another screenshot at the end of the filter activity image saved as feed_test.png
-        .saveScreenshot('./reports/feed/feed_test.png')
+        //.saveScreenshot('./reports/feed/feed_test.png')
       .end();
    },
 }
