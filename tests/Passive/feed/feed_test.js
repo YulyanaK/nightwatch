@@ -40,7 +40,8 @@ module.exports = {
         });
     browser
         .frame(null)
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 4000).pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 6000).pause(model.pause + 500)
+        .moveToElement("(//div[@class='org-dashboard-card-container'])[2]", 10, 10)
         .click("(//div[@class='org-dashboard-card-container'])[2]")
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 8000)
@@ -69,7 +70,7 @@ module.exports = {
   'Canvas' : function(browser) {
       browser 
         .useCss()
-        .waitForElementPresent('.side-nav-subSection-title', 4000)
+        .waitForElementPresent('.side-nav-subSection-title', 6000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
         .useXpath()
