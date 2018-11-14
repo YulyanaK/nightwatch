@@ -2,7 +2,6 @@ var model = require('../../../helpers/model');
 var controller = require('../../../helpers/controller');
 var ObjectId = require('mongodb').ObjectId;
 
-
 module.exports = {
   
 
@@ -28,8 +27,8 @@ module.exports = {
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[5]")
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[4]", 4000).pause(model.pause + 500)
+        .click("(//div[@class='org-dashboard-card-container'])[4]")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 4000)
@@ -57,7 +56,7 @@ module.exports = {
         .click('div.management-org-settings-profile-holder')
         .verify.elementPresent('.file-upload-lable', 'upload profile image').pause(model.pause + 500)
         .click('.file-upload-lable')
-        .setValue('input[type="file"]', require('path').resolve(__dirname + '/nunavut.gif'))
+        .setValue('input[type="file"]', require('path').resolve(__dirname + '/spain.png'))
         .refresh()
         .pause(model.pause + 1800)
         .end()

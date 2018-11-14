@@ -16,11 +16,11 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
+        .setValue('input[type=text]', 'ykarpava+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
-        .setValue('input[type=password]', 'Testtest1!')
+        .setValue('input[type=password]', 'Brooklyn1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
@@ -116,7 +116,7 @@ module.exports = {
 
   'Test for single-select dropdown' : function(browser) {
   	   browser
-        .verify.elementPresent('div.project-customization-dropdown-container.clearfix', 'opens up drop down menu').pause(model.pause + 500)
+        .waitForElementPresent('div.project-customization-dropdown-container.clearfix', 1000, 'opens up drop down menu')
         .click('div.project-customization-dropdown-container.clearfix')
         .verify.elementPresent('div.project-customization-dropdown-holder > div:nth-of-type(2)', 'select Single-Select Dropdown').pause(model.pause + 800)
         .getText('div.project-customization-dropdown-holder > div:nth-of-type(2)', function(text) {
@@ -159,7 +159,7 @@ module.exports = {
 
   'Test for Multi-Select Dropdown' : function(browser) {
   	  browser
-        .verify.elementPresent('div.project-customization-dropdown-container.clearfix', 'opens up drop down menu').pause(model.pause + 500)
+        .waitForElementPresent('div.project-customization-dropdown-container.clearfix', 1000, 'opens up drop down menu')
         .click('div.project-customization-dropdown-container.clearfix')
         .verify.elementPresent('div.project-customization-dropdown-holder > div:nth-of-type(2)', 'select Single-Select Dropdown').pause(model.pause + 800)
         .getText('div.project-customization-dropdown-holder > div:nth-of-type(3)', function(text) {
