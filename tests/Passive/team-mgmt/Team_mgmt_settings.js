@@ -57,8 +57,8 @@ module.exports = {
         .verify.elementPresent('.file-upload-lable', 'upload profile image').pause(model.pause + 500)
         .click('.file-upload-lable')
         .setValue('input[type="file"]', require('path').resolve('C:\Users\Administrator\Desktop\CSV_example.csv'))
-        .refresh()
-        .pause(model.pause + 1800)
+        .pause(model.pause + 15000)
+        
         .end()
     },
 }

@@ -46,7 +46,7 @@
         "platform": "Windows 7",
         "browserName": "chrome",
         "version": "latest",
-        "prerun": { "executable": "https://gist.githubusercontent.com/YulyanaK/dff83d8ab9609afc340c88a1332373ad/raw/f9252f7b03ca66ee5763aa0766e02a616d8188f1/pc_download.bat", "args": [ "--silent", "-a", "-q" ], "background": true, "timeout": 120 }
+        "prerun": { "executable": "https://gist.githubusercontent.com/YulyanaK/dff83d8ab9609afc340c88a1332373ad/raw/f9252f7b03ca66ee5763aa0766e02a616d8188f1/pc_download.bat", "background": false}
       }
     },
 
