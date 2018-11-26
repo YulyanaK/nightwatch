@@ -8,13 +8,13 @@ module.exports = {
   'login': function(browser) {
       browser
         //.url(model.url + '')
-        .url('https://app.glidr.io')
+        .url('https://passive.glidr.io')
         .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -25,15 +25,30 @@ module.exports = {
 
     },
 
-  'Verify the project name' : function(browser) {
+   'Verify the project name' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[5]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
+        .pause(model.pause + 2000)
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
+
+        .waitForElementPresent('.side-nav-subSection-title', 6000)
+        .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
+        .click('div.side-nav-subSection-title')
+
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click('div.checklist-x-icon');
+            } else {
+                // Element is not present.
+            }
+        });
     },
   
   'Selects new top nav links' : function (browser) {
@@ -41,8 +56,6 @@ module.exports = {
         .waitForElementPresent('.side-nav-subSection-title', 4000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
-        .verify.elementPresent('div.checklist-x-icon', 'closes help center').pause(model.pause + 1500)
-        .click('div.checklist-x-icon')
         .verify.elementPresent('div[data-test="dashboard-nav"]', 'click activity').pause(model.pause + 1500)
         .click('div[data-test="activity-nav"]')
         .verify.elementPresent('div[data-test="dashboard-nav"]', 'click dashboard').pause(model.pause + 1500)

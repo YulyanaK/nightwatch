@@ -6,13 +6,13 @@ module.exports = {
 
   'login to canvas': function(browser) {
       browser
-        .url('https://app.glidr.io')
+        .url('https://passive.glidr.io')
         .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -25,11 +25,13 @@ module.exports = {
   'Verify the project name for canvas' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[7]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[7]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='200 Projects_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='200 Projects_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='200 Projects_QA']")
+        .pause(model.pause + 2000)
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
     },
 

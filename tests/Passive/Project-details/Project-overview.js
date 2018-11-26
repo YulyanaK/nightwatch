@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-        .resizeWindow(1020, 768).pause(model.pause + 500)
+        //.resizeWindow(1440, 780).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -21,14 +21,13 @@ module.exports = {
         .setValue('input[type=password]', 'Testtest1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
-        .useXpath()
-        .moveToElement("//div[@class='login-button']", 10, 10)
-        .mouseButtonClick(0)
-        //.click("//div[@class='login-button']")
+        .click('div.login-button')
+        .waitForElementPresent('div.org-container', 7000).pause(model.pause + 500)
         
         .useCss()
-        .waitForElementPresent('div.org-container', 4000).pause(model.pause + 500)
-        browser
+       // .verify.elementPresent('div.org-container').pause(model.pause + 3500)
+    
+    browser
         .useXpath()
         .frame("intercom-borderless-frame")
         .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
@@ -49,8 +48,9 @@ module.exports = {
   'Verify a project and org' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[6]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[6]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Ruwanda_QA']", 11000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Ruwanda_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Ruwanda_QA']")
         .pause(model.pause + 2000)
 
         .useCss()
@@ -62,6 +62,7 @@ module.exports = {
       browser
         .waitForElementPresent('div.side-nav-subSection-title', 6000, 'selects a project')
         .click('div.side-nav-subSection-title')
+        .pause(model.pause + 3000)
         
 
         .element('css selector', 'div.checklist-x-icon', function(result){
@@ -76,11 +77,11 @@ module.exports = {
       
       browser
         .useXpath()
-        .pause(model.pause + 3000)
+        .waitForElementPresent("(//div[@class='mobile-nav-container position-relative '])[2]", 6000, 'selects a dashboard')
         .click("(//div[@class='mobile-nav-container position-relative '])[2]")
         .verify.elementPresent("//*[contains(text(), '+ EDIT')]", 'opens overview to edit').pause(model.pause + 1500)
         .click("//*[contains(text(), '+ EDIT')]").pause(model.pause + 900)
-
+        .resizeWindow(1440, 780).pause(model.pause + 500)
         .verify.elementPresent("(//div[@class='details-content'])", 'project description').pause(model.pause + 500)
         .click("(//div[@class='details-content'])")
         .clearValue("(//textarea[@class='content-field-text'])")

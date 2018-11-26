@@ -14,7 +14,7 @@ var ObjectId = require('mongodb')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -28,8 +28,10 @@ var ObjectId = require('mongodb')
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[7]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[7]")
+        .frame(null)
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)

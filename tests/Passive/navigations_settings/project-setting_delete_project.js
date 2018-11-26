@@ -8,13 +8,13 @@ var ObjectId = require('mongodb')
   'login to create a new project': function(browser) {
       browser
         //.url(model.url + '')
-        .url('https://app.glidr.io')
+        .url('https://passive.glidr.io')
         .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -28,8 +28,10 @@ var ObjectId = require('mongodb')
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[5]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
+        .pause(model.pause + 2000)
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)
@@ -37,8 +39,8 @@ var ObjectId = require('mongodb')
   },
 
   'Create project': function(browser) {
-      browser 
-        
+
+     browser
         .verify.elementPresent('div.side-nav-menu-plus-icon', 'opens a new collection from +').pause(model.pause + 500)
         .click('div.side-nav-menu-plus-icon')
 
@@ -88,25 +90,27 @@ var ObjectId = require('mongodb')
         .click('div.create-project-member-option:nth-of-type(2)')
         .verify.elementPresent('div.create-project-member-option:nth-of-type(3)', 'select invitee 3').pause(model.pause + 1500)
         .click('div.create-project-member-option:nth-of-type(3)')
-        .verify.elementPresent('div.create-project-nav-button', 'end of test').pause(model.pause + 1500)
-        .click('div.create-project-nav-button')
-        .pause(model.pause + 4000)
+ 
+        .useXpath()
+        .verify.elementPresent("//*[contains(text(), 'FINISH')]", 'end of test').pause(model.pause + 500)
+        .click("//*[contains(text(), 'FINISH')]")
 
   },
 
   'Delete project' : function(browser) {
       browser
-        .waitForElementPresent('.dropdown-menu-icon.clickable', 2000)
-        .verify.elementPresent('.dropdown-menu-icon.clickable', 'opens dropdown gear icon').pause(model.pause + 2500)
-        .click('.dropdown-menu-icon.clickable')
+        .useCss()
+        .waitForElementPresent('div.checklist-x-icon', 9500, 'closes on boarding list').pause(model.pause + 500)
+        .click('div.checklist-x-icon')
+        
+        .waitForElementPresent('div.dropdown-menu-icon.clickable', 2000)
+        .verify.elementPresent('div.dropdown-menu-icon.clickable', 'opens dropdown gear icon').pause(model.pause + 2500)
+        .click('div.dropdown-menu-icon.clickable')
 
         .useXpath()
-        .verify.elementPresent("(//div[text()='Settings'])", 'open Settings').pause(model.pause + 1000)
-        .click("(//div[text()='Settings'])")
+        .click("//*[contains(text(), 'Settings')]")
 
         .useCss()
-        .verify.elementPresent('div.checklist-x-icon', 'closes help center').pause(model.pause + 500)
-        .click('div.checklist-x-icon')
         .verify.elementPresent('div.delete-project-button', 'deletes project').pause(model.pause + 500)
         .click('div.delete-project-button')
         .verify.elementPresent('div.project-delete-buttons.confirm', 'deleting project').pause(model.pause + 500)

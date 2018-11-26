@@ -37,11 +37,14 @@ module.exports = {
                 // Element is not present.
             }
         });
+
     browser
         .frame(null)
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 6000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[2]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
+        .pause(model.pause + 2000)
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 10000)

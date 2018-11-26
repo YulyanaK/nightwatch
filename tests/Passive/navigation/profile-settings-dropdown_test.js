@@ -13,7 +13,7 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .waitForElementPresent('div.signin-form-container', 6000, 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -44,7 +44,10 @@ module.exports = {
         .waitForElementPresent('.org-dashboard-card-container', 6000, 'entering basic tier organization').pause(model.pause + 500)
 
         .useXpath()
-        .click("(//div[@class='org-dashboard-card-container'])[7]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
+        .pause(model.pause + 2000)
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 8000)

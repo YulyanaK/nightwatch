@@ -130,9 +130,10 @@ module.exports = {
         .click("//div[@class='canvas-icon']").pause(model.pause + 500)
         .moveToElement("//div[@class='kanban-icon']/div", 10, 10)
         .click("//div[@class='kanban-icon']/div")
-        .waitForElementPresent("//div[text()='Canvas Section Assumption']", 16000)
-        .moveToElement("//div[text()='Canvas Section Assumption']", 10, 10)
-        .click("//div[text()='Canvas Section Assumption']")
+        .waitForElementPresent("(//*[contains(text(), 'Canvas Section Assumption')])", 16000)
+        .moveToElement("(//*[contains(text(), 'Canvas Section Assumption')])", 10, 10)
+        .click("(//*[contains(text(), 'Canvas Section Assumption')])")
+
         .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)//Assumption card takeover displayed
         .pause(model.pause + 2000)
         .clearValue("//textarea[@class='content-field-textarea']").pause(model.pause + 1000)

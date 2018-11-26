@@ -8,13 +8,13 @@ module.exports = {
   'login': function(browser) {
       browser
         //.url(model.url + '')
-        .url('https://app.glidr.io')       
+        .url('https://passive.glidr.io')       
         .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@glidr.io')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -27,12 +27,14 @@ module.exports = {
 
   'Verify the project name' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
+        .waitForElementPresent('div.org-dashboard-card-container', 6000)
         .verify.elementPresent('.org-dashboard-card-container', 'entering basic tier organization').pause(model.pause + 500)
 
         .useXpath()
-        .click("(//div[@class='org-dashboard-card-container'])[8]")
-
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='testing team tier_Qa']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='testing team tier_Qa']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='testing team tier_Qa']")
+        .pause(model.pause + 2000)
     },
 
   // 'Navigates modal' : function (browser) {
@@ -77,26 +79,31 @@ module.exports = {
   'Guide tour' : function(browser){
       browser
         .useXpath()
-        //run reserach
+        //run assumption
         .pause(model.pause + 1500)
-        .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'open guided tour').pause(model.pause + 1500)
-        .click("//div[@class='float-left nav-dropdown-styles clickable']")
-        .pause(model.pause + 500)
-        .verify.elementPresent("//div[text()='Plan Research']", 'run research').pause(model.pause + 800)
-        .click("//div[text()='Plan Research']")
-        .verify.elementPresent("(//div[text()='Plan Research'])[2]", 'run research').pause(model.pause + 800)
-        .click("(//div[text()='Plan Research'])[2]")
-        .waitForElementPresent("(//div[@class='onboarding-tooltip-close'])", 3000)
-        .click("//div[@class='onboarding-tooltip-close']")
+        .verify.elementPresent("(//div[@class='checklist-start-button clearfix'])", 'start').pause(model.pause + 800)
+        .click("(//div[@class='checklist-start-button clearfix'])")
+        
+        .waitForElementPresent("(//div[@class='onboarding-tooltip-close'])", 1500, 'close onboard')
+        .click("(//div[@class='onboarding-tooltip-close'])")
 
-        //run evidence
         .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'open checklist').pause(model.pause + 1500)
         .click("(//div[@class='float-left nav-dropdown-styles clickable'])")
+
+        .verify.elementPresent("//div[text()='Plan Research']", 'run research').pause(model.pause + 800)
+        .click("//div[text()='Plan Research']")
+
+        .verify.elementPresent("(//div[@class='checklist-start-button clearfix'])", 'start').pause(model.pause + 800)
+        .click("(//div[@class='checklist-start-button clearfix'])")
+
+        //run research
         .verify.elementPresent("(//div[text()='Add Evidence'])", 'add evidence').pause(model.pause + 1500)
         .click("//div[text()='Add Evidence']")
-        .verify.elementPresent("(//div[@class='checklist-start-button clearfix'])", 'adding evidence').pause(model.pause + 1500)
-        .click("(//div[@class='checklist-start-button clearfix'])")
-        .pause(model.pause + 1000)
+
+        .verify.elementPresent("(//div[@class='checklist-start-button clearfix'])[3]", 'adding evidence').pause(model.pause + 1500)
+        .click("(//div[@class='checklist-start-button clearfix'])[3]")
+        
+        .waitForElementPresent("(//div[@class='onboarding-tooltip-close'])", 1500, 'close onboard')
         .click("(//div[@class='onboarding-tooltip-close'])")
 
         //run experiments
@@ -104,8 +111,8 @@ module.exports = {
         .click("(//div[@class='float-left nav-dropdown-styles clickable'])")  
         .verify.elementPresent("(//div[text()='Run Experiment'])", 'run an experiment').pause(model.pause + 1500)
         .click("//div[text()='Run Experiment']")
-        .verify.elementPresent("(//div[text()='Run Experiment'])[2]", 'run an experiment').pause(model.pause + 900)
-        .click("(//div[text()='Run Experiment'])[2]")
+        .verify.elementPresent("(//div[@class='checklist-start-button clearfix'])[4]", 'start').pause(model.pause + 800)
+        .click("(//div[@class='checklist-start-button clearfix'])[4]")
         .pause(model.pause + 1000)
         .verify.elementPresent("(//div[@class='onboarding-tooltip-close'])", 'open guided tour').pause(model.pause + 3000)
         .click("(//div[@class='onboarding-tooltip-close'])")
@@ -115,8 +122,8 @@ module.exports = {
         .click("(//div[@class='float-left nav-dropdown-styles clickable'])")     
         .verify.elementPresent("(//div[text()='Tour the Canvas'])", 'tour the canvas').pause(model.pause + 2000)
         .click("//div[text()='Tour the Canvas']")
-        .verify.elementPresent("(//div[@class='checklist-start-button clearfix'])", 'adding evidence').pause(model.pause + 900)
-        .click("(//div[@class='checklist-start-button clearfix'])")
+        .verify.elementPresent("(//div[@class='checklist-start-button clearfix'])[5]", 'start').pause(model.pause + 800)
+        .click("(//div[@class='checklist-start-button clearfix'])[5]")
         .pause(model.pause + 1000)
         .verify.elementPresent("(//div[@class='onboarding-tooltip-close'])", 'open guided tour').pause(model.pause + 3000)
         .click("(//div[@class='onboarding-tooltip-close'])")
@@ -127,8 +134,8 @@ module.exports = {
         .verify.elementPresent("//div[text()='Tour the Overview']", 'tour the overview').pause(model.pause + 2000)
         .click("//div[text()='Tour the Overview']")
         .pause(model.pause + 1000)
-        .verify.elementPresent("(//div[@class='checklist-start-button clearfix'])", 'adding evidence').pause(model.pause + 900)
-        .click("(//div[@class='checklist-start-button clearfix'])")
+        .verify.elementPresent("(//div[@class='checklist-start-button clearfix'])[6]", 'start').pause(model.pause + 800)
+        .click("(//div[@class='checklist-start-button clearfix'])[6]")
         .pause(model.pause + 1000)
         .verify.elementPresent("(//div[@class='onboarding-tooltip-close'])", 'open guided tour').pause(model.pause + 3000)
         .click("(//div[@class='onboarding-tooltip-close'])")

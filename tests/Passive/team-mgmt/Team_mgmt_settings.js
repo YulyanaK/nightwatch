@@ -7,7 +7,7 @@ module.exports = {
 
   'login to Project dashboard': function(browser) {
       browser
-        .url('https://passive.glidr.io')
+        .url('https://app.glidr.io')
        // .resizeWindow(1024, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'seraches for active container for email').pause(model.pause + 500)
@@ -56,9 +56,9 @@ module.exports = {
         .click('div.management-org-settings-profile-holder')
         .verify.elementPresent('.file-upload-lable', 'upload profile image').pause(model.pause + 500)
         .click('.file-upload-lable')
-        .setValue('input[type="file"]', require('path').resolve('C:\Users\Administrator\Desktop\CSV_example.csv'))
-        .pause(model.pause + 15000)
+        .setValue('input[type="file"]', require('path').resolve('/tmp/CSV_example.csv'))
         
+        .pause(model.pause + 18000)
         .end()
     },
 }

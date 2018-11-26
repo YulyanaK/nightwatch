@@ -42,7 +42,7 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -68,40 +68,21 @@ module.exports = {
                 // Element is not present.
             }
         });
+
     browser
-        .frame(null)
-        .useCss()
-        .waitForElementPresent('div.org-dashboard-card-container', 6000)
-        .waitForElementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 6000)
-        .moveToElement('div.org-dashboard-card-container div:nth-of-type(3)', 10, 10)
-        .click('div.org-dashboard-card-container div:nth-of-type(3)')
+        .useXpath()
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
+        .pause(model.pause + 2000)
   },
 
   'verify account profile dropdown menu' : function (browser) {
       browser
-        .pause(model.pause + 12000)
-        .useXpath()
-        .element('xpath', "//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']", function(result){
-            if (result.value && result.value.ELEMENT) {
-                // Element is present, do the appropriate tests
-                browser
-                .click("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']");
-            } else {
-                // Element is not present.
-                browser
-                .useCss()
-                .moveToElement('div.org-dashboard-card-container div:nth-of-type(3)', 10, 10)
-                .click('div.org-dashboard-card-container div:nth-of-type(3)')
-            }
-        });
-        browser
-        
-        .pause(model.pause + 500)
-        .useXpath()
-        .waitForElementPresent("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']", 6000)
-        .click("//img[@class='img-class-right-nav-profile-588115cda5d83900014a4c5c profile-image-adjust']")
+        .waitForElementPresent("//img[@class='img-class-right-nav-profile-5b8458b5059c410001e4467b profile-image-adjust']", 6000)
+        .click("//img[@class='img-class-right-nav-profile-5b8458b5059c410001e4467b profile-image-adjust']")
         .getText("//div[@class='profile-name profile-name-settings truncate']", function(text) {
-            this.verify.equal(text.value, "davitis ortizzz")
+            this.verify.equal(text.value, "David Ortiz Caro Sinton Potter")
         })
         .verify.elementPresent("//div[text()='Profile & Account Settings']", 'Profile & Account settings').pause(model.pause + 500)
         .verify.elementPresent("//div[text()='Switch Organizations']", 'switch orgs').pause(model.pause + 500)

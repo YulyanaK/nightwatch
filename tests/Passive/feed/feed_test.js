@@ -40,9 +40,11 @@ module.exports = {
         });
     browser
         .frame(null)
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 6000).pause(model.pause + 500)
-        .moveToElement("(//div[@class='org-dashboard-card-container'])[2]", 10, 10)
-        .click("(//div[@class='org-dashboard-card-container'])[2]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
+        
+
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 8000)
         .element('css selector', 'div.hamburger-holder', function(result){

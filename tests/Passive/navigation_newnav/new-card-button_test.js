@@ -9,13 +9,13 @@ module.exports = {
   'login': function(browser) {
       browser
         //.url(model.url + '')
-        .url('https://app.glidr.io')
+        .url('https://passive.glidr.io')
         .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -26,22 +26,32 @@ module.exports = {
 
     },
 
-  'Verify the project name' : function(browser) {
+   'Verify the project name' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[7]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[7]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
+        .pause(model.pause + 2000)
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
-    },
-  
-  'verify cards from canvas once new card button is clicked' : function (browser) {
-      browser
-        .verify.elementPresent('div.side-nav-subSection-title', 'selects a project').pause(model.pause + 1500)
+
+        .waitForElementPresent('.side-nav-subSection-title', 6000)
+        .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('div.side-nav-subSection-title')
-  },
+
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click('div.checklist-x-icon');
+            } else {
+                // Element is not present.
+            }
+        });
+    },
+
 
   'create a new assuption card once new card button is clicked' : function (browser) {
       browser
@@ -69,36 +79,38 @@ module.exports = {
 
   'create a new post card once new card button is clicked' : function (browser) {
      browser
-        .verify.elementPresent('div.nav-new-card-btn-container', 'opens up + button to create a post').pause(model.pause + 500)
+        .verify.elementPresent('div.nav-new-card-btn-container', 'opens up + button to create a post').pause(model.pause + 1500)
         .click('div.nav-new-card-btn-container')
-        .verify.elementPresent('div.post', 'post icon').pause(model.pause + 2000)
+        
+        .verify.elementPresent('div.post', 'post icon').pause(model.pause + 4000)
         .click('div.post')
-        .pause(model.pause + 2000)
-        .verify.elementPresent('div.text-editor-container.editable.post', 'create a post').pause(model.pause + 3000)
-        .click('div.text-editor-container.editable.post')
-        .pause(model.pause + 1000)
-
+        .pause(model.pause + 900)
+        .click('div.text-editor-container.editable.post').pause(model.pause + 900)
+       
         .useXpath()
-        .setValue("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'JAPANで始まる記事の一覧')
+        .keys('JAPANで始まる記事の一覧')
+        .pause(model.pause + 900)
 
-        .useCss()
-        .verify.elementPresent('div.card-full-nav.full-nav-edit-mode-btn', 'publish post').pause(model.pause + 500)
-        .click('div.card-full-nav.full-nav-edit-mode-btn')
-        .verify.elementPresent('div.current-card .card-full-nav-x-container', 'exit post button').pause(model.pause + 800)
-        .click('div.current-card .card-full-nav-x-container') 
+        .click("(//*[contains(text(), 'PUBLISH')])")
+        .pause(model.pause + 3000)
+        .click("(//div[@class='card-full-nav-x'])[3]")
+        
   },
 
   'create a new interview card once new card button is clicked' : function (browser) {
       browser
-        .verify.elementPresent('div.nav-new-card-btn-container','opens the + button').pause(model.pause + 1500)
+        .useCss()
+        .waitForElementPresent('div.nav-new-card-btn-container',2000, 'opens the + button')
         .click('div.nav-new-card-btn-container')
-        .pause(model.pause + 1000)
-        .verify.elementPresent('div.nav-new-card-type.interview-new  ', 'interview icon').pause(model.pause + 1500)
-        .click('div.nav-new-card-type.interview-new ')
-        .verify.elementPresent('div.choose-card-type-card-container', 'full card button').pause(model.pause + 1500)
+        .pause(model.pause + 2000)
+
+        .verify.elementPresent('div.evidence', 'evidence icon').pause(model.pause + 2000)
+        .click('div.evidence')
+
+        .verify.elementPresent('div.choose-card-type-card-container', 'full card button').pause(model.pause + 2000)
         .click('div.choose-card-type-card-container')
-        .pause(model.pause + 1000)
-        
+        .pause(model.pause + 2000)
+       
         .useXpath()
         .click("(//div[@class='card-full-nav-x-container'])")
         

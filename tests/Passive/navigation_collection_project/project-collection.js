@@ -7,12 +7,12 @@ module.exports = {
 
   'login to a new collection to test gear icon': function(browser) {
       browser
-        .url('https://app.glidr.io')
+        .url('https://passive.glidr.io')
         .resizeWindow(1366, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'checks for logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'checks for container to log in').pause(model.pause + 500)
         .click('div.signin-form-container')
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'checks for container for email').pause(model.pause + 500)
         .click('input[type=password]')
         .setValue('input[type=password]', 'Testtest1!')
@@ -23,14 +23,17 @@ module.exports = {
 
   'Verifies side nav container opens to test collections' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
+        .waitForElementPresent('div.org-dashboard-card-container', 6000)
         .verify.elementPresent('.org-dashboard-card-container', 'entering basic tier organization').pause(model.pause + 500)
 
         .useXpath()
-        .click("(//div[@class='org-dashboard-card-container'])[10]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
+        .pause(model.pause + 2000)
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
   },
 
@@ -40,7 +43,6 @@ module.exports = {
        .verify.elementPresent("(//div[@class='side-nav-settings-icons'])[12]", 'opens a collection').pause(model.pause + 1800)
         .click("(//div[@class='side-nav-settings-icons'])[12]") 
         .pause(model.pause + 2500)
-
         .click("(//textarea[@class='content-field-textarea'])") 
         .pause(model.pause + 500)   
         .setValue("(//textarea[@class='content-field-textarea'])", ['Nightwatch testing on collections', browser.Keys.ENTER]).pause(model.pause + 500)
@@ -59,13 +61,11 @@ module.exports = {
         .setValue("(//textarea[@class='content-field-textarea'])[2]", 'collection despcription, Clean syntax Simple but powerful syntax which enables you to write tests very quickly, using only Javascript (Node.js) and CSS ')
         .pause(model.pause + 1000)
         .click("//div[@class='float-right clickable']")
-        .pause(model.pause + 1500)
-        .click("//div[@class='collections-confirm-delete-button float-left clickable']")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 4000)
         .click("//div[@class='float-right clickable']")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 2000)
         .click("//div[@class='collections-confirm-delete-button delete float-left clickable']")
-        .pause(model.pause + 1500)
+        .pause(model.pause + 2000)
         .end();  
   },
 }

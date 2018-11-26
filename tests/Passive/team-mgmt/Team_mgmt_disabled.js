@@ -30,8 +30,10 @@ module.exports = {
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[1]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[1]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']")
+
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 4000)
