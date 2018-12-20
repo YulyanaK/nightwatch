@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-        .resizeWindow(1020, 768).pause(model.pause + 500)
+        //.resizeWindow(1020, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -40,9 +40,9 @@ module.exports = {
 
   'Project market size': function(browser) {
       browser
-        .waitForElementPresent('div.side-nav-subSection-title', 6000, 'selects a project')
+        .waitForElementPresent('div.side-nav-subSection-title', 6000, 'selects a project').pause(model.pause + 2000)
         .click('div.side-nav-subSection-title')
-        
+         .pause(model.pause + 900)
 
         .element('css selector', 'div.checklist-x-icon', function(result){
             if (result.value && result.value.ELEMENT) {
@@ -55,13 +55,14 @@ module.exports = {
 
       
       browser
+        .waitForElementPresent('div.basic-dropdown-selected-text.center-nav-page-routes', 6000, 'selects a dashboard')
+        .click('div.basic-dropdown-selected-text.center-nav-page-routes')
+        
         .useXpath()
-        .pause(model.pause + 3000)
-        .click("(//div[@class='mobile-nav-container position-relative '])[2]")
-        .verify.elementPresent("//*[contains(text(), '+ EDIT')]", 'opens overview to edit').pause(model.pause + 1500)
-        .click("//*[contains(text(), '+ EDIT')]").pause(model.pause + 900)
+        .waitForElementPresent("//*[contains(text(), 'Overview')]", 6000, 'open overview')
+        .click("//*[contains(text(), 'Overview')]").pause(model.pause + 900)
 
-        .pause(model.pause + 6000)
+        .pause(model.pause + 1000)
         .click("(//*[contains(text(), 'MARKET SIZE')])")
         .pause(model.pause + 2500)
    
@@ -70,8 +71,13 @@ module.exports = {
         .click('input.market-size-currency-input')
         .pause(model.pause + 1000)
         .clearValue('input.market-size-currency-input')
+
         .pause(model.pause + 1000)
         .setValue('input.market-size-currency-input', '14520')
+        .keys(browser.Keys["CTRL", "a"])
+        .keys(browser.Keys.delete)
+        .setValue('input.market-size-currency-input', '430')
+
 
         .useXpath()
         .verify.elementPresent("(//div[@class='market-size-currency-input'])[2]", 'available market').pause(model.pause + 1500)
@@ -79,14 +85,16 @@ module.exports = {
         .pause(model.pause + 1000)
         .clearValue("(//input[@class='market-size-currency-input'])[2]")
         .pause(model.pause + 1000)
-        .setValue("(//input[@class='market-size-currency-input'])[2]", '32567')
+        .setValue("(//input[@class='market-size-currency-input'])[2]", '4200')
 
         .verify.elementPresent("(//div[@class='market-size-currency-input'])[3]", 'total market').pause(model.pause + 1500)
         .click("(//input[@class='market-size-currency-input'])[3]")
         .pause(model.pause + 1000)
         .clearValue("(//input[@class='market-size-currency-input'])[3]")
+        .keys([browser.Keys.CONTROL, "a"])
+        .keys(browser.Keys.delete)
         .pause(model.pause + 1000)
-        .setValue("(//input[@class='market-size-currency-input'])[3]", '520567')
+        .setValue("(//input[@class='market-size-currency-input'])[3]", '523')
 
         .useCss()
         .verify.elementPresent('textarea.content-field-text').pause(model.pause + 1500)

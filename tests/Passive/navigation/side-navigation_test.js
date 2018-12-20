@@ -33,14 +33,14 @@ module.exports = {
         .pause(model.pause + 2000)
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 6000)
+        .waitForElementPresent('div.hamburger-holder', 10000)
         .click('div.hamburger-holder')
   },
 
 
   'Searches for more collections and projects' : function(browser) {
       browser
-        .verify.elementPresent('div.side-nav-view-more', 'view more organization names').pause(model.pause + 500)
+        .waitForElementPresent('div.side-nav-view-more', 6000, 'view more organization names')
         .click('div.side-nav-view-more')
         .verify.elementPresent('div.side-nav-back-arrow', 'return to left navigation with project').pause(model.pause + 4000)
         .click('div.side-nav-back-arrow')
@@ -99,8 +99,8 @@ module.exports = {
   'Go to New Collection and explore top nav bar' : function(browser) {
       browser
         .useXpath()
-        .verify.elementPresent("//div[@class='side-nav-subSection-title' and text()='Batgirl new']")
-        .click("//div[@class='side-nav-subSection-title' and text()='Batgirl new']")
+        .waitForElementPresent("//div[@class='side-nav-subSection-title' and text()='Batgirl new_QA']", 6000)
+        .click("//div[@class='side-nav-subSection-title' and text()='Batgirl new_QA']")
         .pause(model.pause + 1500)
        
         .waitForElementPresent("//div[@class='nav-center-container   ']//div//a[3]/div", 6000)

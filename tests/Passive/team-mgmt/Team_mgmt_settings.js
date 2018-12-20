@@ -27,8 +27,8 @@ module.exports = {
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[4]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[4]")
+        .waitForElementPresent("//div[text()='Nunavut_QA']", 4000)
+        .click("//div[text()='Nunavut_QA']")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 4000)
@@ -50,7 +50,7 @@ module.exports = {
         .pause(model.pause + 1000) 
         .clearValue('textarea.content-field-textarea')
         .pause(model.pause + 1000) 
-        .setValue('textarea.content-field-textarea', 'Nunavut')
+        .setValue('textarea.content-field-textarea', 'Nunavut_QA')
         .pause(model.pause + 1000) 
         .verify.elementPresent('div.management-org-settings-profile-holder', 'hover click').pause(model.pause + 500)
         .click('div.management-org-settings-profile-holder')

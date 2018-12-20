@@ -54,13 +54,13 @@ module.exports = {
         .pause(model.pause + 2000)
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 6000)
         .click('div.hamburger-holder')
   },
 
   'Project overview': function(browser) {
       browser
-        .waitForElementPresent('div.side-nav-subSection-title', 6000, 'selects a project')
+        .waitForElementPresent('div.side-nav-subSection-title', 6000, 'selects a project').pause(model.pause + 2000)
         .click('div.side-nav-subSection-title')
         .pause(model.pause + 3000)
         
@@ -74,14 +74,14 @@ module.exports = {
             }
         });
 
-      
       browser
+        .waitForElementPresent('div.basic-dropdown-selected-text.center-nav-page-routes', 6000, 'selects a dashboard')
+        .click('div.basic-dropdown-selected-text.center-nav-page-routes')
+        
         .useXpath()
-        .waitForElementPresent("(//div[@class='mobile-nav-container position-relative '])[2]", 6000, 'selects a dashboard')
-        .click("(//div[@class='mobile-nav-container position-relative '])[2]")
-        .verify.elementPresent("//*[contains(text(), '+ EDIT')]", 'opens overview to edit').pause(model.pause + 1500)
-        .click("//*[contains(text(), '+ EDIT')]").pause(model.pause + 900)
-        .resizeWindow(1440, 780).pause(model.pause + 500)
+        .waitForElementPresent("//*[contains(text(), 'Overview')]", 6000, 'open overview')
+        .click("//*[contains(text(), 'Overview')]").pause(model.pause + 900)
+
         .verify.elementPresent("(//div[@class='details-content'])", 'project description').pause(model.pause + 500)
         .click("(//div[@class='details-content'])")
         .clearValue("(//textarea[@class='content-field-text'])")
@@ -173,14 +173,14 @@ module.exports = {
         .moveToElement("//*[contains(text(), 'Solution Validation')]", 10, 10)
         .click("//*[contains(text(), 'Solution Validation')]")
 
-        // .waitForElementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]",2000, 'stage')
-        // .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
-        // .pause(model.pause + 900)
-        // .click("(//*[contains(text(), '1 - 3 months')])")
-        // .pause(model.pause + 900)
-        // .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
-        // .pause(model.pause + 900)
-        // .click("//*[contains(text(), '12 - 18 months')]")
+        .waitForElementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]",2000, 'stage')
+        .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
+        .pause(model.pause + 2500)
+        .click("(//*[contains(text(), '1 - 3 months')])")
+        .pause(model.pause + 900)
+        .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
+        .pause(model.pause + 900)
+        .click("//*[contains(text(), '12 - 18 months')]")
 
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[4]", 'describe the market').pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])[4]")

@@ -70,8 +70,11 @@ module.exports = {
   'route to the activity feed': function(browser) {
       browser
         .useXpath()
-        .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[2]/div", 'verifies for activity link and icon').pause(model.pause + 500)
-        .click("//div[@class='nav-center-container   ']//div//a[2]/div")
+        .waitForElementPresent("(//div[@class='dropdown-menu-icon clickable '])[2]", 6000, 'verifies for activity link and icon')
+        .click("(//div[@class='dropdown-menu-icon clickable '])[2]")
+        .waitForElementPresent("//*[text()='Activity Feed']", 6000)
+        .click("//*[text()='Activity Feed']")
+
         .useCss()
         //.verify.cssClassPresent('div[data-test="activity-nav"]', "active").pause(model.pause + 500)
         .verify.urlContains('activity').pause(model.pause + 500)
@@ -81,7 +84,9 @@ module.exports = {
     'route to the dashboard': function(browser) {
       browser
         .useXpath()
-        .click("//div[@class='nav-center-container   ']//div//a[3]/div")
+        .click("(//div[@class='dropdown-menu-icon clickable '])[2]")
+        .waitForElementPresent("//*[text()='Dashboard']", 6000)
+        .click("//*[text()='Dashboard']")
         .useCss()
         //.verify.cssClassPresent('div[data-test="dashboard-nav"]', "active").pause(model.pause + 500)
         .verify.urlContains('dashboard').pause(model.pause + 1500)
@@ -89,14 +94,19 @@ module.exports = {
 
     'route back to canvas': function(browser) {
       browser
-        .useXpath("//div[@class='nav-center-container   ']//div//a[1]/div")
-        .click("//div[@class='nav-center-container   ']//div//a[1]/div").pause(model.pause + 1500)
+        .useXpath()
+        .click("//div[@class='nav-route position-relative ' and text()='Discovery']")
         .useCss()
         //.verify.cssClassPresent('div[data-test="workspace-nav"]', "active").pause(model.pause + 500)
-        .verify.urlContains('workspace').pause(model.pause + 500)
-        .verify.elementPresent('.main-content-area', 'main content area').pause(model.pause + 500)
-        .verify.elementPresent('div.clickable.float-right', 'opens the canvas').pause(model.pause + 500)
-        .click('div.clickable.float-right')
+        .verify.urlContains('active').pause(model.pause + 500)
+        .useXpath()
+        .click("//div[@class='nav-route position-relative ' and text()='Ideas']")
+        .useCss()
+        .verify.urlContains('canvas').pause(model.pause + 500)
+        .useXpath()
+        .click("//div[@class='nav-route position-relative  nav-route-last' and text()='Evidence']")
+        .useCss()
+        .verify.urlContains('evidence').pause(model.pause + 500)
     .end();
   }
 }

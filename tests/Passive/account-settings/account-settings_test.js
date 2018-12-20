@@ -80,7 +80,7 @@ module.exports = {
         
         .waitForElementPresent("(//div[text()='DO'])[1]", 6000)
         .click("(//div[text()='DO'])[1]")
-        .verify.elementPresent("//div[text()='Profile & Account Settings']", 'Profile').pause(model.pause + 500)
+        .waitForElementPresent("//div[text()='Profile & Account Settings']", 6000, 'Profile').pause(model.pause + 500)
         .click("//div[text()='Profile & Account Settings']")
         .pause(model.pause + 3000)
         .click("//div[@class='page-navigation-title ' and text()='Account Settings']").pause(model.pause + 500)

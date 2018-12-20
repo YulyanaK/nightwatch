@@ -44,7 +44,7 @@ module.exports = {
         .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 8000)
+        .waitForElementPresent('div.hamburger-holder', 12000)
         .element('css selector', 'div.hamburger-holder', function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
@@ -72,8 +72,10 @@ module.exports = {
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
         .useXpath()
-        .waitForElementPresent("//div[@class='nav-center-container   ']//div//a[2]/div[1]", 6000)//entering activity feed
-        .click("//div[@class='nav-center-container   ']//div//a[2]/div[1]")
+        .waitForElementPresent("(//div[@class='dropdown-menu-icon clickable '])[2]", 6000, 'verifies for activity link and icon')
+        .click("(//div[@class='dropdown-menu-icon clickable '])[2]")
+        .waitForElementPresent("//*[text()='Activity Feed']", 6000)
+        .click("//*[text()='Activity Feed']")
         .useCss()
         .waitForElementPresent('.activity-new-post-form-holder', 6000)
         .click('.activity-new-post-form-holder')

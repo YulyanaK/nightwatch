@@ -9,16 +9,16 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://app.glidr.io/')
-        .resizeWindow(1366, 768).pause(model.pause + 500)
+        .resizeWindow(1500, 1000).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
+        .setValue('input[type=text]', 'ykarpava+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
-        .setValue('input[type=password]', 'Testtest1!')
+        .setValue('input[type=password]', 'Brooklyn1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
@@ -27,8 +27,22 @@ module.exports = {
   'Verify the organizations' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[7]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[7]")
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)
@@ -40,15 +54,19 @@ module.exports = {
         .waitForElementPresent('.sub-section-container', 4000)
         .verify.elementPresent('div.sub-section-container', 'selecting a project').pause(model.pause + 1500)
         .click('.sub-section-container')
-        .verify.elementPresent('div[data-test="activity-nav"]', 'enter to activity feed').pause(model.pause + 500)
-        .click('div[data-test="activity-nav"]')
+        .useXpath()
+        .waitForElementPresent("(//div[@class='dropdown-menu-icon clickable '])[2]", 6000, 'verifies for activity link and icon')
+        .click("(//div[@class='dropdown-menu-icon clickable '])[2]")
+        .waitForElementPresent("//*[text()='Activity Feed']", 6000)
+        .click("//*[text()='Activity Feed']")
+        .useCss()
 
-        .verify.elementPresent('div.checklist-x-icon').pause(model.pause + 500)
-        .click('div.checklist-x-icon')
+        //.verify.elementPresent('div.checklist-x-icon').pause(model.pause + 500)
+        //.click('div.checklist-x-icon')
 
       browser
         .getText('div.filter-type-content', function(result) { 
-        this.verify.equal(result.value, "Assumptions")
+        this.verify.containsText('div.filter-type-content', "Ideas")
       })     
         .moveTo('div.filter-type-content', 2, 2,function(){
       browser
@@ -56,7 +74,7 @@ module.exports = {
       })
       browser
         .getText('div.clearfix.clickable.activity-filter-type:nth-of-type(2)', function(result) { 
-        this.verify.equal(result.value, "Evidence")
+        this.verify.containsText('div.clearfix.clickable.activity-filter-type:nth-of-type(2)', "Evidence")
       })     
         .moveTo('div.clearfix.clickable.activity-filter-type:nth-of-type(2)', 2, 2,function(){
       browser
@@ -64,7 +82,7 @@ module.exports = {
     })
       browser
         .getText('div.clearfix.clickable.activity-filter-type:nth-of-type(3)', function(result) { 
-        this.verify.equal(result.value, "Experiments & Research")
+        this.verify.containsText('div.clearfix.clickable.activity-filter-type:nth-of-type(3)', "Experiments & Research")
       })     
         .moveTo('div.clearfix.clickable.activity-filter-type:nth-of-type(3)', 2, 2,function(){
       browser
@@ -72,7 +90,7 @@ module.exports = {
     })        
       browser
         .getText('div.clearfix.clickable.activity-filter-type:nth-of-type(4)', function(result) { 
-        this.verify.equal(result.value, "Posts")
+        this.verify.containsText('div.clearfix.clickable.activity-filter-type:nth-of-type(4)', "Posts")
       })     
         .moveTo('div.clearfix.clickable.activity-filter-type:nth-of-type(4)', 2, 2,function(){
       browser
@@ -98,50 +116,58 @@ module.exports = {
 
   'Activity feed date range' : function (browser) {
       browser
-        .useCss()
-        .verify.elementPresent('div.filter-date-range-container', 'date range').pause(model.pause + 500)
-        .click('div.filter-date-range-container')
-        .verify.elementPresent('input.activity-feed-calendar-input', 'calendar dates').pause(model.pause + 500)
+        
+        .moveToElement("//input[@class='activity-feed-calendar-input']", 10, 10)
+        .verify.elementPresent("//input[@class='activity-feed-calendar-input']", 'date range').pause(model.pause + 500)
+        .click("//input[@class='activity-feed-calendar-input']").pause(model.pause + 2500)
+        
         // input field not working, unable to to click or to set any value. input fields is not fucntional
-        .click('input.activity-feed-calendar-input')
-        // .setValue('input.activity-feed-calendar-input', ['5/1/2018 to 5/31/2018','\uE008'])
+        //.click('input.activity-feed-calendar-input')
+        //.setValue('input.activity-feed-calendar-input', ['5/1/2018 to 5/31/2018','\uE008'])
+        
+        .moveToElement("//div[@class='DayPicker-Day' and text()='5']", 10, 10).pause(model.pause + 1000)
+        .click("//div[@class='DayPicker-Day' and text()='5']").pause(model.pause + 1000)
+        .moveToElement("//div[@class='DayPicker-Day' and text()='28']", 10, 10)
+        .verify.elementPresent("//div[@class='DayPicker-Day' and text()='28']", 'days selected').pause(model.pause + 1500)
+        .click("//div[@class='DayPicker-Day' and text()='28']").pause(model.pause + 1000)
 
-        .verify.elementPresent('div.DayPicker-Day', 'selecting dates').pause(model.pause + 500)
-        .click('div.DayPicker-Day')
-        .verify.elementPresent('div.DayPicker div:nth-of-type(2)', 'days selected').pause(model.pause + 500)
-        .click('div.DayPicker div:nth-of-type(2)')
-
+        
+        .pause(model.pause + 1500)
+      browser
         .useXpath()
-        .pause(model.pause + 500)
-        .click("(//div[@class='DayPicker-Day'])[4]")
-        .pause(model.pause + 500)
+        .getAttribute("//input[@class='activity-feed-calendar-input']", 'value', function(result){
+          if(result.value === ''){
+            console.error('Error! DayPicker not working!')
+            browser.end()
+          }
+        })
+        //.getValue("//input[@class='activity-feed-calendar-input']", function(result) {
+       //this.verify.containsText("8/1/2018 to 8/3/2018");
+       
+    //});
   },
 
   'Tem memebrs' : function(browser){
       browser
         .useCss()
-        .verify.elementPresent('div.feed-calendar-icon', 'close calendar').pause(model.pause + 500)
+        .waitForElementPresent('div.feed-calendar-icon', 6000, 'close calendar').pause(model.pause + 500)
         .click('div.feed-calendar-icon')
         .verify.elementPresent('div.activity-people-list-container', 'select members').pause(model.pause + 500)
         .click('div.activity-people-list-container')
         .pause(model.pause + 300)
-        .click('div.activity-people-list-container div:nth-of-type(2)')
-        .pause(model.pause + 300)
-        .click('div.activity-people-list-container div:nth-of-type(4)')
-        .pause(model.pause + 300)
-        .click('div.activity-people-list-container div:nth-of-type(6)')
-        .pause(model.pause + 300)
-        .click('div.activity-people-list-container div:nth-of-type(8)')
-        .pause(model.pause + 300)
+        .click('div.activity-people-list-container div:nth-of-type(1)')
         .pause(model.pause + 300)
         .click('div.activity-people-list-container div:nth-of-type(2)')
         .pause(model.pause + 300)
-        .click('div.activity-people-list-container div:nth-of-type(4)')
+        .click('div.activity-people-list-container div:nth-of-type(3)')
         .pause(model.pause + 300)
-        .click('div.activity-people-list-container div:nth-of-type(6)')
+        .click('div.activity-people-list-container div:nth-of-type(1)')
         .pause(model.pause + 300)
-        .click('div.activity-people-list-container div:nth-of-type(8)')
+        .click('div.activity-people-list-container div:nth-of-type(2)')
         .pause(model.pause + 300)
+        .click('div.activity-people-list-container div:nth-of-type(3)')
+        .pause(model.pause + 300)
+        
 
   },
 
@@ -164,7 +190,7 @@ module.exports = {
         .click('div.activity-filter-name-container div:nth-of-type(8)')
         .pause(model.pause + 300)
 
-        
+      
         .useXpath()
         .verify.elementPresent("(//div[@class='feed-tags-input-container'])", 'selecting tags').pause(model.pause + 1500)
         .click("(//div[@class='feed-tags-input-container'])")
@@ -183,14 +209,15 @@ module.exports = {
         .setValue("(//input[@class='feed-filter-tag-search-input'])", 'h')
         .clearValue("(//input[@class='feed-filter-tag-search-input'])").pause(model.pause + 1500)
         
-        .useCss()
-        .verify.elementPresent('div.activity-filter-sort-clear', ' clear all fields').pause(model.pause + 500)
-        .click('div.activity-filter-sort-clear')
-        .pause(model.pause + 300)
+        //.useCss()
+        //.verify.elementPresent('div.activity-filter-sort-clear', ' clear all fields').pause(model.pause + 500)
+        //.click('div.activity-filter-sort-clear')
+        //.pause(model.pause + 300)
 
         // Take another screenshot at the end of the filter activity image saved as activityfeed.png
         // .saveScreenshot('./reports/feed/activityfeed.png')
         .end();
+
    },
 }
 

@@ -14,31 +14,49 @@ module.exports = {
         .click('div.signin-form-container')
       browser
         .setValue('input[type=text]', 'dortiz+automation@glidr.io')
-        .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
+        .waitForElementPresent('div.signin-form-container', 6000, 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
         .setValue('input[type=password]', 'Testtest1!')
         .click('div.signup-show-password')
-        .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
+        .waitForElementPresent('div.login-button', 6000, 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
   },
 
   'Verify the organizations name' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
-        .verify.elementPresent('.org-dashboard-card-container', 'entering basic tier organization').pause(model.pause + 500)
+        .useXpath()
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        .useCss()
+        .waitForElementPresent('div.org-dashboard-card-container', 8000)
+        .waitForElementPresent('.org-dashboard-card-container', 6000, 'entering basic tier organization').pause(model.pause + 500)
 
         .useXpath()
-        .click("(//div[@class='org-dashboard-card-container'])[7]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
+        .pause(model.pause + 2000)
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 4000)
+        .waitForElementPresent('div.hamburger-holder', 8000)
         .click('div.hamburger-holder')
   },
 
   'Initialize left drawer' : function (browser) {
       browser
-        .waitForElementPresent('.side-nav-subSection-title', 4000)
+        .waitForElementPresent('.side-nav-subSection-title', 6000)
         .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project to initialize left drawer').pause(model.pause + 1500)
         .click('.side-nav-subSection-title')
         .verify.elementPresent('div.profile-image-container.profile-image.right-nav-profile', 'opens right drawer').pause(model.pause + 500)

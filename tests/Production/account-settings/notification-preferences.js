@@ -64,11 +64,11 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'seraches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'ortizcdavid@gmail.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
-        .setValue('input[type=password]', 'Sandpaper@347!')
+        .setValue('input[type=password]', 'Testtest1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
@@ -76,30 +76,74 @@ module.exports = {
 
   'Verify the project name' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
-        .click('div.org-dashboard-card-container')
-        .waitForElementPresent('div.hamburger-holder', 2000)
+        .useXpath()
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        .useCss()
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.useXpath()
+                .click("//div[@class='checklist-not-show-text']");
+            } else {
+                // Element is not present.
+            }
+        });
+        browser
+        .waitForElementPresent('div.org-dashboard-card-container', 6000)
+        .useXpath()
+        .moveToElement("//div[text()='Ruwanda_QA']", 10, 10)
+        .click("//div[text()='Ruwanda_QA']")
+        .useCss()
+        .waitForElementPresent('div.hamburger-holder', 10000)
         .click('div.hamburger-holder')
-        .waitForElementPresent('div.side-nav-subSection-title.active-projects', 5000)
-        .click('div.side-nav-subSection-title.active-projects')
+        .useXpath()
+        .waitForElementPresent("//div[text()='ACTIVE PROJECTS']", 5000)
+        .waitForElementPresent("(//div[@class='side-nav-settings-icons'])[8]", 6000)
+        .moveToElement("(//div[@class='side-nav-settings-icons'])[8]", 10, 10)
+        .click("(//div[@class='side-nav-settings-icons'])[8]")
     },
 
   'verify dropdown visible once overflow icon is clicked and project notifications shows' : function (browser) {
       browser
-        .waitForElementPresent('.dropdown-icon.dots-icon-nav', 2000)
-        .click('.dropdown-icon.dots-icon-nav')
-        .verify.elementPresent('a[data-test="projectNotifications"]', 'selects project notifications').pause(model.pause + 1500)
-        .click('a[data-test="projectNotifications"]')
-        .verify.elementPresent('.project-notifications-toggle-circle.on', 'verifies for toggle circle').pause(model.pause + 1500)
-        .click('.project-notifications-toggle-circle.on')
-        .verify.elementPresent('.blur-out-holder', 'on blur out').pause(model.pause + 1500)
-        .verify.elementPresent('.project-notifications-toggle-circle.off', 'turn off toggle').pause(model.pause + 1500)
-        .click('.project-notifications-toggle-circle.off')
-        .verify.elementNotPresent('.blur-out-holder', 'onblur out').pause(model.pause + 1500)
-        .verify.elementPresent('.project-notifications-your-choices-text.redirect-text', 'test input').pause(model.pause + 1500)
-        .click('.project-notifications-your-choices-text.redirect-text')
-        .verify.elementPresent('.account-notifications-container', 'end container').pause(model.pause + 1500)
+        .pause(model.pause + 2000)
+        .waitForElementPresent("//div[text()='Notifications']", 6000)
+        .click("//div[text()='Notifications']")
+        .useCss()
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.useXpath()
+                .click("//div[@class='checklist-not-show-text']");
+            } else {
+                // Element is not present.
+            }
+        });
+        browser
+        .useXpath()
+        .verify.elementPresent("//div[@class='project-notifications-toggle-circle on']", 'verifies for toggle circle').pause(model.pause + 1500)
+        .click("//div[@class='project-notifications-toggle-circle on']")
+        .pause(model.pause + 1500)
+        .waitForElementPresent("//div[@class='blur-out-holder']", 6000, 'on blur out').pause(model.pause + 1500)
+        .waitForElementPresent("//div[@class='project-notifications-toggle-circle off']", 6000, 'turn off toggle').pause(model.pause + 1500)
+        .click("//div[@class='project-notifications-toggle-circle off']")
+        
+        .verify.elementPresent("//div[@class='project-notifications-option-text']", 'enabled notifications').pause(model.pause + 1500)
+        .verify.elementPresent("//div[@class='custom-toggle-container notification']", 'end container').pause(model.pause + 1500)
         .end();
+
+
   },
 
 }

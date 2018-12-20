@@ -6,7 +6,7 @@ module.exports = {
 
  'login to hypothesis': function(browser) {
       browser
-        .url('https://passive.glidr.io')
+        .url('https://app.glidr.io')
         .resizeWindow(1524, 1068).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
@@ -64,6 +64,8 @@ module.exports = {
         .useXpath()
         .waitForElementPresent("//div[@class='nav-route position-relative ' and text()='Ideas']", 6000)
         .click("//div[@class='nav-route position-relative ' and text()='Ideas']")
+        .waitForElementPresent("//div[@class='canvas-view-button ']", 6000)
+        .click("//div[@class='canvas-view-button ']")
         .waitForElementPresent("(//div[@class='card-content'])[1]", 16000)
         .moveToElement("(//div[@class='card-content'])[1]", 10, 10)
         .click("(//div[@class='card-content'])[1]")

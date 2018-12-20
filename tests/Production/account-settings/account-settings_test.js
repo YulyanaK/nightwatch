@@ -38,71 +38,96 @@ module.exports = {
         //.url(model.url + '')
         .url('https://app.glidr.io')
         .resizeWindow(1024, 968).pause(model.pause + 500)
-        .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
-        .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
+        .waitForElementPresent('div.login-logo.lpc-glidr-beta-login', 6000, 'looks for glidr logo').pause(model.pause + 500)
+        .waitForElementPresent('div.signin-form-container', 6000, 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'ortizcdavid@gmail.com')
+        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
-        .setValue('input[type=password]', 'Sandpaper@347!')
+        .setValue('input[type=password]', 'Testtest1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
+        .pause(model.pause + 5000)
   },
 
   'Verify the organizations for profile notifications' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
-        .verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
-        .click('div.org-dashboard-card-container div:nth-of-type(3)')
-        .pause(model.pause + 2000)
-        .verify.elementPresent('img.profile-image.small-profile', 'profile image container is present').pause(model.pause + 500)
-        .click('img.profile-image.small-profile')
-        .verify.elementPresent('div.profile-settings-text.profile-account', 'Profile').pause(model.pause + 500)
-        .click('div.profile-settings-text.profile-account')
-        .url('https://app.stage.glidr.io/my-account/settings')
-        .verify.elementPresent('div.account-email-password-title')
+        .useXpath()
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+
+        browser
+        .frame(null)
+
+        .useXpath()
+        .waitForElementPresent("//div[text()='Ruwanda_QA']", 6000)
+        //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
+        .moveToElement("//div[text()='Ruwanda_QA']", 10, 10)
+        .click("//div[text()='Ruwanda_QA']")
+        .pause(model.pause + 6000)
+        
+        .waitForElementPresent("(//div[text()='DO'])[1]", 6000)
+        .click("(//div[text()='DO'])[1]")
+        .waitForElementPresent("//div[text()='Profile & Account Settings']", 6000, 'Profile').pause(model.pause + 500)
+        .click("//div[text()='Profile & Account Settings']")
+        .pause(model.pause + 3000)
+        .click("//div[@class='page-navigation-title ' and text()='Account Settings']").pause(model.pause + 500)
+
+
   },
 
   'verify account settings is selected and its on the correct page and email address and password change functionality' : function (browser) {
       browser
-        .verify.elementPresent('div.profile-settings-text.profile-account', 'Account settings password').pause(model.pause + 500)
-        .verify.elementPresent('div.change-button-holder.email', 'verify email')
-        .click('div.change-button-holder.email')
-        .verify.elementPresent('input.account-settings-input.email', ' current password to change email').pause(model.pause + 500)
-        .setValue('input.account-settings-input.email', 'Davito@1324!')
+        .verify.elementPresent("//div[@class='user-email-password-title email']", 'verify email').pause(model.pause + 1000)
+        .verify.elementPresent("//div[@class='user-email-password-title password']", 'verify password')
+        .click("(//div[text()='CHANGE'])[1]")
+        .waitForElementPresent("(//input[@class='account-settings-input email'])[1]", 6000)
+        .setValue("(//input[@class='account-settings-input email'])[1]", 'Testtest1!')
       browser
-        .verify.elementPresent('input.account-settings-input.email:nth-child(2)', 'verify new email').pause(model.pause + 500)
-        .clcik('input.account-settings-input.email:nth-child(2)')
-        .setValue('input.account-settings-input.email:nth-child(2)', 'karenubence@comcast.net')
-        .verify.elementPresent('input.account-settings-input.email:nth-child(2)').pause(model.pause + 500)
+        .verify.elementPresent("//input[@placeholder='Enter Email']", 'verify new email').pause(model.pause + 500)
+        .click("//input[@placeholder='Enter Email']")
+        .setValue("//input[@placeholder='Enter Email']", 'dortiz@launchpadcentral.com')
+        .verify.elementPresent("//input[@placeholder='Re-enter email']").pause(model.pause + 500)
       browser
-        .clcik('input.account-settings-input.email:nth-child(3)')
-        .setValue('input.account-settings-input.email:nth-child(3)', 'karenubence@comcast.net').pause(model.pause + 500)
-        .click('div.cancel-title')
-        .verify.elementPresent('div.change-button-holder.email', 'verify email').pause(model.pause + 500)
-        .click('div.change-button-holder.email')
-        .verify.elementPresent('input.account-settings-input.email', ' current password to change email').pause(model.pause + 500)
-        .setValue('input.account-settings-input.email', 'Davito@1324!')
+        .click("//input[@placeholder='Re-enter email']")
+        .setValue("//input[@placeholder='Re-enter email']", 'dortiz@launchpadcentral.com').pause(model.pause + 500)
+        .click("//div[@class='cancel-title']")
+        .pause(model.pause + 2000)
+        .verify.elementPresent("//div[@class='user-email-password-title email']", 'verify email').pause(model.pause + 1000)
+        .verify.elementPresent("//div[@class='user-email-password-title password']", 'verify password')
+        .click("(//div[text()='CHANGE'])[2]")
+        .verify.elementPresent("(//input[@class='account-settings-input email'])[1]", ' current password to change email').pause(model.pause + 500)
+        .setValue("(//input[@class='account-settings-input email'])[1]", 'Testtest1!')
       browser
-        .verify.elementPresent('input.account-settings-input.email:nth-child(2)', 'verify new email').pause(model.pause + 500)
-        .clcik('input.account-settings-input.email:nth-child(2)')
-        .setValue('input.account-settings-input.email:nth-child(2)', 'karenubence@comcast.net')
-        .verify.elementPresent('input.account-settings-input.email:nth-child(2)').pause(model.pause + 500)
+        .verify.elementPresent("//input[@placeholder='Enter password']", 'verify new password').pause(model.pause + 500)
+        .click("//input[@placeholder='Enter password']")
+        .setValue("//input[@placeholder='Enter password']", 'Testtest1!')
+        .verify.elementPresent("//input[@placeholder='Re-enter password']")
+        .pause(model.pause + 500)
       browser
-        .clcik('input.account-settings-input.email:nth-child(3)')
-        .setValue('input.account-settings-input.email:nth-child(3)', 'karenubence@comcast.net').pause(model.pause + 500)
-        .click('div.cancel-title')
-        .verify.elementPresent('div.change-button-holder.email', 'verify email').pause(model.pause + 500)
-        .click('div.change-button-holder.email')
+        .click("//input[@placeholder='Re-enter password']")
+        .setValue("//input[@placeholder='Re-enter password']", 'Testtest1!').pause(model.pause + 500)
+        .click("//div[@class='cancel-title']")
+        
+        
   },
 
   'Sign out everywhere': function (browser){
       browser
-        .verify.elementPresent('.change-button-holder-form.sign-out-everywhere', 'logged out').pause(model.pause + 500)
-        .click('.change-button-holder-form.sign-out-everywhere')
+        .verify.elementPresent("//div[@class='save-update-button sign-out-everywhere']", 'logged out').pause(model.pause + 500)
+        .click("//div[@class='save-update-button sign-out-everywhere']")
         .end();
   }
 }

@@ -64,7 +64,7 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'seraches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz@launchpadcentral.com')
+        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -91,6 +91,16 @@ module.exports = {
     browser
         .frame(null)
         .useCss()
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.useXpath()
+                .click("//div[@class='checklist-not-show-text']");
+            } else {
+                // Element is not present.
+            }
+        });
+        browser
         .waitForElementPresent('div.org-dashboard-card-container', 6000)
         .useXpath()
         .moveToElement("//div[text()='Ruwanda_QA']", 10, 10)
@@ -110,12 +120,23 @@ module.exports = {
         .pause(model.pause + 2000)
         .waitForElementPresent("//div[text()='Notifications']", 6000)
         .click("//div[text()='Notifications']")
-        
+        .useCss()
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.useXpath()
+                .click("//div[@class='checklist-not-show-text']");
+            } else {
+                // Element is not present.
+            }
+        });
+        browser
+        .useXpath()
         .verify.elementPresent("//div[@class='project-notifications-toggle-circle on']", 'verifies for toggle circle').pause(model.pause + 1500)
         .click("//div[@class='project-notifications-toggle-circle on']")
         .pause(model.pause + 1500)
-        .verify.elementPresent("//div[@class='blur-out-holder']", 'on blur out').pause(model.pause + 1500)
-        .verify.elementPresent("//div[@class='project-notifications-toggle-circle off']", 'turn off toggle').pause(model.pause + 1500)
+        .waitForElementPresent("//div[@class='blur-out-holder']", 6000, 'on blur out').pause(model.pause + 1500)
+        .waitForElementPresent("//div[@class='project-notifications-toggle-circle off']", 6000, 'turn off toggle').pause(model.pause + 1500)
         .click("//div[@class='project-notifications-toggle-circle off']")
         
         .verify.elementPresent("//div[@class='project-notifications-option-text']", 'enabled notifications').pause(model.pause + 1500)

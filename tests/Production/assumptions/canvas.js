@@ -6,7 +6,7 @@ module.exports = {
 
  'login to hypothesis': function(browser) {
       browser
-        .url('https://passive.glidr.io')
+        .url('https://app.glidr.io')
         .resizeWindow(1124, 868).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)

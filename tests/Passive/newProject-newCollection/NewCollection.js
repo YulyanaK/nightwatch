@@ -29,6 +29,19 @@ var ObjectId = require('mongodb')
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
         .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']", 4000).pause(model.pause + 500)
         .moveToElement("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']", 10, 10)
         .click("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']")
@@ -51,8 +64,9 @@ var ObjectId = require('mongodb')
         .click('div.reusable-text-area.description')
         .setValue('div.reusable-text-area.description > textarea.reusable-input', 'el divo de Mexico Juan Gabriel')
         .verify.elementPresent('div.create-collection-nav-button').pause(model.pause + 500)
+        .moveToElement('div.create-collection-nav-button', 10, 10)
         .click('div.create-collection-nav-button')
-        .verify.elementPresent('div.create-collection-project-option.clearfix', 'selecting a collection 1').pause(model.pause + 1500)
+        .waitForElementPresent('div.create-collection-project-option.clearfix', 12000, 'selecting a collection 1')
         .click('div.create-collection-project-option.clearfix')
         .verify.elementPresent('div.create-collection-project-option.clearfix', 'selecting a collection 2').pause(model.pause + 1500)
         .click('div.create-collection-project-option.clearfix')

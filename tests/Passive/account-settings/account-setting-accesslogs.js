@@ -69,18 +69,18 @@ module.exports = {
         });
     browser
         .frame(null)
-        .waitForElementPresent("//div[text()='Ruwanda_QA']", 6000)
+        .waitForElementPresent("//div[text()='Ruwanda_QA']", 12000)
         //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
         .click("//div[text()='Ruwanda_QA']")
         .pause(model.pause + 6000)
-        .waitForElementPresent("(//div[text()='DO'])[1]", 6000)
+        .waitForElementPresent("(//div[text()='DO'])[1]", 12000)
         .click("(//div[text()='DO'])[1]")
-        .verify.elementPresent("//div[text()='Profile & Account Settings']", 'Profile & Account settings').pause(model.pause + 1000)
+        .waitForElementPresent("//div[text()='Profile & Account Settings']", 6000, 'Profile & Account settings').pause(model.pause + 1000)
         .click("//div[text()='Profile & Account Settings']")
         .waitForElementPresent("//div[text()='Access Logs']", 6000)
         .click("//div[text()='Access Logs']")
         .pause(model.pause + 2000)
-        .waitForElementPresent("//span[@class='text-aqua-green font-14']", 6000)
+        .waitForElementPresent("//span[@class='text-aqua-green font-14']", 8000)
         .end();
      },
   }      

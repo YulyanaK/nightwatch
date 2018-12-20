@@ -44,6 +44,7 @@ module.exports = {
         
         .click("//div[text()='AssumptionsTest_QA']")
         .pause(model.pause + 4000)
+        .waitForElementPresent("//div[@class='hamburger-holder close ']", 6000)
         .click("//div[@class='hamburger-holder close ']").pause(model.pause + 2000)
         .click("//div[@class='side-nav-subSection-title' and text()='Sample Project']").pause(model.pause + 2000)
 
@@ -106,7 +107,7 @@ module.exports = {
         .pause(model.pause + 4000)
         .waitForElementPresent("(//span[@id='connections'])[3]", 6000)
         .click("(//span[@id='connections'])[3]").pause(model.pause + 500)
-        .waitForElementPresent("//div[@class='connections-card-evidence-title' and text()='Any name']", 6000)
+        .waitForElementPresent("//div[@class='connections-card-evidence-title' and text()='Any name']", 16000)
         .click("//div[@class='connections-card-evidence-title' and text()='Any name']")
         /*.pause(model.pause + 3000)
         .moveToElement("(//div[@class='dropdown-menu-icon clickable '])[5]", 10, 10)

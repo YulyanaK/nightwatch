@@ -55,8 +55,10 @@ module.exports = {
         .verify.elementPresent('div.sub-section-container', 'selecting a project').pause(model.pause + 1500)
         .click('.sub-section-container')
         .useXpath()
-        .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[2]/div[1]", 'enter to activity feed').pause(model.pause + 500)
-        .click("//div[@class='nav-center-container   ']//div//a[2]/div[1]")
+        .waitForElementPresent("(//div[@class='dropdown-menu-icon clickable '])[2]", 6000, 'verifies for activity link and icon')
+        .click("(//div[@class='dropdown-menu-icon clickable '])[2]")
+        .waitForElementPresent("//*[text()='Activity Feed']", 6000)
+        .click("//*[text()='Activity Feed']")
         .useCss()
 
         //.verify.elementPresent('div.checklist-x-icon').pause(model.pause + 500)
@@ -64,7 +66,7 @@ module.exports = {
 
       browser
         .getText('div.filter-type-content', function(result) { 
-        this.verify.containsText('div.filter-type-content', "Assumptions")
+        this.verify.containsText('div.filter-type-content', "Ideas")
       })     
         .moveTo('div.filter-type-content', 2, 2,function(){
       browser
@@ -123,11 +125,11 @@ module.exports = {
         //.click('input.activity-feed-calendar-input')
         //.setValue('input.activity-feed-calendar-input', ['5/1/2018 to 5/31/2018','\uE008'])
         
-        .moveToElement("//div[@class='DayPicker-Day' and text()='15']", 10, 10).pause(model.pause + 1000)
-        .click("//div[@class='DayPicker-Day' and text()='15']").pause(model.pause + 1000)
-        .moveToElement("//div[@class='DayPicker-Day' and text()='30']", 10, 10)
-        .verify.elementPresent("//div[@class='DayPicker-Day' and text()='30']", 'days selected').pause(model.pause + 1500)
-        .click("//div[@class='DayPicker-Day' and text()='30']").pause(model.pause + 1000)
+        .moveToElement("//div[@class='DayPicker-Day' and text()='5']", 10, 10).pause(model.pause + 1000)
+        .click("//div[@class='DayPicker-Day' and text()='5']").pause(model.pause + 1000)
+        .moveToElement("//div[@class='DayPicker-Day' and text()='28']", 10, 10)
+        .verify.elementPresent("//div[@class='DayPicker-Day' and text()='28']", 'days selected').pause(model.pause + 1500)
+        .click("//div[@class='DayPicker-Day' and text()='28']").pause(model.pause + 1000)
 
         
         .pause(model.pause + 1500)
@@ -148,7 +150,7 @@ module.exports = {
   'Tem memebrs' : function(browser){
       browser
         .useCss()
-        .verify.elementPresent('div.feed-calendar-icon', 'close calendar').pause(model.pause + 500)
+        .waitForElementPresent('div.feed-calendar-icon', 6000, 'close calendar').pause(model.pause + 500)
         .click('div.feed-calendar-icon')
         .verify.elementPresent('div.activity-people-list-container', 'select members').pause(model.pause + 500)
         .click('div.activity-people-list-container')

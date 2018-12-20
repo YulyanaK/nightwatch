@@ -14,25 +14,39 @@ var ObjectId = require('mongodb')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'dortiz+automation@glidr.io')
+        .setValue('input[type=text]', 'ykarpava+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
-        .setValue('input[type=password]', 'Testtest1!')
+        .setValue('input[type=password]', 'Brooklyn1!')
         .click('div.signup-show-password')
-        .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
+        .waitForElementPresent('div.login-button', 6000)
         .click('div.login-button')
-        .waitForElementPresent('div.org-container', 4000).pause(model.pause + 500)
+        .waitForElementPresent('div.org-container', 7000).pause(model.pause + 500)
   },
 
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[7]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[7]")
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='AutomationTesting_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='AutomationTesting_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='AutomationTesting_QA']")
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 6000)
+        .waitForElementPresent('div.hamburger-holder', 12000)
         .click('div.hamburger-holder')
         .verify.elementPresent('div.side-nav-organization-name-holder', 'opens left nav').pause(model.pause + 500)
         .click('div.side-nav-organization-name-holder')
@@ -64,6 +78,7 @@ var ObjectId = require('mongodb')
       browser
         .verify.elementPresent('div.create-project-nav-button ', 'add ').pause(model.pause + 500)
         .click('div.create-project-nav-button')
+
         .verify.elementPresent('div.create-project-member-option', ' checking for more options').pause(model.pause + 500)
         .click('div.create-project-member-option')
         .verify.elementPresent('div.project-member-cancel-icon.lpc-close-cancel-mini-icon-blue', 'cancel').pause(model.pause + 500)
@@ -78,18 +93,37 @@ var ObjectId = require('mongodb')
         .click('div.side-nav-organization-name-holder')
         .verify.elementPresent('.side-nav-org-options:nth-of-type(3)', 'opens left nav create a project').pause(model.pause + 500)
         .click('.side-nav-org-options:nth-of-type(3)')
-        .verify.elementPresent('div.create-project-nav-button' , 'select create button').pause(model.pause + 500)
+        .waitForElementPresent('div.create-project-nav-button' , 6000, 'select create button').pause(model.pause + 500)
         .click('div.create-project-nav-button')
-        .verify.elementPresent('div.create-project-member-option:nth-of-type(2)', 'select invitee 1').pause(model.pause + 500)
-        .click('div.create-project-member-option:nth-of-type(2)')
-        .verify.elementPresent('div.create-project-member-option:nth-of-type(3)', 'select invitee 3').pause(model.pause + 500)
-        .click('div.create-project-member-option:nth-of-type(3)')
-        .verify.elementPresent('div.create-project-nav-button', 'end of test').pause(model.pause + 500)
-        .click('div.create-project-nav-button')
+        .useXpath()
+        .waitForElementPresent("(//div[@class='profile-name create-project-member'])[1]", 6000, 'select invitee 1').pause(model.pause + 500)
+        .click("(//div[@class='profile-name create-project-member'])[1]")
+        .waitForElementPresent("(//div[@class='profile-name create-project-member'])[2]", 6000, 'select invitee 3').pause(model.pause + 500)
+        .click("(//div[@class='profile-name create-project-member'])[2]")
+        .waitForElementPresent("//div[@class='create-project-nav-button ']", 6000, 'end of test').pause(model.pause + 500)
+        .click("//div[@class='create-project-nav-button ']")
+        .pause(model.pause + 8500)
+        .useCss()
+        .waitForElementPresent('div.hamburger-holder', 12000)
+        .click('div.hamburger-holder')
+        .useXpath()
+        .waitForElementPresent("//div[@class='side-nav-subSection-title' and text()='The late Stone Age']", 6000)
+        .waitForElementPresent("(//div[@class='side-nav-settings-icons'])[3]", 6000)
+        .moveToElement("(//div[@class='side-nav-settings-icons'])[4]", 10, 10)
+        .click("(//div[@class='side-nav-settings-icons'])[4]")
+        .waitForElementPresent("//div[@class='trash-can']", 10000)
+        .moveToElement("//div[@class='trash-can']", 10, 10)
+        .click("//div[@class='trash-can']")
+        .waitForElementPresent("//div[@class='project-delete-buttons confirm']", 8000)
+        .click("//div[@class='project-delete-buttons confirm']")
+        .waitForElementPresent("//div[@class='confirmation-button no-cancel red undefined' and text()='DELETE PROJECT']", 8000)
+        .click("//div[@class='confirmation-button no-cancel red undefined' and text()='DELETE PROJECT']")
+        .pause(model.pause + 5500)
+        .end();
 
     },
 
-    'Delete the project just created' : function(browser) {
+    /*'Delete the project just created' : function(browser) {
       browser
         .verify.elementPresent('div.hamburger-holder').pause(model.pause + 4000)
         .click('div.hamburger-holder')
@@ -109,6 +143,6 @@ var ObjectId = require('mongodb')
         .verify.elementPresent('div.confirmation-button.no-cancel.red.undefined', 'Delete project').pause(model.pause + 1500)
         .click('div.confirmation-button.no-cancel.red.undefined')
         .end();
-  },
+  },*/
  }
 

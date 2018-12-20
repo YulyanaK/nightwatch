@@ -1,4 +1,4 @@
-  var model = require('../../../helpers/model');
+ var model = require('../../../helpers/model');
 var controller = require('../../../helpers/controller');
 
 module.exports = {
@@ -47,7 +47,7 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
-        .setValue('input[type=password]', 'Sandpaper@347!')
+        .setValue('input[type=password]', 'Testtest1!')
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
@@ -55,19 +55,32 @@ module.exports = {
 
   'Verify the organizations for profile notifications' : function(browser) {
       browser
-        .waitForElementPresent('div.org-dashboard-card-container', 4000)
-        .verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
-        .click('div.org-dashboard-card-container div:nth-of-type(3)')
+        .useXpath()
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        .waitForElementPresent("//div[text()='Ruwanda_QA']", 12000)
+        //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
+        .click("//div[text()='Ruwanda_QA']")
+        .pause(model.pause + 6000)
+        .waitForElementPresent("(//div[text()='DO'])[1]", 12000)
+        .click("(//div[text()='DO'])[1]")
+        .waitForElementPresent("//div[text()='Profile & Account Settings']", 6000, 'Profile & Account settings').pause(model.pause + 1000)
+        .click("//div[text()='Profile & Account Settings']")
+        .waitForElementPresent("//div[text()='Access Logs']", 6000)
+        .click("//div[text()='Access Logs']")
         .pause(model.pause + 2000)
-        .verify.elementPresent('img.profile-image.small-profile', 'profile image container is present').pause(model.pause + 500)
-        .click('img.profile-image.small-profile')
-        .verify.elementPresent('div.profile-settings-text.profile-account', 'Profile').pause(model.pause + 500)
-        .click('div.profile-settings-text.profile-account')
-        .verify.elementPresent('div[data-test="/org-management/access-logs"]').pause(model.pause + 500)
-        .click('div[data-test="/org-management/access-logs"]')
-        .verify.elementPresent('div.font-12.text-navy').pause(model.pause + 500)
-        .verify.elementPresent('div.text-aqua-green').pause(model.pause + 500)
-        .verify.elementPresent('div.text-black.font-14').pause(model.pause + 500)
+        .waitForElementPresent("//span[@class='text-aqua-green font-14']", 8000)
         .end();
      },
   }      

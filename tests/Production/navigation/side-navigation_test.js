@@ -21,24 +21,26 @@ module.exports = {
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
-        .waitForElementPresent('div.org-container', 4000).pause(model.pause + 500)
+        .waitForElementPresent('div.org-container', 6000).pause(model.pause + 500)
   },
 
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[5]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[5]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']")
+        .pause(model.pause + 2000)
 
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 2000)
+        .waitForElementPresent('div.hamburger-holder', 10000)
         .click('div.hamburger-holder')
   },
 
 
   'Searches for more collections and projects' : function(browser) {
       browser
-        .verify.elementPresent('div.side-nav-view-more', 'view more organization names').pause(model.pause + 500)
+        .waitForElementPresent('div.side-nav-view-more', 6000, 'view more organization names')
         .click('div.side-nav-view-more')
         .verify.elementPresent('div.side-nav-back-arrow', 'return to left navigation with project').pause(model.pause + 4000)
         .click('div.side-nav-back-arrow')
@@ -55,9 +57,13 @@ module.exports = {
         .click("(//div[@class='side-nav-settings-icons'])[1]")
 
         .useCss()
-        .verify.elementPresent('div.sidenav-search-box-container', 'opens input searches container').pause(model.pause + 500)
+        /*.verify.elementPresent('div.sidenav-search-box-container', 'opens input searches container').pause(model.pause + 500)
         .click('div.sidenav-search-box-container')
+       
         .setValue('input.input', 'al').pause(model.pause + 1500)
+
+        //.waitForElementPresent('input.input', 4000)
+        //.setValue('input.input', 'al').pause(model.pause + 1500)
         .clearValue('input.input')
         .pause(model.pause + 1500)
         .verify.elementPresent('div.sidenav-search-box-container', 'opens input searches container').pause(model.pause + 500)
@@ -70,13 +76,14 @@ module.exports = {
         .verify.elementPresent('div.hamburger-holder.open', 'side nav inbox').pause(model.pause + 500)
         .click('div.hamburger-holder.open')
         .verify.elementPresent('div.hamburger-holder', 'side nav inbox').pause(model.pause + 500)
-        .click('div.hamburger-holder')
+        .click('div.hamburger-holder')*/
   },
 
   'Go to inbox from side navigation' : function(browser) {
       browser
         .verify.elementPresent('div.hamburger-holder', 'opens left nav').pause(model.pause + 1500)
         .click('div.hamburger-holder')
+
         .verify.elementPresent('div.portfolio-dashboard-side-nav', 'portfolio dashboard').pause(model.pause + 1500)
         .click('div.portfolio-dashboard-side-nav')
         .verify.elementPresent('div.hamburger-holder', 'opens left nav').pause(model.pause + 1500)
@@ -84,27 +91,37 @@ module.exports = {
         .verify.elementPresent('div.side-nav-inbox-container', 'opens inbox').pause(model.pause + 1500)
         .click('div.side-nav-inbox-container')
         .verify.elementPresent('div.hamburger-holder', 'opens left nav').pause(model.pause + 1500)
-        .click('div.hamburger-holder')
+        .click('div.hamburger-holder').pause(model.pause + 1500)
         .verify.elementPresent('div.sub-section-container', 'opens leftnav project').pause(model.pause + 1500)
         .click('div.sub-section-container')
   },
 
   'Go to New Collection and explore top nav bar' : function(browser) {
       browser
-        .verify.elementPresent('div.side-sub-section-holder', 'opens an active project').pause(model.pause + 500)
-        .click('div.side-sub-section-holder')
-        .verify.elementPresent('div[data-test="dashboard-nav"]', 'dashboard').pause(model.pause + 500)
-        .click('div[data-test="dashboard-nav"]')
-        .verify.elementPresent('div[data-test="activity-nav"]', 'activity feed').pause(model.pause + 500)
-        .click('div[data-test="activity-nav"]')
-        .verify.elementPresent('div.dropdown-menu-icon.clickable', 'project settings').pause(model.pause + 500)
-        .click('div.dropdown-menu-icon.clickable')
-        .verify.elementPresent('.dropdown-menu-selection', 'project notifications').pause(model.pause + 500)
-        .click('.dropdown-menu-selection')
-
         .useXpath()
+        .waitForElementPresent("//div[@class='side-nav-subSection-title' and text()='Batgirl new_QA']", 6000)
+        .click("//div[@class='side-nav-subSection-title' and text()='Batgirl new_QA']")
+        .pause(model.pause + 1500)
+       
+        .waitForElementPresent("//div[@class='nav-center-container   ']//div//a[3]/div", 6000)
+        .click("//div[@class='nav-center-container   ']//div//a[3]/div")
+
+        .verify.elementPresent("//div[@class='nav-center-container   ']//div//a[2]/div", 'activity feed').pause(model.pause + 1500)
+        .click("//div[@class='nav-center-container   ']//div//a[2]/div")
+        .useCss()
+        .waitForElementPresent('div.hamburger-holder', 3000)
+        .click('div.hamburger-holder').pause(model.pause + 4000)
+        .useXpath()
+        .moveToElement("(//div[@class='side-nav-settings-icons'])[2]", 10, 10)
+        .click("(//div[@class='side-nav-settings-icons'])[2]").pause(model.pause + 500)
+        //.verify.elementPresent('div.dropdown-menu-icon.clickable', 'project settings').pause(model.pause + 500)
+        //.click('div.dropdown-menu-icon.clickable')
+        //.verify.elementPresent('.dropdown-menu-selection', 'project notifications').pause(model.pause + 500)
+        //.click('.dropdown-menu-selection')
+
+        
         .verify.elementPresent("(//div[text()='Team'])", 'team').pause(model.pause + 500)
-        .click("(//div[text()='Team'])")
+        .click("(//div[text()='Team'])").pause(model.pause + 1500)
 
         .verify.elementPresent("(//div[text()='Notifications'])", 'notifications').pause(model.pause + 500)
         .click("(//div[text()='Team'])")
