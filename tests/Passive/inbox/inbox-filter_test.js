@@ -26,10 +26,10 @@ module.exports = {
       browser
         .useXpath()
         .frame("intercom-borderless-frame")
-        .element('xpath', "//div[contains(text(), 'Which one most closely matches your role?')]", function(result){
+        .element('xpath', "//div[@class='intercom-block intercom-block-paragraph']", function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
-                browser.click("//div[contains(text(), 'Which one most closely matches your role?')]")
+                browser.click("//div[@class='intercom-block intercom-block-paragraph']")
                 .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
                 .click("//div[@class='intercom-borderless-dismiss-button']");
             } else {
