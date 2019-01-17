@@ -27,25 +27,35 @@ module.exports = {
       browser
         .useXpath()
         .frame("intercom-borderless-frame")
-        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+        .element('xpath', "//div[@class='intercom-block intercom-block-paragraph']", function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
-                browser.click("//div[text()='Which one most closely matches your role?']")
+                browser.click("//div[@class='intercom-block intercom-block-paragraph']")
                 .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
                 .click("//div[@class='intercom-borderless-dismiss-button']");
             } else {
                 // Element is not present.
             }
         });
-
     browser
         .frame(null)
-        .useXpath()
-        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
-        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
-        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
-        .pause(model.pause + 2000)
-
+        
+        .frame("intercom-notifications-frame")
+        .element('xpath', "//div[@class='intercom-snippet-body intercom-chat-snippet-body']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.moveToElement("//div[@class='intercom-snippet-body intercom-chat-snippet-body']", 10, 10)
+                .click("//span[@class='intercom-notifications-dismiss-button-icon']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        .waitForElementPresent("//*[text()='Italy_QA']", 9000).pause(model.pause + 500)
+        .moveToElement("//*[text()='Italy_QA']", 10, 10)
+        .click("//*[text()='Italy_QA']")
+    browser
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 10000)
         .click('div.hamburger-holder')
@@ -71,14 +81,16 @@ module.exports = {
       browser
         .useXpath()
         .waitForElementPresent("(//div[@class='dropdown-menu-icon clickable '])[2]", 6000, 'verifies for activity link and icon')
+        .moveToElement("(//div[@class='dropdown-menu-icon clickable '])[2]", 10, 10)
         .click("(//div[@class='dropdown-menu-icon clickable '])[2]")
         .waitForElementPresent("//*[text()='Activity Feed']", 6000)
         .click("//*[text()='Activity Feed']")
-
-        .useCss()
-        //.verify.cssClassPresent('div[data-test="activity-nav"]', "active").pause(model.pause + 500)
-        .verify.urlContains('activity').pause(model.pause + 500)
-        .verify.elementPresent('.activity-main-container', 'activity main container').pause(model.pause + 500)
+      browser
+         .useCss()
+//         //.verify.cssClassPresent('div[data-test="activity-nav"]', "active").pause(model.pause + 500)
+         .verify.urlContains('activity').pause(model.pause + 500)
+         .verify.elementPresent('.activity-main-container', 'activity main container').pause(model.pause + 500)
+         
   },
 
     'route to the dashboard': function(browser) {
@@ -87,6 +99,7 @@ module.exports = {
         .click("(//div[@class='dropdown-menu-icon clickable '])[2]")
         .waitForElementPresent("//*[text()='Dashboard']", 6000)
         .click("//*[text()='Dashboard']")
+     browser
         .useCss()
         //.verify.cssClassPresent('div[data-test="dashboard-nav"]', "active").pause(model.pause + 500)
         .verify.urlContains('dashboard').pause(model.pause + 1500)
@@ -95,18 +108,24 @@ module.exports = {
     'route back to canvas': function(browser) {
       browser
         .useXpath()
-        .click("//div[@class='nav-route position-relative ' and text()='Discovery']")
+        .click("//div[@class='nav-route position-relative ' and text()='Discovery']").pause(model.pause + 1500)
+
+     browser
         .useCss()
         //.verify.cssClassPresent('div[data-test="workspace-nav"]', "active").pause(model.pause + 500)
-        .verify.urlContains('active').pause(model.pause + 500)
+        .verify.urlContains('active').pause(model.pause + 1500)
+      browser
         .useXpath()
         .click("//div[@class='nav-route position-relative ' and text()='Ideas']")
+      browser
         .useCss()
-        .verify.urlContains('canvas').pause(model.pause + 500)
+        .verify.urlContains('canvas').pause(model.pause + 1500)
+     browser
         .useXpath()
         .click("//div[@class='nav-route position-relative  nav-route-last' and text()='Evidence']")
+     browser
         .useCss()
-        .verify.urlContains('evidence').pause(model.pause + 500)
+        .verify.urlContains('evidence').pause(model.pause + 1500)
     .end();
   }
 }
