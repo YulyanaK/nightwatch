@@ -12,7 +12,7 @@ module.exports = {
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
       browser
-        .setValue('input[type=text]', 'ykarpava@launchpadcentral.com')
+        .setValue('input[type=text]', 'ykarpava+automation@glidr.io')
         .verify.elementPresent('div.signin-form-container', 'searches for active container for password').pause(model.pause + 500)
         .click('input[type=password]')
       browser
@@ -59,11 +59,13 @@ module.exports = {
         .useXpath()
         .click("//div[@class='nav-new-card-btn-plus lpc-material-plus ']")
         .pause(model.pause + 2000)
-        .click("//div[@class='nav-new-card-type-title hypothesis opened' and text()='assumption']")
-        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 6000)
+        .waitForElementPresent("//div[@class='hypothesis-fab']", 6000)
+        .click("//div[@class='hypothesis-fab']")
+        .waitForElementPresent("//div[@class='choose-card-type-selection-card-title' and text()='business idea']", 6000)
+        .click("//div[@class='choose-card-type-selection-card-title' and text()='business idea']")
         .pause(model.pause + 2000)
-        .waitForElementPresent("//textarea[@class='content-field-textarea']", 5000)
-        .moveToElement("//textarea[@class='content-field-textarea']", 10, 10)
+        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 18000)
+        .pause(model.pause + 2000)
         .click("//textarea[@class='content-field-textarea']")
         .setValue("//textarea[@class='content-field-textarea']", 'Data Integrity Tests Assumption').pause(model.pause + 2000)
         .click("//div[@class='details-title no-content' and text()='SUMMARY']")
@@ -79,9 +81,13 @@ module.exports = {
         //.click("(//div[@class='card-full-nav-x'])[3]")
         .waitForElementPresent("//div[@class='nav-center-container   ']//div//a/div", 6000)
         .click("//div[@class='nav-center-container   ']//div//a/div")
+        .waitForElementPresent("//div[@class='workspace-subnav-wrapper  ideas']/div[text()='BUSINESS']", 16000)
+        .click("//div[@class='workspace-subnav-wrapper  ideas']/div[text()='BUSINESS']")
+        .waitForElementPresent("//div[@class='canvas-view-button ']", 6000)
+        .click("//div[@class='canvas-view-button ']")
         //returns to Worspace
-        .waitForElementPresent("(//div[@class='priority-card-summary '])[1]", 6000)
-        .getText("(//div[@class='priority-card-summary '])[1]", function(result) { 
+        .waitForElementPresent("(//div[@class='card-content'])[1]", 6000)
+        .getText("(//div[@class='card-content'])[1]", function(result) { 
         this.verify.equal(result.value, "Data Integrity Tests Assumption")
       })
         .waitForElementPresent("//div[@class='nav-new-card-btn-plus lpc-material-plus roll-out']", 6000)
@@ -155,13 +161,16 @@ module.exports = {
         .click("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='PUBLISH']")//publishing Evidence
         .pause(model.pause + 4000)
         .click("(//div[@class='card-full-nav-x'])[3]")
-        .waitForElementPresent("(//div[@class='nav-center-container   ']//div//a/div)[2]", 6000)
+        
     },
 
 
     'Verify all Assumption & Evidence fields displayed if opened from Activity Feed' : function(browser) {
       browser
-        .click("(//div[@class='nav-center-container   ']//div//a/div)[2]")//entering Activity Feed
+        .waitForElementPresent("(//div[@class='dropdown-menu-icon clickable '])[2]", 6000, 'verifies for activity link and icon')
+        .click("(//div[@class='dropdown-menu-icon clickable '])[2]")
+        .waitForElementPresent("//*[text()='Activity Feed']", 16000)
+        .click("//*[text()='Activity Feed']")//entering Activity Feed
         .waitForElementPresent("//div[@class='filter-type-content']", 5000)
         .pause(model.pause + 2000)
         .click("//div[@class='filter-type-content' and text()='Assumptions']")

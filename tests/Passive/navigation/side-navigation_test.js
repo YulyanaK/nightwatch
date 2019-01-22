@@ -47,7 +47,7 @@ module.exports = {
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
                 browser.moveToElement("//div[@class='intercom-snippet-body intercom-chat-snippet-body']", 10, 10)
-                .click("//span[@class='intercom-notifications-dismiss-button-icon']");
+                .click("//div[@class='intercom-borderless-dismiss-button']");
             } else {
                 // Element is not present.
             }
@@ -120,11 +120,23 @@ module.exports = {
         .click('div.hamburger-holder').pause(model.pause + 1500)
         .verify.elementPresent('div.sub-section-container', 'opens leftnav project').pause(model.pause + 1500)
         .click('div.sub-section-container')
+        .pause(model.pause + 1500)
+
+        .useCss()
+        .element('css selector', 'div.checklist-x-icon', function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click('div.checklist-x-icon');
+            } else {
+                // Element is not present.
+            }
+        });
   },
 
   'Go to New Collection and explore top nav bar' : function(browser) {
       browser
         .useXpath()
+        .pause(model.pause + 1500)
         .waitForElementPresent("//div[@class='side-nav-subSection-title' and text()='Batgirl new_QA']", 6000)
         .click("//div[@class='side-nav-subSection-title' and text()='Batgirl new_QA']")
         .pause(model.pause + 1500)
@@ -159,8 +171,10 @@ module.exports = {
         .useCss()
         .verify.elementPresent('div.profile-image-container', 'help menu').pause(model.pause + 500)
         .click('div.profile-image-container')
-        .verify.elementPresent('div.close.clickable', 'close drawer').pause(model.pause + 500)
-        .click('div.close.clickable')
+
+        .useXpath()
+        .verify.elementPresent("//*[contains(text(), 'SIGN OUT')]", 'sings out everywhere').pause(model.pause + 1500)
+        .click("//*[contains(text(), 'SIGN OUT')]")  
         .end()
   }
 }

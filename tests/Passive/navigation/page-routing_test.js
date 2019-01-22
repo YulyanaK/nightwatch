@@ -26,6 +26,7 @@ module.exports = {
   'Verify the project name' : function(browser) {
       browser
         .useXpath()
+        .pause(model.pause + 5000)
         .frame("intercom-borderless-frame")
         .element('xpath', "//div[@class='intercom-block intercom-block-paragraph']", function(result){
             if (result.value && result.value.ELEMENT) {
@@ -45,7 +46,7 @@ module.exports = {
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
                 browser.moveToElement("//div[@class='intercom-snippet-body intercom-chat-snippet-body']", 10, 10)
-                .click("//span[@class='intercom-notifications-dismiss-button-icon']");
+                .click("//div[@class='intercom-borderless-dismiss-button']");
             } else {
                 // Element is not present.
             }
@@ -67,6 +68,7 @@ module.exports = {
       .waitForElementPresent('.side-nav-subSection-title', 6000)
       .verify.elementPresent('div.side-nav-subSection-title', 'selecting a project to initialize the canvas').pause(model.pause + 1500)
       .click('.side-nav-subSection-title')
+      .pause(model.pause + 5000)
       .element('css selector', 'div.checklist-x-icon', function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
@@ -87,6 +89,7 @@ module.exports = {
         .click("//*[text()='Activity Feed']")
       browser
          .useCss()
+         .pause(model.pause + 5000)
 //         //.verify.cssClassPresent('div[data-test="activity-nav"]', "active").pause(model.pause + 500)
          .verify.urlContains('activity').pause(model.pause + 500)
          .verify.elementPresent('.activity-main-container', 'activity main container').pause(model.pause + 500)
@@ -101,6 +104,7 @@ module.exports = {
         .click("//*[text()='Dashboard']")
      browser
         .useCss()
+        .pause(model.pause + 5000)
         //.verify.cssClassPresent('div[data-test="dashboard-nav"]', "active").pause(model.pause + 500)
         .verify.urlContains('dashboard').pause(model.pause + 1500)
   },
@@ -126,6 +130,14 @@ module.exports = {
      browser
         .useCss()
         .verify.urlContains('evidence').pause(model.pause + 1500)
+
+     browser
+        .useXpath()
+        .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])[2]", 'select profile settings').pause(model.pause + 1500)
+        .click("(//div[@class='float-left nav-dropdown-styles clickable'])[2]")
+        .pause(model.pause + 1500)
+        .verify.elementPresent("//*[contains(text(), 'SIGN OUT')]", 'sings out everywhere').pause(model.pause + 1500)
+        .click("//*[contains(text(), 'SIGN OUT')]")  
     .end();
   }
 }

@@ -49,13 +49,14 @@ module.exports = {
       browser
         .setValue('input[type=password]', 'Testtest1!')
         .click('div.signup-show-password')
-        .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
+        .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 900)
         .click('div.login-button')
   },
 
   'Verify the organizations for profile notifications' : function(browser) {
       browser
         .useXpath()
+        .pause(model.pause + 5000)
         .frame("intercom-borderless-frame")
         .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
             if (result.value && result.value.ELEMENT) {
@@ -72,7 +73,22 @@ module.exports = {
         .waitForElementPresent("//div[text()='Ruwanda_QA']", 12000)
         //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
         .click("//div[text()='Ruwanda_QA']")
-        .pause(model.pause + 6000)
+   browser
+        .useXpath()
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[text()='Which one most closely matches your role?']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)   
+    browser    
         .waitForElementPresent("(//div[text()='DO'])[1]", 12000)
         .click("(//div[text()='DO'])[1]")
         .waitForElementPresent("//div[text()='Profile & Account Settings']", 6000, 'Profile & Account settings').pause(model.pause + 1000)

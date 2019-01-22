@@ -50,28 +50,41 @@ module.exports = {
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
-        .pause(model.pause + 5000)
+        
   },
 
   'Verify the organizations for profile notifications' : function(browser) {
-      browser
+
+     browser
+
         .useXpath()
+        .pause(model.pause + 5000)
         .frame("intercom-borderless-frame")
-        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+        .element('xpath', "//div[@class='intercom-block intercom-block-paragraph']", function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
-                browser.click("//div[text()='Which one most closely matches your role?']")
+                browser.click("//div[@class='intercom-block intercom-block-paragraph']")
                 .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
                 .click("//div[@class='intercom-borderless-dismiss-button']");
             } else {
                 // Element is not present.
             }
         });
-
-        browser
+    browser
         .frame(null)
-
-        .useXpath()
+        
+        .frame("intercom-notifications-frame")
+        .element('xpath', "//div[@class='intercom-snippet-body intercom-chat-snippet-body']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.moveToElement("//div[@class='intercom-snippet-body intercom-chat-snippet-body']", 10, 10)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
         .waitForElementPresent("//div[text()='Ruwanda_QA']", 6000)
         //.verify.elementPresent('div.org-dashboard-card-container div:nth-of-type(3)', 'beta codes').pause(model.pause + 500)
         .moveToElement("//div[text()='Ruwanda_QA']", 10, 10)
@@ -93,7 +106,8 @@ module.exports = {
         .verify.elementPresent("//div[@class='user-email-password-title email']", 'verify email').pause(model.pause + 1000)
         .verify.elementPresent("//div[@class='user-email-password-title password']", 'verify password')
         .click("(//div[text()='CHANGE'])[1]")
-        .waitForElementPresent("(//input[@class='account-settings-input email'])[1]", 6000)
+        .pause(model.pause + 2000)
+        .waitForElementPresent("(//input[@class='account-settings-input email'])[1]", 9000)
         .setValue("(//input[@class='account-settings-input email'])[1]", 'Testtest1!')
       browser
         .verify.elementPresent("//input[@placeholder='Enter Email']", 'verify new email').pause(model.pause + 500)

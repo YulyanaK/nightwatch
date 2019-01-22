@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-        //.resizeWindow(1440, 780).pause(model.pause + 500)
+        .resizeWindow(1440, 780).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -173,13 +173,13 @@ module.exports = {
         .moveToElement("//*[contains(text(), 'Solution Validation')]", 10, 10)
         .click("//*[contains(text(), 'Solution Validation')]")
 
-        .waitForElementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]",2000, 'stage')
+        .waitForElementPresent("(//div[@class='project-dashboard-dropdown-container'])[3]", 4000, 'stage')
         .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
-        .pause(model.pause + 2500)
+        .pause(model.pause + 3000)
         .click("(//*[contains(text(), '1 - 3 months')])")
-        .pause(model.pause + 900)
+        .pause(model.pause + 1500)
         .click("(//div[@class='project-dashboard-dropdown-container'])[3]")
-        .pause(model.pause + 900)
+        .pause(model.pause + 1500)
         .click("//*[contains(text(), '12 - 18 months')]")
 
         .verify.elementPresent("(//div[@class='project-dashboard-dropdown-container'])[4]", 'describe the market').pause(model.pause + 1500)
@@ -236,28 +236,24 @@ module.exports = {
         .setValue("(//input[@class='project-label-input focused'])", 'two labels')
         .pause(model.pause + 2000)
         .keys(browser.Keys.ENTER)
-        //.keys('\uE006')
-        // .pause(model.pause + 1000)
 
-        // .click("(//div[@class='project-labels-add float-right'])")
-        // .pause(model.pause + 1500)
-        // .setValue("(//input[@class='project-label-input focused'])", 'three labels')
-        // .pause(model.pause + 2000)
-        // .keys(browser.Keys.ENTER)
-        //.keys('\uE006')
-        /*.pause(model.pause + 1000)
-
-        .moveToElement("(//div[@class='label-hover-container'])", 10, 10)
-        .click("(//div[@class='lpc-close-cancel-mini-icon-white dashboard-label-delete'])")
-        .pause(model.pause + 1500)
-
-        .moveToElement("(//div[@class='label-hover-container'])", 10, 10)
-        .click("(//div[@class='lpc-close-cancel-mini-icon-white dashboard-label-delete'])[2]")
-        .pause(model.pause + 1500)
-
-        .click("(//div[@class='label-hover-container'])")
-        .click("(//div[@class='lpc-close-cancel-mini-icon-white dashboard-label-delete'])")
-        .pause(model.pause + 1500)*/
+        .useXpath()
+        .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])[2]", 'select profile settings').pause(model.pause + 1500)
+        .click("(//div[@class='float-left nav-dropdown-styles clickable'])[2]")
+        .pause(model.pause + 5000)
+        .verify.elementPresent("//*[contains(text(), 'Profile & Account Settings')]", 'selects profile and settings')
+        .click("//*[contains(text(), 'Profile & Account Settings')]")
+        .pause(model.pause + 5000)
+        .verify.elementPresent("//*[contains(text(), 'Account Settings')]", 'selects Account settings')
+        .click("//*[contains(text(), 'Account Settings')]")
+        .pause(model.pause + 5000)
+        .verify.elementPresent("//*[contains(text(), 'SIGN OUT EVERYWHERE')]", 'sings out everywhere')
+        .click("//*[contains(text(), 'SIGN OUT EVERYWHERE')]")
+        .pause(model.pause + 8000)
+        .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'select profile settings').pause(model.pause + 1500)
+        .click("(//div[@class='float-left nav-dropdown-styles clickable'])") 
+        .verify.elementPresent("//*[contains(text(), 'SIGN OUT')]", 'sings out everywhere').pause(model.pause + 1500)
+        .click("//*[contains(text(), 'SIGN OUT')]")  
         .end();
     },
 }

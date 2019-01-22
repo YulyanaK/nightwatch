@@ -29,12 +29,26 @@ var ObjectId = require('mongodb')
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
         .useXpath()
+        .pause(model.pause + 5000)
         .frame("intercom-borderless-frame")
-        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+        .element('xpath', "//div[@class='intercom-block intercom-block-paragraph']", function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
-                browser.click("//div[text()='Which one most closely matches your role?']")
+                browser.click("//div[@class='intercom-block intercom-block-paragraph']")
                 .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        
+        .frame("intercom-notifications-frame")
+        .element('xpath', "//div[@class='intercom-snippet-body intercom-chat-snippet-body']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.moveToElement("//div[@class='intercom-snippet-body intercom-chat-snippet-body']", 10, 10)
                 .click("//div[@class='intercom-borderless-dismiss-button']");
             } else {
                 // Element is not present.

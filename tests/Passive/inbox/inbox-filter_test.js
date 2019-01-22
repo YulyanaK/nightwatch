@@ -43,15 +43,14 @@ module.exports = {
         .click("//*[contains(text(), 'AutomationTesting_QA')]")
         .pause(model.pause + 1500)
     browser
-        .useCss()
-        .waitForElementPresent('div.hamburger-holder', 10000)
-        .click('div.hamburger-holder')
-        .pause(model.pause + 3500)
+        .waitForElementPresent("(//div[@class='hamburger-holder close '])", 25000, 'opens hamburger-holder')
+        .click("(//div[@class='hamburger-holder close '])")
+        .pause(model.pause + 1500)
   },
 
   '(Step 2) Select inbox from side nav menu': function(browser) {
       browser
-        
+        .useCss()
         .verify.elementPresent('div.side-nav-inbox-container', 'my inbox left nav').pause(model.pause + 500)
         .click('div.side-nav-inbox-container')
   },

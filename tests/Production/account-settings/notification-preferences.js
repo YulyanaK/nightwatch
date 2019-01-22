@@ -77,6 +77,11 @@ module.exports = {
   'Verify the project name' : function(browser) {
       browser
         .useXpath()
+        .waitForElementPresent("//div[text()='Ruwanda_QA']", 6000, 'selects an org').pause(model.pause + 500)
+        .moveToElement("//div[text()='Ruwanda_QA']", 10, 10)
+        .click("//div[text()='Ruwanda_QA']")
+        .pause(model.pause + 4000)
+      browser
         .frame("intercom-borderless-frame")
         .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
             if (result.value && result.value.ELEMENT) {
@@ -88,26 +93,14 @@ module.exports = {
                 // Element is not present.
             }
         });
-    browser
+      browser
         .frame(null)
-        .useCss()
-        .element('css selector', 'div.checklist-x-icon', function(result){
-            if (result.value && result.value.ELEMENT) {
-                // Element is present, do the appropriate tests
-                browser.useXpath()
-                .click("//div[@class='checklist-not-show-text']");
-            } else {
-                // Element is not present.
-            }
-        });
-        browser
-        .waitForElementPresent('div.org-dashboard-card-container', 6000)
-        .useXpath()
-        .moveToElement("//div[text()='Ruwanda_QA']", 10, 10)
-        .click("//div[text()='Ruwanda_QA']")
+
+     browser
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 10000)
         .click('div.hamburger-holder')
+
         .useXpath()
         .waitForElementPresent("//div[text()='ACTIVE PROJECTS']", 5000)
         .waitForElementPresent("(//div[@class='side-nav-settings-icons'])[8]", 6000)
@@ -120,6 +113,8 @@ module.exports = {
         .pause(model.pause + 2000)
         .waitForElementPresent("//div[text()='Notifications']", 6000)
         .click("//div[text()='Notifications']")
+        .pause(model.pause + 2000)
+     browser   
         .useCss()
         .element('css selector', 'div.checklist-x-icon', function(result){
             if (result.value && result.value.ELEMENT) {
@@ -130,7 +125,7 @@ module.exports = {
                 // Element is not present.
             }
         });
-        browser
+    browser
         .useXpath()
         .verify.elementPresent("//div[@class='project-notifications-toggle-circle on']", 'verifies for toggle circle').pause(model.pause + 1500)
         .click("//div[@class='project-notifications-toggle-circle on']")

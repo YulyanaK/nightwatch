@@ -27,10 +27,10 @@ module.exports = {
       browser
         .useXpath()
         .frame("intercom-borderless-frame")
-        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+        .element('xpath', "//div[@class='intercom-block intercom-block-paragraph']", function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
-                browser.click("//div[text()='Which one most closely matches your role?']")
+                browser.click("//div[@class='intercom-block intercom-block-paragraph']")
                 .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
                 .click("//div[@class='intercom-borderless-dismiss-button']");
             } else {
@@ -39,9 +39,20 @@ module.exports = {
         });
     browser
         .frame(null)
-        .useXpath()
-        .waitForElementPresent("//div[text()='AssumptionsTest_QA']", 4000)
         
+        .frame("intercom-notifications-frame")
+        .element('xpath', "//div[@class='intercom-snippet-body intercom-chat-snippet-body']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.moveToElement("//div[@class='intercom-snippet-body intercom-chat-snippet-body']", 10, 10)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        .waitForElementPresent("//div[text()='AssumptionsTest_QA']", 4000)
         .click("//div[text()='AssumptionsTest_QA']")
         .pause(model.pause + 4000)
         .waitForElementPresent("//div[@class='hamburger-holder close ']", 6000)
@@ -64,7 +75,9 @@ module.exports = {
         .waitForElementPresent("//div[@class='nav-new-card-btn-plus lpc-material-plus ']", 10000)
         .click("//div[@class='nav-new-card-btn-plus lpc-material-plus ']").pause(model.pause + 2000)
         .click("(//div[@class='nav-new-card-type-title hypothesis opened'])[1]")
-        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 8000)
+        .waitForElementPresent("//div[@class='choose-card-type-selection-card-title' and text()='business idea']", 6000)
+        .click("//div[@class='choose-card-type-selection-card-title' and text()='business idea']")
+        //.waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis']", 18000)
         .pause(model.pause + 2000)
         .click("//textarea[@class='content-field-textarea']")
         .setValue("//textarea[@class='content-field-textarea']", 'Automation Tests Assumption_Connect_Evidence').pause(model.pause + 2000)
@@ -107,7 +120,7 @@ module.exports = {
         .pause(model.pause + 4000)
         .waitForElementPresent("(//span[@id='connections'])[3]", 6000)
         .click("(//span[@id='connections'])[3]").pause(model.pause + 500)
-        .waitForElementPresent("//div[@class='connections-card-evidence-title' and text()='Any name']", 16000)
+        .waitForElementPresent("//div[@class='connections-card-evidence-title' and text()='Any name']", 26000)
         .click("//div[@class='connections-card-evidence-title' and text()='Any name']")
         /*.pause(model.pause + 3000)
         .moveToElement("(//div[@class='dropdown-menu-icon clickable '])[5]", 10, 10)

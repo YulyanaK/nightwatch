@@ -30,7 +30,7 @@ module.exports = {
   'Verify the organizations for project dashboard' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 6000).pause(model.pause + 500)
+        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[3]", 6000).pause(model.pause + 500)
         .click("(//div[@class='org-dashboard-card-container'])[3]")
 
         .useCss()

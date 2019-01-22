@@ -25,9 +25,13 @@ module.exports = {
 
     'Verify user is able to edit Assumption' : function(browser) {
       browser
-          .useXpath()
-          .frame("intercom-borderless-frame")
-          .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+        .useXpath()
+        .waitForElementPresent("//div[text()='AssumptionsTest_QA']", 4000)
+        .click("//div[text()='AssumptionsTest_QA']")
+        .pause(model.pause + 4000)
+      browser
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
                 browser.click("//div[text()='Which one most closely matches your role?']")
@@ -39,17 +43,12 @@ module.exports = {
         });
     browser
         .frame(null)
-
-        .useXpath()
-        .waitForElementPresent("//div[text()='AssumptionsTest_QA']", 4000)
-        
-        .click("//div[text()='AssumptionsTest_QA']")
-        .pause(model.pause + 4000)
+    browser    
         .waitForElementPresent("//div[@class='hamburger-holder close ']", 6000)
         .click("//div[@class='hamburger-holder close ']").pause(model.pause + 2000)
         .click("//div[@class='side-nav-subSection-title' and text()='Sample Project']").pause(model.pause + 2000)
 
-
+    browser
         .useCss()
         .element('css selector', 'div.checklist-x-icon', function(result){
             if (result.value && result.value.ELEMENT) {
@@ -60,14 +59,18 @@ module.exports = {
                 // Element is not present.
             }
         });
-        browser
+    browser
         .useXpath()
-        .waitForElementPresent("//div[@class='nav-route position-relative ' and text()='Ideas']", 6000)
-        .click("//div[@class='nav-route position-relative ' and text()='Ideas']")
+        .waitForElementPresent("//div[@class='nav-container position-relative ']//a/div[text()='Ideas']", 6000)
+        .click("//div[@class='nav-container position-relative ']//a/div[text()='Ideas']")
+        .waitForElementPresent("//div[@class='workspace-subnav-wrapper  ideas']/div[text()='BUSINESS']", 6000)
+        .click("//div[@class='workspace-subnav-wrapper  ideas']/div[text()='BUSINESS']")
+        .waitForElementPresent("//div[@class='canvas-view-button ']", 6000)
+        .click("//div[@class='canvas-view-button ']")
         .waitForElementPresent("(//div[@class='card-content'])[1]", 16000)
         .moveToElement("(//div[@class='card-content'])[1]", 10, 10)
         .click("(//div[@class='card-content'])[1]")
-        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis' and text()='IDEA']", 16000)//Idea open
+        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis' and text()='BUSINESS IDEA']", 16000)//Idea open
         .pause(model.pause + 2000)
         .waitForElementPresent("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='Done Editing']", 6000)
         .click("//textarea[@class='content-field-textarea']")

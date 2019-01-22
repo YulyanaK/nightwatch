@@ -24,12 +24,14 @@ module.exports = {
   'Verify the project invite to name' : function(browser) {
       browser
         .useXpath()
+        .pause(model.pause + 5000)
         .frame("intercom-borderless-frame")
         .element('xpath', "//div[@class='intercom-block intercom-block-paragraph']", function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
                 browser.click("//div[@class='intercom-block intercom-block-paragraph']")
-                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 10000)
+                .moveToElement("//div[@class='intercom-borderless-dismiss-button']", 10, 10)
                 .click("//div[@class='intercom-borderless-dismiss-button']");
             } else {
                 // Element is not present.
@@ -37,39 +39,59 @@ module.exports = {
         });
     browser
         .frame(null)
-        
+        .pause(model.pause + 2000)
         .frame("intercom-notifications-frame")
         .element('xpath', "//div[@class='intercom-snippet-body intercom-chat-snippet-body']", function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
                 browser.moveToElement("//div[@class='intercom-snippet-body intercom-chat-snippet-body']", 10, 10)
-                .click("//span[@class='intercom-notifications-dismiss-button-icon']");
+                .click("//div[@class='intercom-borderless-dismiss-button']");
             } else {
                 // Element is not present.
             }
         });
+
     browser  
         .frame(null)
         .waitForElementPresent("//*[contains(text(), 'Ghana_QA')]", 9000).pause(model.pause + 500)
         .moveToElement("//*[contains(text(), 'Ghana_QA')]", 10, 10)
         .click("//*[contains(text(), 'Ghana_QA')]")
-        .pause(model.pause + 3000)
+        .pause(model.pause + 5000)
+
+        .waitForElementPresent("(//div[@class='hamburger-holder close '])", 25000, 'opens hamburger-holder')
+        .click("(//div[@class='hamburger-holder close '])")
+
     browser
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 18000)
-        .click('div.hamburger-holder')
-        .verify.elementPresent('div.side-nav-organization-name-holder', 'opens left nav').pause(model.pause + 500)
+        .verify.elementPresent('div.side-nav-organization-name-holder', 'opens left nav').pause(model.pause + 1500)
         .click('div.side-nav-organization-name-holder')
-        .verify.elementPresent('div.invite', 'checks for invite link').pause(model.pause + 500)
+        .verify.elementPresent('div.invite', 'checks for invite link').pause(model.pause + 1500)
         .click('div.invite')
-        .verify.elementPresent('div.invite-selection', 'selects a member invitation').pause(model.pause + 500)
+        .verify.elementPresent('div.invite-selection', 'selects a member invitation').pause(model.pause + 1500)
         .click('div.invite-selection')
-        .verify.elementPresent('div.back-arrow-invite.show-back-arrow.lpc-back-arrow-button-black', 'return arrow').pause(model.pause + 500)
+        .verify.elementPresent('div.back-arrow-invite.show-back-arrow.lpc-back-arrow-button-black', 'return arrow').pause(model.pause + 1500)
         .click('div.back-arrow-invite.show-back-arrow.lpc-back-arrow-button-black')
-        .verify.elementPresent('div.invite-selection', 'selects a member to invite').pause(model.pause + 500)
+        .verify.elementPresent('div.invite-selection', 'selects a member to invite').pause(model.pause + 1500)
         .click('div.invite-selection')
-        .verify.elementPresent('div.lpc-close-button-large-black.close-invite', 'closes invitation page ').pause(model.pause + 4000)
-        .click('div.lpc-close-button-large-black.close-invite')
-        .end();
-  }
+    },
+
+ 'log out all' : function(browser) {
+     browser
+       .useXpath()
+       .verify.elementPresent("(//div[@class='lpc-close-button-large-black close-invite'])[2]", 'closes invitation page').pause(model.pause + 1500)
+       .click("(//div[@class='lpc-close-button-large-black close-invite'])[2]")
+       .verify.elementPresent("(//div[@class='float-left nav-dropdown-styles clickable'])", 'select profile settings').pause(model.pause + 1500)
+       .click("(//div[@class='float-left nav-dropdown-styles clickable'])")
+       .pause(model.pause + 5000)
+       .verify.elementPresent("//*[contains(text(), 'Profile & Account Settings')]", 'selects profile and settings')
+       .click("//*[contains(text(), 'Profile & Account Settings')]")
+       .pause(model.pause + 5000)
+       .verify.elementPresent("//*[contains(text(), 'Account Settings')]", 'selects Account settings')
+       .click("//*[contains(text(), 'Account Settings')]")
+       .pause(model.pause + 5000)
+       .verify.elementPresent("//*[contains(text(), 'SIGN OUT EVERYWHERE')]", 'sings out everywhere')
+       .click("//*[contains(text(), 'SIGN OUT EVERYWHERE')]")
+       .pause(model.pause + 20000)
+       .end();
+    }
 }

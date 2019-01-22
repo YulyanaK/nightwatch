@@ -62,14 +62,16 @@ module.exports = {
         });
         browser
         .useXpath()
-        .waitForElementPresent("//div[@class='nav-route position-relative ' and text()='Ideas']", 6000)
-        .click("//div[@class='nav-route position-relative ' and text()='Ideas']")
+        .waitForElementPresent("//div[@class='nav-container position-relative ']//a/div[text()='Ideas']", 6000)
+        .click("//div[@class='nav-container position-relative ']//a/div[text()='Ideas']")
+        .waitForElementPresent("//div[@class='workspace-subnav-wrapper  ideas']/div[text()='BUSINESS']", 6000)
+        .click("//div[@class='workspace-subnav-wrapper  ideas']/div[text()='BUSINESS']")
         .waitForElementPresent("//div[@class='canvas-view-button ']", 6000)
         .click("//div[@class='canvas-view-button ']")
         .waitForElementPresent("(//div[@class='card-content'])[1]", 16000)
         .moveToElement("(//div[@class='card-content'])[1]", 10, 10)
         .click("(//div[@class='card-content'])[1]")
-        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis' and text()='IDEA']", 16000)//Idea open
+        .waitForElementPresent("//div[@class='hypothesis-nav-title hypothesis' and text()='BUSINESS IDEA']", 16000)//Idea open
         .pause(model.pause + 2000)
         .waitForElementPresent("//div[@class='card-full-nav full-nav-edit-mode-btn' and text()='Done Editing']", 6000)
         .click("//textarea[@class='content-field-textarea']")

@@ -45,7 +45,7 @@ module.exports = {
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
                 browser.moveToElement("//div[@class='intercom-snippet-body intercom-chat-snippet-body']", 10, 10)
-                .click("//span[@class='intercom-notifications-dismiss-button-icon']");
+                .click("//div[@class='intercom-borderless-dismiss-button']");
             } else {
                 // Element is not present.
             }

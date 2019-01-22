@@ -26,14 +26,40 @@ module.exports = {
 
   'Verify the organizations for Project dashboard' : function(browser) {
       browser
-        .useXpath()
-        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']", 6000).pause(model.pause + 500)
+
+      .useXpath()
+        .frame("intercom-borderless-frame")
+        .element('xpath', "//div[@class='intercom-block intercom-block-paragraph']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.click("//div[@class='intercom-block intercom-block-paragraph']")
+                .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        
+        .frame("intercom-notifications-frame")
+        .element('xpath', "//div[@class='intercom-snippet-body intercom-chat-snippet-body']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.moveToElement("//div[@class='intercom-snippet-body intercom-chat-snippet-body']", 10, 10)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']", 16000).pause(model.pause + 500)
         .moveToElement("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']", 10, 10)
         .click("//div[@class='org-dashboard-card-title' and text()='Ghana_QA']")
         .pause(model.pause + 2000)
-
         .useCss()
-        .waitForElementPresent('div.hamburger-holder', 10000)
+        .waitForElementPresent('div.hamburger-holder', 15000)
         .click('div.hamburger-holder')
   },
 

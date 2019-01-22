@@ -27,12 +27,26 @@ module.exports = {
   'Verify the organizations' : function(browser) {
       browser
         .useXpath()
+        .pause(model.pause + 5000)
         .frame("intercom-borderless-frame")
-        .element('xpath', "//div[text()='Which one most closely matches your role?']", function(result){
+        .element('xpath', "//div[@class='intercom-block intercom-block-paragraph']", function(result){
             if (result.value && result.value.ELEMENT) {
                 // Element is present, do the appropriate tests
-                browser.click("//div[text()='Which one most closely matches your role?']")
+                browser.click("//div[@class='intercom-block intercom-block-paragraph']")
                 .waitForElementPresent("//div[@class='intercom-borderless-dismiss-button']", 6000)
+                .click("//div[@class='intercom-borderless-dismiss-button']");
+            } else {
+                // Element is not present.
+            }
+        });
+    browser
+        .frame(null)
+        
+        .frame("intercom-notifications-frame")
+        .element('xpath', "//div[@class='intercom-snippet-body intercom-chat-snippet-body']", function(result){
+            if (result.value && result.value.ELEMENT) {
+                // Element is present, do the appropriate tests
+                browser.moveToElement("//div[@class='intercom-snippet-body intercom-chat-snippet-body']", 10, 10)
                 .click("//div[@class='intercom-borderless-dismiss-button']");
             } else {
                 // Element is not present.
@@ -125,11 +139,11 @@ module.exports = {
         //.click('input.activity-feed-calendar-input')
         //.setValue('input.activity-feed-calendar-input', ['5/1/2018 to 5/31/2018','\uE008'])
         
-        .moveToElement("//div[@class='DayPicker-Day' and text()='5']", 10, 10).pause(model.pause + 1000)
-        .click("//div[@class='DayPicker-Day' and text()='5']").pause(model.pause + 1000)
-        .moveToElement("//div[@class='DayPicker-Day' and text()='28']", 10, 10)
-        .verify.elementPresent("//div[@class='DayPicker-Day' and text()='28']", 'days selected').pause(model.pause + 1500)
-        .click("//div[@class='DayPicker-Day' and text()='28']").pause(model.pause + 1000)
+        .moveToElement("//div[@class='DayPicker-Day' and text()='1']", 10, 10).pause(model.pause + 1000)
+        .click("//div[@class='DayPicker-Day' and text()='1']").pause(model.pause + 1000)
+        .moveToElement("//div[@class='DayPicker-Day' and text()='2']", 10, 10)
+        .verify.elementPresent("//div[@class='DayPicker-Day' and text()='2']", 'days selected').pause(model.pause + 1500)
+        .click("//div[@class='DayPicker-Day' and text()='2']").pause(model.pause + 1000)
 
         
         .pause(model.pause + 1500)

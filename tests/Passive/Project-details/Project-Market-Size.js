@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://passive.glidr.io')
-        //.resizeWindow(1020, 768).pause(model.pause + 500)
+        .resizeWindow(1440, 780).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -66,36 +66,41 @@ module.exports = {
         .click("(//*[contains(text(), 'MARKET SIZE')])")
         .pause(model.pause + 2500)
    
+        //Target market
+      browser  
         .useCss()
-        .waitForElementPresent('div.market-size-currency-input', 1500,'set market')
-        .click('input.market-size-currency-input')
-        .pause(model.pause + 1000)
-        .clearValue('input.market-size-currency-input')
-
-        .pause(model.pause + 1000)
-        .setValue('input.market-size-currency-input', '14520')
-        .keys(browser.Keys["CTRL", "a"])
-        .keys(browser.Keys.delete)
+        .waitForElementPresent('div.market-size-legend-icon.target.float-right', 1500,'target market')
+        .click('div.market-size-legend-icon.target.float-right')
+        .clearValue('input.market-size-currency-input').pause(model.pause + 1000)
+        .click('div.float-right.market-size-edit-icon')
         .setValue('input.market-size-currency-input', '430')
+        .pause(model.pause + 1000)
 
 
+        //served available market
+      browser  
         .useXpath()
         .verify.elementPresent("(//div[@class='market-size-currency-input'])[2]", 'available market').pause(model.pause + 1500)
         .click("(//input[@class='market-size-currency-input'])[2]")
-        .pause(model.pause + 1000)
+        .pause(model.pause + 500)
+        .click("(//div[@class='float-right market-size-edit-icon'])")
         .clearValue("(//input[@class='market-size-currency-input'])[2]")
-        .pause(model.pause + 1000)
-        .setValue("(//input[@class='market-size-currency-input'])[2]", '4200')
+        .pause(model.pause + 500)
+        .click("(//div[@class='float-right market-size-edit-icon'])")
+        .setValue("(//input[@class='market-size-currency-input'])[2]", '311')
 
-        .verify.elementPresent("(//div[@class='market-size-currency-input'])[3]", 'total market').pause(model.pause + 1500)
+        //total addressable market
+        .verify.elementPresent("(//div[@class='market-size-currency-input'])[3]", 'available market').pause(model.pause + 1500)
         .click("(//input[@class='market-size-currency-input'])[3]")
-        .pause(model.pause + 1000)
+        .pause(model.pause + 500)
+        .click("(//div[@class='float-right market-size-edit-icon'])")
         .clearValue("(//input[@class='market-size-currency-input'])[3]")
-        .keys([browser.Keys.CONTROL, "a"])
-        .keys(browser.Keys.delete)
-        .pause(model.pause + 1000)
-        .setValue("(//input[@class='market-size-currency-input'])[3]", '523')
+        .pause(model.pause + 500)
+        .click("(//div[@class='float-right market-size-edit-icon'])")
+        .setValue("(//input[@class='market-size-currency-input'])[3]", '911')
 
+        //market size notes
+      browser
         .useCss()
         .verify.elementPresent('textarea.content-field-text').pause(model.pause + 1500)
         .click('textarea.content-field-text')
@@ -104,6 +109,7 @@ module.exports = {
         .pause(model.pause + 1000)
         .setValue('textarea.content-field-text', 'The T-note is issued by the U.S. government when it wants to raise money to fund its debts or undertake new projects for the benefit of the economy. The notes are sold in $100 increments, pay interest in six-month intervals, and pay investors the full face value of the note upon maturity.')
         
+      browser  
         .useXpath()
         .verify.elementPresent("(//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr'])", 'notes for invesments').pause(model.pause + 1500)
         .click("(//div[@class='public-DraftEditor-content'])")
@@ -111,6 +117,7 @@ module.exports = {
         .setValue("(//div[@class='public-DraftEditor-content'])", ['Clarification', browser.Keys.ENTER])
         .pause(model.pause + 1000)
 
+     browser
         .useCss()
         .verify.elementPresent('div.float-right.supporting-documents-add-button.clickable').pause(model.pause + 1000)
         .click('div.float-right.supporting-documents-add-button.clickable')

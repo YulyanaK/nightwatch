@@ -9,7 +9,7 @@ module.exports = {
       browser
         //.url(model.url + '')
         .url('https://app.glidr.io')
-        .resizeWindow(1020, 768).pause(model.pause + 500)
+        //.resizeWindow(1020, 768).pause(model.pause + 500)
         .verify.elementPresent('div.login-logo.lpc-glidr-beta-login', 'looks for glidr logo').pause(model.pause + 500)
         .verify.elementPresent('div.signin-form-container', 'searches for active container for email').pause(model.pause + 500)
         .click('div.signin-form-container')
@@ -22,14 +22,16 @@ module.exports = {
         .click('div.signup-show-password')
         .verify.elementPresent('div.login-button', 'checks for button is active').pause(model.pause + 500)
         .click('div.login-button')
-        .waitForElementPresent('div.org-container', 4000).pause(model.pause + 500)
+        .waitForElementPresent('div.org-container', 7000).pause(model.pause + 500)
   },
 
   'Verify a project and org' : function(browser) {
       browser
         .useXpath()
-        .waitForElementPresent("(//div[@class='org-dashboard-card-container'])[2]", 4000).pause(model.pause + 500)
-        .click("(//div[@class='org-dashboard-card-container'])[2]")
+        .waitForElementPresent("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 6000).pause(model.pause + 500)
+        .moveToElement("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']", 10, 10)
+        .click("//div[@class='org-dashboard-card-title' and text()='Senegal_QA']")
+        .pause(model.pause + 2000)
 
         .useCss()
         .waitForElementPresent('div.hamburger-holder', 6000)
@@ -38,9 +40,9 @@ module.exports = {
 
   'Project market size': function(browser) {
       browser
-        .waitForElementPresent('div.side-nav-subSection-title', 6000, 'selects a project')
+        .waitForElementPresent('div.side-nav-subSection-title', 6000, 'selects a project').pause(model.pause + 2000)
         .click('div.side-nav-subSection-title')
-        
+         .pause(model.pause + 900)
 
         .element('css selector', 'div.checklist-x-icon', function(result){
             if (result.value && result.value.ELEMENT) {
@@ -53,39 +55,49 @@ module.exports = {
 
       
       browser
+        .waitForElementPresent('div.basic-dropdown-selected-text.center-nav-page-routes', 6000, 'selects a dashboard')
+        .click('div.basic-dropdown-selected-text.center-nav-page-routes')
+        
         .useXpath()
-        .pause(model.pause + 3000)
-        .click("(//div[@class='mobile-nav-container position-relative '])[2]")
-        .verify.elementPresent("//*[contains(text(), '+ EDIT')]", 'opens overview to edit').pause(model.pause + 1500)
-        .click("//*[contains(text(), '+ EDIT')]").pause(model.pause + 900)
+        .waitForElementPresent("//*[contains(text(), 'Overview')]", 6000, 'open overview')
+        .click("//*[contains(text(), 'Overview')]").pause(model.pause + 900)
 
-        .pause(model.pause + 6000)
+        .pause(model.pause + 1000)
         .click("(//*[contains(text(), 'MARKET SIZE')])")
         .pause(model.pause + 2500)
    
+        //Target market
         .useCss()
-        .waitForElementPresent('div.market-size-currency-input', 1500,'set market')
-        .click('input.market-size-currency-input')
-        .pause(model.pause + 1000)
+        .waitForElementPresent('div.market-size-legend-icon.target.float-right', 1500,'target market')
+        .click('div.market-size-legend-icon.target.float-right')
         .clearValue('input.market-size-currency-input')
+        .click('div.float-right.market-size-edit-icon')
+        .setValue('input.market-size-currency-input', '430')
         .pause(model.pause + 1000)
-        .setValue('input.market-size-currency-input', '14520')
 
+
+        //served available market
         .useXpath()
         .verify.elementPresent("(//div[@class='market-size-currency-input'])[2]", 'available market').pause(model.pause + 1500)
         .click("(//input[@class='market-size-currency-input'])[2]")
-        .pause(model.pause + 1000)
+        .pause(model.pause + 500)
+        .click("(//div[@class='float-right market-size-edit-icon'])")
         .clearValue("(//input[@class='market-size-currency-input'])[2]")
-        .pause(model.pause + 1000)
-        .setValue("(//input[@class='market-size-currency-input'])[2]", '32567')
+        .pause(model.pause + 500)
+        .click("(//div[@class='float-right market-size-edit-icon'])")
+        .setValue("(//input[@class='market-size-currency-input'])[2]", '311')
 
-        .verify.elementPresent("(//div[@class='market-size-currency-input'])[3]", 'total market').pause(model.pause + 1500)
+        //total addressable market
+        .verify.elementPresent("(//div[@class='market-size-currency-input'])[3]", 'available market').pause(model.pause + 1500)
         .click("(//input[@class='market-size-currency-input'])[3]")
-        .pause(model.pause + 1000)
+        .pause(model.pause + 500)
+        .click("(//div[@class='float-right market-size-edit-icon'])")
         .clearValue("(//input[@class='market-size-currency-input'])[3]")
-        .pause(model.pause + 1000)
-        .setValue("(//input[@class='market-size-currency-input'])[3]", '520567')
+        .pause(model.pause + 500)
+        .click("(//div[@class='float-right market-size-edit-icon'])")
+        .setValue("(//input[@class='market-size-currency-input'])[3]", '911')
 
+        //market size notes
         .useCss()
         .verify.elementPresent('textarea.content-field-text').pause(model.pause + 1500)
         .click('textarea.content-field-text')
